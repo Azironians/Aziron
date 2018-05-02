@@ -1,12 +1,14 @@
 package management.playerManagement;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import controllers.main.matchmaking.ControllerMatchMaking;
 import gui.windows.WindowType;
 import heroes.abstractHero.hero.Hero;
 import main.AGame;
 import management.battleManagement.BattleManager;
 import org.jetbrains.annotations.Contract;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import spring.SpringManager;
 
 import java.util.HashMap;
@@ -27,6 +29,10 @@ public final class PlayerManager {
     @Inject
     private FictionalTeams fictionalTeams;
 
+    @Inject
+    @Named("SpringCore")
+    private ClassPathXmlApplicationContext context;
+
     private Map<String, Player> mapOfPlayers = null;
 
     private int countPlayers = 0;
@@ -40,8 +46,6 @@ public final class PlayerManager {
     private ATeam currentATeam;
 
     private ATeam opponentATeam;
-
-    private SpringManager springManager;
 
     //Setters:
     private void setPlayerCount(int countPlayers) {
@@ -64,11 +68,10 @@ public final class PlayerManager {
     }
 
     public final void start(){
+        final SpringManager springManager = (SpringManager) context.getBean("springManager");
+        System.out.println(springManager.getSpringEngine().getString());
         currentATeam.launchTimer();
         battleManager.loadRandomBonuses(currentATeam.getCurrentPlayer().getCurrentHero());
-        springManager = (SpringManager) aGame.getContext().getBean("springManager");
-        System.out.println(springManager.getString());
-        System.out.println(springManager.getSpringEngine().getString());
     }
 
     private void setAdditionalExperience(final ATeam team){

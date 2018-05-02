@@ -1,9 +1,10 @@
 package spring;
 
-public final class SpringEngine {
+public final class SpringEngine implements Spring{
 
     private String string;
 
+    @Override
     public final String getString() {
         return string;
     }

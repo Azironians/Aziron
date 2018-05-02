@@ -31,8 +31,6 @@ public final class AGame extends Application {
 
     private final Injector injector = Guice.createInjector(new MainModule(), new AGameModule(this));
 
-    private ClassPathXmlApplicationContext context;
-
     @Inject
     private Stage stage;
 
@@ -67,13 +65,8 @@ public final class AGame extends Application {
         this.stage.show();
     }
 
-    private void createContext(){
-        this.context = new ClassPathXmlApplicationContext("spring/context/AzironMainContext.xml");
-    }
-
     @Override
     public final void start(Stage virtualStage) {
-        this.createContext();
         this.stageInitialization();
         this.sceneMover.moveToScene(WindowType.INITIALIZATION);
     }
@@ -84,9 +77,5 @@ public final class AGame extends Application {
 
     public final EnumMap<WindowType, AWindow> getWindowMap() {
         return this.windowMap;
-    }
-
-    public final ClassPathXmlApplicationContext getContext() {
-        return this.context;
     }
 }

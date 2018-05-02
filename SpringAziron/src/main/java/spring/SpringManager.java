@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public final class SpringManager {
 
-    private final SpringEngine springEngine;
+    private final Spring springEngine;
 
     private String string;
 
     @Autowired
-    public SpringManager(final SpringEngine springEngine) {
+    public SpringManager(final Spring springEngine) {
         this.springEngine = springEngine;
     }
 
@@ -21,7 +21,7 @@ public final class SpringManager {
         this.string = string;
     }
 
-    public final SpringEngine getSpringEngine() {
+    public final Spring getSpringEngine() {
         return springEngine;
     }
 }

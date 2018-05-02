@@ -6,6 +6,7 @@ import modules.heroConstructModules.MainHeroBuilderModule;
 import modules.managerModules.MainManagerModule;
 import modules.securityModules.gate.AGateModule;
 import modules.securityModules.loadSuppliers.LoadSupplierModule;
+import modules.springModule.SpringModule;
 
 public final class MainModule extends AbstractModule {
 
@@ -16,5 +17,6 @@ public final class MainModule extends AbstractModule {
         install(new LoadSupplierModule());
         install(new AGateModule());
         install(new BonusFactoryModule());
+        install(new SpringModule());
     }
 }
