@@ -12,9 +12,7 @@ import management.playerManagement.GameMode;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 
 @Singleton
@@ -33,12 +31,12 @@ public final class EventEngine {
     @Inject
     private PlayerManager playerManager;
 
-    private List<HandleComponent> bonusHandlers;
+    private Set<HandleComponent> handlers;
 
     private boolean repeatHandling = false;
 
     public final void install() {
-        this.bonusHandlers = Collections.synchronizedList(new ArrayList<>());
+        this.handlers = Collections.synchronizedSet(new HashSet<>());
         install(playerManager.getLeftATeam().getCurrentPlayer());
         install(playerManager.getRightATeam().getCurrentPlayer());
         if (playerManager.getGameMode() == GameMode._2x2) {
@@ -82,7 +80,7 @@ public final class EventEngine {
     public synchronized final void handle(final ActionEvent actionEvent) {
         this.repeatHandling = false;
         final List<HandleComponent> garbageHandlerList = new ArrayList<>();
-        for (final HandleComponent bonusHandler : bonusHandlers) {
+        for (final HandleComponent bonusHandler : handlers) {
             if (bonusHandler.isWorking()) {
                 bonusHandler.handle(actionEvent);
             } else {
@@ -90,7 +88,7 @@ public final class EventEngine {
                 log.info(bonusHandler.getName() + " successfully was removed");
             }
         }
-        bonusHandlers.removeAll(garbageHandlerList);
+        handlers.removeAll(garbageHandlerList);
         if (repeatHandling){
             handle();
         }
@@ -102,7 +100,20 @@ public final class EventEngine {
 
     public final void addHandler(final HandleComponent handler) {
         handler.setup();
-        this.bonusHandlers.add(handler);
+        this.handlers.add(handler);
+    }
+
+    public final boolean containsHandler(final HandleComponent handleComponent){
+        return this.handlers.contains(handleComponent);
+    }
+
+    public final boolean containsHandler(final String name){
+        for (final HandleComponent handleComponent : this.handlers){
+            if (handleComponent.getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isRepeatHandling() {

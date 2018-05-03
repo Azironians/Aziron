@@ -25,12 +25,12 @@ apply plugin: 'io.spring.dependency-management'
 
 compileKotlin {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "1.10"
     }
 }
 compileTestKotlin {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "1.10"
     }
 }
 
