@@ -1,8 +1,12 @@
 package bonus.devourerBonuses.bonuses.experience
 
+import bonus.bonuses.Bonus
 import javafx.scene.image.ImageView
+import management.actionManagement.actions.{ActionEvent, ActionType}
+import management.actionManagement.service.components.handleComponet.HandleComponent
 import management.actionManagement.service.components.providerComponent.ProviderComponent
 import management.actionManagement.service.engine.services.DynamicHandleService
+import management.playerManagement.Player
 
 import scala.collection.mutable
 

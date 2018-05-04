@@ -62,5 +62,6 @@
     <orderEntry type="library" name="Gradle: org.scala-lang:scala-library:2.11.8" level="project" />
     <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-core:5.0.5.RELEASE" level="project" />
+    <orderEntry type="library" name="scala-sdk-2.12.5" level="application" />
   </component>
 </module>

@@ -1,5 +1,8 @@
 package spring;
 
+import bonus.bonuses.Bonus;
+import bonus.devourerBonuses.bonuses.special.SAvatarsCore;
+import javafx.scene.image.ImageView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public final class SpringManager {
@@ -22,6 +25,8 @@ public final class SpringManager {
     }
 
     public final Spring getSpringEngine() {
+        final Bonus bonus = new SAvatarsCore("", -1, new ImageView());
+        System.out.println(bonus.toString());
         return springEngine;
     }
 }

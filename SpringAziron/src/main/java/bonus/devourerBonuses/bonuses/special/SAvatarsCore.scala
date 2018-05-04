@@ -10,23 +10,24 @@ import management.actionManagement.service.components.handleComponet.HandleCompo
 import management.actionManagement.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
 
-
-object SAvatarsCoreConstants {
-  val log: Logger = Logger.getLogger(classOf[SAvatarsCore].getName)
-  val ADDITIONAL_DAMAGE: Double = 40.0
-}
-
 final class SAvatarsCore(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite) with DynamicHandleService {
 
-  var additionalDamage = 0
+  val log: Logger = Logger.getLogger(classOf[SAvatarsCore].getName)
 
-  var handleComponent: HandleComponent = getHandlerInstance
+  val ADDITIONAL_DAMAGE: Double = 40.0
+
+  var additionalDamage: Double = 0
+
+  var handleComponent: HandleComponent = _
 
   override def use(): Unit = {
-    this.additionalDamage += SAvatarsCoreConstants.ADDITIONAL_DAMAGE
+    this.additionalDamage += ADDITIONAL_DAMAGE
     val eventEngine = this.actionManager.getEventEngine
-    eventEngine.addHandler(handleComponent)
-    SAvatarsCoreConstants.log.info("SKILL POWER INCREASED BY 40")
+    if (this.handleComponent == null){
+      this.handleComponent = getHandlerInstance
+      eventEngine.addHandler(handleComponent)
+    }
+    log.info("SKILL POWER INCREASED BY 40")
   }
 
   override def getHandlerInstance: HandleComponent = new HandleComponent() {
@@ -59,9 +60,11 @@ final class SAvatarsCore(name: String, id: Int, sprite: ImageView) extends Bonus
       if (actionType == ActionType.AFTER_USED_SKILL && player == this.player && this.isConstantOpponentHitPoints){
         val eventEngine = actionManager.getEventEngine
         eventEngine.handle(ActionEventFactory.getBeforeDealDamage(this.player, this.opponentHero, additionalDamage))
-        this.opponentHero.getDamage(additionalDamage){
+        if (this.opponentHero.getDamage(additionalDamage)){
           eventEngine.handle(ActionEventFactory.getAfterDealDamage(this.player, this.opponentHero, additionalDamage))
         }
+        this.work = false
+        handleComponent = null
       }
     }
 

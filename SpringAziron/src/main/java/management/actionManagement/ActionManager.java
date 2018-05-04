@@ -55,7 +55,6 @@ public final class ActionManager {
         final ATeam currentTeam = playerManager.getCurrentTeam();
         final Player currentPlayer = currentTeam.getCurrentPlayer();
         final Hero currentHero = currentPlayer.getCurrentHero();
-
         if (clickedTeam.equals(currentTeam)) {
             if (currentHero.isTreatmentAccess()) {
                 eventEngine.handle(ActionEventFactory.getTreatment(currentPlayer));
@@ -75,10 +74,8 @@ public final class ActionManager {
         final ATeam currentTeam = playerManager.getCurrentTeam();
         final Player currentPlayer = currentTeam.getCurrentPlayer();
         final boolean heroAuthentication = hero.equals(currentPlayer.getCurrentHero());
-        log.info("hero authentication: " + heroAuthentication);
         if (heroAuthentication) {
             final boolean access = skill.isSkillAccess();
-            log.info("skill access:" + access);
             if (access) {
                 eventEngine.handle(ActionEventFactory.getBeforeUsedSkill(currentPlayer
                         , skill.getName()));

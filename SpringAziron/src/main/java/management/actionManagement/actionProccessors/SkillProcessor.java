@@ -29,11 +29,11 @@ public class SkillProcessor implements Processor {
 
     @Override
     public void process() {
-        skill.getActionEvents().clear();
-        skill.use(battleManager, playerManager); //FIXME: wrap all skills in processor
-        skill.reset();
-        skill.getActionEvents().forEach(actionManager.getEventEngine()::handle);
-        actionManager.refreshScreen();
+        this.skill.getActionEvents().clear();
+        this.skill.use(battleManager, playerManager); //FIXME: wrap all skills in processor
+        this.skill.reset();
+        this.skill.getActionEvents().forEach(actionManager.getEventEngine()::handle);
+        this.actionManager.refreshScreen();
         if (battleManager.isEndTurn()) {
             actionManager.endTurn(currentTeam);
         }
