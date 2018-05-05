@@ -10,10 +10,10 @@ import javafx.util.Duration;
 import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
-import management.actionManagement.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.actionManagement.service.engine.services.DynamicHandleService;
-import management.actionManagement.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
+import management.service.engine.services.DynamicHandleService;
+import management.service.engine.services.RegularHandleService;
 import management.playerManagement.Player;
 
 import java.util.HashSet;

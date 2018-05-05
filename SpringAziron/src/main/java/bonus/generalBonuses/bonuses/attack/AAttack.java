@@ -1,8 +1,8 @@
 package bonus.generalBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
-import management.actionManagement.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.HandleComponent;
+import management.service.engine.services.DynamicHandleService;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;

@@ -5,7 +5,7 @@ import bonus.bonuses.{Bonus, ExtendedBonus}
 import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import javafx.scene.text.Text
-import management.actionManagement.service.components.providerComponent.ProviderComponent
+import management.service.components.providerComponent.ProviderComponent
 
 final class XFireWall(name: String, id: Int, sprite: ImageView) extends ExtendedBonus(name, id, sprite) {
 

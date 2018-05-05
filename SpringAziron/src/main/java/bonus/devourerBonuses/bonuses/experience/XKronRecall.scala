@@ -5,8 +5,8 @@ import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import javafx.scene.text.Text
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.actionManagement.service.components.handleComponet.HandleComponent
-import management.actionManagement.service.engine.services.DynamicHandleService
+import management.service.components.handleComponet.HandleComponent
+import management.service.engine.services.DynamicHandleService
 import management.playerManagement.{ATeam, Player}
 
 import scala.collection.mutable
@@ -75,7 +75,9 @@ final class XKronRecall(name: String, id: Int, sprite: ImageView) extends Extend
         this.opponentLevelMap.+=(opponentHero -> currentLevel)
       }
       if (actionType == ActionType.AFTER_USED_BONUS && this.player == player && this.additionalBonusCount > 0){
-        battleManager.loadRandomBonuses(player.getCurrentHero)
+        val processor = battleManager.getProcessor
+        processor.setHero(player.getCurrentHero)
+        processor.process()
         this.additionalBonusCount -= 1
       }
     }

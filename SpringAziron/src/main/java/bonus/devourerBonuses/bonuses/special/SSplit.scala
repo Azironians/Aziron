@@ -7,8 +7,8 @@ import bonus.bonuses.Bonus
 import heroes.abstractHero.skills.Skill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.actionManagement.service.components.handleComponet.HandleComponent
-import management.actionManagement.service.engine.services.DynamicHandleService
+import management.service.components.handleComponet.HandleComponent
+import management.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
 
 final class SSplit(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
@@ -22,8 +22,8 @@ final class SSplit(name: String, id: Int, sprite: ImageView) extends Bonus(name,
     val hero = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
     val skills = hero.getCollectionOfSkills.asScala
     var foundFlameSnakes = false
-    for (skill: Skill <- skills) {
-      if (skill.getName.equals("FlameSnakes")){
+    for (skill: Skill <- skills
+         if skill.getName.equals("FlameSnakes")) {
         val coefficients = skill.getCoefficients.asScala
         val newCoefficients = new util.ArrayList[java.lang.Double]
         for (coefficient <- coefficients) {
@@ -31,7 +31,6 @@ final class SSplit(name: String, id: Int, sprite: ImageView) extends Bonus(name,
         }
         skill.setCoefficients(newCoefficients)
         foundFlameSnakes = true
-      }
     }
     if (foundFlameSnakes){
       this.actionManager.getEventEngine.addHandler(getHandlerInstance)

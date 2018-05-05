@@ -16,12 +16,12 @@ public class BonusProcessor implements Processor {
     }
 
     @Override
-    public void process() {
-        bonus.getActionEvents().clear();
-        bonus.use();
-        actionManager.refreshScreen();
-        actionManager.getEventEngine().handle();
-        actionManager.refreshScreen();
+    public final void process() {
+        this.bonus.getActionEvents().clear();
+        this.bonus.use();
+        this.actionManager.refreshScreen();
+        this.actionManager.getEventEngine().handle();
+        this.actionManager.refreshScreen();
     }
 
     public void setBonus(final Bonus bonus){

@@ -5,8 +5,9 @@ import javafx.scene.image.ImageView;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
-import management.actionManagement.service.engine.services.DynamicHandleService;
+import management.processors.exceptions.UnsupportedProcessorException;
+import management.service.components.handleComponet.HandleComponent;
+import management.service.engine.services.DynamicHandleService;
 import management.playerManagement.Player;
 import management.processors.Processor;
 
@@ -36,7 +37,7 @@ public final class ADoubleInHead extends Bonus implements DynamicHandleService {
             this.previousProcessor = actionManager.getAttackProcessor();
             this.actionManager.setAttackProcessor(attackProcessor);
             LOG.info("INSTALLED CUSTOM BEFORE_ATTACK PROCESSOR");
-        } catch (final ActionManager.UnsupportedProcessorException e) {
+        } catch (final UnsupportedProcessorException e) {
             e.printStackTrace();
         }
     }
@@ -45,7 +46,7 @@ public final class ADoubleInHead extends Bonus implements DynamicHandleService {
         try {
             actionManager.setAttackProcessor(previousProcessor);
             LOG.info("INSTALLED DEFAULT BEFORE_ATTACK PROCESSOR");
-        } catch (ActionManager.UnsupportedProcessorException e) {
+        } catch (UnsupportedProcessorException e) {
             e.printStackTrace();
         }
     }

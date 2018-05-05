@@ -1,8 +1,8 @@
 package bonus.generalBonuses.bonuses.experience;
 
 import bonus.bonuses.Bonus;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
-import management.actionManagement.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.HandleComponent;
+import management.service.engine.services.DynamicHandleService;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;

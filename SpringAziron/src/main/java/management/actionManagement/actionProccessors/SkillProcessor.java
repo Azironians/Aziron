@@ -27,6 +27,7 @@ public class SkillProcessor implements Processor {
         this.playerManager = playerManager;
     }
 
+    //NOT FINAL:
     @Override
     public void process() {
         this.skill.getActionEvents().clear();
@@ -39,6 +40,7 @@ public class SkillProcessor implements Processor {
         }
     }
 
+    //NOT FINAL:
     public void setTeamAndSkill(final ATeam currentTeam, final Skill skill){
         this.currentTeam = currentTeam;
         this.skill = skill;

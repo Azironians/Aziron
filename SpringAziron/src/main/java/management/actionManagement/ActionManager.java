@@ -7,7 +7,8 @@ import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import management.actionManagement.actionProccessors.*;
 import management.actionManagement.actions.ActionEventFactory;
-import management.actionManagement.service.engine.EventEngine;
+import management.processors.exceptions.UnsupportedProcessorException;
+import management.service.engine.EventEngine;
 import management.battleManagement.BattleManager;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
@@ -102,8 +103,8 @@ public final class ActionManager {
     }
 
     private void bonusProcess(final Bonus bonus) {
-        bonusProcessor.setBonus(bonus);
-        bonusProcessor.process();
+        this.bonusProcessor.setBonus(bonus);
+        this.bonusProcessor.process();
     }
 
     public final void setEagerPlayerSwapRequest(final ATeam team) {
@@ -112,14 +113,14 @@ public final class ActionManager {
     }
 
     public final void refreshScreen() {
-        graphicEngine.showLocation();
+        this.graphicEngine.showLocation();
     }
 
     public final void endTurn(final ATeam team) {
-        eventEngine.handle(ActionEventFactory.getEndTurn(team.getCurrentPlayer()));
-        eventEngine.handle(ActionEventFactory.getEndTurn(team.getAlternativePlayer()));
+        this.eventEngine.handle(ActionEventFactory.getEndTurn(team.getCurrentPlayer()));
+        this.eventEngine.handle(ActionEventFactory.getEndTurn(team.getAlternativePlayer()));
         refreshScreen();
-        battleManager.nextTurn();
+        this.battleManager.nextTurn();
     }
 
     public final EventEngine getEventEngine() {
@@ -183,12 +184,6 @@ public final class ActionManager {
             this.bonusProcessor = (BonusProcessor) processor;
         } else {
             throw new UnsupportedProcessorException("Invalid bonus processor");
-        }
-    }
-
-    public static final class UnsupportedProcessorException extends Exception {
-        private UnsupportedProcessorException(final String message) {
-            super(message);
         }
     }
 }

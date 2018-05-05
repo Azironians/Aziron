@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Pair;
 import lib.duplexMap.DuplexMap;
 import management.actionManagement.actions.ActionEventFactory;
-import management.actionManagement.service.engine.EventEngine;
+import management.service.engine.EventEngine;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 

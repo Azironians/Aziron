@@ -6,8 +6,8 @@ import bonus.bonuses.Bonus
 import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionEventFactory, ActionType}
-import management.actionManagement.service.components.handleComponet.HandleComponent
-import management.actionManagement.service.engine.services.DynamicHandleService
+import management.service.components.handleComponet.HandleComponent
+import management.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
 
 final class SAvatarsCore(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite) with DynamicHandleService {

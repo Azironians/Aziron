@@ -19,7 +19,7 @@ import main.AGame;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
-import management.actionManagement.service.engine.EventEngine;
+import management.service.engine.EventEngine;
 import management.battleManagement.BattleManager;
 import management.playerManagement.GameMode;
 import management.playerManagement.Player;

@@ -7,9 +7,9 @@ import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
 import management.actionManagement.actions.ActionType;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
-import management.actionManagement.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.actionManagement.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
+import management.service.engine.services.RegularHandleService;
 import management.playerManagement.Player;
 
 public final class ADarts extends Bonus implements RegularHandleService {

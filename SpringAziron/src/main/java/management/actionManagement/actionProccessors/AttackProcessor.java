@@ -3,7 +3,7 @@ package management.actionManagement.actionProccessors;
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEventFactory;
-import management.actionManagement.service.engine.EventEngine;
+import management.service.engine.EventEngine;
 import management.battleManagement.BattleManager;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;

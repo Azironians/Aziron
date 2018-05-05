@@ -8,16 +8,15 @@ import gui.service.graphicEngine.GraphicEngine;
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEventFactory;
-import management.actionManagement.service.components.providerComponent.ProviderComponent;
-import management.actionManagement.service.engine.EventEngine;
+import management.battleManagement.processors.BonusLoadingProcessor;
+import management.processors.exceptions.UnsupportedProcessorException;
+import management.service.components.providerComponent.ProviderComponent;
+import management.service.engine.EventEngine;
 import management.playerManagement.ATeam;
 import management.playerManagement.GameMode;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 import management.processors.Processor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import spring.SpringManager;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -56,11 +55,11 @@ public final class BattleManager {
     @Named("skip turn condition")
     private boolean skipTurn;
 
-    private boolean isStandardRandomBonusEngine = true;
+    private BonusLoadingProcessor bonusLoadingProcessor;
 
-    private Processor processor = () -> {
-        //Empty
-    };
+    public final void install(){
+        this.bonusLoadingProcessor = new BonusLoadingProcessor(this.graphicEngine);
+    }
 
     //Next turn:
     public final void nextTurn() {
@@ -118,31 +117,8 @@ public final class BattleManager {
         if (playerManager.getGameMode() == GameMode._2x2){
             eventEngine.handle(ActionEventFactory.getStartTurn(alternativePlayer));
         }
-        loadRandomBonuses(currentPlayer.getCurrentHero());
-    }
-
-    @Transcendental
-    public void loadRandomBonuses(final Hero hero) {
-        if (isStandardRandomBonusEngine){
-            final List<Bonus> bonusList = hero.getBonusCollection();
-            final List<ProviderComponent<Integer>> providerComponents = hero.getBonusManager()
-                    .getProviderComponentList();
-            final int firstBonus = providerComponents.get(0).getValue();
-            int secondBonus = providerComponents.get(1).getValue();
-            int thirdBonus = providerComponents.get(2).getValue();
-            while (secondBonus == firstBonus){
-                secondBonus = providerComponents.get(1).getValue();
-            }
-            while (thirdBonus == firstBonus || thirdBonus == secondBonus){
-                thirdBonus = providerComponents.get(2).getValue();
-            }
-            graphicEngine.show3Bonuses(bonusList, firstBonus, secondBonus, thirdBonus);
-            log.info("BONUS ID: " + firstBonus);
-            log.info("BONUS ID: " + secondBonus);
-            log.info("BONUS ID: " + thirdBonus);
-        } else {
-            processor.process();
-        }
+        this.bonusLoadingProcessor.setHero(currentPlayer.getCurrentHero());
+        this.bonusLoadingProcessor.process();
     }
 
     private boolean isEndGame() {
@@ -175,25 +151,19 @@ public final class BattleManager {
         this.skipTurn = skipTurn;
     }
 
-    @Transcendental
-    public final void setStandardRandomBonusEngine(boolean standardRandomBonusEngine) {
-        this.isStandardRandomBonusEngine = standardRandomBonusEngine;
+    public final BonusLoadingProcessor getProcessor() {
+        return this.bonusLoadingProcessor;
     }
 
-    @Transcendental
-    public final Processor getProcessor() {
-        return processor;
+    public final void setProcessor(final Processor processor) throws UnsupportedProcessorException {
+        if (processor instanceof BonusLoadingProcessor){
+            this.bonusLoadingProcessor = (BonusLoadingProcessor) processor;
+        } else {
+            throw new UnsupportedProcessorException("Invalid bonus loadlin processor");
+        }
     }
 
-    @Transcendental
-    public final void setProcessor(final Processor processor) {
-        this.processor = processor;
-    }
-
-    @Transcendental
     public final void setDefaultProcessor() {
-        this.processor = () -> {
-            //Empty
-        };
+        this.bonusLoadingProcessor = new BonusLoadingProcessor(this.graphicEngine);
     }
 }

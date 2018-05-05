@@ -5,9 +5,9 @@ import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
-import management.actionManagement.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.actionManagement.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
+import management.service.engine.services.RegularHandleService;
 import management.playerManagement.Player;
 
 public final class XUsurpation extends Bonus implements RegularHandleService {

@@ -2,7 +2,7 @@ package bonus.devourerBonuses.bonuses.experience.boneCage
 
 import bonus.bonuses.Bonus
 import javafx.scene.image.ImageView
-import management.actionManagement.service.components.providerComponent.ProviderComponent
+import management.service.components.providerComponent.ProviderComponent
 
 final class XBoneCage(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite){
 

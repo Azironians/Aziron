@@ -7,6 +7,7 @@ import gui.windows.WindowType;
 import heroes.abstractHero.hero.Hero;
 import main.AGame;
 import management.battleManagement.BattleManager;
+import management.battleManagement.processors.BonusLoadingProcessor;
 import org.jetbrains.annotations.Contract;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import spring.SpringManager;
@@ -71,7 +72,9 @@ public final class PlayerManager {
         final SpringManager springManager = (SpringManager) context.getBean("springManager");
         System.out.println(springManager.getSpringEngine().getString());
         currentATeam.launchTimer();
-        battleManager.loadRandomBonuses(currentATeam.getCurrentPlayer().getCurrentHero());
+        final BonusLoadingProcessor bonusLoadingProcessor = this.battleManager.getProcessor();
+        bonusLoadingProcessor.setHero(currentATeam.getCurrentPlayer().getCurrentHero());
+        bonusLoadingProcessor.process();
     }
 
     private void setAdditionalExperience(final ATeam team){

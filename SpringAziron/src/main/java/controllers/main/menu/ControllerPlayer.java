@@ -14,11 +14,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import main.AGame;
 import management.actionManagement.ActionManager;
-import management.actionManagement.service.engine.EventEngine;
+import management.battleManagement.BattleManager;
+import management.service.engine.EventEngine;
 import management.playerManagement.PlayerManager;
 import management.profileManagement.Profile;
 import management.profileManagement.ProfileManager;
-import org.springframework.stereotype.Component;
 import security.gate.AGate;
 
 import java.net.URL;
@@ -66,6 +66,9 @@ public final class ControllerPlayer implements Initializable, Controller {
     //Managers:
     @Inject
     private ActionManager actionManager;
+
+    @Inject
+    private BattleManager battleManager;
 
     @Inject
     private PlayerManager playerManager;
@@ -130,7 +133,7 @@ public final class ControllerPlayer implements Initializable, Controller {
         installPlayers();
         installGraphic();
         installEngines();
-        installActionManager();
+        installManagers();
         installMatchMaking();
         start();
     }
@@ -148,12 +151,13 @@ public final class ControllerPlayer implements Initializable, Controller {
     }
 
     private void installPlayers() {
-        //setup randomly start team:
-        playerManager.setStartPosition();
+        //Randomly setup start team:
+        this.playerManager.setStartPosition();
     }
 
-    private void installActionManager(){
-        actionManager.install();
+    private void installManagers(){
+        this.battleManager.install();
+        this.actionManager.install();
     }
 
     private void installGraphic(){

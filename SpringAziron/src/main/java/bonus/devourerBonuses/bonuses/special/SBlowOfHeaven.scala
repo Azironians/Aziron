@@ -4,8 +4,8 @@ import bonus.bonuses.Bonus
 import heroes.abstractHero.skills.Skill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionEventFactory, ActionType}
-import management.actionManagement.service.components.handleComponet.HandleComponent
-import management.actionManagement.service.engine.services.DynamicHandleService
+import management.service.components.handleComponet.HandleComponent
+import management.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
 
 import scala.collection.JavaConverters._

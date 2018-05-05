@@ -3,7 +3,7 @@ package bonus.devourerBonuses.bonuses.experience;
 import bonus.bonuses.Bonus;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
-import management.actionManagement.service.engine.EventEngine;
+import management.service.engine.EventEngine;
 
 public final class XBraxador extends Bonus {
 

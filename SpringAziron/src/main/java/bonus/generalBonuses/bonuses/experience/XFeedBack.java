@@ -1,13 +1,13 @@
 package bonus.generalBonuses.bonuses.experience;
 
 import bonus.bonuses.Bonus;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
-import management.actionManagement.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.actionManagement.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
+import management.service.engine.services.RegularHandleService;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
-import management.actionManagement.service.engine.EventEngine;
+import management.service.engine.EventEngine;
 import management.playerManagement.Player;
 
 import java.util.logging.Logger;

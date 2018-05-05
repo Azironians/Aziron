@@ -1,18 +1,18 @@
 package bonus.lvBonuses.bonuses.attack.hunt;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.bonusManagement.BonusManager;
+import management.bonusManagement.BonusManager;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
 import management.actionManagement.actions.ActionType;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
-import management.actionManagement.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.actionManagement.service.components.providerComponent.ProviderComponent;
-import management.actionManagement.service.engine.EventEngine;
-import management.actionManagement.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
+import management.service.components.providerComponent.ProviderComponent;
+import management.service.engine.EventEngine;
+import management.service.engine.services.RegularHandleService;
 import management.playerManagement.Player;
 
 import java.util.HashSet;
@@ -130,7 +130,8 @@ public final class AHunt extends Bonus implements RegularHandleService {
                             final int enemyIndex = indexVsOpponentPreviousProviderComponent.getKey();
                             final ProviderComponent<Integer> enemyProviderComponent
                                     = indexVsCurrentPreviousProviderComponent.getValue();
-                            opponentBonusManager.returnPreviousProviderComponent(enemyIndex, enemyProviderComponent);
+                            opponentBonusManager.returnPreviousProviderComponent(enemyIndex,
+                                    hero.getBonusCollection().size(), enemyProviderComponent);
                             enemyHeroBlackSet.remove(hero);
                         } else {
                             final EventEngine eventEngine = actionManager.getEventEngine();

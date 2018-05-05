@@ -5,10 +5,10 @@ import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
-import management.actionManagement.service.components.providerComponent.ProviderComponent;
-import management.actionManagement.service.engine.services.DynamicHandleService;
-import heroes.abstractHero.bonusManagement.BonusManager;
+import management.service.components.handleComponet.HandleComponent;
+import management.service.components.providerComponent.ProviderComponent;
+import management.service.engine.services.DynamicHandleService;
+import management.bonusManagement.BonusManager;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
 
@@ -74,7 +74,8 @@ public final class AGrowTentacle extends Bonus implements DynamicHandleService {
                         || actionEvent.getActionType() == ActionType.AFTER_USED_BONUS)
                         && (actionEvent.getPlayer() == opponentTeam.getCurrentPlayer()
                         || actionEvent.getPlayer() == opponentTeam.getAlternativePlayer())) {
-                    hero.getBonusManager().returnPreviousProviderComponent(index, previousProviderComponent);
+                    hero.getBonusManager().returnPreviousProviderComponent(index, hero.getBonusCollection().size()
+                            , this.previousProviderComponent);
                     this.isWorking = false;
                 }
             }

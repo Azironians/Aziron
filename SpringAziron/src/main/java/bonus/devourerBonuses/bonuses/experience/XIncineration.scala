@@ -3,9 +3,9 @@ package bonus.devourerBonuses.bonuses.experience
 import bonus.bonuses.Bonus
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.actionManagement.service.components.handleComponet.HandleComponent
-import management.actionManagement.service.components.providerComponent.ProviderComponent
-import management.actionManagement.service.engine.services.DynamicHandleService
+import management.service.components.handleComponet.HandleComponent
+import management.service.components.providerComponent.ProviderComponent
+import management.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
 
 import scala.collection.mutable
@@ -13,7 +13,7 @@ import scala.collection.mutable
 final class XIncineration(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
   with DynamicHandleService {
 
-  private val previousProviderComponentList = new mutable.MutableList[ProviderComponent[java.lang.Integer]]()
+  private val previousProviderComponentList = new mutable.MutableList[ProviderComponent[Integer]]()
 
   override def use(): Unit = {
     //Install handler:
@@ -30,11 +30,11 @@ final class XIncineration(name: String, id: Int, sprite: ImageView) extends Bonu
     }
   }
 
-  private def getEmptyProviderComponent = new ProviderComponent[java.lang.Integer] {
+  private def getEmptyProviderComponent = new ProviderComponent[Integer] {
 
     private val undefined: Int = -1
 
-    override final def getValue: Integer = undefined
+    override final def getValue: Integer = this.undefined
 
     override final def getPriority: Int = 0
 
@@ -66,7 +66,7 @@ final class XIncineration(name: String, id: Int, sprite: ImageView) extends Bonu
         val providerComponentList = bonusManager.getProviderComponentList
         for (i <- 0 until providerComponentList.size()){
           val previousProviderComponent: ProviderComponent[java.lang.Integer] = previousProviderComponentList(i)
-          bonusManager.returnPreviousProviderComponent(i, previousProviderComponent)
+          bonusManager.returnPreviousProviderComponent(i, opponentHero.getBonusCollection.size(), previousProviderComponent)
         }
       }
     }

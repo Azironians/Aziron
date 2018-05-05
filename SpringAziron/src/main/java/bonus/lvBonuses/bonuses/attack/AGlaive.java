@@ -1,18 +1,18 @@
 package bonus.lvBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.bonusManagement.BonusManager;
+import management.bonusManagement.BonusManager;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
 import management.actionManagement.actions.ActionType;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
-import management.actionManagement.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.actionManagement.service.components.providerComponent.ProviderComponent;
-import management.actionManagement.service.engine.EventEngine;
-import management.actionManagement.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
+import management.service.components.providerComponent.ProviderComponent;
+import management.service.engine.EventEngine;
+import management.service.engine.services.RegularHandleService;
 import management.playerManagement.Player;
 
 import java.util.List;
@@ -103,7 +103,8 @@ public final class AGlaive extends Bonus implements RegularHandleService {
                             final int index = indexVsPreviousProviderComponent.getKey();
                             final ProviderComponent<Integer> previousProviderComponent
                                     = indexVsPreviousProviderComponent.getValue();
-                            bonusManager.returnPreviousProviderComponent(index, previousProviderComponent);
+                            bonusManager.returnPreviousProviderComponent(index, hero.getBonusCollection().size()
+                                    , previousProviderComponent);
                             hasCustomProviderComponent = false;
                         }
                     }

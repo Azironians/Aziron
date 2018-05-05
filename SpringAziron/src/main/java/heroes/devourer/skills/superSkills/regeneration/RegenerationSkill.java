@@ -1,6 +1,6 @@
 package heroes.devourer.skills.superSkills.regeneration;
 
-import management.actionManagement.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.HandleComponent;
 import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.abstractSkill.AbstractSkill;
 import javafx.scene.image.ImageView;

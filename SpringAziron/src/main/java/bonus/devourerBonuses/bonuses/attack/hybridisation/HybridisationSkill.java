@@ -6,7 +6,7 @@ import javafx.scene.media.Media;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
 import management.actionManagement.actions.ActionType;
-import management.actionManagement.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.HandleComponent;
 import management.battleManagement.BattleManager;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;

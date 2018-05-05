@@ -6,11 +6,13 @@ import bonus.devourerBonuses.bonuses.special.openPortal.flameSnakesSpawn.FlameSn
 import bonus.devourerBonuses.bonuses.special.openPortal.kronArmy.KronArmyProviderComponent
 import javafx.scene.image.ImageView
 import javafx.scene.text.Text
-import management.actionManagement.service.components.providerComponent.ProviderComponent
+import management.service.components.providerComponent.ProviderComponent
+import org.springframework.stereotype.Component
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable
 
+@Component
 final class SOpenPortal(name: String, id: Int, sprite: ImageView) extends ExtendedBonus(name, id, sprite){
 
   private val START_COUNT = 0
@@ -21,7 +23,7 @@ final class SOpenPortal(name: String, id: Int, sprite: ImageView) extends Extend
 
   private val text: Text = new Text(START_COUNT + "/" + END_COUNT)
 
-  private var previousProviderComponentList = new mutable.MutableList[ProviderComponent[Int]]
+  private var previousProviderComponentList = new mutable.MutableList[ProviderComponent[Integer]]
 
   this.installContainer(this.text)
 
@@ -31,7 +33,7 @@ final class SOpenPortal(name: String, id: Int, sprite: ImageView) extends Extend
       val player = playerManager.getCurrentTeam.getCurrentPlayer
       val hero = player.getCurrentHero
       val bonusManager = hero.getBonusManager
-      for (providerComponent: ProviderComponent[Int] <- bonusManager.getProviderComponentList.asScala){
+      for (providerComponent: ProviderComponent[Integer] <- bonusManager.getProviderComponentList.asScala){
         this.previousProviderComponentList.+=(providerComponent)
       }
       this.previousProviderComponentList.clear()
