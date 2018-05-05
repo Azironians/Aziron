@@ -58,13 +58,13 @@ public final class ActionManager {
         final Hero currentHero = currentPlayer.getCurrentHero();
         if (clickedTeam.equals(currentTeam)) {
             if (currentHero.isTreatmentAccess()) {
-                eventEngine.handle(ActionEventFactory.getTreatment(currentPlayer));
+                eventEngine.handle(ActionEventFactory.getBeforeTreatment(currentHero));
                 this.treatmentProcessor.setTeam(clickedTeam);
                 this.treatmentProcessor.process();
             }
         } else {
             if (currentHero.isAttackAccess()) {
-                this.eventEngine.handle(ActionEventFactory.getAttack(currentPlayer));
+                this.eventEngine.handle(ActionEventFactory.getBeforeAttack(currentHero));
                 this.attackProcessor.setTeams(currentTeam, clickedTeam);
                 this.attackProcessor.process();
             }
@@ -74,12 +74,12 @@ public final class ActionManager {
     public final void setSkillRequest(final Hero hero, final Skill skill) {
         final ATeam currentTeam = playerManager.getCurrentTeam();
         final Player currentPlayer = currentTeam.getCurrentPlayer();
-        final boolean heroAuthentication = hero.equals(currentPlayer.getCurrentHero());
+        final Hero currentHero = currentPlayer.getCurrentHero();
+        final boolean heroAuthentication = hero.equals(currentHero);
         if (heroAuthentication) {
             final boolean access = skill.isSkillAccess();
             if (access) {
-                eventEngine.handle(ActionEventFactory.getBeforeUsedSkill(currentPlayer
-                        , skill.getName()));
+                this.eventEngine.handle(ActionEventFactory.getBeforeUsedSkill(currentHero, skill.getName()));
                 this.skillProcessor.setTeamAndSkill(currentTeam, skill);
                 this.skillProcessor.process();
             }
@@ -95,11 +95,10 @@ public final class ActionManager {
     }
 
     public final void setBonusRequest(final Bonus bonus) {
-        graphicEngine.hideBonuses();
-        final ATeam currentTeam = playerManager.getCurrentTeam();
-        final Player currentPlayer = currentTeam.getCurrentPlayer();
-        eventEngine.handle(ActionEventFactory.getAfterUsedBonus(currentPlayer, bonus));
-        bonusProcess(bonus);
+        final Hero currentHero = this.playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+        this.graphicEngine.hideBonuses();
+        this.eventEngine.handle(ActionEventFactory.getAfterUsedBonus(currentHero, bonus));
+        this.bonusProcess(bonus);
     }
 
     private void bonusProcess(final Bonus bonus) {
@@ -109,7 +108,6 @@ public final class ActionManager {
 
     public final void setEagerPlayerSwapRequest(final ATeam team) {
         team.eagerSwapPlayers();
-        refreshScreen();
     }
 
     public final void refreshScreen() {
@@ -117,9 +115,8 @@ public final class ActionManager {
     }
 
     public final void endTurn(final ATeam team) {
-        this.eventEngine.handle(ActionEventFactory.getEndTurn(team.getCurrentPlayer()));
-        this.eventEngine.handle(ActionEventFactory.getEndTurn(team.getAlternativePlayer()));
-        refreshScreen();
+        this.eventEngine.handle(ActionEventFactory.getEndTurn(team));
+        this.refreshScreen();
         this.battleManager.nextTurn();
     }
 
@@ -185,5 +182,9 @@ public final class ActionManager {
         } else {
             throw new UnsupportedProcessorException("Invalid bonus processor");
         }
+    }
+
+    public final GraphicEngine getGraphicEngine(){
+        return this.graphicEngine;
     }
 }

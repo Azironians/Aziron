@@ -36,7 +36,7 @@ final class AAcceleration(name: String, val id: Int, sprite: ImageView) extends 
     override final def handle(actionEvent: ActionEvent): Unit = {
       if (turnCounter > 0) {
         val actionType = actionEvent.getActionType
-        if (actionType == ActionType.START_TURN && actionEvent.getPlayer == player) {
+        if (actionType == ActionType.START_TURN && actionEvent.getHero == player) {
           val hero = player.getCurrentHero
           hero.setAttack(hero.getAttack + ATTACK_BOOST)
           turnCounter -= 1
@@ -49,7 +49,7 @@ final class AAcceleration(name: String, val id: Int, sprite: ImageView) extends 
 
     override final def getName: String = "Acceleration"
 
-    override final def getCurrentPlayer: Player = player
+    override final def getCurrentHero: Player = player
 
     override final def isWorking: Boolean = work
 

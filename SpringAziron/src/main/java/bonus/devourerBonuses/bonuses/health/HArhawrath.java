@@ -40,8 +40,8 @@ public final class HArhawrath extends Bonus implements DynamicHandleService {
             @Override
             public final void handle(ActionEvent actionEvent) {
                 if (actionEvent.getActionType() == ActionType.BEFORE_ATTACK
-                        && (actionEvent.getPlayer() == getCurrentPlayer()
-                        || actionEvent.getPlayer() == team.getAlternativePlayer())
+                        && (actionEvent.getHero() == getCurrentHero()
+                        || actionEvent.getHero() == team.getAlternativePlayer())
                         && player == playerManager.getOpponentTeam().getCurrentPlayer()){
                     for (final Skill skill : player.getCurrentHero().getCollectionOfSkills()){
                         if (skill.getName().equals("FlameSnakes")){
@@ -50,8 +50,8 @@ public final class HArhawrath extends Bonus implements DynamicHandleService {
                     }
                 }
                 if (actionEvent.getActionType() == ActionType.END_TURN
-                        && (actionEvent.getPlayer() == getCurrentPlayer()
-                        || actionEvent.getPlayer() == team.getAlternativePlayer())){
+                        && (actionEvent.getHero() == getCurrentHero()
+                        || actionEvent.getHero() == team.getAlternativePlayer())){
                     this.isWorking = false;
                 }
             }
@@ -62,7 +62,7 @@ public final class HArhawrath extends Bonus implements DynamicHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

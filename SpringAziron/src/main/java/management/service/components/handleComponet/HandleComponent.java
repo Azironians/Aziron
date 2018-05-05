@@ -1,5 +1,6 @@
 package management.service.components.handleComponet;
 
+import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
 import management.playerManagement.Player;
 
@@ -11,7 +12,7 @@ public interface HandleComponent {
 
     String getName();
 
-    Player getCurrentPlayer();
+    Hero getCurrentHero();
 
     boolean isWorking();
 

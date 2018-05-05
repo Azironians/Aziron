@@ -65,7 +65,7 @@ public final class AEvilBrassKnuckles extends Bonus implements DynamicHandleServ
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

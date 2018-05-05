@@ -25,7 +25,7 @@ class EOnDrive(name: String, id: Int, sprite: ImageView) : Bonus(name, id, sprit
 
         override fun handle(actionEvent: ActionEvent?) {
             val actionType = actionEvent?.actionType
-            val player = actionEvent?.player
+            val player = actionEvent?.hero
             if (actionType == ActionType.BEFORE_USED_SKILL && this.player == player){
                 this.player.currentHero.addExperience(EXPERIENCE_BOOST)
             }
@@ -33,7 +33,7 @@ class EOnDrive(name: String, id: Int, sprite: ImageView) : Bonus(name, id, sprit
 
         override fun getName() = "OnDrive"
 
-        override fun getCurrentPlayer() = this.player
+        override fun getCurrentHero() = this.player
 
         override fun isWorking() = this.work
 

@@ -46,7 +46,7 @@ final class SAvatarsCore(name: String, id: Int, sprite: ImageView) extends Bonus
 
     override final def handle(actionEvent: ActionEvent): Unit = {
       val actionType = actionEvent.getActionType
-      val player = actionEvent.getPlayer
+      val player = actionEvent.getHero
       if (actionType == ActionType.BEFORE_USED_SKILL && player == this.player) {
         val opponentHero = playerManager.getOpponentTeam.getCurrentPlayer.getCurrentHero
         opponentHero.setArmor((-1) * additionalDamage)
@@ -70,7 +70,7 @@ final class SAvatarsCore(name: String, id: Int, sprite: ImageView) extends Bonus
 
     override final def getName: String = "AvatarsCore"
 
-    override final def getCurrentPlayer: Player = this.player
+    override final def getCurrentHero: Player = this.player
 
     override final def isWorking: Boolean = this.work
 

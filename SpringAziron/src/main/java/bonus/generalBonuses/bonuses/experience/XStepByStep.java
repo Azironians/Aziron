@@ -58,7 +58,7 @@ public final class XStepByStep extends Bonus implements DynamicHandleService {
                         actionManager.getEventEngine().setRepeatHandling(true);
                     }
                 }
-                if (actionEvent.getActionType() == ActionType.END_TURN && actionEvent.getPlayer() == player) {
+                if (actionEvent.getActionType() == ActionType.END_TURN && actionEvent.getHero() == player) {
                     if (isWorking()) {
                         count--;
                         log.info("COUNTDOWN: " + count);
@@ -72,7 +72,7 @@ public final class XStepByStep extends Bonus implements DynamicHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

@@ -93,7 +93,7 @@ public final class AGlaive extends Bonus implements RegularHandleService {
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 final Hero hero = currentPlayer.getCurrentHero();
-                if (actionEvent.getActionType() == ActionType.AFTER_USED_BONUS && actionEvent.getPlayer()
+                if (actionEvent.getActionType() == ActionType.AFTER_USED_BONUS && actionEvent.getHero()
                         .getCurrentHero() == hero){
                     final Object data = actionEvent.getData();
                     if (data instanceof String){
@@ -117,7 +117,7 @@ public final class AGlaive extends Bonus implements RegularHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return currentPlayer;
             }
 

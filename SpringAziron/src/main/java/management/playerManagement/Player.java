@@ -6,7 +6,9 @@ import gui.service.locations.ALocation;
 import heroes.abstractHero.hero.Hero;
 import management.profileManagement.Profile;
 import org.jetbrains.annotations.Contract;
+import scala.Tuple3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class Player {
@@ -15,13 +17,11 @@ public final class Player {
 
     private Hero currentHero;
 
-    @Transcendental
     private List<Hero> allHeroes;
 
+    private boolean hasAliveHeroes;
+    //Total:
     private boolean isCurrent;
-
-    private boolean isAlive;
-
     private double dealDamage = 0;
     private double restoredHitPoints = 0;
     private int reachedLevel = 1;
@@ -32,20 +32,29 @@ public final class Player {
 
     private ALocation location;
 
-
     public Player(final Profile profile, final Hero currentHero) {
         this.profile = profile;
         this.currentHero = currentHero;
-        this.isAlive = true;
+        this.hasAliveHeroes = true;
+        this.allHeroes = new ArrayList<>() {{
+            add(currentHero);
+        }};
     }
 
-    public boolean isAlive() {
-        return isAlive;
+
+    public Tuple3<Boolean, Player, Hero> checkAliveHeroes() {
+        for (final Hero hero : this.allHeroes) {
+            if (hero.isAlive()) {
+                //Временно будет доставать первого попавшегося:
+                //TODO: Панель выбора следующего героя после гибели предыдущего.
+                this.currentHero = hero;
+                return new Tuple3<>(true, this, hero);
+            }
+        }
+        this.hasAliveHeroes = false;
+        return new Tuple3<>(false, null, null);
     }
 
-    public void setAlive(boolean alive) {
-        isAlive = alive;
-    }
 
     @Contract(pure = true)
     public Profile getProfile() {
@@ -134,10 +143,14 @@ public final class Player {
 
     @Transcendental
     public final List<Hero> getAllHeroes() {
-        return allHeroes;
+        return this.allHeroes;
+    }
+
+    public final boolean hasAliveHeroes() {
+        return hasAliveHeroes;
+    }
+
+    public final void setHasAliveHeroes(boolean hasAliveHeroes) {
+        this.hasAliveHeroes = hasAliveHeroes;
     }
 }
-
-
-
-

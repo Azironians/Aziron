@@ -82,7 +82,8 @@ public final class GraphicEngine {
         final ObservableList<KeyFrame> keyFrames = team.getTimeline().getKeyFrames();
         keyFrames.add(new KeyFrame(Duration.seconds(1), event -> showLocation(location, team)));
         keyFrames.add(new KeyFrame(Duration.seconds(1), event -> {
-            final ActionEvent frameEvent = ActionEventFactory.getFrame(team.getCurrentPlayer());
+            final ActionEvent frameDurationEvent = ActionEventFactory.getFrameDurationEvent(team.getCurrentPlayer()
+                    .getCurrentHero());
 //            eventEngine.handle(frameEvent);
         }));
     }

@@ -9,7 +9,8 @@ import management.service.components.providerComponent.ProviderComponent;
 import java.util.List;
 import java.util.logging.Logger;
 
-public final class BonusLoadingProcessor implements Processor {
+//NOT FINAL!!!
+public class BonusLoadingProcessor implements Processor {
 
     private static final Logger log = Logger.getLogger(BonusLoadingProcessor.class.getName());
 
@@ -22,7 +23,7 @@ public final class BonusLoadingProcessor implements Processor {
     }
 
     @Override
-    public final void process() {
+    public void process() {
         final List<Bonus> bonusList = this.hero.getBonusCollection();
         final List<ProviderComponent<Integer>> providerComponents = this.hero.getBonusManager()
                 .getProviderComponentList();

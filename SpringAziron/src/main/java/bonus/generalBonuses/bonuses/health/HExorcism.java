@@ -44,7 +44,7 @@ public final class HExorcism extends Bonus implements DynamicHandleService {
             public final void handle(final ActionEvent actionEvent) {
                 final ActionType actionType = actionEvent.getActionType();
 
-                if (actionType == ActionType.END_TURN && player == actionEvent.getPlayer()) {
+                if (actionType == ActionType.END_TURN && player == actionEvent.getHero()) {
                     final Hero currentHero = player.getCurrentHero();
 
                     if (currentHero.getHealing(HEALING_BOOST)) {
@@ -60,7 +60,7 @@ public final class HExorcism extends Bonus implements DynamicHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

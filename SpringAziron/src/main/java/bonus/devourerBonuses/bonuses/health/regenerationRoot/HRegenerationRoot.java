@@ -77,7 +77,7 @@ public final class HRegenerationRoot extends Bonus implements DynamicHandleServi
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

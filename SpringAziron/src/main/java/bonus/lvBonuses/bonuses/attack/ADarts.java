@@ -46,7 +46,7 @@ public final class ADarts extends Bonus implements RegularHandleService {
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
-                if (actionEvent.getActionType() == ActionType.AFTER_DEAL_DAMAGE && actionEvent.getPlayer() == currentPlayer) {
+                if (actionEvent.getActionType() == ActionType.AFTER_DEAL_DAMAGE && actionEvent.getHero() == currentPlayer) {
                     final Pair<Hero, Double> heroVsDamage = (Pair) actionEvent.getData();
                     final double damage = heroVsDamage.getValue();
                     allDamage += damage;
@@ -59,7 +59,7 @@ public final class ADarts extends Bonus implements RegularHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return currentPlayer;
             }
 

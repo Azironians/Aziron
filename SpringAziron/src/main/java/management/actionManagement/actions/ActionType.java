@@ -2,6 +2,7 @@ package management.actionManagement.actions;
 
 public enum ActionType {
     BEFORE_DEAL_DAMAGE, AFTER_DEAL_DAMAGE
+    , BEFORE_HEALING, AFTER_HEALING
     , BEFORE_ATTACK, AFTER_ATTACK
     , BEFORE_TREATMENT, AFTER_TREATMENT
     , BEFORE_USED_SKILL, AFTER_USED_SKILL

@@ -10,6 +10,7 @@ import management.service.engine.services.DynamicHandleService
 import management.playerManagement.{ATeam, Player}
 
 import scala.collection.mutable
+import scala.collection.JavaConverters._
 
 final class XKronRecall(name: String, id: Int, sprite: ImageView) extends ExtendedBonus(name, id, sprite)
   with DynamicHandleService {
@@ -38,7 +39,7 @@ final class XKronRecall(name: String, id: Int, sprite: ImageView) extends Extend
 
   override def getHandlerInstance: HandleComponent = new HandleComponent {
 
-    private val player: Player = playerManager.getCurrentTeam.getCurrentPlayer
+    private val hero: Hero = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
 
     private val opponentTeam: ATeam = playerManager.getOpponentTeam
 
@@ -50,33 +51,27 @@ final class XKronRecall(name: String, id: Int, sprite: ImageView) extends Extend
 
     override final def setup(): Unit = {
       val allOpponentPlayers = opponentTeam.getAllPlayers
-      for (i <- 0 until allOpponentPlayers.size()){
-        val opponentPlayer = allOpponentPlayers.get(i)
-        val allOpponentHeroes = opponentPlayer.getAllHeroes
-        for (j <- 0 until allOpponentHeroes.size()){
-          val opponentHero = allOpponentHeroes.get(j)
-          this.opponentLevelMap.+=(opponentHero -> opponentHero.getLevel)
-        }
+      for (player <- allOpponentPlayers.asScala;
+           opponentHero <- player.getAllHeroes.asScala) {
+        this.opponentLevelMap.+=(opponentHero -> opponentHero.getLevel)
       }
     }
 
     override final def handle(actionEvent: ActionEvent): Unit = {
-      val actionType = actionEvent.getActionType
-      val player = actionEvent.getPlayer
-      val allHeroes = player.getAllHeroes
-      for (i <- 0 until allHeroes.size()){
-        val opponentHero = allHeroes.get(i)
-        val currentLevel = opponentHero.getLevel
-        val inMapLevel = this.opponentLevelMap(opponentHero)
-        val comparison = currentLevel - inMapLevel
+      for (pair <- this.opponentLevelMap){
+        val hero = pair._1
+        val level = pair._2
+        val currentLevel = hero.getLevel
+        val comparison = currentLevel - level
         if (comparison > 0){
-          this.additionalBonusCount += comparison
+          this.additionalBonusCount += 1
         }
-        this.opponentLevelMap.+=(opponentHero -> currentLevel)
+        this.opponentLevelMap.+=(hero -> currentLevel)
       }
-      if (actionType == ActionType.AFTER_USED_BONUS && this.player == player && this.additionalBonusCount > 0){
-        val processor = battleManager.getProcessor
-        processor.setHero(player.getCurrentHero)
+      if (actionEvent.getActionType == ActionType.AFTER_USED_BONUS
+        && this.hero == actionEvent.getHero && this.additionalBonusCount > 0) {
+        val processor = battleManager.getBonusLoadingProcessor
+        processor.setHero(this.hero)
         processor.process()
         this.additionalBonusCount -= 1
       }
@@ -84,7 +79,7 @@ final class XKronRecall(name: String, id: Int, sprite: ImageView) extends Extend
 
     override final def getName: String = "KronRecall"
 
-    override final def getCurrentPlayer: Player = this.player
+    override final def getCurrentHero: Hero = this.hero
 
     override final def isWorking: Boolean = this.work
 

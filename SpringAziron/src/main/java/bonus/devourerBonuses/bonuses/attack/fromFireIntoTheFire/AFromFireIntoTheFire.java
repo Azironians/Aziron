@@ -78,7 +78,7 @@ public final class AFromFireIntoTheFire extends Bonus implements DynamicHandleSe
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

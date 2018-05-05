@@ -36,7 +36,7 @@ class HKronMark(name: String, id: Int, imageView: ImageView) : Bonus(name, id, i
 
         override fun handle(actionEvent: ActionEvent?) {
             val garbageList = ArrayList<Skill>()
-            for (skill in currentPlayer!!.currentHero.collectionOfSkills) {
+            for (skill in currentHero!!.currentHero.collectionOfSkills) {
                 if (skill.isReady) {
                     val skillVsProxyMap = kronMarkProxyComponent!!.skillVsProxyMap
                     val fireBlast = skillVsProxyMap.getProxy(skill)
@@ -52,7 +52,7 @@ class HKronMark(name: String, id: Int, imageView: ImageView) : Bonus(name, id, i
 
         override fun getName(): String = "KronMark"
 
-        override fun getCurrentPlayer(): Player? = player
+        override fun getCurrentHero(): Player? = player
 
         override fun isWorking(): Boolean = true
 

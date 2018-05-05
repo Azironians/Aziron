@@ -1,6 +1,7 @@
 package management.bonusManagement;
 
 import management.bonusManagement.service.components.DefaultBonusProviderComponent;
+import management.service.components.chainComponet.ChainComponent;
 import management.service.components.providerComponent.ProviderComponent;
 
 import java.util.ArrayList;
@@ -38,22 +39,25 @@ public final class BonusManager {
     }
 
     public final void returnPreviousProviderComponent(final int index, final int deckSize
-            , final ProviderComponent<Integer> provider){
-        provider.setPriority(this.providerComponentList.get(index).getPriority());
-        final Class providerComponentClazz = provider.getClass();
+            , final ProviderComponent<Integer> providerComponent){
+        providerComponent.setPriority(this.providerComponentList.get(index).getPriority());
+        final Class providerComponentClazz = providerComponent.getClass();
         final Class[] interfaces = providerComponentClazz.getInterfaces();
         for (final Class clazz : interfaces){
-            if (clazz == LiquidBonusProviderComponent.class){
-                final LiquidBonusProviderComponent liquidProvider = (LiquidBonusProviderComponent) provider;
-                final ProviderComponent<Integer> replacedProvider = liquidProvider.getReplacedProviderComponent();
-                this.returnPreviousProviderComponent(index, deckSize, replacedProvider);
+            if (clazz == ChainComponent.class){
+                final ChainComponent<ProviderComponent<Integer>> chainComponent = (ChainComponent) providerComponent;
+                final ProviderComponent<Integer> replacedProviderComponent = chainComponent.getReplacedComponent();
+                if (!chainComponent.isWorking()){
+                    this.returnPreviousProviderComponent(index, deckSize, replacedProviderComponent);
+                    return;
+                }
             }
             if (clazz == DefaultBonusProviderComponent.class){
-                final DefaultBonusProviderComponent defaultProvider = (DefaultBonusProviderComponent) provider;
+                final DefaultBonusProviderComponent defaultProvider = (DefaultBonusProviderComponent) providerComponent;
                 defaultProvider.setDeckSize(deckSize);
             }
         }
-        this.providerComponentList.set(index, provider);
+        this.providerComponentList.set(index, providerComponent);
     }
 
     public final void setCustomProviderComponent(final int index, final ProviderComponent<Integer> providerComponent){

@@ -30,7 +30,7 @@ public final class FromFireIntoTheFireProcessor extends TreatmentProcessor {
         final double damage = currentHero.getTreatment();
         if (opponentHero.getDamage(damage)) {
             final EventEngine eventEngine = actionManager.getEventEngine();
-            eventEngine.handle(ActionEventFactory.getTreatment(currentPlayer));
+            eventEngine.handle(ActionEventFactory.getBeforeTreatment(currentPlayer));
             eventEngine.handle(ActionEventFactory.getAfterDealDamage(currentPlayer, opponentHero, damage));
         }
         actionManager.refreshScreen();

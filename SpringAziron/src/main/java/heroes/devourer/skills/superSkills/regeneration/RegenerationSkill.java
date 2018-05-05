@@ -61,7 +61,7 @@ public final class RegenerationSkill extends AbstractSkill {
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
-                if (actionEvent.getActionType() == ActionType.START_TURN && actionEvent.getPlayer() == player){
+                if (actionEvent.getActionType() == ActionType.START_TURN && actionEvent.getHero() == player){
                     getEffect(player, coefficient);
                     isWorking = false;
                     log.info("Second healing");
@@ -74,7 +74,7 @@ public final class RegenerationSkill extends AbstractSkill {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

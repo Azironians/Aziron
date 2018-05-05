@@ -63,7 +63,7 @@ public final class XFeedBack extends Bonus implements RegularHandleService {
 //                log.info("FEEDBACK HANDLE");
                 final double newHitPoints = player.getCurrentHero().getHitPoints();
                 final double comparison = hitPoints - newHitPoints;
-//                if (player == playerManager.getCurrentTeam().getCurrentPlayer()){
+//                if (player == playerManager.getCurrentTeam().getCurrentHero()){
 //                    log.info("PLAYER: " + player.getProfile().getName());
 //                    log.info("LAST_DAMAGE: " + lastDamage);
 //                    log.info("OLD HP: " + hitPoints);
@@ -82,7 +82,7 @@ public final class XFeedBack extends Bonus implements RegularHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

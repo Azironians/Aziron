@@ -44,7 +44,7 @@ public final class HEvolution extends Bonus implements DynamicHandleService {
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
-                if (player == actionEvent.getPlayer()) {
+                if (player == actionEvent.getHero()) {
                     final Hero hero = player.getCurrentHero();
                     final Object message = actionEvent.getData();
                     if (RegenerationMessageParser.isRegenerationMessage((String) message)) {
@@ -63,7 +63,7 @@ public final class HEvolution extends Bonus implements DynamicHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

@@ -40,8 +40,8 @@ public class SwapProcessor implements Processor {
             final Hero currentHero = currentTeam.getCurrentPlayer().getCurrentHero();
             final Skill swapSkill = currentHero.getSwapSkill();
             final EventEngine eventEngine = actionManager.getEventEngine();
-            eventEngine.handle(ActionEventFactory.getPlayerSwap(currentTeam.getCurrentPlayer()));
-            eventEngine.handle(ActionEventFactory.getPlayerSwap(currentTeam.getAlternativePlayer()));
+            eventEngine.handle(ActionEventFactory.getHeroSwap(currentTeam.getCurrentPlayer()));
+            eventEngine.handle(ActionEventFactory.getHeroSwap(currentTeam.getAlternativePlayer()));
             if (swapSkill.isSkillAccess()) {
                 this.battleManager.setEndTurn(false);
                 this.skillProcessor.setTeamAndSkill(currentTeam, swapSkill);

@@ -75,7 +75,7 @@ public final class HRegeneratedTissues extends Bonus implements RegularHandleSer
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return currentPlayer;
             }
 

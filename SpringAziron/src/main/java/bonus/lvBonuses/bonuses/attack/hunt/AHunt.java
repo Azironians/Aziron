@@ -107,7 +107,7 @@ public final class AHunt extends Bonus implements RegularHandleService {
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 final ActionType actionType = actionEvent.getActionType();
-                final Hero hero = actionEvent.getPlayer().getCurrentHero();
+                final Hero hero = actionEvent.getHero().getCurrentHero();
                 if (actionType == ActionType.AFTER_USED_BONUS && enemyHeroBlackSet.contains(hero)){
                     final Object data = actionEvent.getData();
                     if (data instanceof String){
@@ -151,7 +151,7 @@ public final class AHunt extends Bonus implements RegularHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return currentPlayer;
             }
 

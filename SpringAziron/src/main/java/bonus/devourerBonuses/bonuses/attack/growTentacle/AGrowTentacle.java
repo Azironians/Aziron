@@ -57,8 +57,8 @@ public final class AGrowTentacle extends Bonus implements DynamicHandleService {
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
-                final Player player = actionEvent.getPlayer();
-                final Hero hero = actionEvent.getPlayer().getCurrentHero();
+                final Player player = actionEvent.getHero();
+                final Hero hero = actionEvent.getHero().getCurrentHero();
                 if (actionEvent.getActionType() == ActionType.START_TURN
                         && (player == opponentTeam.getCurrentPlayer()
                         || player == opponentTeam.getAlternativePlayer())) {
@@ -72,8 +72,8 @@ public final class AGrowTentacle extends Bonus implements DynamicHandleService {
                 if ((actionEvent.getActionType() == ActionType.END_TURN
                         || actionEvent.getActionType() == ActionType.SKIP_TURN
                         || actionEvent.getActionType() == ActionType.AFTER_USED_BONUS)
-                        && (actionEvent.getPlayer() == opponentTeam.getCurrentPlayer()
-                        || actionEvent.getPlayer() == opponentTeam.getAlternativePlayer())) {
+                        && (actionEvent.getHero() == opponentTeam.getCurrentPlayer()
+                        || actionEvent.getHero() == opponentTeam.getAlternativePlayer())) {
                     hero.getBonusManager().returnPreviousProviderComponent(index, hero.getBonusCollection().size()
                             , this.previousProviderComponent);
                     this.isWorking = false;
@@ -86,7 +86,7 @@ public final class AGrowTentacle extends Bonus implements DynamicHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

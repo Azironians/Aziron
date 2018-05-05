@@ -90,7 +90,7 @@ public final class ASuffocation extends Bonus implements RegularHandleService {
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
-                if (actionEvent.getPlayer() == currentPlayer && actionEvent.getActionType() == ActionType.END_TURN) {
+                if (actionEvent.getHero() == currentPlayer && actionEvent.getActionType() == ActionType.END_TURN) {
                     listHeroVsDamage.forEach(heroVsStackPair -> {
                         final Hero opponentHero = heroVsStackPair.getKey();
                         final Stack<Integer> turnDamageStack = heroVsStackPair.getValue();
@@ -107,7 +107,7 @@ public final class ASuffocation extends Bonus implements RegularHandleService {
                     });
                 }
                 if (actionEvent.getActionType() == ActionType.AFTER_USED_BONUS){
-                    final Player victimPlayer = actionEvent.getPlayer();
+                    final Player victimPlayer = actionEvent.getHero();
                     final Object data = actionEvent.getData();
                     if (data instanceof String){
                         final String message = (String) data;
@@ -143,7 +143,7 @@ public final class ASuffocation extends Bonus implements RegularHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return currentPlayer;
             }
 

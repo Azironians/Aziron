@@ -35,6 +35,8 @@ public abstract class Hero {
     private final List<Skill> collectionOfSkills; //Коллекция суперспособностей
     private Skill swapSkill; //Способность при выходе на поле боя
     private List<Bonus> bonusCollection;
+    //Alive:
+    private boolean isAlive;
 
     //Other abilities:
     private final Map<String, Object> additionalAbilityMap;
@@ -75,6 +77,8 @@ public abstract class Hero {
         this.face = face;
         this.listOfAttackVoices = listOfAttackVoices;
         this.listOfTreatmentVoices = listOfTreatmentVoices;
+        //Alive:
+        this.isAlive = true;
     }
 
     //ActionAccess:
@@ -305,6 +309,14 @@ public abstract class Hero {
 
     public List<Media> getListOfTreatmentVoices() {
         return listOfTreatmentVoices;
+    }
+
+    public final boolean isAlive() {
+        return this.isAlive;
+    }
+
+    public final void setAlive(boolean alive) {
+        this.isAlive = alive;
     }
 
     //Access:

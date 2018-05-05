@@ -38,7 +38,7 @@ final class XTempoSpeed(name: String, id: Int, sprite: ImageView) extends Bonus(
 
     override final def handle(actionEvent: ActionEvent): Unit = {
       val actionType = actionEvent.getActionType
-      val player = actionEvent.getPlayer
+      val player = actionEvent.getHero
       if (actionType == ActionType.BEFORE_USED_BONUS && this.player == player){
         val data: Object = actionEvent.getData
         data match {
@@ -58,7 +58,7 @@ final class XTempoSpeed(name: String, id: Int, sprite: ImageView) extends Bonus(
 
     override final def getName: String = "TempoSpeed"
 
-    override final def getCurrentPlayer: Player = player
+    override final def getCurrentHero: Player = player
 
     override final def isWorking: Boolean = work
 

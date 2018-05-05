@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 import org.jetbrains.annotations.Contract;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -29,9 +30,15 @@ public final class ATeam {
 
     ATeam(final Player currentPlayer, final Player alternativePlayer) {
         currentPlayer.setCurrent(true);
-        this.currentPlayer = currentPlayer;
         alternativePlayer.setCurrent(false);
+        this.currentPlayer = currentPlayer;
         this.alternativePlayer = alternativePlayer;
+        this.allPlayers = new ArrayList<>(){{
+            add(currentPlayer);
+            if (alternativePlayer.hasAliveHeroes()){
+                add(alternativePlayer);
+            }
+        }};
     }
 
     private boolean swapAccess = true;
@@ -44,13 +51,12 @@ public final class ATeam {
         return false;
     }
 
-    public void eagerSwapPlayers(){
-            final Player swapper = currentPlayer;
-            currentPlayer = alternativePlayer;
-            alternativePlayer = swapper;
-
-            currentPlayer.setCurrent(true);
-            alternativePlayer.setCurrent(false);
+    public final void eagerSwapPlayers(){
+            final Player swapper = this.currentPlayer;
+            this.currentPlayer = this.alternativePlayer;
+            this.alternativePlayer = swapper;
+            this.currentPlayer.setCurrent(true);
+            this.alternativePlayer.setCurrent(false);
             log.info("Swap was successful");
     }
 
@@ -135,6 +141,6 @@ public final class ATeam {
 
     @Transcendental
     public final List<Player> getAllPlayers() {
-        return allPlayers;
+        return this.allPlayers;
     }
 }

@@ -65,7 +65,7 @@ final class SSplit(name: String, id: Int, sprite: ImageView) extends Bonus(name,
 
     override final def getName: String = "Split"
 
-    override final def getCurrentPlayer: Player = this.player
+    override final def getCurrentHero: Player = this.player
 
     override final def isWorking: Boolean = this.work
 

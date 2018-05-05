@@ -42,7 +42,7 @@ public final class XUsurpation extends Bonus implements RegularHandleService {
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
-                if (actionEvent.getActionType() == ActionType.BEFORE_USED_SKILL && actionEvent.getPlayer() == player){
+                if (actionEvent.getActionType() == ActionType.BEFORE_USED_SKILL && actionEvent.getHero() == player){
                     experienceConsumingCoefficient++;
                 }
             }
@@ -53,7 +53,7 @@ public final class XUsurpation extends Bonus implements RegularHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

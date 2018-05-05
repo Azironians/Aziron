@@ -66,7 +66,7 @@ public final class AHybridisation extends Bonus implements RegularHandleService 
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return currentPlayer;
             }
 

@@ -1,7 +1,5 @@
 package management.battleManagement;
 
-import annotations.sourceAnnotations.Transcendental;
-import bonus.bonuses.Bonus;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import gui.service.graphicEngine.GraphicEngine;
@@ -9,14 +7,15 @@ import heroes.abstractHero.hero.Hero;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEventFactory;
 import management.battleManagement.processors.BonusLoadingProcessor;
-import management.processors.exceptions.UnsupportedProcessorException;
-import management.service.components.providerComponent.ProviderComponent;
-import management.service.engine.EventEngine;
 import management.playerManagement.ATeam;
 import management.playerManagement.GameMode;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 import management.processors.Processor;
+import management.processors.exceptions.UnsupportedProcessorException;
+import management.service.components.chainComponet.ChainComponent;
+import management.service.engine.EventEngine;
+import scala.Tuple3;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -57,82 +56,108 @@ public final class BattleManager {
 
     private BonusLoadingProcessor bonusLoadingProcessor;
 
-    public final void install(){
+    public final void install() {
         this.bonusLoadingProcessor = new BonusLoadingProcessor(this.graphicEngine);
     }
 
     //Next turn:
     public final void nextTurn() {
-        final Player currentPlayer = playerManager.getCurrentTeam().getCurrentPlayer();
-        final boolean isDestroyed = currentPlayer.getCurrentHero().getHitPoints() <= 0;
+        final ATeam team = this.playerManager.getCurrentTeam();
+        final Player currentPlayer = team.getCurrentPlayer();
+        final Player alternativePlayer = team.getAlternativePlayer();
+        final Hero currentHero = currentPlayer.getCurrentHero();
+        final boolean isDestroyed = currentHero.getHitPoints() <= 0;
         if (isDestroyed) {
-            currentPlayer.setAlive(false);
-            if (isEndGame()) {
-                eventEngine.handle(ActionEventFactory.getEndGame(currentPlayer));
-                log.info("GAME_OVER");
-                endGame();
+            currentHero.setAlive(false);
+            if (isNotTheEndOfGame(currentPlayer, alternativePlayer)._1()) {
+                this.eventEngine.handle(ActionEventFactory.getHeroOut(currentHero));
+                if (alternativePlayer.hasAliveHeroes()) {
+                    this.makeEagerPlayerSwapRequest(team);
+                }
+                this.actionManager.refreshScreen();
+                log.info("HERO_OUT");
             } else {
-                eventEngine.handle(ActionEventFactory.getPlayerOut(currentPlayer));
-                makeEagerPlayerSwapRequest();
-                log.info("PLAYER_OUT");
+                this.eventEngine.handle(ActionEventFactory.getEndGame(currentHero));
+                this.endGame();
+                log.info("GAME_OVER");
             }
         } else {
             changeTurn();
-            if (skipTurn) {
-                graphicEngine.hideBonuses();
-                final Player newCurrentPlayer = playerManager.getCurrentTeam().getCurrentPlayer();
-                eventEngine.handle(ActionEventFactory.getSkipTurn(newCurrentPlayer));
-                skipTurn = false;
-                nextTurn();
+            if (this.skipTurn) {
+                final Hero newCurrentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+                this.graphicEngine.hideBonuses();
+                this.eventEngine.handle(ActionEventFactory.getSkipTurn(newCurrentHero));
+                this.skipTurn = false;
+                this.nextTurn();
             }
         }
     }
 
     //Defines turn:
     private void changeTurn() {
-        final ATeam left = playerManager.getLeftATeam();
-        final ATeam right = playerManager.getRightATeam();
+        final ATeam left = this.playerManager.getLeftATeam();
+        final ATeam right = this.playerManager.getRightATeam();
         //CHANGE: //////////////////////////////////////////////////////////
-        turn = (turn + 1) % 2;
-        if (turn == left.getTurn()) {
-            playerManager.setCurrentATeam(left);
-            playerManager.setOpponentATeam(right);
+        this.turn = (this.turn + 1) % 2;
+        if (this.turn == left.getTurn()) {
+            this.playerManager.setCurrentATeam(left);
+            this.playerManager.setOpponentATeam(right);
         }
-        if (turn == right.getTurn()) {
-            playerManager.setCurrentATeam(right);
-            playerManager.setOpponentATeam(left);
+        if (this.turn == right.getTurn()) {
+            this.playerManager.setCurrentATeam(right);
+            this.playerManager.setOpponentATeam(left);
         }
         ////////////////////////////////////////////////////////////////////
-        final ATeam currentTeam = playerManager.getCurrentTeam();
+        final ATeam currentTeam = this.playerManager.getCurrentTeam();
         final Player currentPlayer = currentTeam.getCurrentPlayer();
         final Player alternativePlayer = currentTeam.getAlternativePlayer();
-
-        currentPlayer.getCurrentHero().reloadSkills();
-        if (playerManager.getGameMode() == GameMode._2x2){
-            alternativePlayer.getCurrentHero().reloadSkills();
-            alternativePlayer.getCurrentHero().getSwapSkill().reload();
+        this.reloadAllSkillsOfAllHeroes(currentPlayer);
+        if (this.playerManager.getGameMode() == GameMode._2x2) {
+            this.reloadAllSkillsOfAllHeroes(alternativePlayer);
         }
         //handling:
-        eventEngine.handle(ActionEventFactory.getStartTurn(currentPlayer));
-        if (playerManager.getGameMode() == GameMode._2x2){
-            eventEngine.handle(ActionEventFactory.getStartTurn(alternativePlayer));
+        this.eventEngine.handle(ActionEventFactory.getStartTurn(currentTeam));
+        if (this.playerManager.getGameMode() == GameMode._2x2) {
+            this.eventEngine.handle(ActionEventFactory.getStartTurn(currentTeam));
         }
         this.bonusLoadingProcessor.setHero(currentPlayer.getCurrentHero());
         this.bonusLoadingProcessor.process();
     }
 
-    private boolean isEndGame() {
-        final Player alternativePlayer = playerManager.getCurrentTeam().getAlternativePlayer();
-        return alternativePlayer == null || !alternativePlayer.isAlive();
+    private void reloadAllSkillsOfAllHeroes(final Player player) {
+        final List<Hero> heroes = player.getAllHeroes();
+        for (final Hero hero : heroes) {
+            hero.reloadSkills();
+            if (hero != player.getCurrentHero()) {
+                hero.getSwapSkill().reload();
+            }
+        }
     }
+
+    private Tuple3<Boolean, Player, Hero> isNotTheEndOfGame(final Player current, final Player alternative) {
+        final Tuple3<Boolean, Player, Hero> hasCurrentPlayerAliveHeroes = current.checkAliveHeroes();
+        final Tuple3<Boolean, Player, Hero> hasAlternativePlayerAlliveHeroes;
+        if (alternative != null) {
+            hasAlternativePlayerAlliveHeroes = alternative.checkAliveHeroes();
+        } else {
+            hasAlternativePlayerAlliveHeroes = new Tuple3<>(false, null, null);
+        }
+        if (hasAlternativePlayerAlliveHeroes._1()) {
+            return hasAlternativePlayerAlliveHeroes;
+        }
+        if (hasCurrentPlayerAliveHeroes._1()) {
+            return hasCurrentPlayerAliveHeroes;
+        }
+        return new Tuple3<>(false, null, null);
+    }
+
 
     public final void endGame() {
 
     }
 
-    private void makeEagerPlayerSwapRequest() {
-        final ATeam currentTeam = playerManager.getCurrentTeam();
-        actionManager.setEagerPlayerSwapRequest(currentTeam);
+    private void makeEagerPlayerSwapRequest(final ATeam team) {
+        this.actionManager.setEagerPlayerSwapRequest(team);
     }
 
     public static int getStartTime() {
@@ -151,16 +176,32 @@ public final class BattleManager {
         this.skipTurn = skipTurn;
     }
 
-    public final BonusLoadingProcessor getProcessor() {
+    public final BonusLoadingProcessor getBonusLoadingProcessor() {
         return this.bonusLoadingProcessor;
     }
 
-    public final void setProcessor(final Processor processor) throws UnsupportedProcessorException {
-        if (processor instanceof BonusLoadingProcessor){
+    public final void setCustomProcessor(final Processor processor) throws UnsupportedProcessorException {
+        if (processor instanceof BonusLoadingProcessor) {
             this.bonusLoadingProcessor = (BonusLoadingProcessor) processor;
         } else {
             throw new UnsupportedProcessorException("Invalid bonus loadlin processor");
         }
+    }
+
+    public final void returnPreviousBonusLoadingProcessor(final BonusLoadingProcessor previousBonusLoadingProcessor){
+        final Class bonusLoadingProcessorClass = previousBonusLoadingProcessor.getClass();
+        final Class[] classes = bonusLoadingProcessorClass.getInterfaces();
+        for (final Class clazz : classes){
+            if (clazz == ChainComponent.class){
+                final ChainComponent<BonusLoadingProcessor> chain = (ChainComponent) previousBonusLoadingProcessor;
+                if (!chain.isWorking()){
+                    final BonusLoadingProcessor replacedBonusLoadingProcessor = chain.getReplacedComponent();
+                    returnPreviousBonusLoadingProcessor(replacedBonusLoadingProcessor);
+                    return;
+                }
+            }
+        }
+        this.bonusLoadingProcessor = previousBonusLoadingProcessor;
     }
 
     public final void setDefaultProcessor() {

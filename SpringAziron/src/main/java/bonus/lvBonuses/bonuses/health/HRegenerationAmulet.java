@@ -40,7 +40,7 @@ public final class HRegenerationAmulet extends Bonus implements DynamicHandleSer
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
-                if (actionEvent.getPlayer() == player) {
+                if (actionEvent.getHero() == player) {
                     final Hero hero = player.getCurrentHero();
                     switch (actionEvent.getActionType()) {
                         case START_TURN:
@@ -68,7 +68,7 @@ public final class HRegenerationAmulet extends Bonus implements DynamicHandleSer
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

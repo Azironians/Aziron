@@ -68,11 +68,11 @@ public final class AUnstableMight extends ExtendedBonus implements RegularHandle
             public final void handle(final ActionEvent actionEvent) {
                 if (actionEvent.getActionType() == ActionType.SHOWED_BONUSES
                         && actionEvent.getData().equals("UnstableMight")
-                        && actionEvent.getPlayer() == currentPlayer){
+                        && actionEvent.getHero() == currentPlayer){
                     timeline.play();
                 }
                 if (actionEvent.getActionType() == ActionType.AFTER_USED_BONUS
-                        && actionEvent.getPlayer() == currentPlayer){
+                        && actionEvent.getHero() == currentPlayer){
                     attackBoost = ATTACK_BOOST;
                     timeline.pause();
                     timeline.setCycleCount(FRAME_CYCLES);
@@ -85,7 +85,7 @@ public final class AUnstableMight extends ExtendedBonus implements RegularHandle
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return currentPlayer;
             }
 

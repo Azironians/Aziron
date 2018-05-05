@@ -48,7 +48,7 @@ public final class HSelfKeepingInstinct extends Bonus implements DynamicHandleSe
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 final ActionType actionType = actionEvent.getActionType();
-                final Player opponent = actionEvent.getPlayer();
+                final Player opponent = actionEvent.getHero();
                 if (opponent == opponentTeam.getCurrentPlayer()
                         && actionType == ActionType.BEFORE_USED_SKILL){
                     if (player.getCurrentHero().getHealing(HEALING)){
@@ -64,7 +64,7 @@ public final class HSelfKeepingInstinct extends Bonus implements DynamicHandleSe
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

@@ -73,11 +73,11 @@ public final class ADarkSnatch extends ExtendedBonus implements RegularHandleSer
             public final void handle(final ActionEvent actionEvent) {
                 if (actionEvent.getActionType() == ActionType.SHOWED_BONUSES
                         && actionEvent.getData().equals("UnstableMight")
-                        && actionEvent.getPlayer() == currentPlayer) {
+                        && actionEvent.getHero() == currentPlayer) {
                     timeline.play();
                 }
                 if (actionEvent.getActionType() == ActionType.AFTER_USED_BONUS
-                        && actionEvent.getPlayer() == currentPlayer) {
+                        && actionEvent.getHero() == currentPlayer) {
                     attackBoostCoefficient = ATTACK_BOOST_COEFFICIENT;
                     timeline.pause();
                     timeline.setCycleCount(FRAME_CYCLES);
@@ -90,7 +90,7 @@ public final class ADarkSnatch extends ExtendedBonus implements RegularHandleSer
             }
 
             @Override
-            public Player getCurrentPlayer() {
+            public Player getCurrentHero() {
                 return currentPlayer;
             }
 
@@ -151,7 +151,7 @@ public final class ADarkSnatch extends ExtendedBonus implements RegularHandleSer
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

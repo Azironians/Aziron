@@ -87,7 +87,7 @@ final class HSnakeShield(name: String, val id: Int, sprite: ImageView) extends B
 
     override final def getName: String = "SnakeShield"
 
-    override final def getCurrentPlayer: Player = player
+    override final def getCurrentHero: Player = player
 
     override final def isWorking: Boolean = true
 

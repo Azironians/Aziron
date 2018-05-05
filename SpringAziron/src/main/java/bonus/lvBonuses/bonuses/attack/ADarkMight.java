@@ -42,7 +42,7 @@ public final class ADarkMight extends Bonus implements DynamicHandleService {
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 final ActionType actionType = actionEvent.getActionType();
-                final Player player = actionEvent.getPlayer();
+                final Player player = actionEvent.getHero();
                 if (actionType == ActionType.START_TURN && (this.player == player)){
                     final Hero hero = player.getCurrentHero();
                     hero.setAttack(hero.getAttack() + ATTACK_BOOST);
@@ -67,7 +67,7 @@ public final class ADarkMight extends Bonus implements DynamicHandleService {
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

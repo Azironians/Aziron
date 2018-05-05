@@ -70,7 +70,7 @@ public final class AEruption extends Bonus implements DynamicHandleService{
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

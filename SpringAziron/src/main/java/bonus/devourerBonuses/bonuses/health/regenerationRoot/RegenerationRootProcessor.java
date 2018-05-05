@@ -25,7 +25,7 @@ public final class RegenerationRootProcessor extends AttackProcessor {
         final Hero currentHero = currentPlayer.getCurrentHero();
         final double treatmentValue = currentHero.getAttack();
         if (currentHero.getHealing(treatmentValue)) {
-            actionManager.getEventEngine().handle(ActionEventFactory.getAttack(currentPlayer));
+            actionManager.getEventEngine().handle(ActionEventFactory.getBeforeAttack(currentPlayer));
         }
         if (currentHero.addExperience(treatmentValue)){
             actionManager.getEventEngine().handle();

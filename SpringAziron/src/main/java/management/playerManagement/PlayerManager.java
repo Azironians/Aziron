@@ -72,7 +72,7 @@ public final class PlayerManager {
         final SpringManager springManager = (SpringManager) context.getBean("springManager");
         System.out.println(springManager.getSpringEngine().getString());
         currentATeam.launchTimer();
-        final BonusLoadingProcessor bonusLoadingProcessor = this.battleManager.getProcessor();
+        final BonusLoadingProcessor bonusLoadingProcessor = this.battleManager.getBonusLoadingProcessor();
         bonusLoadingProcessor.setHero(currentATeam.getCurrentPlayer().getCurrentHero());
         bonusLoadingProcessor.process();
     }

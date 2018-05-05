@@ -64,8 +64,8 @@ public final class HKronArmor extends Bonus implements DynamicHandleService{
                 }
                 this.hitPoints = currentHero.getHitPoints();
                 if (actionEvent.getActionType() == ActionType.START_TURN
-                        && (actionEvent.getPlayer() == player
-                        || actionEvent.getPlayer() == alternativePlayer)) {
+                        && (actionEvent.getHero() == player
+                        || actionEvent.getHero() == alternativePlayer)) {
                     isWorking = false;
                     log.info("ARMOR DOWN");
                 }
@@ -77,7 +77,7 @@ public final class HKronArmor extends Bonus implements DynamicHandleService{
             }
 
             @Override
-            public final Player getCurrentPlayer() {
+            public final Player getCurrentHero() {
                 return player;
             }
 

@@ -17,7 +17,7 @@ public class ControllerBot {
 //            } else if (player1.getCurrentHero().getSkills().isFirstOpen()) {
 //                turn *= -1;
 //                player1.getCurrentHero().getSkills().firstUlt();
-//            } else if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getAttack() * 0.5) {
+//            } else if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getBeforeAttack() * 0.5) {
 //                try {
 //                    battle.treatment(player1, player2);
 //                } catch (InterruptedException e) {
@@ -38,7 +38,7 @@ public class ControllerBot {
 //            } else if (player1.getCurrentHero().getSkills().isTwoOpen()) {
 //                turn *= -1;
 //                player1.getCurrentHero().getSkills().twoUlt();
-//            } else if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getAttack() * 1) {
+//            } else if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getBeforeAttack() * 1) {
 //                try {
 //                    battle.treatment(player1, player2);
 //                } catch (InterruptedException e) {
@@ -53,7 +53,7 @@ public class ControllerBot {
 //        }
 //        //Бот "Оглушитель"
 //        else {
-//            if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getAttack() * 2.5) {
+//            if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getBeforeAttack() * 2.5) {
 //                try {
 //                    battle.treatment(player1, player2);
 //                } catch (InterruptedException e) {
@@ -78,7 +78,7 @@ public class ControllerBot {
 //        //Бот "Лорд Вамп"
 //        if (player1.getCurrentHero().getClass() == HeroLordVamp.class) {
 //            // "Использование реинкорнации"
-//            if (player1.getCurrentHero().getSkills().isThreeOpen() && player1.getCurrentHero().getHitPoints() * (-1) > player2.getCurrentHero().getAttack()) {
+//            if (player1.getCurrentHero().getSkills().isThreeOpen() && player1.getCurrentHero().getHitPoints() * (-1) > player2.getCurrentHero().getBeforeAttack()) {
 //                    turn *= -1;
 //                    player1.getCurrentHero().getSkills().threeUlt();
 //            }
@@ -90,7 +90,7 @@ public class ControllerBot {
 //                player1.getCurrentHero().getSkills().firstUlt();
 //            }
 //            //Использование "Лечения"
-//            else if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getAttack() * 0.5 ||
+//            else if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getBeforeAttack() * 0.5 ||
 //                    (player1.getCurrentHero().getHitPoints() <= player1.getCurrentHero().getHealthSupply() * 0.3 && turns % 8 == 0)) {
 //                try {
 //                    battle.treatment(player1, player2);
@@ -101,7 +101,7 @@ public class ControllerBot {
 //            //Использование "Клинков"
 //            else if (player1.getCurrentHero().getSkills().isTwoOpen() &&
 //                    player1.getCurrentHero().getExperienceList()[player1.getCurrentHero().getLevel() - 1] -
-//                            player1.getCurrentHero().getExperience() > player1.getCurrentHero().getAttack() * 2){
+//                            player1.getCurrentHero().getExperience() > player1.getCurrentHero().getBeforeAttack() * 2){
 //                turn *= -1;
 //                player1.getCurrentHero().getSkills().twoUlt();
 //            }
@@ -118,7 +118,7 @@ public class ControllerBot {
 //            } else if (player1.getCurrentHero().getSkills().isTwoOpen()) {
 //                turn *= -1;
 //                player1.getCurrentHero().getSkills().twoUlt();
-//            } else if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getAttack() * 1) {
+//            } else if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getBeforeAttack() * 1) {
 //                try {
 //                    battle.treatment(player1, player2);
 //                } catch (InterruptedException e) {
@@ -133,7 +133,7 @@ public class ControllerBot {
 //        }
 //        //Бот "Оглушитель"
 //        else {
-//            if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getAttack() * 2.5) {
+//            if (player1.getCurrentHero().getHitPoints() < player2.getCurrentHero().getBeforeAttack() * 2.5) {
 //                try {
 //                    battle.treatment(player1, player2);
 //                } catch (InterruptedException e) {

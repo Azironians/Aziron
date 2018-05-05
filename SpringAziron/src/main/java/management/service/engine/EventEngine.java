@@ -89,13 +89,19 @@ public final class EventEngine {
             }
         }
         handlers.removeAll(garbageHandlerList);
-        if (repeatHandling){
+        if (repeatHandling) {
             handle();
         }
     }
 
-    public final void handle() {
+    public synchronized final void handle() {
         handle(EMPTY_EVENT);
+    }
+
+    public synchronized final void handle(final List<ActionEvent> actionEvents) {
+        for (final ActionEvent actionEvent : actionEvents){
+            this.handle(actionEvent);
+        }
     }
 
     public final void addHandler(final HandleComponent handler) {
@@ -103,13 +109,13 @@ public final class EventEngine {
         this.handlers.add(handler);
     }
 
-    public final boolean containsHandler(final HandleComponent handleComponent){
+    public final boolean containsHandler(final HandleComponent handleComponent) {
         return this.handlers.contains(handleComponent);
     }
 
-    public final boolean containsHandler(final String name){
-        for (final HandleComponent handleComponent : this.handlers){
-            if (handleComponent.getName().equals(name)){
+    public final boolean containsHandler(final String name) {
+        for (final HandleComponent handleComponent : this.handlers) {
+            if (handleComponent.getName().equals(name)) {
                 return true;
             }
         }

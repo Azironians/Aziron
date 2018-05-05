@@ -49,7 +49,7 @@ final class SBlowOfHeaven(name: String, id: Int, sprite: ImageView) extends Bonu
     override final def setup(): Unit = {}
 
     override final def handle(actionEvent: ActionEvent): Unit = {
-      if (actionEvent.getActionType == ActionType.START_TURN && actionEvent.getPlayer == this.player){
+      if (actionEvent.getActionType == ActionType.START_TURN && actionEvent.getHero == this.player){
         this.turnCounter += 1
         if (this.turnCounter == COMPLETE_TURNS){
           this.turnCounter = 0
@@ -68,7 +68,7 @@ final class SBlowOfHeaven(name: String, id: Int, sprite: ImageView) extends Bonu
 
     override final def getName: String = "BlowOfHeaven"
 
-    override final def getCurrentPlayer: Player = this.player
+    override final def getCurrentHero: Player = this.player
 
     override final def isWorking: Boolean = this.work
 

@@ -37,7 +37,7 @@ final class XSnakeCollapse(name: String, id: Int, sprite: ImageView) extends Bon
     }
 
     override final def handle(actionEvent: ActionEvent): Unit = {
-      if (actionEvent.getPlayer == player) {
+      if (actionEvent.getHero == player) {
         actionEvent.getActionType match {
           case ActionType.BEFORE_USED_SKILL =>
             val data = actionEvent.getData
@@ -61,7 +61,7 @@ final class XSnakeCollapse(name: String, id: Int, sprite: ImageView) extends Bon
 
     override final def getName: String = "SnakeCollapse"
 
-    override final def getCurrentPlayer: Player = player
+    override final def getCurrentHero: Player = player
 
     override final def isWorking: Boolean = work
 
