@@ -5,13 +5,13 @@ import heroes.abstractHero.hero.Hero;
 import heroes.devourer.skills.superSkills.regeneration.utilities.RegenerationMessageParser;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import management.playerManagement.Player;
 
 import java.util.logging.Logger;
 
-public final class HEvolution extends Bonus implements DynamicHandleService {
+public final class HEvolution extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(HEvolution.class.getName());
 
@@ -23,14 +23,14 @@ public final class HEvolution extends Bonus implements DynamicHandleService {
 
     @Override
     public final void use() {
-        final HandleComponent handleComponent = getHandlerInstance();
-        actionManager.getEventEngine().addHandler(handleComponent);
+        final EngineComponent engineComponent = getPrototypeEngineComponent();
+        actionManager.getEventEngine().addHandler(engineComponent);
         log.info("Evolution is activated!");
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

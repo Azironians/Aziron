@@ -1,21 +1,22 @@
 package bonus.generalBonuses.bonuses.health;
 
 import bonus.bonuses.Bonus;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import bonus.bonuses.service.annotations.Engine;
+import bonus.bonuses.service.annotations.implementations.HealingEngine;
+import bonus.bonuses.service.parameterType.ParameterType;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.playerManagement.Player;
 
 import java.util.logging.Logger;
 
-public final class HExorcism extends Bonus implements DynamicHandleService {
+
+public final class HExorcism extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(HExorcism.class.getName());
-
-    private static final double HEALING_BOOST = 2;
 
     public HExorcism(final String name, final int id, final ImageView sprite) {
         super(name, id, sprite);
@@ -23,56 +24,63 @@ public final class HExorcism extends Bonus implements DynamicHandleService {
 
     @Override
     public final void use() {
-        final HandleComponent handler = getHandlerInstance();
-        actionManager.getEventEngine().addHandler(handler);
+        final EngineComponent handler = getPrototypeEngineComponent();
+        this.actionManager.getEventEngine().addHandler(handler);
+    }
+
+    @HealingEngine(engine = @Engine(name = "healingBoost", parameterType = ParameterType.VALUE))
+    private final class ExorcismHandlerComponent implements EngineComponent {
+
+        private static final double START_HEALING_BOOST = 2;
+
+        private double healingBoost = START_HEALING_BOOST;
+
+        private boolean isWorking = true;
+
+        private Hero hero;
+
+        @Override
+        public final void setup() {
+            this.hero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+        }
+
+        @Override
+        public final void handle(final ActionEvent actionEvent) {
+            final ActionType actionType = actionEvent.getActionType();
+
+            if (actionType == ActionType.END_TURN && this.hero == actionEvent.getHero()) {
+                final Hero currentHero = this.hero;
+
+                if (currentHero.getHealing(this.healingBoost)) {
+                    log.info("+" + this.healingBoost + "HP");
+                    actionManager.getEventEngine().setRepeatHandling(true);
+                }
+            }
+        }
+
+        @Override
+        public final String getName() {
+            return "Exorcism";
+        }
+
+        @Override
+        public final Hero getCurrentHero() {
+            return this.hero;
+        }
+
+        @Override
+        public final boolean isWorking() {
+            return this.isWorking;
+        }
+
+        @Override
+        public final void setWorking(final boolean able) {
+            this.isWorking = able;
+        }
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
-
-            private boolean isWorking = true;
-
-            private Player player;
-
-            @Override
-            public final void setup() {
-                this.player = playerManager.getCurrentTeam().getCurrentPlayer();
-            }
-
-            @Override
-            public final void handle(final ActionEvent actionEvent) {
-                final ActionType actionType = actionEvent.getActionType();
-
-                if (actionType == ActionType.END_TURN && player == actionEvent.getHero()) {
-                    final Hero currentHero = player.getCurrentHero();
-
-                    if (currentHero.getHealing(HEALING_BOOST)) {
-                        log.info("+2 HP");
-                        actionManager.getEventEngine().setRepeatHandling(true);
-                    }
-                }
-            }
-
-            @Override
-            public final String getName() {
-                return "Exorcism";
-            }
-
-            @Override
-            public final Player getCurrentHero() {
-                return player;
-            }
-
-            @Override
-            public final boolean isWorking() {
-                return isWorking;
-            }
-
-            @Override
-            public final void setWorking(final boolean able) {
-                this.isWorking = able;
-            }
-        };
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new ExorcismHandlerComponent();
     }
 }

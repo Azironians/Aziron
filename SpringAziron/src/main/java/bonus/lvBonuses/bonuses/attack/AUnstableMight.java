@@ -9,12 +9,12 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
+import management.service.engine.services.RegularEngineService;
 import management.playerManagement.Player;
 
-public final class AUnstableMight extends ExtendedBonus implements RegularHandleService {
+public final class AUnstableMight extends ExtendedBonus implements RegularEngineService {
 
     private final Text text;
 
@@ -54,8 +54,8 @@ public final class AUnstableMight extends ExtendedBonus implements RegularHandle
     }
 
     @Override
-    public final HandleComponent getRegularHandlerInstance(final Player player) {
-        return new HandleComponent() {
+    public final EngineComponent installSingletonEngineComponent(final Player player) {
+        return new EngineComponent() {
 
             private Player currentPlayer;
 
@@ -95,8 +95,8 @@ public final class AUnstableMight extends ExtendedBonus implements RegularHandle
             }
 
             @Override
-            public final void setWorking(final boolean able) throws IllegalSwitchOffHandleComponentException {
-                throw new IllegalSwitchOffHandleComponentException();
+            public final void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException {
+                throw new IllegalSwitchOffEngineComponentException();
             }
         };
     }

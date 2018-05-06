@@ -1,67 +1,91 @@
 package bonus.devourerBonuses.bonuses.experience
 
 import bonus.bonuses.Bonus
-import bonus.bonuses.subInterfaces.QuestBonus
+import bonus.bonuses.service.annotations.Engine
+import bonus.bonuses.service.annotations.implementations.{BonusEngine, QuestEngine}
+import bonus.bonuses.service.parameterType.ParameterType
+import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.service.components.handleComponet.HandleComponent
-import management.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
+import management.service.components.handleComponet.{EngineComponent, IllegalSwitchOffEngineComponentException}
+import management.service.engine.services.RegularEngineService
+import org.springframework.util.ReflectionUtils
 
-final class XTempoSpeed(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite) with DynamicHandleService {
+final class XTempoSpeed(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
+  with RegularEngineService {
 
-  private val BONUS_BOOST: Int = 2
-
-  private var isActivated = false
-
-  private var totalBoost: Int = 0
+  private var tempoSpeedEngineComponent: TempoSpeedEngineComponent = _
 
   override def use(): Unit = {
-    if (isActivated) {
-      this.totalBoost += BONUS_BOOST
-    } else {
-      this.actionManager.getEventEngine.addHandler(getHandlerInstance)
-      this.isActivated = true
-    }
+    this.tempoSpeedEngineComponent.use()
   }
 
-  override def getHandlerInstance: HandleComponent = new HandleComponent {
-
-    private var player: Player = _
-
-    private var work: Boolean = _
-
-    override final def setup(): Unit = {
-      this.player = playerManager.getCurrentTeam.getCurrentPlayer
-      this.work = true
+  override def installSingletonEngineComponent(player: Player): EngineComponent = {
+    if (this.tempoSpeedEngineComponent == null) {
+      this.tempoSpeedEngineComponent = new TempoSpeedEngineComponent(player)
     }
+    this.tempoSpeedEngineComponent
+  }
 
-    override final def handle(actionEvent: ActionEvent): Unit = {
+  override def getSingletonEngineComponent: EngineComponent = this.tempoSpeedEngineComponent
+
+  @BonusEngine(engine = new Engine("bonusBoost", ParameterType.VALUE))
+  private final class TempoSpeedEngineComponent(player: Player) extends EngineComponent {
+
+    private val START_BONUS_BOOST: Int = 2
+
+    private val START_TOTAL_BOOST: Int = 0
+
+    private var bonusBoost = START_BONUS_BOOST
+
+    private var totalBoost: Int = START_TOTAL_BOOST
+
+    private val checkedParameterType = ParameterType.VALUE
+
+    private val hero: Hero = player.getCurrentHero
+
+    def use(): Unit = this.totalBoost += this.bonusBoost
+
+    override def setup(): Unit = {}
+
+    override def handle(actionEvent: ActionEvent): Unit = {
       val actionType = actionEvent.getActionType
-      val player = actionEvent.getHero
-      if (actionType == ActionType.BEFORE_USED_BONUS && this.player == player){
+      val hero = actionEvent.getHero
+      if (actionType == ActionType.BEFORE_USED_BONUS && this.hero == hero) {
         val data: Object = actionEvent.getData
-        data match {
-          case bonus: Bonus =>
-            val clazz = bonus.getClass
-            val interfaces = clazz.getInterfaces
-            for (interface <- interfaces){
-              if (interface.getSimpleName.equals("QuestBonus")){
-                val questBonus = bonus.asInstanceOf[QuestBonus]
-                questBonus.setProgress(questBonus.getProgress + totalBoost)
-                actionManager.getEventEngine.setRepeatHandling(true)
+        val bonus = data.asInstanceOf[Bonus]
+        val clazz = bonus.getClass
+        val interfaces = clazz.getInterfaces
+        for (interface <- interfaces) {
+          if (interface.getName == "RegularEngineService") {
+            val regularEngineService = bonus.asInstanceOf[RegularEngineService]
+            val component = regularEngineService.getSingletonEngineComponent
+            val componentClass = component.getClass
+            if (componentClass.isAnnotationPresent(Class[QuestEngine])) {
+              val questEngineAnnotation = componentClass.getAnnotation(Class[QuestEngine]).asInstanceOf[QuestEngine]
+              val engineAnnotation = questEngineAnnotation.engine()
+              val fieldName = engineAnnotation.name()
+              val parameterType = engineAnnotation.parameterType()
+              if (this.checkedParameterType == parameterType) {
+                val field = componentClass.getField(fieldName)
+                ReflectionUtils.makeAccessible(field)
+                val count = ReflectionUtils.getField(field, component).asInstanceOf[Integer]
+                ReflectionUtils.setField(field, component, count + this.bonusBoost)
+                this.totalBoost = 0
               }
             }
+          }
         }
       }
     }
 
-    override final def getName: String = "TempoSpeed"
+    override def getName: String = "TempoSpeed"
 
-    override final def getCurrentHero: Player = player
+    override def getCurrentHero: Hero = this.hero
 
-    override final def isWorking: Boolean = work
+    override def isWorking: Boolean = true
 
-    override final def setWorking(able: Boolean): Unit = work = able
+    override def setWorking(able: Boolean): Unit = throw  new IllegalSwitchOffEngineComponentException("TempoSpeed")
   }
 }

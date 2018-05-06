@@ -1,12 +1,12 @@
 package management.service.engine;
 
 import bonus.bonuses.Bonus;
-import management.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.EngineComponent;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEvent;
-import management.service.engine.services.RegularHandleService;
+import management.service.engine.services.RegularEngineService;
 import management.battleManagement.BattleManager;
 import management.playerManagement.GameMode;
 import management.playerManagement.Player;
@@ -31,7 +31,7 @@ public final class EventEngine {
     @Inject
     private PlayerManager playerManager;
 
-    private Set<HandleComponent> handlers;
+    private Set<EngineComponent> handlers;
 
     private boolean repeatHandling = false;
 
@@ -51,8 +51,8 @@ public final class EventEngine {
         for (final Bonus bonus : collection) {
             wireManagersToBonus(bonus, actionManager, battleManager, playerManager);
             if (implementsRegularHandleService(bonus)) {
-                final RegularHandleService regularHandleService = (RegularHandleService) bonus;
-                addHandler(regularHandleService.getRegularHandlerInstance(player));
+                final RegularEngineService regularEngineService = (RegularEngineService) bonus;
+                addHandler(regularEngineService.installSingletonEngineComponent(player));
             }
         }
     }
@@ -69,7 +69,7 @@ public final class EventEngine {
     private boolean implementsRegularHandleService(final Bonus bonus) {
         final Class<?>[] interfaces = bonus.getClass().getInterfaces();
         for (final Class clazz : interfaces) {
-            if (clazz.equals(RegularHandleService.class)) {
+            if (clazz.equals(RegularEngineService.class)) {
                 log.info(bonus.getName() + " implements RegularHandleService");
                 return true;
             }
@@ -79,8 +79,8 @@ public final class EventEngine {
 
     public synchronized final void handle(final ActionEvent actionEvent) {
         this.repeatHandling = false;
-        final List<HandleComponent> garbageHandlerList = new ArrayList<>();
-        for (final HandleComponent bonusHandler : handlers) {
+        final List<EngineComponent> garbageHandlerList = new ArrayList<>();
+        for (final EngineComponent bonusHandler : this.handlers) {
             if (bonusHandler.isWorking()) {
                 bonusHandler.handle(actionEvent);
             } else {
@@ -88,14 +88,14 @@ public final class EventEngine {
                 log.info(bonusHandler.getName() + " successfully was removed");
             }
         }
-        handlers.removeAll(garbageHandlerList);
-        if (repeatHandling) {
-            handle();
+        this.handlers.removeAll(garbageHandlerList);
+        if (this.repeatHandling) {
+            this.handle();
         }
     }
 
     public synchronized final void handle() {
-        handle(EMPTY_EVENT);
+        this.handle(EMPTY_EVENT);
     }
 
     public synchronized final void handle(final List<ActionEvent> actionEvents) {
@@ -104,29 +104,33 @@ public final class EventEngine {
         }
     }
 
-    public final void addHandler(final HandleComponent handler) {
+    public final void addHandler(final EngineComponent handler) {
         handler.setup();
         this.handlers.add(handler);
     }
 
-    public final boolean containsHandler(final HandleComponent handleComponent) {
-        return this.handlers.contains(handleComponent);
+    public final boolean containsHandler(final EngineComponent engineComponent) {
+        return this.handlers.contains(engineComponent);
     }
 
     public final boolean containsHandler(final String name) {
-        for (final HandleComponent handleComponent : this.handlers) {
-            if (handleComponent.getName().equals(name)) {
+        for (final EngineComponent engineComponent : this.handlers) {
+            if (engineComponent.getName().equals(name)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean isRepeatHandling() {
-        return repeatHandling;
+    public final Set<EngineComponent> getHandlers(){
+        return this.handlers;
     }
 
-    public void setRepeatHandling(boolean repeatHandling) {
+    public boolean isRepeatHandling() {
+        return this.repeatHandling;
+    }
+
+    public void setRepeatHandling(final boolean repeatHandling) {
         this.repeatHandling = repeatHandling;
     }
 }

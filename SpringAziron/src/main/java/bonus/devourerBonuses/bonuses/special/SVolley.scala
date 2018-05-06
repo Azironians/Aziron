@@ -3,20 +3,20 @@ package bonus.devourerBonuses.bonuses.special
 import bonus.bonuses.Bonus
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionEventFactory, ActionType}
-import management.service.components.handleComponet.HandleComponent
-import management.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
+import management.service.components.handleComponet.EngineComponent
+import management.service.engine.services.DynamicEngineService
 
 final class SVolley(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
-  with DynamicHandleService {
+  with DynamicEngineService {
 
   private val DAMAGE: Int = 10
 
   override def use(): Unit = {
-    this.actionManager.getEventEngine.addHandler(getHandlerInstance)
+    this.actionManager.getEventEngine.addHandler(getPrototypeEngineComponent)
   }
 
-  override def getHandlerInstance: HandleComponent = new HandleComponent {
+  override def getPrototypeEngineComponent: EngineComponent = new EngineComponent {
 
     private val player: Player = playerManager.getCurrentTeam.getCurrentPlayer
 

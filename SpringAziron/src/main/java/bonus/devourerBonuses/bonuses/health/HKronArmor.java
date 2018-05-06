@@ -6,13 +6,13 @@ import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import management.playerManagement.Player;
 
 import java.util.logging.Logger;
 
-public final class HKronArmor extends Bonus implements DynamicHandleService{
+public final class HKronArmor extends Bonus implements DynamicEngineService {
 
     public HKronArmor(final String name, final int id, final ImageView sprite) {
         super(name, id, sprite);
@@ -26,14 +26,14 @@ public final class HKronArmor extends Bonus implements DynamicHandleService{
 
     @Override
     public final void use() {
-        final HandleComponent handler = getHandlerInstance();
+        final EngineComponent handler = getPrototypeEngineComponent();
         actionManager.getEventEngine().addHandler(handler);
         log.info("KRON ARMOR IS ACTIVATED");
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

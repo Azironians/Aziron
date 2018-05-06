@@ -6,11 +6,11 @@ import bonus.bonuses.Bonus
 import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionEventFactory, ActionType}
-import management.service.components.handleComponet.HandleComponent
-import management.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
+import management.service.components.handleComponet.EngineComponent
+import management.service.engine.services.DynamicEngineService
 
-final class SAvatarsCore(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite) with DynamicHandleService {
+final class SAvatarsCore(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite) with DynamicEngineService {
 
   val log: Logger = Logger.getLogger(classOf[SAvatarsCore].getName)
 
@@ -18,19 +18,19 @@ final class SAvatarsCore(name: String, id: Int, sprite: ImageView) extends Bonus
 
   var additionalDamage: Double = 0
 
-  var handleComponent: HandleComponent = _
+  var handleComponent: EngineComponent = _
 
   override def use(): Unit = {
     this.additionalDamage += ADDITIONAL_DAMAGE
     val eventEngine = this.actionManager.getEventEngine
     if (this.handleComponent == null){
-      this.handleComponent = getHandlerInstance
+      this.handleComponent = getPrototypeEngineComponent
       eventEngine.addHandler(handleComponent)
     }
     log.info("SKILL POWER INCREASED BY 40")
   }
 
-  override def getHandlerInstance: HandleComponent = new HandleComponent() {
+  override def getPrototypeEngineComponent: EngineComponent = new EngineComponent() {
 
     private val player = playerManager.getCurrentTeam.getCurrentPlayer
 

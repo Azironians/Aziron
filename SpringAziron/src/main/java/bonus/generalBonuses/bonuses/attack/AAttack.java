@@ -1,8 +1,8 @@
 package bonus.generalBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
@@ -12,7 +12,7 @@ import management.playerManagement.Player;
 import java.util.logging.Logger;
 
 
-public final class AAttack extends Bonus implements DynamicHandleService {
+public final class AAttack extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(AAttack.class.getName());
 
@@ -29,13 +29,13 @@ public final class AAttack extends Bonus implements DynamicHandleService {
 
         currentHero.setAttack(currentHero.getAttack() + ATTACK_BOOST);
         log.info("+10 BEFORE_ATTACK");
-        final HandleComponent handler = getHandlerInstance();
+        final EngineComponent handler = getPrototypeEngineComponent();
         actionManager.getEventEngine().addHandler(handler);
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

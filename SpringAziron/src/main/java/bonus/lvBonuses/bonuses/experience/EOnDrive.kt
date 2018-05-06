@@ -4,18 +4,18 @@ import bonus.bonuses.Bonus
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.ActionEvent
 import management.actionManagement.actions.ActionType
-import management.service.components.handleComponet.HandleComponent
-import management.service.engine.services.DynamicHandleService
+import management.service.components.handleComponet.EngineComponent
+import management.service.engine.services.DynamicEngineService
 
 private const val EXPERIENCE_BOOST = 10.0
 
-class EOnDrive(name: String, id: Int, sprite: ImageView) : Bonus(name, id, sprite), DynamicHandleService {
+class EOnDrive(name: String, id: Int, sprite: ImageView) : Bonus(name, id, sprite), DynamicEngineService {
 
     override fun use() {
-        this.actionManager.eventEngine.addHandler(this.handlerInstance)
+        this.actionManager.eventEngine.addHandler(this.prototypeEngineComponent)
     }
 
-    override fun getHandlerInstance(): HandleComponent = object : HandleComponent {
+    override fun getPrototypeEngineComponent(): EngineComponent = object : EngineComponent {
         //FIXME: CHANGE TO HERO!!!
         val player = playerManager.currentTeam.currentPlayer
 

@@ -2,17 +2,18 @@ package bonus.devourerBonuses.bonuses.special
 
 import java.util
 import java.util.logging.Logger
+
 import scala.collection.JavaConverters._
 import bonus.bonuses.Bonus
 import heroes.abstractHero.skills.Skill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.service.components.handleComponet.HandleComponent
-import management.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
+import management.service.components.handleComponet.EngineComponent
+import management.service.engine.services.DynamicEngineService
 
 final class SSplit(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
-  with DynamicHandleService {
+  with DynamicEngineService {
 
   private val log = Logger.getLogger(classOf[SSplit].getName)
 
@@ -33,12 +34,12 @@ final class SSplit(name: String, id: Int, sprite: ImageView) extends Bonus(name,
         foundFlameSnakes = true
     }
     if (foundFlameSnakes){
-      this.actionManager.getEventEngine.addHandler(getHandlerInstance)
+      this.actionManager.getEventEngine.addHandler(getPrototypeEngineComponent)
       log.info("SKILL POWER INCREASED BY 30%")
     }
   }
 
-  override def getHandlerInstance: HandleComponent = new HandleComponent() {
+  override def getPrototypeEngineComponent: EngineComponent = new EngineComponent() {
 
     private val player = playerManager.getCurrentTeam.getCurrentPlayer
 

@@ -3,12 +3,12 @@ package bonus.bashBonuses.bonuses.attack
 import bonus.bonuses.Bonus
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.service.components.handleComponet.HandleComponent
-import management.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
+import management.service.components.handleComponet.EngineComponent
+import management.service.engine.services.DynamicEngineService
 
 final class AAcceleration(name: String, val id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
-  with DynamicHandleService {
+  with DynamicEngineService {
 
   private val ATTACK_BOOST: Double = 1.0
 
@@ -18,10 +18,10 @@ final class AAcceleration(name: String, val id: Int, sprite: ImageView) extends 
     val hero = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
     hero.setAttack(hero.getAttack + ATTACK_BOOST)
     val engine = actionManager.getEventEngine
-    engine.addHandler(getHandlerInstance)
+    engine.addHandler(getPrototypeEngineComponent)
   }
 
-  override def getHandlerInstance: HandleComponent = new HandleComponent {
+  override def getPrototypeEngineComponent: EngineComponent = new EngineComponent {
 
     private var player: Player = _
 

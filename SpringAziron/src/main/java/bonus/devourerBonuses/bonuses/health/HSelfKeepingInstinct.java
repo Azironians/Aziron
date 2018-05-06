@@ -4,14 +4,14 @@ import bonus.bonuses.Bonus;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
 
 import java.util.logging.Logger;
 
-public final class HSelfKeepingInstinct extends Bonus implements DynamicHandleService {
+public final class HSelfKeepingInstinct extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(HSelfKeepingInstinct.class.getName());
 
@@ -23,14 +23,14 @@ public final class HSelfKeepingInstinct extends Bonus implements DynamicHandleSe
 
     @Override
     public final void use() {
-        final HandleComponent handleComponent = getHandlerInstance();
-        actionManager.getEventEngine().addHandler(handleComponent);
+        final EngineComponent engineComponent = getPrototypeEngineComponent();
+        actionManager.getEventEngine().addHandler(engineComponent);
         log.info(name + " is activated");
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

@@ -2,9 +2,8 @@ package management.service.components.handleComponet;
 
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
-import management.playerManagement.Player;
 
-public interface HandleComponent {
+public interface EngineComponent {
 
     void setup();
 
@@ -16,5 +15,5 @@ public interface HandleComponent {
 
     boolean isWorking();
 
-    void setWorking(final boolean able) throws IllegalSwitchOffHandleComponentException;
+    void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException;
 }

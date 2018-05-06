@@ -2,18 +2,17 @@ package bonus.devourerBonuses.bonuses.health.regenerationRoot;
 
 import bonus.bonuses.Bonus;
 import javafx.scene.image.ImageView;
-import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
 import management.processors.exceptions.UnsupportedProcessorException;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import management.playerManagement.Player;
 import management.processors.Processor;
 
 import java.util.logging.Logger;
 
-public final class HRegenerationRoot extends Bonus implements DynamicHandleService {
+public final class HRegenerationRoot extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(HRegenerationRoot.class.getName());
 
@@ -26,7 +25,7 @@ public final class HRegenerationRoot extends Bonus implements DynamicHandleServi
     @Override
     public final void use() {
         installCustomAttack();
-        actionManager.getEventEngine().addHandler(getHandlerInstance());
+        actionManager.getEventEngine().addHandler(getPrototypeEngineComponent());
     }
 
     private void installCustomAttack() {
@@ -50,8 +49,8 @@ public final class HRegenerationRoot extends Bonus implements DynamicHandleServi
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private boolean isWorking = true;
 

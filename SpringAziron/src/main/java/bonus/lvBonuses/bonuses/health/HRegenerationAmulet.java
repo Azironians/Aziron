@@ -4,11 +4,11 @@ import bonus.bonuses.Bonus;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import management.playerManagement.Player;
 
-public final class HRegenerationAmulet extends Bonus implements DynamicHandleService {
+public final class HRegenerationAmulet extends Bonus implements DynamicEngineService {
 
     private static final double HEALING_BOOST = 75;
 
@@ -18,12 +18,12 @@ public final class HRegenerationAmulet extends Bonus implements DynamicHandleSer
 
     @Override
     public final void use() {
-        actionManager.getEventEngine().addHandler(getHandlerInstance());
+        actionManager.getEventEngine().addHandler(getPrototypeEngineComponent());
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

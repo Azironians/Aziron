@@ -7,12 +7,12 @@ import heroes.abstractHero.hero.Hero
 import heroes.abstractHero.skills.Skill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.service.components.handleComponet.{HandleComponent, IllegalSwitchOffHandleComponentException}
-import management.service.engine.services.RegularHandleService
+import management.service.components.handleComponet.{EngineComponent, IllegalSwitchOffEngineComponentException}
 import management.playerManagement.Player
+import management.service.engine.services.RegularEngineService
 
 final class HSnakeShield(name: String, val id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
-  with RegularHandleService {
+  with RegularEngineService {
 
   private var snakeShieldSkillProxyComponent: SnakeShieldSkillProxyComponent = _
 
@@ -34,7 +34,7 @@ final class HSnakeShield(name: String, val id: Int, sprite: ImageView) extends B
     skill.setActionManager(actionManager)
   }
 
-  override def getRegularHandlerInstance(player: Player): HandleComponent = new HandleComponent {
+  override def installSingletonEngineComponent(player: Player): EngineComponent = new EngineComponent {
 
     private var previousArmor: Double = 0
 
@@ -91,6 +91,6 @@ final class HSnakeShield(name: String, val id: Int, sprite: ImageView) extends B
 
     override final def isWorking: Boolean = true
 
-    override final def setWorking(able: Boolean): Unit = throw new IllegalSwitchOffHandleComponentException()
+    override final def setWorking(able: Boolean): Unit = throw new IllegalSwitchOffEngineComponentException()
   }
 }

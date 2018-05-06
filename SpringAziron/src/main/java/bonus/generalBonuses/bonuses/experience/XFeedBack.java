@@ -1,9 +1,9 @@
 package bonus.generalBonuses.bonuses.experience;
 
 import bonus.bonuses.Bonus;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
+import management.service.engine.services.RegularEngineService;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
@@ -12,7 +12,7 @@ import management.playerManagement.Player;
 
 import java.util.logging.Logger;
 
-public final class XFeedBack extends Bonus implements RegularHandleService {
+public final class XFeedBack extends Bonus implements RegularEngineService {
 
     private static final Logger log = Logger.getLogger(XFeedBack.class.getName());
 
@@ -45,8 +45,8 @@ public final class XFeedBack extends Bonus implements RegularHandleService {
     }
 
     @Override
-    public final HandleComponent getRegularHandlerInstance(final Player inputPlayer) {
-        return new HandleComponent() {
+    public final EngineComponent installSingletonEngineComponent(final Player inputPlayer) {
+        return new EngineComponent() {
 
             private Player player;
 
@@ -93,8 +93,8 @@ public final class XFeedBack extends Bonus implements RegularHandleService {
 
             @Override
             public final void setWorking(final boolean able)
-                    throws IllegalSwitchOffHandleComponentException {
-                throw new IllegalSwitchOffHandleComponentException("FeedBack handler " +
+                    throws IllegalSwitchOffEngineComponentException {
+                throw new IllegalSwitchOffEngineComponentException("FeedBack handler " +
                         "component always must work in EventEngine");
             }
         };

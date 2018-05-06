@@ -5,12 +5,12 @@ import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
 
-public final class HArhawrath extends Bonus implements DynamicHandleService {
+public final class HArhawrath extends Bonus implements DynamicEngineService {
 
     public HArhawrath(final String name, final int id, final ImageView sprite) {
         super(name, id, sprite);
@@ -18,12 +18,12 @@ public final class HArhawrath extends Bonus implements DynamicHandleService {
 
     @Override
     public final void use() {
-        actionManager.getEventEngine().addHandler(getHandlerInstance());
+        actionManager.getEventEngine().addHandler(getPrototypeEngineComponent());
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private ATeam team;
 

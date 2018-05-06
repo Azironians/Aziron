@@ -8,11 +8,11 @@ import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
 import management.service.components.providerComponent.ProviderComponent;
 import management.service.engine.EventEngine;
-import management.service.engine.services.RegularHandleService;
+import management.service.engine.services.RegularEngineService;
 import management.playerManagement.Player;
 
 import java.util.HashSet;
@@ -21,7 +21,7 @@ import java.util.Set;
 
 import static bonus.lvBonuses.bonuses.attack.hunt.StepBack.ID;
 
-public final class AHunt extends Bonus implements RegularHandleService {
+public final class AHunt extends Bonus implements RegularEngineService {
 
     private static final double DAMAGE = 75;
 
@@ -94,8 +94,8 @@ public final class AHunt extends Bonus implements RegularHandleService {
     }
 
     @Override
-    public final HandleComponent getRegularHandlerInstance(final Player player) {
-        return new HandleComponent() {
+    public final EngineComponent installSingletonEngineComponent(final Player player) {
+        return new EngineComponent() {
 
             private Player currentPlayer;
 
@@ -161,8 +161,8 @@ public final class AHunt extends Bonus implements RegularHandleService {
             }
 
             @Override
-            public void setWorking(final boolean able) throws IllegalSwitchOffHandleComponentException {
-                throw new IllegalSwitchOffHandleComponentException();
+            public void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException {
+                throw new IllegalSwitchOffEngineComponentException();
             }
         };
     }

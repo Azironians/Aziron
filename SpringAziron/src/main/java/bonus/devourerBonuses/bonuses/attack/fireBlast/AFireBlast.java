@@ -5,15 +5,15 @@ import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import lib.duplexMap.DuplexMap;
 import management.actionManagement.actions.ActionEvent;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
+import management.service.engine.services.RegularEngineService;
 import management.playerManagement.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public final class AFireBlast extends Bonus implements RegularHandleService {
+public final class AFireBlast extends Bonus implements RegularEngineService {
 
     private FireBlastSkillProxyComponent fireBlastSkillProxyComponent;
 
@@ -35,8 +35,8 @@ public final class AFireBlast extends Bonus implements RegularHandleService {
     }
 
     @Override
-    public final HandleComponent getRegularHandlerInstance(final Player player) {
-        return new HandleComponent() {
+    public final EngineComponent installSingletonEngineComponent(final Player player) {
+        return new EngineComponent() {
 
             private Player currentPlayer;
 
@@ -78,8 +78,8 @@ public final class AFireBlast extends Bonus implements RegularHandleService {
             }
 
             @Override
-            public final void setWorking(boolean able) throws IllegalSwitchOffHandleComponentException {
-                throw new IllegalSwitchOffHandleComponentException("FireBlast handler " +
+            public final void setWorking(boolean able) throws IllegalSwitchOffEngineComponentException {
+                throw new IllegalSwitchOffEngineComponentException("FireBlast handler " +
                         "component always must work in EventEngine");
             }
         };

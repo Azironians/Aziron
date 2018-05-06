@@ -1,8 +1,8 @@
 package bonus.generalBonuses.bonuses.health;
 
 import bonus.bonuses.Bonus;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
@@ -12,7 +12,7 @@ import management.playerManagement.Player;
 import java.util.logging.Logger;
 
 
-public final class HStrengthenTheArmor extends Bonus implements DynamicHandleService {
+public final class HStrengthenTheArmor extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(HStrengthenTheArmor.class.getName());
 
@@ -24,14 +24,14 @@ public final class HStrengthenTheArmor extends Bonus implements DynamicHandleSer
 
     @Override
     public final void use() {
-        final HandleComponent handler = getHandlerInstance();
+        final EngineComponent handler = getPrototypeEngineComponent();
         actionManager.getEventEngine().addHandler(handler);
         log.info("ARMOR UP");
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

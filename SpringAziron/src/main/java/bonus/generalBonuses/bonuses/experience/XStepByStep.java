@@ -1,8 +1,8 @@
 package bonus.generalBonuses.bonuses.experience;
 
 import bonus.bonuses.Bonus;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
@@ -10,7 +10,7 @@ import management.playerManagement.Player;
 
 import java.util.logging.Logger;
 
-public final class XStepByStep extends Bonus implements DynamicHandleService {
+public final class XStepByStep extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(XStepByStep.class.getName());
 
@@ -24,14 +24,14 @@ public final class XStepByStep extends Bonus implements DynamicHandleService {
 
     @Override
     public final void use() {
-        final HandleComponent handler = getHandlerInstance();
+        final EngineComponent handler = getPrototypeEngineComponent();
         actionManager.getEventEngine().addHandler(handler);
         log.info("EXPERIENCE IS INCREASED BY 10% IN DURING 3 TURNS");
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private int count = TURNS;
 

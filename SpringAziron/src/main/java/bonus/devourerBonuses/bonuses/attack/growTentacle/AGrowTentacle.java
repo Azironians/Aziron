@@ -5,16 +5,16 @@ import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.EngineComponent;
 import management.service.components.providerComponent.ProviderComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.engine.services.DynamicEngineService;
 import management.bonusManagement.BonusManager;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
 
 import java.util.logging.Logger;
 
-public final class AGrowTentacle extends Bonus implements DynamicHandleService {
+public final class AGrowTentacle extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(AGrowTentacle.class.getName());
 
@@ -31,12 +31,12 @@ public final class AGrowTentacle extends Bonus implements DynamicHandleService {
         final Hero currentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
         currentHero.setAttack(currentHero.getAttack() + ATTACK_BOOST);
         log.info("+4 BEFORE_ATTACK");
-        actionManager.getEventEngine().addHandler(getHandlerInstance());
+        actionManager.getEventEngine().addHandler(getPrototypeEngineComponent());
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

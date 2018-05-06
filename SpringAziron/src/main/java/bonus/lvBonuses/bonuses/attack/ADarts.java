@@ -7,12 +7,12 @@ import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
+import management.service.engine.services.RegularEngineService;
 import management.playerManagement.Player;
 
-public final class ADarts extends Bonus implements RegularHandleService {
+public final class ADarts extends Bonus implements RegularEngineService {
 
     private double allDamage;
 
@@ -32,8 +32,8 @@ public final class ADarts extends Bonus implements RegularHandleService {
     }
 
     @Override
-    public final HandleComponent getRegularHandlerInstance(final Player player) {
-        return new HandleComponent() {
+    public final EngineComponent installSingletonEngineComponent(final Player player) {
+        return new EngineComponent() {
 
             private Player currentPlayer;
 
@@ -69,8 +69,8 @@ public final class ADarts extends Bonus implements RegularHandleService {
             }
 
             @Override
-            public final void setWorking(final boolean able) throws IllegalSwitchOffHandleComponentException {
-                throw new IllegalSwitchOffHandleComponentException();
+            public final void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException {
+                throw new IllegalSwitchOffEngineComponentException();
             }
         };
     }

@@ -3,18 +3,18 @@ package bonus.devourerBonuses.bonuses.experience.snakeCollapse
 import bonus.bonuses.Bonus
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.service.components.handleComponet.HandleComponent
-import management.service.engine.services.DynamicHandleService
 import management.playerManagement.Player
 import management.processors.Processor
+import management.service.components.handleComponet.EngineComponent
+import management.service.engine.services.DynamicEngineService
 
 final class XSnakeCollapse(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
-  with DynamicHandleService {
+  with DynamicEngineService {
 
   private var previousProcessor: Processor = _
 
   override def use(): Unit = {
-    actionManager.getEventEngine.addHandler(getHandlerInstance)
+    actionManager.getEventEngine.addHandler(getPrototypeEngineComponent)
   }
 
   def installCustomSkillProcessor(): Unit = {
@@ -25,7 +25,7 @@ final class XSnakeCollapse(name: String, id: Int, sprite: ImageView) extends Bon
 
   def installPreviousProcessor(): Unit = actionManager.setSkillProcessor(previousProcessor)
 
-  override def getHandlerInstance: HandleComponent = new HandleComponent {
+  override def getPrototypeEngineComponent: EngineComponent = new EngineComponent {
 
     private var player: Player = _
 

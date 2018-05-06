@@ -6,7 +6,7 @@ import javafx.scene.media.Media;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.EngineComponent;
 import management.battleManagement.BattleManager;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
@@ -52,8 +52,8 @@ public final class HybridisationSkill extends AbstractSkill {
         destroy();
     }
 
-    private HandleComponent getHandlerComponent(final PlayerManager playerManager){
-        return new HandleComponent() {
+    private EngineComponent getHandlerComponent(final PlayerManager playerManager){
+        return new EngineComponent() {
             
             private Player currentPlayer;
             

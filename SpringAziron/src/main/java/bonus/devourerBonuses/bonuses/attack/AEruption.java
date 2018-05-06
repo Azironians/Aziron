@@ -5,15 +5,15 @@ import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
 
 import java.util.logging.Logger;
 
 
-public final class AEruption extends Bonus implements DynamicHandleService{
+public final class AEruption extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(AEruption.class.getName());
 
@@ -25,14 +25,14 @@ public final class AEruption extends Bonus implements DynamicHandleService{
 
     @Override
     public final void use() {
-        final HandleComponent handler = getHandlerInstance();
+        final EngineComponent handler = getPrototypeEngineComponent();
         actionManager.getEventEngine().addHandler(handler);
         log.info("ERUPTION IS ACTIVATED");
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

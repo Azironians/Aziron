@@ -10,16 +10,16 @@ import javafx.util.Duration;
 import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.service.engine.services.DynamicHandleService;
-import management.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
+import management.service.engine.services.DynamicEngineService;
+import management.service.engine.services.RegularEngineService;
 import management.playerManagement.Player;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public final class ADarkSnatch extends ExtendedBonus implements RegularHandleService, DynamicHandleService {
+public final class ADarkSnatch extends ExtendedBonus implements RegularEngineService, DynamicEngineService {
 
     private final Text text;
 
@@ -55,12 +55,12 @@ public final class ADarkSnatch extends ExtendedBonus implements RegularHandleSer
 
     @Override
     public final void use() {
-        actionManager.getEventEngine().addHandler(getHandlerInstance());
+        actionManager.getEventEngine().addHandler(getPrototypeEngineComponent());
     }
 
     @Override
-    public final HandleComponent getRegularHandlerInstance(final Player player) {
-        return new HandleComponent() {
+    public final EngineComponent installSingletonEngineComponent(final Player player) {
+        return new EngineComponent() {
 
             private Player currentPlayer = player;
 
@@ -100,15 +100,15 @@ public final class ADarkSnatch extends ExtendedBonus implements RegularHandleSer
             }
 
             @Override
-            public final void setWorking(final boolean able) throws IllegalSwitchOffHandleComponentException {
-                throw new IllegalSwitchOffHandleComponentException();
+            public final void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException {
+                throw new IllegalSwitchOffEngineComponentException();
             }
         };
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

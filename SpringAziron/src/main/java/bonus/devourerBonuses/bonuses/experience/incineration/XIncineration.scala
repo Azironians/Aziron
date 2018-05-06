@@ -5,14 +5,12 @@ import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
 import management.battleManagement.processors.BonusLoadingProcessor
-import management.playerManagement.Player
 import management.service.components.chainComponet.ChainComponent
-import management.service.components.handleComponet.HandleComponent
-import management.service.components.providerComponent.ProviderComponent
-import management.service.engine.services.DynamicHandleService
+import management.service.components.handleComponet.EngineComponent
+import management.service.engine.services.DynamicEngineService
 
 final class XIncineration(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
-  with DynamicHandleService {
+  with DynamicEngineService {
 
   private var customBonusLoadingProcessor: ChainComponent[BonusLoadingProcessor] = _
 
@@ -28,10 +26,10 @@ final class XIncineration(name: String, id: Int, sprite: ImageView) extends Bonu
     //Check installation of customProcessor:
     this.installCustomProcessor()
     //Install handler:
-    this.actionManager.getEventEngine.addHandler(getHandlerInstance)
+    this.actionManager.getEventEngine.addHandler(getPrototypeEngineComponent)
   }
 
-  override def getHandlerInstance: HandleComponent = new HandleComponent {
+  override def getPrototypeEngineComponent: EngineComponent = new EngineComponent {
 
     private val hero: Hero = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
 

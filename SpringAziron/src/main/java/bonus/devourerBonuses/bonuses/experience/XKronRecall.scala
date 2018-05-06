@@ -5,15 +5,15 @@ import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import javafx.scene.text.Text
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.service.components.handleComponet.HandleComponent
-import management.service.engine.services.DynamicHandleService
 import management.playerManagement.{ATeam, Player}
+import management.service.components.handleComponet.EngineComponent
+import management.service.engine.services.DynamicEngineService
 
 import scala.collection.mutable
 import scala.collection.JavaConverters._
 
 final class XKronRecall(name: String, id: Int, sprite: ImageView) extends ExtendedBonus(name, id, sprite)
-  with DynamicHandleService {
+  with DynamicEngineService {
 
   private val START_COUNT = 0
 
@@ -28,7 +28,7 @@ final class XKronRecall(name: String, id: Int, sprite: ImageView) extends Extend
   override def use(): Unit = {
     if (this.count + 1 == END_COUNT) {
       //Put handler component:
-      this.actionManager.getEventEngine.addHandler(getHandlerInstance)
+      this.actionManager.getEventEngine.addHandler(getPrototypeEngineComponent)
       this.count = START_COUNT
     }
     else {
@@ -37,7 +37,7 @@ final class XKronRecall(name: String, id: Int, sprite: ImageView) extends Extend
     }
   }
 
-  override def getHandlerInstance: HandleComponent = new HandleComponent {
+  override def getPrototypeEngineComponent: EngineComponent = new EngineComponent {
 
     private val hero: Hero = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
 

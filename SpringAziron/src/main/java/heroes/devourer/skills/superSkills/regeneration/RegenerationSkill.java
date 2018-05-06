@@ -1,6 +1,6 @@
 package heroes.devourer.skills.superSkills.regeneration;
 
-import management.service.components.handleComponet.HandleComponent;
+import management.service.components.handleComponet.EngineComponent;
 import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.abstractSkill.AbstractSkill;
 import javafx.scene.image.ImageView;
@@ -43,8 +43,8 @@ public final class RegenerationSkill extends AbstractSkill {
         }
     }
 
-    private HandleComponent getHandlerInstance(final Player currentPlayer){
-        return new HandleComponent() { // FIXME: 14.02.2018 make skillEventEngine
+    private EngineComponent getHandlerInstance(final Player currentPlayer){
+        return new EngineComponent() { // FIXME: 14.02.2018 make skillEventEngine
 
             private Player player;
 

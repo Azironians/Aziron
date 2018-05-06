@@ -1,17 +1,17 @@
 package bonus.devourerBonuses.bonuses.special
 
 import bonus.bonuses.Bonus
+import heroes.abstractHero.hero.Hero
 import heroes.abstractHero.skills.Skill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionEventFactory, ActionType}
-import management.service.components.handleComponet.HandleComponent
-import management.service.engine.services.DynamicHandleService
-import management.playerManagement.Player
+import management.service.components.handleComponet.EngineComponent
+import management.service.engine.services.DynamicEngineService
 
 import scala.collection.JavaConverters._
 
 final class SBlowOfHeaven(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
-  with DynamicHandleService {
+  with DynamicEngineService {
 
   private val COMPLETE_TURNS = 3
 
@@ -35,12 +35,12 @@ final class SBlowOfHeaven(name: String, id: Int, sprite: ImageView) extends Bonu
       }
     }
     onlyReadySkill.reset()
-    this.actionManager.getEventEngine.addHandler(this.getHandlerInstance)
+    this.actionManager.getEventEngine.addHandler(this.getPrototypeEngineComponent)
   }
 
-  override def getHandlerInstance: HandleComponent = new HandleComponent {
+  override def getPrototypeEngineComponent: EngineComponent = new EngineComponent {
 
-    private val player = playerManager.getCurrentTeam.getCurrentPlayer
+    private val hero = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
 
     private var work = true
 
@@ -49,18 +49,17 @@ final class SBlowOfHeaven(name: String, id: Int, sprite: ImageView) extends Bonu
     override final def setup(): Unit = {}
 
     override final def handle(actionEvent: ActionEvent): Unit = {
-      if (actionEvent.getActionType == ActionType.START_TURN && actionEvent.getHero == this.player){
+      if (actionEvent.getActionType == ActionType.START_TURN && actionEvent.getHero == this.hero){
         this.turnCounter += 1
         if (this.turnCounter == COMPLETE_TURNS){
           this.turnCounter = 0
           this.work = false
-          val hero = this.player.getCurrentHero
-          val damage = hero.getAttack * DAMAGE_COEFFICIENT
+          val damage = this.hero.getAttack * DAMAGE_COEFFICIENT
           val opponentHero = playerManager.getOpponentTeam.getCurrentPlayer.getCurrentHero
           val eventEngine = actionManager.getEventEngine
-          eventEngine.handle(ActionEventFactory.getBeforeDealDamage(this.player, opponentHero, damage))
+          eventEngine.handle(ActionEventFactory.getBeforeDealDamage(this.hero, opponentHero, damage))
           if (opponentHero.getDamage(damage)){
-            eventEngine.handle(ActionEventFactory.getAfterDealDamage(this.player, opponentHero, damage))
+            eventEngine.handle(ActionEventFactory.getAfterDealDamage(this.hero, opponentHero, damage))
           }
         }
       }
@@ -68,7 +67,7 @@ final class SBlowOfHeaven(name: String, id: Int, sprite: ImageView) extends Bonu
 
     override final def getName: String = "BlowOfHeaven"
 
-    override final def getCurrentHero: Player = this.player
+    override final def getCurrentHero: Hero = this.hero
 
     override final def isWorking: Boolean = this.work
 

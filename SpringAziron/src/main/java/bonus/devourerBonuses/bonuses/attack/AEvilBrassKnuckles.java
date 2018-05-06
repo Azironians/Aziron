@@ -5,13 +5,13 @@ import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import management.playerManagement.Player;
 
 import java.util.logging.Logger;
 
-public final class AEvilBrassKnuckles extends Bonus implements DynamicHandleService{
+public final class AEvilBrassKnuckles extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(AEvilBrassKnuckles.class.getName());
 
@@ -26,14 +26,14 @@ public final class AEvilBrassKnuckles extends Bonus implements DynamicHandleServ
         final Player currentPlayer = playerManager.getCurrentTeam().getCurrentPlayer();
         final Hero currentHero = currentPlayer.getCurrentHero();
 
-        actionManager.getEventEngine().addHandler(getHandlerInstance());
+        actionManager.getEventEngine().addHandler(getPrototypeEngineComponent());
         currentHero.setAttack(currentHero.getAttack() * (1 + ATTACK_BOOST_COEFFICIENT));
         log.info("+15% BEFORE_ATTACK");
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

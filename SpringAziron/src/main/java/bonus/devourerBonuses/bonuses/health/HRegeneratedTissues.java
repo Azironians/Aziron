@@ -5,20 +5,20 @@ import bonus.generalBonuses.bonuses.health.HStrengthenTheArmor;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException;
-import management.service.engine.services.RegularHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
+import management.service.engine.services.RegularEngineService;
 import management.playerManagement.Player;
 
 import java.util.logging.Logger;
 
-public final class HRegeneratedTissues extends Bonus implements RegularHandleService {
+public final class HRegeneratedTissues extends Bonus implements RegularEngineService {
 
     private static final Logger log = Logger.getLogger(HStrengthenTheArmor.class.getName());
 
     private static final double HEALING = 10.0;
 
-    private HandleComponent handleComponent;
+    private EngineComponent engineComponent;
 
     public HRegeneratedTissues(final String name, final int id, final ImageView sprite) {
         super(name, id, sprite);
@@ -27,16 +27,16 @@ public final class HRegeneratedTissues extends Bonus implements RegularHandleSer
     @Override
     public final void use() {
         try {
-            handleComponent.setWorking(true);
+            engineComponent.setWorking(true);
             log.info("Regenerated tissues are activated");
-        } catch (final IllegalSwitchOffHandleComponentException e) {
+        } catch (final IllegalSwitchOffEngineComponentException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public HandleComponent getRegularHandlerInstance(final Player player) {
-        return new HandleComponent() {
+    public EngineComponent installSingletonEngineComponent(final Player player) {
+        return new EngineComponent() {
 
             private Player currentPlayer;
 
@@ -49,7 +49,7 @@ public final class HRegeneratedTissues extends Bonus implements RegularHandleSer
                 this.currentPlayer = player;
                 this.hitPoints = currentPlayer.getCurrentHero().getHitPoints();
                 this.healing = 0;
-                handleComponent = this;
+                engineComponent = this;
             }
 
             @Override

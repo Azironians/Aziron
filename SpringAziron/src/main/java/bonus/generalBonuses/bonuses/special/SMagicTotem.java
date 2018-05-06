@@ -1,8 +1,8 @@
 package bonus.generalBonuses.bonuses.special;
 
 import bonus.bonuses.Bonus;
-import management.service.components.handleComponet.HandleComponent;
-import management.service.engine.services.DynamicHandleService;
+import management.service.components.handleComponet.EngineComponent;
+import management.service.engine.services.DynamicEngineService;
 import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public final class SMagicTotem extends Bonus implements DynamicHandleService {
+public final class SMagicTotem extends Bonus implements DynamicEngineService {
 
     private static final Logger log = Logger.getLogger(SMagicTotem.class.getName());
 
@@ -37,13 +37,13 @@ public final class SMagicTotem extends Bonus implements DynamicHandleService {
             skill.setCoefficients(newCoefficients);
         }
         log.info("SKILL POWER INCREASED BY 10%");
-        final HandleComponent handler = getHandlerInstance();
+        final EngineComponent handler = getPrototypeEngineComponent();
         actionManager.getEventEngine().addHandler(handler);
     }
 
     @Override
-    public final HandleComponent getHandlerInstance() {
-        return new HandleComponent() {
+    public final EngineComponent getPrototypeEngineComponent() {
+        return new EngineComponent() {
 
             private Player player;
 

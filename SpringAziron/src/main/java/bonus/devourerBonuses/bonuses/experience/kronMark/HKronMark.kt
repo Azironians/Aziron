@@ -4,13 +4,13 @@ import bonus.bonuses.Bonus
 import heroes.abstractHero.skills.Skill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.ActionEvent
-import management.service.components.handleComponet.HandleComponent
-import management.service.components.handleComponet.IllegalSwitchOffHandleComponentException
-import management.service.engine.services.RegularHandleService
+import management.service.components.handleComponet.EngineComponent
+import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException
+import management.service.engine.services.RegularEngineService
 import management.playerManagement.Player
 import java.util.ArrayList
 
-class HKronMark(name: String, id: Int, imageView: ImageView) : Bonus(name, id, imageView), RegularHandleService{
+class HKronMark(name: String, id: Int, imageView: ImageView) : Bonus(name, id, imageView), RegularEngineService {
 
     private var kronMarkProxyComponent: KronMarkProxyComponent? = null
 
@@ -24,11 +24,11 @@ class HKronMark(name: String, id: Int, imageView: ImageView) : Bonus(name, id, i
 
     private fun wireActionManager(skill: Skill) = skill.setActionManager(actionManager)
 
-    override fun getRegularHandlerInstance(player: Player?): HandleComponent
-            = StarterHandleComponent(player, kronMarkProxyComponent)
+    override fun installSingletonEngineComponent(player: Player?): EngineComponent
+            = StarterEngineComponent(player, kronMarkProxyComponent)
 
-    private class StarterHandleComponent(val player: Player?, var kronMarkProxyComponent: KronMarkProxyComponent?)
-        : HandleComponent{
+    private class StarterEngineComponent(val player: Player?, var kronMarkProxyComponent: KronMarkProxyComponent?)
+        : EngineComponent {
 
         override fun setup() {
             kronMarkProxyComponent = KronMarkProxyComponent(player)
@@ -57,7 +57,7 @@ class HKronMark(name: String, id: Int, imageView: ImageView) : Bonus(name, id, i
         override fun isWorking(): Boolean = true
 
         override fun setWorking(able: Boolean) {
-            throw IllegalSwitchOffHandleComponentException()
+            throw IllegalSwitchOffEngineComponentException()
         }
     }
 }
