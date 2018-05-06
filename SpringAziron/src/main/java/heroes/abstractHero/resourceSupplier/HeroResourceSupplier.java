@@ -110,9 +110,6 @@ public abstract class HeroResourceSupplier {
         }
     }
 
-    //Presentation:
-//    @Inject
-//    @Named("presentationPath")
     private static String presentationPath = "presentation/spotlight.png";
 
     public ImageView getPresentationBackground() {

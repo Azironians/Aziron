@@ -73,7 +73,7 @@ public final class ALocation {
         this.experience = (Text) this.characteristics.getChildren().get(5);
         this.requiredExperience = (Text) this.characteristics.getChildren().get(6);
         this.time = (Text) this.characteristics.getChildren().get(7);
-        //name:
+        //fieldName:
         this.name = (Text) this.characteristics.getChildren().get(8);
     }
 

@@ -2,7 +2,6 @@ package bonus.devourerBonuses.bonuses.health;
 
 import bonus.bonuses.Bonus;
 import bonus.generalBonuses.bonuses.health.HStrengthenTheArmor;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
@@ -52,7 +51,7 @@ public final class HKronArmor extends Bonus implements DynamicEngineService {
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
-                final Hero currentHero = player.getCurrentHero();
+                final heroes.abstractHero.hero.Hero currentHero = player.getCurrentHero();
                 final double hitPointsComparison = hitPoints - currentHero.getHitPoints();
                 log.info("ARMOR HANDLE");
                 final boolean isNecessaryHealing = hitPointsComparison > BIG_DAMAGE;

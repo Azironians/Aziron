@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEventFactory;
 import management.playerManagement.Player;
@@ -18,7 +17,7 @@ public final class AHarpoonUnderworlds extends Bonus {
     public final void use() {
         final Player player = playerManager.getCurrentTeam().getCurrentPlayer();
         final Player opponentPlayer = playerManager.getOpponentTeam().getCurrentPlayer();
-        final Hero opponentHero = opponentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = opponentPlayer.getCurrentHero();
         final double damage = player.getCurrentHero().getLevel() * DAMAGE;
         if (opponentHero.getDamage(damage)){
             actionManager.getEventEngine().handle(ActionEventFactory.getAfterDealDamage(player, opponentHero, damage));

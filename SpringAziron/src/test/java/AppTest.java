@@ -4,8 +4,16 @@
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.lang.reflect.InvocationTargetException;
 
-public class AppTest {
+public final class AppTest {
 
+    @Test
+    public final void test() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+        final B a = new A();
+        System.out.println(a.toString());
+        Class clazz = a.getClass();
+        B o = (A) clazz.getDeclaredConstructor().newInstance();
+        System.out.println(o.toString());
+    }
 }

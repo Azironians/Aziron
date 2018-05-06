@@ -2,7 +2,6 @@ package bonus.lvBonuses.bonuses.attack.hunt;
 
 import bonus.bonuses.Bonus;
 import management.bonusManagement.BonusManager;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;
@@ -29,7 +28,7 @@ public final class AHunt extends Bonus implements RegularEngineService {
 
     private Pair<Integer, ProviderComponent<Integer>> indexVsOpponentPreviousProviderComponent;
 
-    private Set<Hero> enemyHeroBlackSet;
+    private Set<heroes.abstractHero.hero.Hero> enemyHeroBlackSet;
 
     public AHunt(final String name, final int id, final ImageView sprite) {
         super(name, id, sprite);
@@ -38,7 +37,7 @@ public final class AHunt extends Bonus implements RegularEngineService {
 
     @Override
     public final void use() {
-        final Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
         final BonusManager bonusManager = opponentHero.getBonusManager();
         final int index = bonusManager.getAvailableProviderComponent();
         final List<ProviderComponent<Integer>> providerComponents = bonusManager.getProviderComponentList();
@@ -107,14 +106,14 @@ public final class AHunt extends Bonus implements RegularEngineService {
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 final ActionType actionType = actionEvent.getActionType();
-                final Hero hero = actionEvent.getHero().getCurrentHero();
+                final heroes.abstractHero.hero.Hero hero = actionEvent.getHero().getCurrentHero();
                 if (actionType == ActionType.AFTER_USED_BONUS && enemyHeroBlackSet.contains(hero)){
                     final Object data = actionEvent.getData();
                     if (data instanceof String){
                         final String message = (String) data;
                         if (message.equals("StepBack")){
                             //Setup Hunt bonus:
-                            final Hero currentHero = currentPlayer.getCurrentHero();
+                            final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
                             final BonusManager bonusManager = currentHero.getBonusManager();
                             final int index = bonusManager.getAvailableProviderComponent();
                             final List<ProviderComponent<Integer>> providerComponents

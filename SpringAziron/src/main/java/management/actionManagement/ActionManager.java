@@ -3,7 +3,6 @@ package management.actionManagement;
 import bonus.bonuses.Bonus;
 import com.google.inject.Inject;
 import gui.service.graphicEngine.GraphicEngine;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import management.actionManagement.actionProccessors.*;
 import management.actionManagement.actions.ActionEventFactory;
@@ -55,7 +54,7 @@ public final class ActionManager {
     public final void setHeroRequest(final ATeam clickedTeam) {
         final ATeam currentTeam = playerManager.getCurrentTeam();
         final Player currentPlayer = currentTeam.getCurrentPlayer();
-        final Hero currentHero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
         if (clickedTeam.equals(currentTeam)) {
             if (currentHero.isTreatmentAccess()) {
                 eventEngine.handle(ActionEventFactory.getBeforeTreatment(currentHero));
@@ -71,10 +70,10 @@ public final class ActionManager {
         }
     }
 
-    public final void setSkillRequest(final Hero hero, final Skill skill) {
+    public final void setSkillRequest(final heroes.abstractHero.hero.Hero hero, final Skill skill) {
         final ATeam currentTeam = playerManager.getCurrentTeam();
         final Player currentPlayer = currentTeam.getCurrentPlayer();
-        final Hero currentHero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
         final boolean heroAuthentication = hero.equals(currentHero);
         if (heroAuthentication) {
             final boolean access = skill.isSkillAccess();
@@ -95,7 +94,7 @@ public final class ActionManager {
     }
 
     public final void setBonusRequest(final Bonus bonus) {
-        final Hero currentHero = this.playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = this.playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
         this.graphicEngine.hideBonuses();
         this.eventEngine.handle(ActionEventFactory.getAfterUsedBonus(currentHero, bonus));
         this.bonusProcess(bonus);

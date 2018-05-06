@@ -1,6 +1,5 @@
 package management.actionManagement.actionProccessors;
 
-import heroes.abstractHero.hero.Hero;
 import management.actionManagement.ActionManager;
 import management.battleManagement.BattleManager;
 import management.playerManagement.ATeam;
@@ -24,7 +23,7 @@ public class TreatmentProcessor implements Processor {
     @Override
     public void process() {
         final Player currentPlayer = team.getCurrentPlayer();
-        final Hero currentHero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
         final double treatmentValue = currentHero.getTreatment();
         if (currentHero.getHealing(treatmentValue)) {
             actionManager.getEventEngine().handle();

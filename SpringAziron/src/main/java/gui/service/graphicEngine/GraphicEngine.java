@@ -6,7 +6,6 @@ import com.google.inject.Singleton;
 import controllers.main.matchmaking.ControllerMatchMaking;
 import gui.service.locations.ALocation;
 import gui.windows.WindowType;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -89,7 +88,7 @@ public final class GraphicEngine {
     }
 
     private void wireActionManagerToSkills(final ActionManager actionManager, final ATeam leftATeam, final ATeam rightATeam){
-        final List<Hero> allHeroes = new ArrayList<>(){{
+        final List<heroes.abstractHero.hero.Hero> allHeroes = new ArrayList<>(){{
             add(leftATeam.getCurrentPlayer().getCurrentHero());
             add(rightATeam.getCurrentPlayer().getCurrentHero());
             if (playerManager.getGameMode() == GameMode._2x2){
@@ -97,7 +96,7 @@ public final class GraphicEngine {
                 add(rightATeam.getAlternativePlayer().getCurrentHero());
             }
         }};
-        for (final Hero hero: allHeroes){
+        for (final heroes.abstractHero.hero.Hero hero: allHeroes){
             final List<Skill> skills = hero.getCollectionOfSkills();
             for (final Skill skill : skills){
                 skill.setActionManager(actionManager);
@@ -115,7 +114,7 @@ public final class GraphicEngine {
 
     private void showLocation(final ALocation location, final ATeam team){
         final Player currentPlayer = team.getCurrentPlayer();
-        final Hero hero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero hero = currentPlayer.getCurrentHero();
         hero.setLocation(location);
         location.setFace(currentPlayer.getCurrentHero().getFace());
         //Profile:

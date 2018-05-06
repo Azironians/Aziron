@@ -52,7 +52,7 @@ public final class EventEngine {
             wireManagersToBonus(bonus, actionManager, battleManager, playerManager);
             if (implementsRegularHandleService(bonus)) {
                 final RegularEngineService regularEngineService = (RegularEngineService) bonus;
-                addHandler(regularEngineService.installSingletonEngineComponent(player));
+                this.addHandler(regularEngineService.installSingletonEngineComponent(player.getCurrentHero()));
             }
         }
     }
@@ -105,7 +105,6 @@ public final class EventEngine {
     }
 
     public final void addHandler(final EngineComponent handler) {
-        handler.setup();
         this.handlers.add(handler);
     }
 

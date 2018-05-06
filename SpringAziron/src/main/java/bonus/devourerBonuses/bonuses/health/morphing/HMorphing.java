@@ -1,10 +1,9 @@
 package bonus.devourerBonuses.bonuses.health.morphing;
 
 import bonus.bonuses.ExtendedBonus;
-import bonus.bonuses.service.annotations.Engine;
+import bonus.bonuses.service.annotations.EngineField;
 import bonus.bonuses.service.annotations.implementations.QuestEngine;
 import bonus.bonuses.service.parameterType.ParameterType;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -38,9 +37,9 @@ public final class HMorphing extends ExtendedBonus implements RegularEngineServi
     }
 
     @Override
-    public final EngineComponent installSingletonEngineComponent(final Player player) {
+    public final EngineComponent installSingletonEngineComponent(final Player hero) {
         if (this.morphingEngineComponent == null){
-            this.morphingEngineComponent = new MorphingEngineComponent(player);
+            this.morphingEngineComponent = new MorphingEngineComponent(hero);
         }
         return this.morphingEngineComponent;
     }
@@ -50,7 +49,7 @@ public final class HMorphing extends ExtendedBonus implements RegularEngineServi
         return this.morphingEngineComponent;
     }
 
-    @QuestEngine(engine = @Engine(name = "count", parameterType = ParameterType.VALUE))
+    @QuestEngine(engineProgress = @EngineField(fieldName = "count", parameterType = ParameterType.VALUE))
     final class MorphingEngineComponent implements EngineComponent {
 
         static final int START_COUNT = 0;
@@ -59,7 +58,7 @@ public final class HMorphing extends ExtendedBonus implements RegularEngineServi
 
         private int count = START_COUNT;
 
-        private final Hero hero;
+        private final heroes.abstractHero.hero.Hero hero;
 
         private MorphingEngineComponent(final Player player) {
             this.hero = player.getCurrentHero();
@@ -104,7 +103,7 @@ public final class HMorphing extends ExtendedBonus implements RegularEngineServi
         }
 
         @Override
-        public final Hero getCurrentHero() {
+        public final heroes.abstractHero.hero.Hero getCurrentHero() {
             return this.hero;
         }
 

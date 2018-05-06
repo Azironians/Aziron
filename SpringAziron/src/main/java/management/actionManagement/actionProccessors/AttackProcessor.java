@@ -1,6 +1,5 @@
 package management.actionManagement.actionProccessors;
 
-import heroes.abstractHero.hero.Hero;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEventFactory;
 import management.service.engine.EventEngine;
@@ -28,13 +27,13 @@ public class AttackProcessor implements Processor {
     @Override
     public void process() {
         final Player attackPlayer = attackTeam.getCurrentPlayer();
-        final Hero attackHero = attackPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero attackHero = attackPlayer.getCurrentHero();
         final double attackValue = attackHero.getAttack();
         final EventEngine eventEngine = actionManager.getEventEngine();
         if (attackHero.addExperience(attackValue)) {
             eventEngine.handle();
         }
-        final Hero victimHero = victimTeam.getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero victimHero = victimTeam.getCurrentPlayer().getCurrentHero();
         if (victimHero.getDamage(attackValue)) {
             eventEngine.handle(ActionEventFactory.getAfterDealDamage(attackPlayer, victimHero, attackValue));
         }

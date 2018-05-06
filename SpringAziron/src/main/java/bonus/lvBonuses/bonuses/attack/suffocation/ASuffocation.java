@@ -2,7 +2,6 @@ package bonus.lvBonuses.bonuses.attack.suffocation;
 
 import bonus.bonuses.Bonus;
 import management.bonusManagement.BonusManager;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;
@@ -23,9 +22,9 @@ public final class ASuffocation extends Bonus implements RegularEngineService {
 
     private static final int TURN = 1;
 
-    private List<Pair<Hero, Stack<Integer>>> listHeroVsDamage;
+    private List<Pair<heroes.abstractHero.hero.Hero, Stack<Integer>>> listHeroVsDamage;
 
-    private Map<Hero, Pair<Integer, ProviderComponent<Integer>>> mapHeroVsPreviousBonusIndex;
+    private Map<heroes.abstractHero.hero.Hero, Pair<Integer, ProviderComponent<Integer>>> mapHeroVsPreviousBonusIndex;
 
     public ASuffocation(final String name, final int id, final ImageView sprite) {
         super(name, id, sprite);
@@ -35,15 +34,15 @@ public final class ASuffocation extends Bonus implements RegularEngineService {
 
     @Override
     public final void use() {
-        final Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
-        for (final Pair<Hero, Stack<Integer>> heroVsDamage : listHeroVsDamage){
+        final heroes.abstractHero.hero.Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
+        for (final Pair<heroes.abstractHero.hero.Hero, Stack<Integer>> heroVsDamage : listHeroVsDamage){
             if (heroVsDamage.getKey() == opponentHero){
                 final Stack<Integer> damageStack = heroVsDamage.getValue();
                 damageStack.push(TURN);
                 return; //stop
             }
         }
-        final Pair<Hero, Stack<Integer>> heroStackPair = new Pair<>(opponentHero, new Stack<>());
+        final Pair<heroes.abstractHero.hero.Hero, Stack<Integer>> heroStackPair = new Pair<>(opponentHero, new Stack<>());
         final BonusManager bonusManager = opponentHero.getBonusManager();
         final int index = bonusManager.getAvailableProviderComponent();
         final List<ProviderComponent<Integer>> providerComponentList = bonusManager.getProviderComponentList();
@@ -92,7 +91,7 @@ public final class ASuffocation extends Bonus implements RegularEngineService {
             public final void handle(final ActionEvent actionEvent) {
                 if (actionEvent.getHero() == currentPlayer && actionEvent.getActionType() == ActionType.END_TURN) {
                     listHeroVsDamage.forEach(heroVsStackPair -> {
-                        final Hero opponentHero = heroVsStackPair.getKey();
+                        final heroes.abstractHero.hero.Hero opponentHero = heroVsStackPair.getKey();
                         final Stack<Integer> turnDamageStack = heroVsStackPair.getValue();
                         for (int i = 0; i < turnDamageStack.size(); i++) {
                             final int damage = turnDamageStack.get(i);
@@ -112,8 +111,8 @@ public final class ASuffocation extends Bonus implements RegularEngineService {
                     if (data instanceof String){
                         final String message = (String) data;
                         if (message.equals("DestroySnatch")){
-                            final Hero hero = victimPlayer.getCurrentHero();
-                            for (final Pair<Hero, Stack<Integer>> heroStackPair : listHeroVsDamage){
+                            final heroes.abstractHero.hero.Hero hero = victimPlayer.getCurrentHero();
+                            for (final Pair<heroes.abstractHero.hero.Hero, Stack<Integer>> heroStackPair : listHeroVsDamage){
                                 if (hero == heroStackPair.getKey()){
                                     final Stack<Integer> damageStack = heroStackPair.getValue();
                                     if (!damageStack.isEmpty()){

@@ -3,7 +3,6 @@ package bonus.generalBonuses.bonuses.experience;
 import bonus.bonuses.Bonus;
 import management.service.components.handleComponet.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
@@ -54,7 +53,7 @@ public final class XAnticipation extends Bonus implements DynamicEngineService {
 
                 if (actionEvent.getActionType() == ActionType.BEFORE_ATTACK && (attackPlayer == opponent
                         || attackPlayer == alternativeOpponent) && player == victimPlayer) {
-                    final Hero victimHero = player.getCurrentHero();
+                    final heroes.abstractHero.hero.Hero victimHero = player.getCurrentHero();
                     victimHero.addExperience(EXPERIENCE_BOOST);
                     log.info("+3 XP");
                 }

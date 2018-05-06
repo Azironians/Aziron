@@ -8,7 +8,6 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import heroes.abstractHero.builder.HeroBuilder;
-import heroes.abstractHero.hero.Hero;
 import heroes.devourer.annotation.DevourerHeroService;
 import heroes.lv.annotation.LVHeroService;
 import heroes.orcBash.annotation.OrcBashHeroService;
@@ -56,9 +55,9 @@ final class FictionalTeams {
         final Profile goresProfile = new Profile("Gore", 0, null, null, null
                 , null, null, 0, null);
 
-        final Hero joysDevourer = orcBashBuilder.buildHero();
+        final heroes.abstractHero.hero.Hero joysDevourer = orcBashBuilder.buildHero();
         joysDevourer.putBonusCollection(getGeneralDeck());
-        final Hero goresOrcBash = orcBashBuilder.buildHero();
+        final heroes.abstractHero.hero.Hero goresOrcBash = orcBashBuilder.buildHero();
         goresOrcBash.putBonusCollection(getGeneralDeck());
 
         final Player joysPlayer = new Player(joysProfile, joysDevourer);
@@ -75,9 +74,9 @@ final class FictionalTeams {
                 , null
                 , null, null, null);
 
-        final Hero mikesLordVampire = lvBuilder.buildHero();
+        final heroes.abstractHero.hero.Hero mikesLordVampire = lvBuilder.buildHero();
         mikesLordVampire.putBonusCollection(getGeneralDeck());
-        final Hero kevinOrcBash = lvBuilder.buildHero();
+        final heroes.abstractHero.hero.Hero kevinOrcBash = lvBuilder.buildHero();
         kevinOrcBash.putBonusCollection(getGeneralDeck());
 
         final Player mikesPlayer = new Player(mikesProfile, mikesLordVampire);

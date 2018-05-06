@@ -1,6 +1,5 @@
 package heroes.lv.skills.swapSkills.fury;
 
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.swapSkill.AbstractSimplifiedSkill;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
@@ -23,8 +22,8 @@ public final class FurySkill extends AbstractSimplifiedSkill {
     public final void use(final BattleManager battleManager, final PlayerManager playerManager) {
         final Player opponentPlayer = playerManager.getOpponentTeam().getCurrentPlayer();
         final Player currentPlayer = playerManager.getCurrentTeam().getCurrentPlayer();
-        final Hero currentHero = currentPlayer.getCurrentHero();
-        final Hero opponentHero = opponentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = opponentPlayer.getCurrentHero();
         final int levelComparison = opponentHero.getLevel() - currentHero.getLevel();
         final double SKILL_COEFFICIENT = levelComparison > 0 ? (levelComparison + 1) * coefficients.get(0)
                 : coefficients.get(0);

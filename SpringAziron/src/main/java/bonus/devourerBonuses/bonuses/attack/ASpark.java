@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEventFactory;
 import management.playerManagement.Player;
@@ -17,7 +16,7 @@ public final class ASpark extends Bonus{
     @Override
     public final void use() {
         final Player opponentPlayer = playerManager.getOpponentTeam().getCurrentPlayer();
-        final Hero opponentHero = opponentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = opponentPlayer.getCurrentHero();
         final double fixExperience = opponentHero.getCurrentExperience() * EXPERIENCE_COEFFICIENT;
         if (opponentHero.removeExperience(fixExperience)) {
             actionManager.getEventEngine().setRepeatHandling(true);

@@ -38,7 +38,7 @@ final class SAvatarsCore(name: String, id: Int, sprite: ImageView) extends Bonus
 
     private var opponentHeroHitPoints: Double = 0.0
 
-    private var opponentHero : Hero = _
+    private var opponentHero : Player = _
 
     private var isConstantOpponentHitPoints = true
 

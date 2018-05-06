@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import controllers.main.matchmaking.ControllerMatchMaking;
 import gui.windows.WindowType;
-import heroes.abstractHero.hero.Hero;
 import main.AGame;
 import management.battleManagement.BattleManager;
 import management.battleManagement.processors.BonusLoadingProcessor;
@@ -78,7 +77,7 @@ public final class PlayerManager {
     }
 
     private void setAdditionalExperience(final ATeam team){
-        final Hero hero = team.getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero hero = team.getCurrentPlayer().getCurrentHero();
         final double equalsAttack =  hero.getAttack();
         log.info("Adding XP: +" + equalsAttack);
         hero.addExperience(equalsAttack);

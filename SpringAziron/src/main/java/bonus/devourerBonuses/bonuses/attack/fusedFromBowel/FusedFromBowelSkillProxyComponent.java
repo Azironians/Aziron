@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack.fusedFromBowel;
 
 import gui.service.locations.ALocation;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import heroes.abstractHero.skills.abstractSkill.AbstractSkill;
 import javafx.collections.ObservableList;
@@ -22,7 +21,7 @@ final class FusedFromBowelSkillProxyComponent {
     }
 
     final void packSkills(final List<Integer> indexes, final ActionManager actionManager) {
-        final Hero currentHero = player.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = player.getCurrentHero();
         final List<Skill> skills = currentHero.getCollectionOfSkills();
         final ALocation location = player.getCurrentHero().getLocation();
         final ObservableList<Node> mainSkillContainers = location.getSkillPane().getChildren();

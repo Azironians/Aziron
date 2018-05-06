@@ -1,7 +1,6 @@
 package bonus.lvBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEventFactory;
 import management.playerManagement.ATeam;
@@ -21,7 +20,7 @@ public final class AVampBlast extends Bonus {
     public final void use() {
         final ATeam team = playerManager.getCurrentTeam();
         final Player player = team.getCurrentPlayer();
-        final Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
         team.changeTimeBy(TIME_LOSING);
         actionManager.getEventEngine().handle();
         if (opponentHero.getDamage(DAMAGE)) {

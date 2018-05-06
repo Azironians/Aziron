@@ -1,6 +1,5 @@
 package heroes.lv.skills.superSkills.cannibalism;
 
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.abstractSkill.AbstractSkill;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
@@ -26,8 +25,8 @@ public final class CannibalismSkill extends AbstractSkill {
         final double HEALING = getParent().getAttack() * coefficients.get(1);
         final Player currentPlayer = playerManager.getCurrentTeam().getCurrentPlayer();
         final Player opponentPlayer = playerManager.getOpponentTeam().getCurrentPlayer();
-        final Hero currentHero = currentPlayer.getCurrentHero();
-        final Hero opponentHero = opponentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = opponentPlayer.getCurrentHero();
         if (opponentHero.getDamage(DAMAGE)) {
             actionEvents.add(ActionEventFactory.getAfterDealDamage(currentPlayer, opponentHero, DAMAGE));
         }

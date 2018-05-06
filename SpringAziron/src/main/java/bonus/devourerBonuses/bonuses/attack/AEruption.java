@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
@@ -51,7 +50,7 @@ public final class AEruption extends Bonus implements DynamicEngineService {
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
-                final Hero currentHero = player.getCurrentHero();
+                final heroes.abstractHero.hero.Hero currentHero = player.getCurrentHero();
                 final double comparison = hitPoints - currentHero.getHitPoints();
                 if (comparison > 0 && currentHero.getHitPoints() < 0) {
                     log.info("COMPARISON: " + comparison);

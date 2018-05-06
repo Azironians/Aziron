@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import management.playerManagement.Player;
@@ -24,7 +23,7 @@ public final class ABreakthrough extends Bonus{
         final Player currentPlayer = playerManager.getCurrentTeam().getCurrentPlayer();
         final Player opponentPlayer = playerManager.getOpponentTeam().getCurrentPlayer();
 
-        final Hero opponentHero = opponentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = opponentPlayer.getCurrentHero();
         final List<Skill> opponentSkills = opponentHero.getCollectionOfSkills();
         for (final Skill skill: opponentSkills){
             final boolean levelReached = opponentHero.getLevel() >= skill.getRequiredLevel();

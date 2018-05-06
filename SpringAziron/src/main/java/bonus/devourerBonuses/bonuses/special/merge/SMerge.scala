@@ -46,7 +46,7 @@ final class SMerge(name: String, id: Int, sprite: ImageView) extends ExtendedBon
   }
 
   //FIXME: MOVE LOCATION CLASS ON HERO!!! NOW PLAYER IS TEMPORARY IN SIGNATURE!!!
-  private def mergeSkills(hero: Hero, player: Player): Unit = {
+  private def mergeSkills(hero: Player, player: Player): Unit = {
     val skills = hero.getCollectionOfSkills
     val indexBasicSkillList = this.foundBasicSkills(skills)
     val skillPane: Pane = player.getCurrentHero.getLocation.getSkillPane

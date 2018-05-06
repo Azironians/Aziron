@@ -3,7 +3,6 @@ package bonus.generalBonuses.bonuses.special;
 import bonus.bonuses.Bonus;
 import management.service.components.handleComponet.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
@@ -24,7 +23,7 @@ public final class SCounterSpell extends Bonus implements DynamicEngineService {
     @Override
     public final void use() {
         final Player opponentPlayer = playerManager.getOpponentTeam().getCurrentPlayer();
-        final Hero opponentHero = opponentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = opponentPlayer.getCurrentHero();
         final List<Skill> opponentSkills = opponentHero.getCollectionOfSkills();
 
         for (final Skill skill : opponentSkills) {

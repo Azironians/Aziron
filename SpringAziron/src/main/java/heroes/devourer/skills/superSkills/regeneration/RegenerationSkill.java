@@ -1,7 +1,6 @@
 package heroes.devourer.skills.superSkills.regeneration;
 
 import management.service.components.handleComponet.EngineComponent;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.abstractSkill.AbstractSkill;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
@@ -35,7 +34,7 @@ public final class RegenerationSkill extends AbstractSkill {
 
     private void getEffect(final Player currentPlayer, final double coefficient){
         final double HEALING = getParent().getTreatment() * coefficient;
-        final Hero currentHero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
         if (currentHero.getHealing(HEALING)){
             final ActionEvent actionEvent = new ActionEvent(null
                     , currentPlayer, "Regeneration: " + HEALING);

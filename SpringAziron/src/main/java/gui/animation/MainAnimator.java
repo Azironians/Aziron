@@ -2,7 +2,6 @@ package gui.animation;
 
 import com.google.inject.Singleton;
 import gui.service.locations.ALocation;
-import heroes.abstractHero.hero.Hero;
 import management.playerManagement.Player;
 
 @Singleton
@@ -18,7 +17,7 @@ public final class MainAnimator {
 
     public final void showLevelUp(final Player player){
         if (player.isCurrent()){
-            final Hero hero = player.getCurrentHero();
+            final heroes.abstractHero.hero.Hero hero = player.getCurrentHero();
             final int level = hero.getLevel();
             final ALocation location = player.getCurrentHero().getLocation();
             if (level - 1 < 9){

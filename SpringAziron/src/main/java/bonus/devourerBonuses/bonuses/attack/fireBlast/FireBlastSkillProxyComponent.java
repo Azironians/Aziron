@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack.fireBlast;
 
 import gui.service.locations.ALocation;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import heroes.abstractHero.skills.abstractSkill.AbstractSkill;
 import javafx.collections.ObservableList;
@@ -48,7 +47,7 @@ final class FireBlastSkillProxyComponent {
     }
 
     final boolean packSkill() {
-        final Hero currentHero = player.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = player.getCurrentHero();
         final List<Skill> skills = currentHero.getCollectionOfSkills();
         final Pair<Skill, Integer> availableSkill = getFirstAvailableSkill(skills);
         if (availableSkill != null){

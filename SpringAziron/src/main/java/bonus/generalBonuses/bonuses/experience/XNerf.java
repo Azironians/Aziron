@@ -1,7 +1,6 @@
 package bonus.generalBonuses.bonuses.experience;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import management.playerManagement.Player;
@@ -22,7 +21,7 @@ public final class XNerf extends Bonus {
     @Override
     public final void use() {
         final Player player = playerManager.getCurrentTeam().getCurrentPlayer();
-        final Hero currentHero = player.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = player.getCurrentHero();
 
         final double EXPERIENCE_BOOST = currentHero.getAttack() * BONUS_COEFFICIENT;
 

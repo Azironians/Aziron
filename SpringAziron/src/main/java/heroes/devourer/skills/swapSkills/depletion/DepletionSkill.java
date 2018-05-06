@@ -1,6 +1,5 @@
 package heroes.devourer.skills.swapSkills.depletion;
 
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.swapSkill.AbstractSimplifiedSkill;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
@@ -22,8 +21,8 @@ public final class DepletionSkill extends AbstractSimplifiedSkill {
     @Override
     public final void use(final BattleManager battleManager, final PlayerManager playerManager) {
         final Player opponentPlayer = playerManager.getOpponentTeam().getCurrentPlayer();
-        final Hero currentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
-        final Hero opponentHero = opponentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = opponentPlayer.getCurrentHero();
         final int levelComparison = opponentHero.getLevel() - currentHero.getLevel();
         final double experienceConsuming = levelComparison > 0 ? (levelComparison + 1) * coefficients.get(0)
                 : coefficients.get(0);

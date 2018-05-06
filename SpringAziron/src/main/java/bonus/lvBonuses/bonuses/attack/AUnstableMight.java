@@ -1,7 +1,6 @@
 package bonus.lvBonuses.bonuses.attack;
 
 import bonus.bonuses.ExtendedBonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
@@ -49,19 +48,19 @@ public final class AUnstableMight extends ExtendedBonus implements RegularEngine
 
     @Override
     public final void use() {
-        final Hero hero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero hero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
         hero.setAttack(hero.getAttack());
     }
 
     @Override
-    public final EngineComponent installSingletonEngineComponent(final Player player) {
+    public final EngineComponent installSingletonEngineComponent(final Player hero) {
         return new EngineComponent() {
 
             private Player currentPlayer;
 
             @Override
             public final void setup() {
-                this.currentPlayer = player;
+                this.currentPlayer = hero;
             }
 
             @Override

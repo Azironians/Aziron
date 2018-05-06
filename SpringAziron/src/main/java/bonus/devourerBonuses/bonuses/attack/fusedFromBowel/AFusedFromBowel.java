@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack.fusedFromBowel;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import management.playerManagement.Player;
@@ -28,7 +27,7 @@ public final class AFusedFromBowel extends Bonus {
     @Override
     public final void use() {
         final Player player = playerManager.getCurrentTeam().getCurrentPlayer();
-        final Hero hero = player.getCurrentHero();
+        final heroes.abstractHero.hero.Hero hero = player.getCurrentHero();
         if (levelReached(hero)) {
             revertLevel(hero);
             changeSkill(hero);
@@ -39,11 +38,11 @@ public final class AFusedFromBowel extends Bonus {
         }
     }
 
-    private boolean levelReached(final Hero hero) {
+    private boolean levelReached(final heroes.abstractHero.hero.Hero hero) {
         return hero.getLevel() >= REQUIRED_LEVEL;
     }
 
-    private void revertLevel(final Hero hero) {
+    private void revertLevel(final heroes.abstractHero.hero.Hero hero) {
         hero.setAttack(hero.getAttack() + ATTACK_BOOST);
         final List<Double> requiredExperienceList = hero.getListOfRequiredExperience();
         final double delta = requiredExperienceList.get(hero.getLevel() - 1)
@@ -53,7 +52,7 @@ public final class AFusedFromBowel extends Bonus {
         }
     }
 
-    private void changeSkill(final Hero hero) {
+    private void changeSkill(final heroes.abstractHero.hero.Hero hero) {
         final List<Integer> indexes = new ArrayList<>();
         final List<Skill> skills = hero.getCollectionOfSkills();
         for (int i = 0; i < skills.size() - 1; i++) {

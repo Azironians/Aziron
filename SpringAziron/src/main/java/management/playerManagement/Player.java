@@ -3,7 +3,6 @@ package management.playerManagement;
 import annotations.sourceAnnotations.Transcendental;
 import bonus.bonuses.Bonus;
 import gui.service.locations.ALocation;
-import heroes.abstractHero.hero.Hero;
 import management.profileManagement.Profile;
 import org.jetbrains.annotations.Contract;
 import scala.Tuple3;
@@ -15,9 +14,9 @@ public final class Player {
 
     private final Profile profile;
 
-    private Hero currentHero;
+    private heroes.abstractHero.hero.Hero currentHero;
 
-    private List<Hero> allHeroes;
+    private List<heroes.abstractHero.hero.Hero> allHeroes;
 
     private boolean hasAliveHeroes;
     //Total:
@@ -32,7 +31,7 @@ public final class Player {
 
     private ALocation location;
 
-    public Player(final Profile profile, final Hero currentHero) {
+    public Player(final Profile profile, final heroes.abstractHero.hero.Hero currentHero) {
         this.profile = profile;
         this.currentHero = currentHero;
         this.hasAliveHeroes = true;
@@ -42,8 +41,8 @@ public final class Player {
     }
 
 
-    public Tuple3<Boolean, Player, Hero> checkAliveHeroes() {
-        for (final Hero hero : this.allHeroes) {
+    public Tuple3<Boolean, Player, heroes.abstractHero.hero.Hero> checkAliveHeroes() {
+        for (final heroes.abstractHero.hero.Hero hero : this.allHeroes) {
             if (hero.isAlive()) {
                 //Временно будет доставать первого попавшегося:
                 //TODO: Панель выбора следующего героя после гибели предыдущего.
@@ -62,11 +61,11 @@ public final class Player {
     }
 
     @Contract(pure = true)
-    public Hero getCurrentHero() {
+    public heroes.abstractHero.hero.Hero getCurrentHero() {
         return currentHero;
     }
 
-    public void setCurrentHero(Hero currentHero) {
+    public void setCurrentHero(heroes.abstractHero.hero.Hero currentHero) {
         this.currentHero = currentHero;
     }
 
@@ -142,7 +141,7 @@ public final class Player {
     }
 
     @Transcendental
-    public final List<Hero> getAllHeroes() {
+    public final List<heroes.abstractHero.hero.Hero> getAllHeroes() {
         return this.allHeroes;
     }
 

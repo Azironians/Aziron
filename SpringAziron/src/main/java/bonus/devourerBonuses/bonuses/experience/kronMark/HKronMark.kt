@@ -24,8 +24,8 @@ class HKronMark(name: String, id: Int, imageView: ImageView) : Bonus(name, id, i
 
     private fun wireActionManager(skill: Skill) = skill.setActionManager(actionManager)
 
-    override fun installSingletonEngineComponent(player: Player?): EngineComponent
-            = StarterEngineComponent(player, kronMarkProxyComponent)
+    override fun installSingletonEngineComponent(hero: Player?): EngineComponent
+            = StarterEngineComponent(hero, kronMarkProxyComponent)
 
     private class StarterEngineComponent(val player: Player?, var kronMarkProxyComponent: KronMarkProxyComponent?)
         : EngineComponent {

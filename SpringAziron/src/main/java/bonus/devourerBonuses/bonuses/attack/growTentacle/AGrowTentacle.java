@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack.growTentacle;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
@@ -28,7 +27,7 @@ public final class AGrowTentacle extends Bonus implements DynamicEngineService {
 
     @Override
     public final void use() {
-        final Hero currentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
         currentHero.setAttack(currentHero.getAttack() + ATTACK_BOOST);
         log.info("+4 BEFORE_ATTACK");
         actionManager.getEventEngine().addHandler(getPrototypeEngineComponent());
@@ -58,7 +57,7 @@ public final class AGrowTentacle extends Bonus implements DynamicEngineService {
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 final Player player = actionEvent.getHero();
-                final Hero hero = actionEvent.getHero().getCurrentHero();
+                final heroes.abstractHero.hero.Hero hero = actionEvent.getHero().getCurrentHero();
                 if (actionEvent.getActionType() == ActionType.START_TURN
                         && (player == opponentTeam.getCurrentPlayer()
                         || player == opponentTeam.getAlternativePlayer())) {

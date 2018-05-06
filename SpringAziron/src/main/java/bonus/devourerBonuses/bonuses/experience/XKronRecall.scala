@@ -39,13 +39,13 @@ final class XKronRecall(name: String, id: Int, sprite: ImageView) extends Extend
 
   override def getPrototypeEngineComponent: EngineComponent = new EngineComponent {
 
-    private val hero: Hero = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
+    private val hero: Player = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
 
     private val opponentTeam: ATeam = playerManager.getOpponentTeam
 
     private var work: Boolean = true
 
-    private val opponentLevelMap = new mutable.HashMap[Hero, java.lang.Integer]
+    private val opponentLevelMap = new mutable.HashMap[Player, java.lang.Integer]
 
     private var additionalBonusCount: Int = 0
 
@@ -79,7 +79,7 @@ final class XKronRecall(name: String, id: Int, sprite: ImageView) extends Extend
 
     override final def getName: String = "KronRecall"
 
-    override final def getCurrentHero: Hero = this.hero
+    override final def getCurrentHero: Player = this.hero
 
     override final def isWorking: Boolean = this.work
 

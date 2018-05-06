@@ -7,8 +7,8 @@ import heroes.abstractHero.hero.Hero
 import heroes.abstractHero.skills.Skill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.service.components.handleComponet.{EngineComponent, IllegalSwitchOffEngineComponentException}
 import management.playerManagement.Player
+import management.service.components.handleComponet.{EngineComponent, IllegalSwitchOffEngineComponentException}
 import management.service.engine.services.RegularEngineService
 
 final class HSnakeShield(name: String, val id: Int, sprite: ImageView) extends Bonus(name, id, sprite)
@@ -47,7 +47,7 @@ final class HSnakeShield(name: String, val id: Int, sprite: ImageView) extends B
         actionEvent.getActionType match {
           case ActionType.BEFORE_DEAL_DAMAGE =>
             data match {
-              case heroVsDamage: javafx.util.Pair[Hero, Double] =>
+              case heroVsDamage: javafx.util.Pair[Player, Double] =>
                 val hero = heroVsDamage.getKey
                 if (player.getCurrentHero == hero){
                   this.previousArmor = hero.getArmor
@@ -76,7 +76,7 @@ final class HSnakeShield(name: String, val id: Int, sprite: ImageView) extends B
             }
           case ActionType.AFTER_DEAL_DAMAGE =>
             data match {
-              case heroVsDamage: javafx.util.Pair[Hero, Double] =>
+              case heroVsDamage: javafx.util.Pair[Player, Double] =>
                 val hero = heroVsDamage.getKey
                 if (player.getCurrentHero == hero){
                   hero.setArmor(previousArmor)

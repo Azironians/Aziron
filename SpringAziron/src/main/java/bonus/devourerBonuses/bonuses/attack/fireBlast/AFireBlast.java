@@ -35,14 +35,14 @@ public final class AFireBlast extends Bonus implements RegularEngineService {
     }
 
     @Override
-    public final EngineComponent installSingletonEngineComponent(final Player player) {
+    public final EngineComponent installSingletonEngineComponent(final Player hero) {
         return new EngineComponent() {
 
             private Player currentPlayer;
 
             @Override
             public final void setup() {
-                this.currentPlayer = player;
+                this.currentPlayer = hero;
                 fireBlastSkillProxyComponent = new FireBlastSkillProxyComponent(currentPlayer);
             }
 

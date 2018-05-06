@@ -33,14 +33,14 @@ public final class AHybridisation extends Bonus implements RegularEngineService 
     }
 
     @Override
-    public final EngineComponent installSingletonEngineComponent(final Player player) {
+    public final EngineComponent installSingletonEngineComponent(final Player hero) {
         return new EngineComponent() {
 
             private Player currentPlayer;
 
             @Override
             public final void setup() {
-                this.currentPlayer = player;
+                this.currentPlayer = hero;
                 hybridisationSkillProxyComponent = new HybridisationSkillProxyComponent(currentPlayer);
             }
 

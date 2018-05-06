@@ -2,7 +2,6 @@ package bonus.devourerBonuses.bonuses.health;
 
 import bonus.bonuses.Bonus;
 import bonus.generalBonuses.bonuses.health.HStrengthenTheArmor;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.service.components.handleComponet.EngineComponent;
@@ -54,7 +53,7 @@ public final class HRegeneratedTissues extends Bonus implements RegularEngineSer
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
-                final Hero hero = currentPlayer.getCurrentHero();
+                final heroes.abstractHero.hero.Hero hero = currentPlayer.getCurrentHero();
                 if (this.healing > 0) {
                     log.info("TISSUES HANDLE");
                     final double hitPointsComparison = hitPoints - hero.getHitPoints();

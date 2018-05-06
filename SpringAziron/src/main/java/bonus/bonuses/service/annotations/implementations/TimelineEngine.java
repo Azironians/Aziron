@@ -1,6 +1,6 @@
 package bonus.bonuses.service.annotations.implementations;
 
-import bonus.bonuses.service.annotations.Engine;
+import bonus.bonuses.service.annotations.EngineField;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,5 +11,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TimelineEngine {
 
-    Engine engine();
+    EngineField engine();
 }

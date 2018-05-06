@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack.hybridisation;
 
 import gui.service.locations.ALocation;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import heroes.abstractHero.skills.abstractSkill.AbstractSkill;
 import javafx.collections.ObservableList;
@@ -45,7 +44,7 @@ final class HybridisationSkillProxyComponent {
     }
 
     final boolean packSkill() {
-        final Hero currentHero = player.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = player.getCurrentHero();
         final List<Skill> skills = currentHero.getCollectionOfSkills();
         final Pair<Skill, Integer> availableSkill = isAvailableSkill(skills);
         if (availableSkill != null){

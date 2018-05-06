@@ -1,7 +1,6 @@
 package bonus.lvBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;
@@ -24,7 +23,7 @@ public final class ADarts extends Bonus implements RegularEngineService {
 
     @Override
     public final void use() {
-        final Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
         if (opponentHero.getDamage(allDamage)) {
             actionManager.getEventEngine().handle(ActionEventFactory.getAfterDealDamage(thisPlayer, opponentHero
                     , allDamage));
@@ -32,22 +31,22 @@ public final class ADarts extends Bonus implements RegularEngineService {
     }
 
     @Override
-    public final EngineComponent installSingletonEngineComponent(final Player player) {
+    public final EngineComponent installSingletonEngineComponent(final Player hero) {
         return new EngineComponent() {
 
             private Player currentPlayer;
 
             @Override
             public final void setup() {
-                this.currentPlayer = player;
-                thisPlayer = player;
+                this.currentPlayer = hero;
+                thisPlayer = hero;
                 allDamage = 0;
             }
 
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 if (actionEvent.getActionType() == ActionType.AFTER_DEAL_DAMAGE && actionEvent.getHero() == currentPlayer) {
-                    final Pair<Hero, Double> heroVsDamage = (Pair) actionEvent.getData();
+                    final Pair<heroes.abstractHero.hero.Hero, Double> heroVsDamage = (Pair) actionEvent.getData();
                     final double damage = heroVsDamage.getValue();
                     allDamage += damage;
                 }

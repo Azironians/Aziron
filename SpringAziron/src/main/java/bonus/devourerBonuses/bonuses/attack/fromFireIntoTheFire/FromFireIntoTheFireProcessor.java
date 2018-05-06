@@ -1,6 +1,5 @@
 package bonus.devourerBonuses.bonuses.attack.fromFireIntoTheFire;
 
-import heroes.abstractHero.hero.Hero;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actionProccessors.TreatmentProcessor;
 import management.actionManagement.actions.ActionEventFactory;
@@ -25,8 +24,8 @@ public final class FromFireIntoTheFireProcessor extends TreatmentProcessor {
     }
 
     public final void process(){
-        final Hero currentHero = currentPlayer.getCurrentHero();
-        final Hero opponentHero = opponentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = opponentPlayer.getCurrentHero();
         final double damage = currentHero.getTreatment();
         if (opponentHero.getDamage(damage)) {
             final EventEngine eventEngine = actionManager.getEventEngine();

@@ -1,6 +1,5 @@
 package bonus.devourerBonuses.bonuses.health.regenerationRoot;
 
-import heroes.abstractHero.hero.Hero;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actionProccessors.AttackProcessor;
 import management.actionManagement.actions.ActionEventFactory;
@@ -22,7 +21,7 @@ public final class RegenerationRootProcessor extends AttackProcessor {
     }
 
     public final void process(){
-        final Hero currentHero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
         final double treatmentValue = currentHero.getAttack();
         if (currentHero.getHealing(treatmentValue)) {
             actionManager.getEventEngine().handle(ActionEventFactory.getBeforeAttack(currentPlayer));

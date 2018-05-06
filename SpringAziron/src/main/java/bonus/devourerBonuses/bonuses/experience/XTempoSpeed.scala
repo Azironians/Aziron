@@ -1,7 +1,7 @@
 package bonus.devourerBonuses.bonuses.experience
 
 import bonus.bonuses.Bonus
-import bonus.bonuses.service.annotations.Engine
+import bonus.bonuses.service.annotations.EngineField
 import bonus.bonuses.service.annotations.implementations.{BonusEngine, QuestEngine}
 import bonus.bonuses.service.parameterType.ParameterType
 import heroes.abstractHero.hero.Hero
@@ -30,7 +30,7 @@ final class XTempoSpeed(name: String, id: Int, sprite: ImageView) extends Bonus(
 
   override def getSingletonEngineComponent: EngineComponent = this.tempoSpeedEngineComponent
 
-  @BonusEngine(engine = new Engine("bonusBoost", ParameterType.VALUE))
+  @BonusEngine(engine = new EngineField("bonusBoost", ParameterType.VALUE))
   private final class TempoSpeedEngineComponent(player: Player) extends EngineComponent {
 
     private val START_BONUS_BOOST: Int = 2
@@ -43,7 +43,7 @@ final class XTempoSpeed(name: String, id: Int, sprite: ImageView) extends Bonus(
 
     private val checkedParameterType = ParameterType.VALUE
 
-    private val hero: Hero = player.getCurrentHero
+    private val hero: Player = player.getCurrentHero
 
     def use(): Unit = this.totalBoost += this.bonusBoost
 
@@ -64,8 +64,8 @@ final class XTempoSpeed(name: String, id: Int, sprite: ImageView) extends Bonus(
             val componentClass = component.getClass
             if (componentClass.isAnnotationPresent(Class[QuestEngine])) {
               val questEngineAnnotation = componentClass.getAnnotation(Class[QuestEngine]).asInstanceOf[QuestEngine]
-              val engineAnnotation = questEngineAnnotation.engine()
-              val fieldName = engineAnnotation.name()
+              val engineAnnotation = questEngineAnnotation.engineProgress()
+              val fieldName = engineAnnotation.fieldName()
               val parameterType = engineAnnotation.parameterType()
               if (this.checkedParameterType == parameterType) {
                 val field = componentClass.getField(fieldName)
@@ -82,7 +82,7 @@ final class XTempoSpeed(name: String, id: Int, sprite: ImageView) extends Bonus(
 
     override def getName: String = "TempoSpeed"
 
-    override def getCurrentHero: Hero = this.hero
+    override def getCurrentHero: Player = this.hero
 
     override def isWorking: Boolean = true
 

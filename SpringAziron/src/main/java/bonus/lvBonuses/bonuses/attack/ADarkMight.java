@@ -1,7 +1,6 @@
 package bonus.lvBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
@@ -44,13 +43,13 @@ public final class ADarkMight extends Bonus implements DynamicEngineService {
                 final ActionType actionType = actionEvent.getActionType();
                 final Player player = actionEvent.getHero();
                 if (actionType == ActionType.START_TURN && (this.player == player)){
-                    final Hero hero = player.getCurrentHero();
+                    final heroes.abstractHero.hero.Hero hero = player.getCurrentHero();
                     hero.setAttack(hero.getAttack() + ATTACK_BOOST);
                     temporaryAttackBoost++;
                     actionManager.getEventEngine().setRepeatHandling(true);
                 }
                 if (actionType == ActionType.BEFORE_TREATMENT && (this.player == player)){
-                    final Hero hero = player.getCurrentHero();
+                    final heroes.abstractHero.hero.Hero hero = player.getCurrentHero();
                     double previousAttack = hero.getAttack() - temporaryAttackBoost;
                     if (previousAttack < 0){
                         previousAttack = 0;

@@ -3,7 +3,6 @@ package bonus.generalBonuses.bonuses.special;
 import bonus.bonuses.Bonus;
 import management.service.components.handleComponet.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
@@ -26,7 +25,7 @@ public final class SMagicTotem extends Bonus implements DynamicEngineService {
 
     @Override
     public final void use() {
-        final Hero hero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero hero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
         final List<Skill> skills = hero.getCollectionOfSkills();
         for (final Skill skill : skills) {
             final List<Double> coefficients = skill.getCoefficients();
@@ -59,7 +58,7 @@ public final class SMagicTotem extends Bonus implements DynamicEngineService {
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 if (skillPassed){
-                    final Hero hero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+                    final heroes.abstractHero.hero.Hero hero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
                     final List<Skill> skills = hero.getCollectionOfSkills();
                     for (final Skill skill : skills) {
                         final List<Double> coefficients = skill.getCoefficients();

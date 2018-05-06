@@ -1,7 +1,7 @@
 package bonus.bonuses.factory;
 
 import bonus.bonuses.Bonus;
-import bonus.generalBonuses.bonuses.attack.AAttack;
+import bonus.generalBonuses.bonuses.attack.atack.AAttack;
 import bonus.generalBonuses.bonuses.attack.AAxeUp;
 import bonus.generalBonuses.bonuses.attack.ABerserk;
 import bonus.generalBonuses.bonuses.attack.doubleInHead.ADoubleInHead;

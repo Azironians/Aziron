@@ -1,7 +1,7 @@
 package bonus.generalBonuses.bonuses.health;
 
 import bonus.bonuses.Bonus;
-import bonus.bonuses.service.annotations.Engine;
+import bonus.bonuses.service.annotations.EngineField;
 import bonus.bonuses.service.annotations.implementations.HealingEngine;
 import bonus.bonuses.service.parameterType.ParameterType;
 import management.service.components.handleComponet.EngineComponent;
@@ -28,7 +28,7 @@ public final class HExorcism extends Bonus implements DynamicEngineService {
         this.actionManager.getEventEngine().addHandler(handler);
     }
 
-    @HealingEngine(engine = @Engine(name = "healingBoost", parameterType = ParameterType.VALUE))
+    @HealingEngine(engine = @EngineField(fieldName = "healingBoost", parameterType = ParameterType.VALUE))
     private final class ExorcismHandlerComponent implements EngineComponent {
 
         private static final double START_HEALING_BOOST = 2;

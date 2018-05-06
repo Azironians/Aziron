@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.experience;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
@@ -23,14 +22,14 @@ public final class XUsurpation extends Bonus implements RegularEngineService {
     @Override
     public final void use() {
         final double experienceConsuming = EXPERIENCE_CONSUMING * experienceConsumingCoefficient;
-        final Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
         if (opponentHero.removeExperience(experienceConsuming)){
             actionManager.getEventEngine().setRepeatHandling(true);
         }
     }
 
     @Override
-    public final EngineComponent installSingletonEngineComponent(final Player player) {
+    public final EngineComponent installSingletonEngineComponent(final Player hero) {
         return new EngineComponent() {
 
             private Player player;

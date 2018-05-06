@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack.growTentacle;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.playerManagement.Player;
 
@@ -22,7 +21,7 @@ final class CutTentacle extends Bonus{
 
     @Override
     public void use() {
-        final Hero hero = usedGrowTentaclePlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero hero = usedGrowTentaclePlayer.getCurrentHero();
         hero.setAttack(hero.getAttack() - ATTACK_FIX);
         log.info("-4 BEFORE_ATTACK");
     }

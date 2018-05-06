@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.health;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import heroes.devourer.skills.superSkills.regeneration.utilities.RegenerationMessageParser;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
@@ -45,7 +44,7 @@ public final class HEvolution extends Bonus implements DynamicEngineService {
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 if (player == actionEvent.getHero()) {
-                    final Hero hero = player.getCurrentHero();
+                    final heroes.abstractHero.hero.Hero hero = player.getCurrentHero();
                     final Object message = actionEvent.getData();
                     if (RegenerationMessageParser.isRegenerationMessage((String) message)) {
                         final double healthSupplyBoost = RegenerationMessageParser

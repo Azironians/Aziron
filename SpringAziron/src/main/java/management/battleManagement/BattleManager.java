@@ -3,7 +3,6 @@ package management.battleManagement;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import gui.service.graphicEngine.GraphicEngine;
-import heroes.abstractHero.hero.Hero;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEventFactory;
 import management.battleManagement.processors.BonusLoadingProcessor;
@@ -65,7 +64,7 @@ public final class BattleManager {
         final ATeam team = this.playerManager.getCurrentTeam();
         final Player currentPlayer = team.getCurrentPlayer();
         final Player alternativePlayer = team.getAlternativePlayer();
-        final Hero currentHero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
         final boolean isDestroyed = currentHero.getHitPoints() <= 0;
         if (isDestroyed) {
             currentHero.setAlive(false);
@@ -84,7 +83,7 @@ public final class BattleManager {
         } else {
             changeTurn();
             if (this.skipTurn) {
-                final Hero newCurrentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+                final heroes.abstractHero.hero.Hero newCurrentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
                 this.graphicEngine.hideBonuses();
                 this.eventEngine.handle(ActionEventFactory.getSkipTurn(newCurrentHero));
                 this.skipTurn = false;
@@ -125,8 +124,8 @@ public final class BattleManager {
     }
 
     private void reloadAllSkillsOfAllHeroes(final Player player) {
-        final List<Hero> heroes = player.getAllHeroes();
-        for (final Hero hero : heroes) {
+        final List<heroes.abstractHero.hero.Hero> heroes = player.getAllHeroes();
+        for (final heroes.abstractHero.hero.Hero hero : heroes) {
             hero.reloadSkills();
             if (hero != player.getCurrentHero()) {
                 hero.getSwapSkill().reload();
@@ -134,9 +133,9 @@ public final class BattleManager {
         }
     }
 
-    private Tuple3<Boolean, Player, Hero> isNotTheEndOfGame(final Player current, final Player alternative) {
-        final Tuple3<Boolean, Player, Hero> hasCurrentPlayerAliveHeroes = current.checkAliveHeroes();
-        final Tuple3<Boolean, Player, Hero> hasAlternativePlayerAlliveHeroes;
+    private Tuple3<Boolean, Player, heroes.abstractHero.hero.Hero> isNotTheEndOfGame(final Player current, final Player alternative) {
+        final Tuple3<Boolean, Player, heroes.abstractHero.hero.Hero> hasCurrentPlayerAliveHeroes = current.checkAliveHeroes();
+        final Tuple3<Boolean, Player, heroes.abstractHero.hero.Hero> hasAlternativePlayerAlliveHeroes;
         if (alternative != null) {
             hasAlternativePlayerAlliveHeroes = alternative.checkAliveHeroes();
         } else {

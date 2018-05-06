@@ -24,13 +24,12 @@ public final class ABerserk extends Bonus {
         final Hero currentHero = currentPlayer.getCurrentHero();
         final Player opponentPlayer = playerManager.getOpponentTeam().getCurrentPlayer();
         final Hero opponentHero = opponentPlayer.getCurrentHero();
-
         opponentHero.getDamage(currentHero.getAttack());
         log.info("DEAL " + currentHero.getAttack() + " DAMAGE TO OPPONENT PLAYER");
         currentHero.getDamage(opponentHero.getAttack());
         log.info("DEAL " + opponentHero.getAttack() + " DAMAGE TO CURRENT PLAYER");
-        actionEvents.addAll(Arrays.asList
-                (ActionEventFactory.getAfterDealDamage(currentPlayer, opponentHero, currentHero.getAttack())
-                        , ActionEventFactory.getAfterDealDamage(opponentPlayer, currentHero, opponentHero.getAttack())));
+        this.actionEvents.addAll(Arrays.asList
+                (ActionEventFactory.getAfterDealDamage(currentHero, opponentHero, currentHero.getAttack())
+                        , ActionEventFactory.getAfterDealDamage(opponentHero, currentHero, opponentHero.getAttack())));
     }
 }

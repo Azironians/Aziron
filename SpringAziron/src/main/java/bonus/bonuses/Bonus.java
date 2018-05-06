@@ -65,7 +65,7 @@ public abstract class Bonus {
     @Override
     public final String toString() {
         return "Bonus{" +
-                "name='" + name + '\'' +
+                "fieldName='" + name + '\'' +
                 ", id=" + id +
                 ", sprite=" + sprite +
                 '}';

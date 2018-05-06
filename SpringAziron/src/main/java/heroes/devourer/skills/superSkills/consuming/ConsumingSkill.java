@@ -1,6 +1,5 @@
 package heroes.devourer.skills.superSkills.consuming;
 
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.abstractSkill.AbstractSkill;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
@@ -25,7 +24,7 @@ public final class ConsumingSkill extends AbstractSkill {
     public final void use(final BattleManager battleManager, final PlayerManager playerManager) {
         final Player currentPlayer = playerManager.getCurrentTeam().getCurrentPlayer();
         final Player opponentPlayer = playerManager.getOpponentTeam().getCurrentPlayer();
-        final Hero opponentHero = opponentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = opponentPlayer.getCurrentHero();
         final double damage = opponentHero.getHitPoints() / coefficients.get(0);
         if (opponentHero.getDamage(damage)) {
             actionEvents.add(ActionEventFactory.getAfterDealDamage(currentPlayer, opponentHero, damage));

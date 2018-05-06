@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.experience;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
@@ -39,7 +38,7 @@ public final class XVoidChannel extends Bonus implements DynamicEngineService {
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 if (actionEvent.getActionType() == ActionType.AFTER_DEAL_DAMAGE && actionEvent.getHero() == player){
-                    final Hero hero = player.getCurrentHero();
+                    final heroes.abstractHero.hero.Hero hero = player.getCurrentHero();
                     hero.addExperience(EXPERIENCE_BOOST);
                     actionManager.getEventEngine().setRepeatHandling(true);
                 }

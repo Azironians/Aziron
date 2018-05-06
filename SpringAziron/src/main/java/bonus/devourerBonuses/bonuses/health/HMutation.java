@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.health;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import heroes.devourer.skills.superSkills.consuming.utilities.ConsumingMessageParser;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
@@ -46,7 +45,7 @@ public final class HMutation extends Bonus implements DynamicEngineService {
                 if (ConsumingMessageParser.isConsumingMessage((String) message)){
                     final double damage = ConsumingMessageParser
                             .parseMessageGetHealing((String) message);
-                    final Hero hero = player.getCurrentHero();
+                    final heroes.abstractHero.hero.Hero hero = player.getCurrentHero();
                     hero.setHealthSupply(hero.getHealthSupply() + damage);
                     log.info("+" + damage + "to supply health");
                     actionManager.getEventEngine().handle();

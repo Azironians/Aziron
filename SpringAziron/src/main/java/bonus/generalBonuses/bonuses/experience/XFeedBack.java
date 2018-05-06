@@ -4,7 +4,6 @@ import bonus.bonuses.Bonus;
 import management.service.components.handleComponet.EngineComponent;
 import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
 import management.service.engine.services.RegularEngineService;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.service.engine.EventEngine;
@@ -28,8 +27,8 @@ public final class XFeedBack extends Bonus implements RegularEngineService {
 
     @Override
     public final void use() {
-        final Hero currentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
-        final Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+        final heroes.abstractHero.hero.Hero opponentHero = playerManager.getOpponentTeam().getCurrentPlayer().getCurrentHero();
 
         final double HEALING_BOOST = lastDamage * SKILL_HEALING_COEFFICIENT;
         final double OPPONENT_EXPERIENCE_BOOST = lastDamage * SKILL_EXPERIENCE_COEFFICIENT;
@@ -45,7 +44,7 @@ public final class XFeedBack extends Bonus implements RegularEngineService {
     }
 
     @Override
-    public final EngineComponent installSingletonEngineComponent(final Player inputPlayer) {
+    public final EngineComponent installSingletonEngineComponent(final Player hero) {
         return new EngineComponent() {
 
             private Player player;
@@ -54,7 +53,7 @@ public final class XFeedBack extends Bonus implements RegularEngineService {
 
             @Override
             public final void setup() {
-                this.player = inputPlayer;
+                this.player = hero;
                 this.hitPoints = player.getCurrentHero().getHitPoints();
             }
 

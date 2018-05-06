@@ -1,7 +1,6 @@
 package bonus.lvBonuses.bonuses.attack;
 
 import bonus.bonuses.ExtendedBonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.ImageView;
@@ -59,14 +58,14 @@ public final class ADarkSnatch extends ExtendedBonus implements RegularEngineSer
     }
 
     @Override
-    public final EngineComponent installSingletonEngineComponent(final Player player) {
+    public final EngineComponent installSingletonEngineComponent(final Player hero) {
         return new EngineComponent() {
 
-            private Player currentPlayer = player;
+            private Player currentPlayer = hero;
 
             @Override
             public final void setup() {
-                this.currentPlayer = player;
+                this.currentPlayer = hero;
             }
 
             @Override
@@ -112,7 +111,7 @@ public final class ADarkSnatch extends ExtendedBonus implements RegularEngineSer
 
             private Player player;
 
-            private Set<Hero> victims;
+            private Set<heroes.abstractHero.hero.Hero> victims;
 
             private boolean isWorking;
 
@@ -127,8 +126,8 @@ public final class ADarkSnatch extends ExtendedBonus implements RegularEngineSer
             public final void handle(final ActionEvent actionEvent) {
                 switch (actionEvent.getActionType()){
                     case BEFORE_DEAL_DAMAGE:
-                        final Pair<Hero, Double> heroVsDamage = (Pair) actionEvent.getData();
-                        final Hero victim = heroVsDamage.getKey();
+                        final Pair<heroes.abstractHero.hero.Hero, Double> heroVsDamage = (Pair) actionEvent.getData();
+                        final heroes.abstractHero.hero.Hero victim = heroVsDamage.getKey();
                         double damageCoefficientBoost = victim.getDamageCoefficient() * ATTACK_BOOST_COEFFICIENT;
                         victim.setDamageCoefficient(damageCoefficientBoost);
                         this.victims.add(victim);

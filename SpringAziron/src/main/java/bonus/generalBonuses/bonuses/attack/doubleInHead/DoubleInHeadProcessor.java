@@ -4,14 +4,13 @@ import heroes.abstractHero.hero.Hero;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actionProccessors.AttackProcessor;
 import management.actionManagement.actions.ActionEventFactory;
-import management.service.engine.EventEngine;
 import management.battleManagement.BattleManager;
 import management.playerManagement.ATeam;
-import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
+import management.service.engine.EventEngine;
 
-import static bonus.generalBonuses.bonuses.attack.doubleInHead.ADoubleInHead.ATTACK_COEFFICIENT;
-import static bonus.generalBonuses.bonuses.attack.doubleInHead.ADoubleInHead.LOG;
+import static bonus.generalBonuses.bonuses.attack.doubleInHead.DoubleInHeadEngineComponent.ATTACK_COEFFICIENT;
+import static bonus.generalBonuses.bonuses.attack.doubleInHead.DoubleInHeadEngineComponent.LOG;
 
 public final class DoubleInHeadProcessor extends AttackProcessor {
 
@@ -29,19 +28,18 @@ public final class DoubleInHeadProcessor extends AttackProcessor {
 
     @Override
     public final void process(){
-        final Player attackPlayer = attackTeam.getCurrentPlayer();
-        final Hero attackHero = attackPlayer.getCurrentHero();
+        final Hero attackHero = this.attackTeam.getCurrentPlayer().getCurrentHero();
         final EventEngine eventEngine = actionManager.getEventEngine();
         final double attackValue = attackHero.getAttack() * ATTACK_COEFFICIENT;
         LOG.info("BEFORE_ATTACK IS DUPLICATED");
-        final Hero opponentHero = victimTeam.getCurrentPlayer().getCurrentHero();
-        eventEngine.handle(ActionEventFactory.getBeforeDealDamage(attackPlayer, opponentHero, attackValue));
+        final heroes.abstractHero.hero.Hero opponentHero = victimTeam.getCurrentPlayer().getCurrentHero();
+        eventEngine.handle(ActionEventFactory.getBeforeDealDamage(attackHero, opponentHero, attackValue));
         if (opponentHero.getDamage(attackValue)) {
-            eventEngine.handle(ActionEventFactory.getAfterDealDamage(attackPlayer, opponentHero, attackValue));
+            eventEngine.handle(ActionEventFactory.getAfterDealDamage(attackHero, opponentHero, attackValue));
         }
-        actionManager.refreshScreen();
-        if (battleManager.isEndTurn()) {
-            actionManager.endTurn(attackTeam);
+        this.actionManager.refreshScreen();
+        if (this.battleManager.isEndTurn()) {
+            this.actionManager.endTurn(attackTeam);
         }
     }
 

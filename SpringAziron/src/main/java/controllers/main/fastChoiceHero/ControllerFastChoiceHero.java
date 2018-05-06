@@ -7,7 +7,6 @@ import controllers.main.menu.ControllerMenu;
 import controllers.main.menu.ProfileRequest;
 import gui.sceneMover.SceneMover;
 import gui.windows.WindowType;
-import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.builder.HeroBuilder;
 import heroes.abstractHero.presentation.Presentation;
 import heroes.devourer.annotation.DevourerHeroService;
@@ -225,7 +224,7 @@ public final class ControllerFastChoiceHero implements Initializable, Controller
     }
 
     public final void buttonOnChoiceHeroClicked(){
-        final Hero selectedHero = heroBuilders.get(pointer).buildHero();
+        final heroes.abstractHero.hero.Hero selectedHero = heroBuilders.get(pointer).buildHero();
         selectedHero.putBonusCollection(profileManager.getPrivilegedDecks().get(pointer).getCollection());
         final Profile profile = profileManager.getCurrentProfile();
         final Player player = convertToPlayer(profile, selectedHero);
@@ -253,7 +252,7 @@ public final class ControllerFastChoiceHero implements Initializable, Controller
         sceneMover.moveToScene(WindowType.MENU);
     }
 
-    private Player convertToPlayer(final Profile profile, final Hero hero){
+    private Player convertToPlayer(final Profile profile, final heroes.abstractHero.hero.Hero hero){
         return new Player(profile,  hero);
     }
 

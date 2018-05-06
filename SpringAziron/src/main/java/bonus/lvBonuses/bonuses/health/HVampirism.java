@@ -1,7 +1,6 @@
 package bonus.lvBonuses.bonuses.health;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
@@ -39,7 +38,7 @@ public final class HVampirism extends Bonus implements DynamicEngineService {
             @Override
             public final void handle(final ActionEvent actionEvent) {
                 if (actionEvent.getActionType() == ActionType.BEFORE_ATTACK && actionEvent.getHero() == player) {
-                    final Hero hero = player.getCurrentHero();
+                    final heroes.abstractHero.hero.Hero hero = player.getCurrentHero();
                     if (hero.getHealing(HEALING_BOOST)) {
                         actionManager.getEventEngine().setRepeatHandling(true);
                     }

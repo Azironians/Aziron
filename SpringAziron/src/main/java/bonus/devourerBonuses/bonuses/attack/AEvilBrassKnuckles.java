@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
@@ -24,7 +23,7 @@ public final class AEvilBrassKnuckles extends Bonus implements DynamicEngineServ
     @Override
     public final void use() {
         final Player currentPlayer = playerManager.getCurrentTeam().getCurrentPlayer();
-        final Hero currentHero = currentPlayer.getCurrentHero();
+        final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
 
         actionManager.getEventEngine().addHandler(getPrototypeEngineComponent());
         currentHero.setAttack(currentHero.getAttack() * (1 + ATTACK_BOOST_COEFFICIENT));
@@ -51,7 +50,7 @@ public final class AEvilBrassKnuckles extends Bonus implements DynamicEngineServ
             public final void handle(final ActionEvent actionEvent) {
                 final ActionType actionType = actionEvent.getActionType();
                 if (actionType == ActionType.END_TURN) {
-                    final Hero currentHero = player.getCurrentHero();
+                    final heroes.abstractHero.hero.Hero currentHero = player.getCurrentHero();
                     currentHero.setAttack(currentHero.getAttack() - delta);
                     isWorking = false;
                     log.info("-15% BEFORE_ATTACK");
