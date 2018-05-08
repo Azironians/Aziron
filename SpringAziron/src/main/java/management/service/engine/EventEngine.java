@@ -88,6 +88,13 @@ public final class EventEngine {
                 log.info(bonusHandler.getName() + " successfully was removed");
             }
         }
+//
+//        this.handlers.stream().filter(h -> h instanceof Object)
+//        .map(h -> (Object) h)
+//        .forEach(h -> {
+//
+//        });
+
         this.handlers.removeAll(garbageHandlerList);
         if (this.repeatHandling) {
             this.handle();

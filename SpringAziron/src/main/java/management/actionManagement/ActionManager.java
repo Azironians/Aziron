@@ -3,6 +3,7 @@ package management.actionManagement;
 import bonus.bonuses.Bonus;
 import com.google.inject.Inject;
 import gui.service.graphicEngine.GraphicEngine;
+import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.skills.Skill;
 import management.actionManagement.actionProccessors.*;
 import management.actionManagement.actions.ActionEventFactory;
@@ -94,7 +95,7 @@ public final class ActionManager {
     }
 
     public final void setBonusRequest(final Bonus bonus) {
-        final heroes.abstractHero.hero.Hero currentHero = this.playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+        final Hero currentHero = this.playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
         this.graphicEngine.hideBonuses();
         this.eventEngine.handle(ActionEventFactory.getAfterUsedBonus(currentHero, bonus));
         this.bonusProcess(bonus);

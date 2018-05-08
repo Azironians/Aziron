@@ -390,4 +390,8 @@ public abstract class Hero {
     public final void setLocation(final ALocation location){
         this.location = location;
     }
+
+    public boolean isSwapAccess() {
+        return false;
+    }
 }

@@ -1,6 +1,7 @@
 package controllers.main.matchmaking;
 
 import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
 import management.playerManagement.ATeam;
 
 import java.net.URL;
@@ -21,8 +22,13 @@ public final class ControllerLeftLocation extends ControllerLocation implements 
         makeHeroRequest(leftATeam);
     }
 
-    public final void changeHeroOnClicked(){
+    public final void changeHeroOnClicked() {
         final ATeam leftTeam = playerManager.getLeftATeam();
-        makeSwapHeroRequest(leftTeam);
+        makeChoiceSwapHeroRequest(leftTeam);
+    }
+
+    @Override
+    final Pane getChoiceSwapHeroPane() {
+        return null;
     }
 }
