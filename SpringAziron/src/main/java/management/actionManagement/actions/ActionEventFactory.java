@@ -2,6 +2,9 @@ package management.actionManagement.actions;
 
 import bonus.bonuses.Bonus;
 import com.google.inject.Singleton;
+import heroes.abstractHero.hero.Hero;
+import heroes.abstractHero.possibility.APossibility;
+import heroes.abstractHero.skills.Skill;
 import javafx.util.Pair;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
@@ -30,45 +33,45 @@ public final class ActionEventFactory {
 
     private static List<ActionEvent> getEventsForEachHero(final Player player, final ActionType actionType){
         final List<ActionEvent> events = new ArrayList<>();
-        for (final heroes.abstractHero.hero.Hero hero : player.getAllHeroes()){
+        for (final Hero hero : player.getAllHeroes()){
             events.add(new ActionEvent(actionType, hero));
         }
         return events;
     }
 
-    public static ActionEvent getSkipTurn(final heroes.abstractHero.hero.Hero hero) {
+    public static ActionEvent getSkipTurn(final Hero hero) {
         return new ActionEvent(ActionType.SKIP_TURN, hero);
     }
 
-    public static ActionEvent getHeroSwap(final heroes.abstractHero.hero.Hero hero) {
+    public static ActionEvent getHeroSwap(final Hero hero) {
         return new ActionEvent(ActionType.SWAP_HEROES, hero);
     }
 
-    public static ActionEvent getHeroOut(final heroes.abstractHero.hero.Hero hero) {
+    public static ActionEvent getHeroOut(final Hero hero) {
         return new ActionEvent(ActionType.PLAYER_OUT, hero);
     }
 
-    public static ActionEvent getEndGame(final heroes.abstractHero.hero.Hero hero) {
+    public static ActionEvent getEndGame(final Hero hero) {
         return new ActionEvent(ActionType.END_GAME, hero);
     }
 
-    public static ActionEvent getFrameDurationEvent(final heroes.abstractHero.hero.Hero hero) {
+    public static ActionEvent getFrameDurationEvent(final Hero hero) {
         return new ActionEvent(ActionType.GET_FRAME, hero);
     }
 
-    public static ActionEvent getBeforeTreatment(final heroes.abstractHero.hero.Hero hero) {
+    public static ActionEvent getBeforeTreatment(final Hero hero) {
         return new ActionEvent(ActionType.BEFORE_TREATMENT, hero);
     }
 
-    public static ActionEvent getAfterTreatment(final heroes.abstractHero.hero.Hero hero){
+    public static ActionEvent getAfterTreatment(final Hero hero){
         return new ActionEvent(ActionType.AFTER_TREATMENT, hero);
     }
 
-    public static ActionEvent getBeforeAttack(final heroes.abstractHero.hero.Hero hero) {
+    public static ActionEvent getBeforeAttack(final Hero hero) {
         return new ActionEvent(ActionType.BEFORE_ATTACK, hero);
     }
 
-    public static ActionEvent getAfterAttack(final heroes.abstractHero.hero.Hero hero){
+    public static ActionEvent getAfterAttack(final Hero hero){
         return new ActionEvent(ActionType.AFTER_ATTACK, hero);
     }
 
@@ -79,27 +82,35 @@ public final class ActionEventFactory {
      * @return event.
      */
 
-    public static ActionEvent getBeforeDealDamage(final heroes.abstractHero.hero.Hero attacker, final heroes.abstractHero.hero.Hero victim, final double damage) {
+    public static ActionEvent getBeforeDealDamage(final Hero attacker, final Hero victim, final double damage) {
         return new ActionEvent(ActionType.BEFORE_DEAL_DAMAGE, attacker, new Pair<>(victim, damage));
     }
 
-    public static ActionEvent getAfterDealDamage(final heroes.abstractHero.hero.Hero attacker, final heroes.abstractHero.hero.Hero victim, final double damage) {
+    public static ActionEvent getAfterDealDamage(final Hero attacker, final Hero victim, final double damage) {
         return new ActionEvent(ActionType.AFTER_DEAL_DAMAGE, attacker, new Pair<>(victim, damage));
     }
 
-    public static ActionEvent getBeforeHealing(final heroes.abstractHero.hero.Hero hero, final double healing){
+    public static ActionEvent getBeforeHealing(final Hero hero, final double healing){
         return new ActionEvent(ActionType.BEFORE_HEALING, hero);
     }
 
-    public static ActionEvent getAfterHealing(final heroes.abstractHero.hero.Hero hero, final double healing){
+    public static ActionEvent getAfterHealing(final Hero hero, final double healing){
         return new ActionEvent(ActionType.AFTER_HEALING, hero);
     }
 
-    public static ActionEvent getBeforeUsedSkill(final heroes.abstractHero.hero.Hero hero, final String skillName) {
-        return new ActionEvent(ActionType.BEFORE_USED_SKILL, hero, skillName);
+    public static ActionEvent getBeforeUsedSkill(final Hero hero, final Skill skill) {
+        return new ActionEvent(ActionType.BEFORE_USED_SKILL, hero, skill);
     }
 
-    public static ActionEvent getAfterUsedBonus(final heroes.abstractHero.hero.Hero hero, final Bonus bonus) {
+    public static ActionEvent getAfterUsedBonus(final Hero hero, final Bonus bonus) {
         return new ActionEvent(ActionType.AFTER_USED_BONUS, hero, bonus);
+    }
+
+    public static ActionEvent getBeforeUsedPossibility(final Hero hero, final APossibility possibility) {
+        return new ActionEvent(ActionType.BEFORE_USED_POSSIBILITY, hero, possibility);
+    }
+
+    public static ActionEvent getAfterUsedPossbility(final Hero hero, final APossibility possibility){
+        return new ActionEvent(ActionType.AFTER_USED_POSSIBILITY, hero, possibility);
     }
 }

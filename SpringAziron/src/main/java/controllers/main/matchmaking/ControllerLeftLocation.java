@@ -14,7 +14,7 @@ public final class ControllerLeftLocation extends ControllerLocation implements 
 
     @Override
     public final void initialize(final URL location, final ResourceBundle resources) {
-
+        //While empty...
     }
 
     public final void imageHeroOnClicked() {
@@ -24,11 +24,11 @@ public final class ControllerLeftLocation extends ControllerLocation implements 
 
     public final void changeHeroOnClicked() {
         final ATeam leftTeam = playerManager.getLeftATeam();
-        makeChoiceSwapHeroRequest(leftTeam);
+        trySwapHeroRequest(leftTeam);
     }
 
     @Override
-    final Pane getChoiceSwapHeroPane() {
+    final Pane getHeroCollectionPane() {
         return null;
     }
 }

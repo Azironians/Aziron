@@ -4,8 +4,10 @@ import heroes.abstractHero.hero.Hero;
 
 public final class ActionEvent {
 
-    private final ActionType actionType;
-    private final Hero hero;
+    private ActionType actionType;
+
+    private Hero hero;
+
     private Object data; //everything type of data
 
     public ActionEvent(final ActionType actionType, final Hero hero, final Object data) {
@@ -29,5 +31,17 @@ public final class ActionEvent {
 
     public final Object getData() {
         return data;
+    }
+
+    public final void setActionType(final ActionType actionType) {
+        this.actionType = actionType;
+    }
+
+    public final void setHero(final Hero hero) {
+        this.hero = hero;
+    }
+
+    public final void setData(final Object data) {
+        this.data = data;
     }
 }

@@ -27,11 +27,15 @@ public abstract class AbstractSkill implements Skill {
     private final String name;
 
     protected int temp = 1;
+
     protected int reload;
+
     protected int requiredLevel;
+
     protected List<Double> coefficients;
 
     protected ImageView description;
+
     protected ImageView sprite;
 
     protected Pane container;
@@ -95,14 +99,14 @@ public abstract class AbstractSkill implements Skill {
     }
 
     private void showDescription() {
-        log.info("show description");
+        log.info("show descriptionImage");
         final FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), description);
         fadeTransition.setToValue(1);
         fadeTransition.play();
     }
 
     private void hideDescription() {
-        log.info("hide description");
+        log.info("hide descriptionImage");
         final FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), description);
         fadeTransition.setToValue(0);
         fadeTransition.play();
@@ -122,7 +126,7 @@ public abstract class AbstractSkill implements Skill {
             setLayoutY(spriteY);
             setScaleX(inversion);
             final ObservableList<Node> elements = getChildren();
-//            elements.add(description);
+//            elements.add(descriptionImage);
             elements.add(sprite);
         }};
         parentPane.getChildren().add(container);

@@ -47,7 +47,7 @@ public abstract class AbstractSimplifiedSkill extends AbstractSkill {
             , final double descriptionX, final double descriptionY
             , final boolean invert) {
         this.parent = parent;
-        //init description:
+        //init descriptionImage:
         this.description.setLayoutY(descriptionY); //-127
         this.description.setOpacity(START_OPACITY);
         //init sprite:

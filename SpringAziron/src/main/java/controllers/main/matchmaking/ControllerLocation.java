@@ -2,6 +2,7 @@ package controllers.main.matchmaking;
 
 import com.google.inject.Inject;
 import heroes.abstractHero.hero.Hero;
+import heroes.abstractHero.possibility.APossibility;
 import javafx.scene.layout.Pane;
 import management.actionManagement.actions.ActionEventFactory;
 import management.pipeline.APipeline;
@@ -9,7 +10,7 @@ import management.playerManagement.ATeam;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 
-abstract class ControllerLocation {
+public abstract class ControllerLocation {
 
     @Inject
     protected PlayerManager playerManager;
@@ -32,17 +33,20 @@ abstract class ControllerLocation {
         }
     }
 
-    final void makeChoiceSwapHeroRequest(final ATeam team) {
+    final void trySwapHeroRequest(final ATeam team) {
         final ATeam currentTeam = this.playerManager.getCurrentTeam();
         final Hero hero = team.getCurrentPlayer().getCurrentHero();
         if (team == currentTeam && hero.isSwapAccess()){
-            this.getChoiceSwapHeroPane().setVisible(true);
+            this.getHeroCollectionPane().setVisible(true);
         }
     }
 
-    final void makeSwapHeroRequest(final ATeam team){
-
+    public final void makePossibilityRequest(final Hero hero, final APossibility possibility) {
+        final Hero currentHero = this.playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+        if (currentHero == hero && possibility.isPossibilityAccess()){
+            this.pipeline.push(ActionEventFactory.getBeforeUsedPossibility(currentHero, possibility));
+        }
     }
 
-    abstract Pane getChoiceSwapHeroPane();
+    abstract Pane getHeroCollectionPane();
 }
