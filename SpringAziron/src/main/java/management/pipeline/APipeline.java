@@ -18,6 +18,6 @@ public final class APipeline {
     }
 
     public final List<APipe> getPipes() {
-        return pipes;
+        return this.pipes;
     }
 }

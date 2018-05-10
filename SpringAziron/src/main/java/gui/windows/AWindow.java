@@ -16,7 +16,7 @@ public final class AWindow {
     public AWindow(final FXMLLoader fxmlLoader) {
         try {
             final Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-            //install cursor:
+            //bindToLocation cursor:
             final String cursorPath = "file:src/main/resources/resources/cursor/cursor.png";
             final ImageCursor imageCursor = new ImageCursor(new Image(cursorPath));
             scene.setCursor(imageCursor);
