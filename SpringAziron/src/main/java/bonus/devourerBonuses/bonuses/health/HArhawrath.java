@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.health;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;

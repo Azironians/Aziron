@@ -3,7 +3,6 @@ package heroes.abstractHero.hero;
 import bonus.bonuses.Bonus;
 import gui.service.locations.ALocation;
 import management.bonusManagement.BonusManager;
-import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 

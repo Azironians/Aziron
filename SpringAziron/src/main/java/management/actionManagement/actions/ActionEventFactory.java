@@ -4,7 +4,8 @@ import bonus.bonuses.Bonus;
 import com.google.inject.Singleton;
 import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.possibility.APossibility;
-import heroes.abstractHero.skills.Skill;
+import heroes.abstractHero.skills.ASkill;
+import heroes.abstractHero.skills.ASwapSkill;
 import javafx.util.Pair;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
@@ -98,7 +99,11 @@ public final class ActionEventFactory {
         return new ActionEvent(ActionType.AFTER_HEALING, hero);
     }
 
-    public static ActionEvent getBeforeUsedSkill(final Hero hero, final Skill skill) {
+    public static ActionEvent getBeforeUsedSkill(final Hero hero, final ASkill skill) {
+        return new ActionEvent(ActionType.BEFORE_USED_SKILL, hero, skill);
+    }
+
+    public static ActionEvent getAfterUsedSkill(final Hero hero, final ASkill skill){
         return new ActionEvent(ActionType.BEFORE_USED_SKILL, hero, skill);
     }
 
@@ -112,5 +117,13 @@ public final class ActionEventFactory {
 
     public static ActionEvent getAfterUsedPossbility(final Hero hero, final APossibility possibility){
         return new ActionEvent(ActionType.AFTER_USED_POSSIBILITY, hero, possibility);
+    }
+
+    public static ActionEvent getBeforeUsedSwapSkill(final Hero hero, ASwapSkill swapSkill) {
+        return new ActionEvent(ActionType.BEFORE_USED_SWAP_SKILL, hero, swapSkill);
+    }
+
+    public static ActionEvent getAfterUsedSwapSkill(final Hero hero, ASwapSkill swapSkill){
+        return new ActionEvent(ActionType.AFTER_USED_SWAP_SKILL, hero, swapSkill);
     }
 }

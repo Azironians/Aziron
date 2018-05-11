@@ -10,6 +10,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.util.Duration;
+import management.actionManagement.actions.ActionEvent;
+import management.actionManagement.actions.ActionEventFactory;
 import management.playerManagement.PlayerManager;
 
 import java.util.List;
@@ -59,30 +61,33 @@ public abstract class APossibility {
 
     @NonFinal
     public void reload() {
-        if (this.parentHero != null) {
-            if (this.parentHero.getLevel() >= this.requiredLevel) {
-                this.step++;
-            } else {
-                this.step = START_STEP;
-            }
+        if (this.parentHero.getLevel() >= this.requiredLevel) {
+            this.step++;
+        } else {
+            this.step = START_STEP;
         }
     }
 
     @NonFinal
-    public void reset(){
+    public void reset() {
         this.step %= this.reload;
         this.guiHolder.mainImage.setVisible(false);
     }
 
     private void makePossibilityRequest() {
-        this.controllerLocation.makePossibilityRequest(this.parentHero
-                , this);
+        this.controllerLocation.makePossibilityRequest(this.getActionEvent());
+    }
+
+    @NonFinal
+    protected ActionEvent getActionEvent() {
+        return ActionEventFactory.getBeforeUsedPossibility(this.parentHero, this);
     }
 
     //GUI:
     protected AGUIHolder guiHolder;
 
-    protected static final class AGUIHolder {
+    @NonFinal
+    protected static class AGUIHolder {
 
         protected static final int START_OPACITY = 0;
 
@@ -97,7 +102,6 @@ public abstract class APossibility {
 
         private List<Media> voices;
 
-
         protected AGUIHolder(final APossibility parent, final ImageView mainImage, final ImageView descriptionImage
                 , final List<Media> voices, final Media animationSound) {
             mainImage.setOnMouseEntered(event -> this.showDescription());
@@ -109,34 +113,50 @@ public abstract class APossibility {
             this.animationSound = animationSound;
         }
 
-        public void bindToLocation(final Pane parentPane
-                , final double spriteX, final double spriteY
-                , final double descriptionX, final double descriptionY
-                , final boolean invert) {
+        public final void bindToLocation(final Pane parentPane, final double mainImageX, final double mainImageY
+                , final double descriptionX, final double descriptionY, final boolean invert) {
             this.descriptionImage.setLayoutY(descriptionY); //-127
             this.descriptionImage.setOpacity(START_OPACITY);
             //init mainImage:
             final int inversion = invert ? -1 : 1;
-            this.container = new Pane(){{
-                setScaleX(inversion);
-                setLayoutX(spriteX);
-                setLayoutY(spriteY);
+            this.container = new Pane() {{
                 final ObservableList<Node> elements = getChildren();
+                this.setScaleX(inversion);
+                this.setLayoutX(mainImageX);
+                this.setLayoutY(mainImageY);
                 elements.add(mainImage);
             }};
             parentPane.getChildren().add(this.container);
         }
 
-        private void showDescription() {
+        @NonFinal
+        protected void showDescription() {
             final FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), this.descriptionImage);
             fadeTransition.setToValue(1);
             fadeTransition.play();
         }
 
-        private void hideDescription() {
+        @NonFinal
+        protected void hideDescription() {
             final FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1), this.descriptionImage);
             fadeTransition.setToValue(0);
             fadeTransition.play();
+        }
+
+        @NonFinal
+        public void showAnimation() {
+        }
+
+        public final Pane getContainer() {
+            return this.container;
+        }
+
+        public final Media getAnimationSound() {
+            return this.animationSound;
+        }
+
+        public final List<Media> getVoices() {
+            return this.voices;
         }
     }
 
@@ -179,5 +199,46 @@ public abstract class APossibility {
 
     public final String getName() {
         return this.name;
+    }
+
+
+    public final int getStep() {
+        return this.step;
+    }
+
+    public final void setStep(final int step) {
+        this.step = step;
+    }
+
+    public final int getReload() {
+        return reload;
+    }
+
+    public final void setReload(final int reload) {
+        this.reload = reload;
+    }
+
+    public final int getRequiredLevel() {
+        return this.requiredLevel;
+    }
+
+    public final void setRequiredLevel(final int requiredLevel) {
+        this.requiredLevel = requiredLevel;
+    }
+
+    public final List<Double> getCoefficients() {
+        return this.coefficients;
+    }
+
+    public final Hero getParentHero() {
+        return this.parentHero;
+    }
+
+    public final AGUIHolder getGuiHolder() {
+        return this.guiHolder;
+    }
+
+    public final void setGuiHolder(final AGUIHolder guiHolder) {
+        this.guiHolder = guiHolder;
     }
 }

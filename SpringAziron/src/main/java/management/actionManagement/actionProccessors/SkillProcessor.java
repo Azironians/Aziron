@@ -1,6 +1,5 @@
 package management.actionManagement.actionProccessors;
 
-import heroes.abstractHero.skills.Skill;
 import management.actionManagement.ActionManager;
 import management.battleManagement.BattleManager;
 import management.playerManagement.ATeam;

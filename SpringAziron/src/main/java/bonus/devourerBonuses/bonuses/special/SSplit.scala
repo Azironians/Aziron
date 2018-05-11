@@ -5,7 +5,7 @@ import java.util.logging.Logger
 
 import scala.collection.JavaConverters._
 import bonus.bonuses.Bonus
-import heroes.abstractHero.skills.Skill
+import heroes.abstractHero.skills.ASkill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
 import management.playerManagement.Player
@@ -23,7 +23,7 @@ final class SSplit(name: String, id: Int, sprite: ImageView) extends Bonus(name,
     val hero = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
     val skills = hero.getCollectionOfSkills.asScala
     var foundFlameSnakes = false
-    for (skill: Skill <- skills
+    for (skill: ASkill <- skills
          if skill.getName.equals("FlameSnakes")) {
         val coefficients = skill.getCoefficients.asScala
         val newCoefficients = new util.ArrayList[java.lang.Double]
@@ -51,7 +51,7 @@ final class SSplit(name: String, id: Int, sprite: ImageView) extends Bonus(name,
       if (actionEvent.getActionType eq ActionType.END_TURN) {
         val hero = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
         val skills = hero.getCollectionOfSkills.asScala
-        for (skill: Skill <- skills) {
+        for (skill: ASkill <- skills) {
           val coefficients = skill.getCoefficients
           val newCoefficients = new util.ArrayList[java.lang.Double]
           for (coefficient <- coefficients.asScala) {

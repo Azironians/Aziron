@@ -2,7 +2,6 @@ package heroes.devourer.skills.factory;
 
 import com.google.inject.Inject;
 import heroes.abstractHero.resourceSupplier.HeroResourceSupplier;
-import heroes.abstractHero.skills.Skill;
 import heroes.abstractHero.skills.factory.SkillFactory;
 import heroes.devourer.annotation.DevourerHeroService;
 import heroes.devourer.skills.superSkills.consuming.ConsumingSkill;

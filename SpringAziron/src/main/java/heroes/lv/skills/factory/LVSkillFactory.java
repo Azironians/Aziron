@@ -2,7 +2,6 @@ package heroes.lv.skills.factory;
 
 import com.google.inject.Inject;
 import heroes.abstractHero.resourceSupplier.HeroResourceSupplier;
-import heroes.abstractHero.skills.Skill;
 import heroes.abstractHero.skills.factory.SkillFactory;
 import heroes.lv.annotation.LVHeroService;
 import heroes.lv.skills.superSkills.cannibalism.CannibalismSkill;

@@ -3,7 +3,6 @@ package heroes.abstractHero.builder;
 import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.presentation.Presentation;
 import heroes.abstractHero.resourceSupplier.HeroResourceSupplier;
-import heroes.abstractHero.skills.Skill;
 import heroes.abstractHero.skills.factory.SkillFactory;
 import heroes.devourer.hero.Devourer;
 import heroes.lv.hero.LV;

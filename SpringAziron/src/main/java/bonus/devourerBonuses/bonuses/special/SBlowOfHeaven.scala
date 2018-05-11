@@ -2,7 +2,7 @@ package bonus.devourerBonuses.bonuses.special
 
 import bonus.bonuses.Bonus
 import heroes.abstractHero.hero.Hero
-import heroes.abstractHero.skills.Skill
+import heroes.abstractHero.skills.ASkill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionEventFactory, ActionType}
 import management.service.components.handleComponet.EngineComponent
@@ -23,7 +23,7 @@ final class SBlowOfHeaven(name: String, id: Int, sprite: ImageView) extends Bonu
     val hero = this.playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
     val skills = hero.getCollectionOfSkills.asScala
     var isOneActive: Boolean = false
-    var onlyReadySkill: Skill = null
+    var onlyReadySkill: ASkill = null
     for (skill <- skills) {
       if (skill.isReady) {
         if (!isOneActive) {

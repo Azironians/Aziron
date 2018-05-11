@@ -1,7 +1,6 @@
 package gui.service.locations;
 
 import heroes.abstractHero.hero.Hero;
-import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;

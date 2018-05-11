@@ -4,7 +4,9 @@ import com.google.inject.Inject;
 import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.possibility.APossibility;
 import javafx.scene.layout.Pane;
+import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
+import management.actionManagement.actions.ActionType;
 import management.pipeline.APipeline;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
@@ -41,10 +43,12 @@ public abstract class ControllerLocation {
         }
     }
 
-    public final void makePossibilityRequest(final Hero hero, final APossibility possibility) {
+    public final void makePossibilityRequest(final ActionEvent actionEvent) {
+        final Hero hero = actionEvent.getHero();
+        final APossibility possibility = (APossibility) actionEvent.getData();
         final Hero currentHero = this.playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
         if (currentHero == hero && possibility.isPossibilityAccess()){
-            this.pipeline.push(ActionEventFactory.getBeforeUsedPossibility(currentHero, possibility));
+            this.pipeline.push(actionEvent);
         }
     }
 

@@ -2,7 +2,6 @@ package bonus.generalBonuses.bonuses.special;
 
 import bonus.bonuses.Bonus;
 import heroes.abstractHero.hero.Hero;
-import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;

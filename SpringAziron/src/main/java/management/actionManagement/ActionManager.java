@@ -4,7 +4,6 @@ import bonus.bonuses.Bonus;
 import com.google.inject.Inject;
 import gui.service.graphicEngine.GraphicEngine;
 import heroes.abstractHero.hero.Hero;
-import heroes.abstractHero.skills.Skill;
 import management.actionManagement.actionProccessors.*;
 import management.actionManagement.actions.ActionEventFactory;
 import management.processors.exceptions.UnsupportedProcessorException;

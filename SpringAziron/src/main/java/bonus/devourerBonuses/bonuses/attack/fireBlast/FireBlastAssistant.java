@@ -1,7 +1,5 @@
 package bonus.devourerBonuses.bonuses.attack.fireBlast;
 
-import heroes.abstractHero.skills.Skill;
-
 import java.util.List;
 
 final class FireBlastAssistant {

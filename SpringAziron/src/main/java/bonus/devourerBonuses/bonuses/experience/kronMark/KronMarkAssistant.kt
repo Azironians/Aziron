@@ -1,7 +1,5 @@
 package bonus.devourerBonuses.bonuses.experience.kronMark
 
-import heroes.abstractHero.skills.Skill
-
 object KronMarkAssistant {
 
     private val ADDITIONAL_EXPERIENCE_COEFFICIENT = 1.05

@@ -1,7 +1,6 @@
 package management.actionManagement.actionProccessors;
 
 import heroes.abstractHero.hero.Hero;
-import heroes.abstractHero.skills.Skill;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEventFactory;
 import management.service.engine.EventEngine;

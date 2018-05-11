@@ -1,7 +1,6 @@
 package heroes.devourer.hero;
 
 import heroes.abstractHero.hero.Hero;
-import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 

@@ -2,7 +2,6 @@ package heroes.orcBash.skills.factory;
 
 import com.google.inject.Inject;
 import heroes.abstractHero.resourceSupplier.HeroResourceSupplier;
-import heroes.abstractHero.skills.Skill;
 import heroes.abstractHero.skills.factory.SkillFactory;
 import heroes.orcBash.annotation.OrcBashHeroService;
 import heroes.orcBash.skills.superSkills.bash.BashSkill;

@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack.hybridisation;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import lib.duplexMap.DuplexMap;
 import management.actionManagement.actions.ActionEvent;

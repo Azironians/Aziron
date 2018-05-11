@@ -4,7 +4,6 @@ import bonus.bonuses.ExtendedBonus;
 import bonus.bonuses.service.annotations.EngineField;
 import bonus.bonuses.service.annotations.implementations.QuestEngine;
 import bonus.bonuses.service.parameterType.ParameterType;
-import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import management.actionManagement.actions.ActionEvent;

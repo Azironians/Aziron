@@ -3,7 +3,6 @@ package bonus.generalBonuses.bonuses.special;
 import bonus.bonuses.Bonus;
 import management.service.components.handleComponet.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
-import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;

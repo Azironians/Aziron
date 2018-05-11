@@ -6,7 +6,6 @@ import com.google.inject.Singleton;
 import controllers.main.matchmaking.ControllerMatchMaking;
 import gui.service.locations.ALocation;
 import gui.windows.WindowType;
-import heroes.abstractHero.skills.Skill;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.ObservableList;

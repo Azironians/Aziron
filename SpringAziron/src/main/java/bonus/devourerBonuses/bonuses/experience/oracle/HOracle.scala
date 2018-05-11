@@ -1,7 +1,7 @@
 package bonus.devourerBonuses.bonuses.experience.oracle
 
 import bonus.bonuses.ExtendedBonus
-import heroes.abstractHero.skills.Skill
+import heroes.abstractHero.skills.ASkill
 import javafx.scene.image.ImageView
 import javafx.scene.text.Text
 
@@ -39,7 +39,7 @@ final class HOracle(name: String, id: Int, sprite: ImageView) extends ExtendedBo
     bonusCollection.add(new Concentration())
   }
 
-  private def createAbility(): Skill = {
+  private def createAbility(): ASkill = {
     val concentrationAbility = new ConcentrationAbility()
     concentrationAbility.setActionManager(actionManager)
     concentrationAbility

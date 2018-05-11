@@ -1,7 +1,6 @@
 package bonus.generalBonuses.bonuses.experience;
 
 import bonus.bonuses.Bonus;
-import heroes.abstractHero.skills.Skill;
 import javafx.scene.image.ImageView;
 import management.playerManagement.Player;
 

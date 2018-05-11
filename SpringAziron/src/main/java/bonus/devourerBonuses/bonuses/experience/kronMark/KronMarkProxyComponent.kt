@@ -1,7 +1,6 @@
 package bonus.devourerBonuses.bonuses.experience.kronMark
 
 import lib.duplexMap.DuplexMap
-import heroes.abstractHero.skills.Skill
 import javafx.scene.layout.Pane
 import management.playerManagement.Player
 import management.playerManagement.PlayerManager
