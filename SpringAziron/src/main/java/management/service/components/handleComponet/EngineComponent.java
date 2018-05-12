@@ -20,4 +20,6 @@ public interface EngineComponent {
 
     void setup(final ActionManager actionManager, final BattleManager battleManager, final PlayerManager playerManager
             , final Hero hero);
+
+    boolean isNeedPass();
 }

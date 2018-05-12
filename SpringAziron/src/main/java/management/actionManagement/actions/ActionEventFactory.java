@@ -126,4 +126,8 @@ public final class ActionEventFactory {
     public static ActionEvent getAfterUsedSwapSkill(final Hero hero, ASwapSkill swapSkill){
         return new ActionEvent(ActionType.AFTER_USED_SWAP_SKILL, hero, swapSkill);
     }
+
+    public static ActionEvent getNullableEvent() {
+        return new ActionEvent(null, null, null);
+    }
 }
