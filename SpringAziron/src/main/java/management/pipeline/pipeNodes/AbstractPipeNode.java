@@ -16,4 +16,6 @@ public interface APipeNode {
     boolean listen();
 
     Map<String, EngineComponent> getEngineComponentMap();
+
+    String getPipeNodeID();
 }
