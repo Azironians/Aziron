@@ -1,9 +1,7 @@
-package management.service.components.handleComponet;
+package management.service.components.handleComponent;
 
 import heroes.abstractHero.hero.Hero;
-import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEvent;
-import management.battleManagement.BattleManager;
 import management.playerManagement.PlayerManager;
 
 public interface EngineComponent {
@@ -18,8 +16,7 @@ public interface EngineComponent {
 
     void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException;
 
-    void setup(final ActionManager actionManager, final BattleManager battleManager, final PlayerManager playerManager
-            , final Hero hero);
+    void setup(final PlayerManager playerManager, final Hero hero);
 
     boolean isNeedPass();
 }

@@ -1,8 +1,9 @@
 package management.pipeline.pipes;
 
 import annotations.sourceAnnotations.NonFinal;
+import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
-import management.pipeline.pipeNodes.APipeNode;
+import management.pipeline.pipeNodes.AbstractPipeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 @NonFinal
 public class APipe {
 
-    protected List<APipeNode> pipeNodes = new ArrayList<>();
+    protected List<AbstractPipeNode> pipeNodes = new ArrayList<>();
 
     public final void push(final ActionEvent actionEvent){
         final int startPosition = 0;
@@ -25,7 +26,7 @@ public class APipe {
     }
 
     public final boolean listen() {
-        for (final APipeNode pipeNode : this.pipeNodes){
+        for (final AbstractPipeNode pipeNode : this.pipeNodes){
             final boolean isNeedPass = pipeNode.listen();
             if (isNeedPass){
                 return true;
@@ -34,7 +35,29 @@ public class APipe {
         return false;
     }
 
-    public final List<APipeNode> getPipeNodes() {
+    public final APipe addPipeNode(final AbstractPipeNode pipeNode){
+        this.pipeNodes.add(pipeNode);
+        return this;
+    }
+
+    public final APipe addPipeNode(final int position,  final AbstractPipeNode pipeNode){
+        this.pipeNodes.add(position, pipeNode);
+        return this;
+    }
+
+    public final APipe addBeforePipeNode(final String pipeNodeID, final Hero hero, final AbstractPipeNode pipeNode){
+        for (int i = 0; i < this.pipeNodes.size(); i++){
+            final AbstractPipeNode currentPipeNode  = this.pipeNodes.get(i);
+            if (currentPipeNode.getHero() == hero && currentPipeNode.getPipeNodeID().equals(pipeNodeID)){
+                this.addPipeNode(i, pipeNode);
+                return this;
+            }
+        }
+        this.addPipeNode(pipeNode);
+        return this;
+    }
+
+    public final List<AbstractPipeNode> getPipeNodes() {
         return this.pipeNodes;
     }
 }

@@ -11,9 +11,7 @@ import org.jetbrains.annotations.Contract;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import spring.SpringManager;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.logging.Logger;
 
 public final class PlayerManager {
@@ -158,5 +156,10 @@ public final class PlayerManager {
     @Contract(pure = true)
     public final ATeam getOpponentTeam() {
         return opponentATeam;
+    }
+
+    public final List<ATeam> getAllTeams() {
+        //TODO: Make implementation
+        return new ArrayList<>();
     }
 }

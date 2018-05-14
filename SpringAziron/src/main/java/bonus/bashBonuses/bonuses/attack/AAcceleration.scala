@@ -4,7 +4,7 @@ import bonus.bonuses.Bonus
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
 import management.playerManagement.Player
-import management.service.components.handleComponet.EngineComponent
+import management.service.components.handleComponent.EngineComponent
 import management.service.engine.services.DynamicEngineService
 
 final class AAcceleration(name: String, val id: Int, sprite: ImageView) extends Bonus(name, id, sprite)

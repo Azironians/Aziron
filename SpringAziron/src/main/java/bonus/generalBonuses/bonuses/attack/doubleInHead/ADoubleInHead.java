@@ -3,7 +3,7 @@ package bonus.generalBonuses.bonuses.attack.doubleInHead;
 import bonus.bonuses.Bonus;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
 
 public final class ADoubleInHead extends Bonus implements DynamicEngineService {

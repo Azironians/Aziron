@@ -1,4 +1,4 @@
-package management.service.components.handleComponet;
+package management.service.components.handleComponent;
 
 public final class IllegalSwitchOffEngineComponentException extends Exception {
 

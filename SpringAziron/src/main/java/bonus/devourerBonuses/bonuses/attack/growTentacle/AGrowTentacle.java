@@ -4,7 +4,7 @@ import bonus.bonuses.Bonus;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 import management.service.components.providerComponent.ProviderComponent;
 import management.service.engine.services.DynamicEngineService;
 import management.bonusManagement.BonusManager;

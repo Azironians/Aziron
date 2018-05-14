@@ -6,13 +6,13 @@ import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
 import management.battleManagement.BattleManager;
 import management.playerManagement.PlayerManager;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 
 import java.util.logging.Logger;
 
-public final class AttackEngineComponent implements EngineComponent {
+public final class AttackEngineBonusComponent implements EngineComponent {
 
-    private static final Logger log = Logger.getLogger(AttackEngineComponent.class.getName());
+    private static final Logger log = Logger.getLogger(AttackEngineBonusComponent.class.getName());
 
     private static final int ATTACK_BOOST = 10;
 
@@ -24,6 +24,11 @@ public final class AttackEngineComponent implements EngineComponent {
     public final void setup(final ActionManager actionManager, final BattleManager battleManager
             , final PlayerManager playerManager, final Hero hero) {
         this.hero = hero;
+    }
+
+    @Override
+    public boolean isNeedPass() {
+        return false;
     }
 
     final void use() {

@@ -5,7 +5,7 @@ import heroes.abstractHero.hero.Hero
 import heroes.abstractHero.skills.ASkill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionEventFactory, ActionType}
-import management.service.components.handleComponet.EngineComponent
+import management.service.components.handleComponent.EngineComponent
 import management.service.engine.services.DynamicEngineService
 
 import scala.collection.JavaConverters._

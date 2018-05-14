@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
 import management.battleManagement.processors.BonusLoadingProcessor
 import management.service.components.chainComponet.ChainComponent
-import management.service.components.handleComponet.EngineComponent
+import management.service.components.handleComponent.EngineComponent
 import management.service.engine.services.DynamicEngineService
 
 final class XIncineration(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite)

@@ -4,7 +4,7 @@ import bonus.bonuses.ExtendedBonus;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 import management.service.engine.services.RegularEngineService;
 
 import static bonus.otherBonuses.experience.questArtifact.QuestArtifactEngineComponent.END_PROGRESS;

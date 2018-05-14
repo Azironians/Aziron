@@ -1,7 +1,7 @@
 package management.service.engine;
 
 import bonus.bonuses.Bonus;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import management.actionManagement.ActionManager;

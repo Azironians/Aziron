@@ -1,6 +1,6 @@
 package management.service.engine.services;
 
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 
 public interface DynamicEngineService {
 

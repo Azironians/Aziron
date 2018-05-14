@@ -8,8 +8,8 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.EngineComponent;
-import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
+import management.service.components.handleComponent.EngineComponent;
+import management.service.components.handleComponent.IllegalSwitchOffEngineComponentException;
 import management.service.engine.services.RegularEngineService;
 import management.playerManagement.Player;
 

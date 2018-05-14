@@ -3,7 +3,7 @@ package bonus.generalBonuses.bonuses.attack.atack;
 import bonus.bonuses.Bonus;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
 
 public final class AAttack extends Bonus implements DynamicEngineService {
@@ -15,14 +15,14 @@ public final class AAttack extends Bonus implements DynamicEngineService {
     @Override
     public final void use() {
         final Hero hero = this.playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
-        final AttackEngineComponent attackEngineComponent = (AttackEngineComponent) getPrototypeEngineComponent();
-        attackEngineComponent.setup(this.actionManager, this.battleManager, this.playerManager, hero);
-        attackEngineComponent.use();
-        this.actionManager.getEventEngine().addHandler(attackEngineComponent);
+        final AttackEngineBonusComponent attackEngineBonusComponent = (AttackEngineBonusComponent) getPrototypeEngineComponent();
+        attackEngineBonusComponent.setup(this.actionManager, this.battleManager, this.playerManager, hero);
+        attackEngineBonusComponent.use();
+        this.actionManager.getEventEngine().addHandler(attackEngineBonusComponent);
     }
 
     @Override
     public final EngineComponent getPrototypeEngineComponent() {
-        return new AttackEngineComponent();
+        return new AttackEngineBonusComponent();
     }
 }

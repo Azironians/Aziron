@@ -6,7 +6,7 @@ import bonus.bonuses.service.annotations.implementations.DamageEngine;
 import bonus.bonuses.service.parameterType.ParameterType;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 import management.service.engine.EventEngine;
 import org.springframework.util.ReflectionUtils;
 

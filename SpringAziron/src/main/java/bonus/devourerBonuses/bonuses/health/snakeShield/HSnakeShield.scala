@@ -8,7 +8,7 @@ import heroes.abstractHero.skills.ASkill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
 import management.playerManagement.Player
-import management.service.components.handleComponet.{EngineComponent, IllegalSwitchOffEngineComponentException}
+import management.service.components.handleComponent.{EngineComponent, IllegalSwitchOffEngineComponentException}
 import management.service.engine.services.RegularEngineService
 
 final class HSnakeShield(name: String, val id: Int, sprite: ImageView) extends Bonus(name, id, sprite)

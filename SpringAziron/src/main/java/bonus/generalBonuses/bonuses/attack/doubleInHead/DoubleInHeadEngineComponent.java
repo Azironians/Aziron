@@ -8,7 +8,7 @@ import management.battleManagement.BattleManager;
 import management.playerManagement.PlayerManager;
 import management.processors.Processor;
 import management.processors.exceptions.UnsupportedProcessorException;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 
 import java.util.logging.Logger;
 

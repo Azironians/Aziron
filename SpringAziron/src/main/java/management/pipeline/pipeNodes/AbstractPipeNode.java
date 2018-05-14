@@ -1,21 +1,46 @@
 package management.pipeline.pipeNodes;
 
+import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
 import management.pipeline.pipes.APipe;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public interface APipeNode {
+public abstract class AbstractPipeNode {
 
-    ActionEvent handleEvent(final ActionEvent actionEvent);
+    public abstract ActionEvent handleEvent(final ActionEvent actionEvent);
 
-    Map<String, APipe> getInnerPipeMap();
+    protected final List<EngineComponent> engineComponentList = new ArrayList<>();
 
-    boolean listen();
+    protected final Map<String, APipe> innerPipeMap = new HashMap<>();
 
-    Map<String, EngineComponent> getEngineComponentMap();
+    public final boolean listen(){
+        for (final EngineComponent engineComponent : this.engineComponentList) {
+            if (engineComponent.isWorking()) {
+                final boolean isNeedPass = engineComponent.isNeedPass();
+                if (isNeedPass) {
+                    return true;
+                }
+            } else {
+                this.engineComponentList.remove(engineComponent);
+            }
+        }
+        return false;
+    }
 
-    String getPipeNodeID();
+    public abstract String getPipeNodeID();
+
+    public abstract Hero getHero();
+
+    public final List<EngineComponent> getEngineComponentList(){
+        return this.engineComponentList;
+    }
+
+    public final Map<String, APipe> getInnerPipeMap(){
+        return this.innerPipeMap;
+    }
 }

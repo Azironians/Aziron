@@ -1,7 +1,7 @@
 package bonus.generalBonuses.bonuses.special;
 
 import bonus.bonuses.Bonus;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;

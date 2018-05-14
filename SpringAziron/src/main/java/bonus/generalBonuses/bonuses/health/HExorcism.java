@@ -4,7 +4,7 @@ import bonus.bonuses.Bonus;
 import bonus.bonuses.service.annotations.EngineField;
 import bonus.bonuses.service.annotations.implementations.HealingEngine;
 import bonus.bonuses.service.parameterType.ParameterType;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;

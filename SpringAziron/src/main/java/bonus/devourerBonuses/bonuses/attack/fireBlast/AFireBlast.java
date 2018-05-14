@@ -4,8 +4,8 @@ import bonus.bonuses.Bonus;
 import javafx.scene.image.ImageView;
 import lib.duplexMap.DuplexMap;
 import management.actionManagement.actions.ActionEvent;
-import management.service.components.handleComponet.EngineComponent;
-import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
+import management.service.components.handleComponent.EngineComponent;
+import management.service.components.handleComponent.IllegalSwitchOffEngineComponentException;
 import management.service.engine.services.RegularEngineService;
 import management.playerManagement.Player;
 

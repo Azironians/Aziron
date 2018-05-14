@@ -5,7 +5,7 @@ import heroes.devourer.skills.superSkills.consuming.utilities.ConsumingMessagePa
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
 import management.playerManagement.Player;
 

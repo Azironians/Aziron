@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
 import management.playerManagement.Player
 import management.processors.Processor
-import management.service.components.handleComponet.EngineComponent
+import management.service.components.handleComponent.EngineComponent
 import management.service.engine.services.DynamicEngineService
 
 final class XSnakeCollapse(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite)

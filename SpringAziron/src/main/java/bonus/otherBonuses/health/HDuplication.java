@@ -3,11 +3,9 @@ package bonus.otherBonuses.health;
 import bonus.bonuses.Bonus;
 import bonus.bonuses.service.annotations.implementations.HealingEngine;
 import heroes.abstractHero.hero.Hero;
-import javafx.scene.effect.Reflection;
 import javafx.scene.image.ImageView;
-import management.service.components.handleComponet.EngineComponent;
+import management.service.components.handleComponent.EngineComponent;
 import management.service.engine.EventEngine;
-import org.springframework.util.ReflectionUtils;
 
 import java.util.HashSet;
 import java.util.Set;

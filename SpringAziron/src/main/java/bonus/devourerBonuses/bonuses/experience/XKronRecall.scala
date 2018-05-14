@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.text.Text
 import management.actionManagement.actions.{ActionEvent, ActionType}
 import management.playerManagement.{ATeam, Player}
-import management.service.components.handleComponet.EngineComponent
+import management.service.components.handleComponent.EngineComponent
 import management.service.engine.services.DynamicEngineService
 
 import scala.collection.mutable

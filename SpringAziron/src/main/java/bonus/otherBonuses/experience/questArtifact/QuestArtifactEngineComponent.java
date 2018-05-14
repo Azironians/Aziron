@@ -8,8 +8,8 @@ import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEvent;
 import management.battleManagement.BattleManager;
 import management.playerManagement.PlayerManager;
-import management.service.components.handleComponet.EngineComponent;
-import management.service.components.handleComponet.IllegalSwitchOffEngineComponentException;
+import management.service.components.handleComponent.EngineComponent;
+import management.service.components.handleComponent.IllegalSwitchOffEngineComponentException;
 import management.service.engine.EventEngine;
 import org.springframework.util.ReflectionUtils;
 
