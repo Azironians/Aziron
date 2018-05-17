@@ -49,6 +49,7 @@ public final class PlayerManager {
     private void setPlayerCount(int countPlayers) {
         this.countPlayers = countPlayers;
         this.mapOfPlayers = new HashMap<>(countPlayers);
+
     }
 
     public final void setStartPosition(){

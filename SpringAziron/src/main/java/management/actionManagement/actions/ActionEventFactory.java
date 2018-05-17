@@ -9,6 +9,7 @@ import heroes.abstractHero.skills.ASwapSkill;
 import javafx.util.Pair;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,5 +130,13 @@ public final class ActionEventFactory {
 
     public static ActionEvent getNullableEvent() {
         return new ActionEvent(null, null, null);
+    }
+
+    public static ActionEvent getBeforeGettingExperience(final Hero hero, final double experience) {
+        return new ActionEvent(ActionType.BEFORE_GETTING_EXPERIENCE, hero, experience);
+    }
+
+    public static ActionEvent getAfterGettingExperience(final Hero hero, final double experience) {
+        return new ActionEvent(ActionType.AFTER_GETTING_EXPERIENCE, hero, experience);
     }
 }

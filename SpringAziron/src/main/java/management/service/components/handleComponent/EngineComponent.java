@@ -8,7 +8,7 @@ import management.playerManagement.PlayerManager;
 
 public abstract class EngineComponent {
 
-    private String name;
+    protected String name;
 
     protected Hero hero;
 
@@ -23,6 +23,8 @@ public abstract class EngineComponent {
         this.pipeline = pipeline;
         this.playerManager = playerManager;
     }
+
+    protected abstract EngineComponent clone();
 
     public abstract void handle(final ActionEvent actionEvent);
 

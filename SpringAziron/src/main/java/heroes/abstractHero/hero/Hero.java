@@ -89,6 +89,8 @@ public abstract class Hero {
 
     private boolean damageAccess = true;
 
+    private boolean experienceAccess = true;
+
     //ActionEvents:
 
     private double damageCoefficient = 1;
@@ -120,16 +122,17 @@ public abstract class Hero {
     }
 
     public final boolean addExperience(final double delta) {
-        if (delta > 0) {
-            final int oldLevel = level;
-            changeExperience(delta);
-            if (oldLevel < level) {
-                levelUp();
+        if (this.experienceAccess) {
+            if (delta > 0) {
+                final int oldLevel = level;
+                this.changeExperience(delta);
+                if (oldLevel < level) {
+                    levelUp();
+                }
+                return true;
             }
-            return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     private void changeExperience(final double delta) {
@@ -382,11 +385,11 @@ public abstract class Hero {
     //Location:
     private ALocation location;
 
-    public final ALocation getLocation(){
+    public final ALocation getLocation() {
         return this.location;
     }
 
-    public final void setLocation(final ALocation location){
+    public final void setLocation(final ALocation location) {
         this.location = location;
     }
 
