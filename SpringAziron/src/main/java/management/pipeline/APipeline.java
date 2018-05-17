@@ -13,6 +13,7 @@ import management.pipeline.pipeNodes.mainPipeNode.MainPipeNode;
 import management.pipeline.pipeNodes.skillPipeNode.SkillPipeNode;
 import management.pipeline.pipeNodes.treatmentPipeNode.TreatmentPipeNode;
 import management.pipeline.pipes.APipe;
+import management.pipeline.pipes.APipeBuilder;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
@@ -28,27 +29,26 @@ public final class APipeline {
     @Inject
     private PlayerManager playerManager;
 
-    private final Map<String, APipe> pipes = new HashMap<>() {{
-        this.put("MainPipe", new APipe());
-        this.put("AttackPipe", new APipe());
-        this.put("TreatmentPipe", new APipe());
-        this.put("SkillPipe", new APipe());
-        this.put("BonusPipe", new APipe());
-    }};
+    @Inject
+    private APipeBuilder pipeBuilder;
+
+    private Map<String, APipe> pipes = new HashMap<>();
 
     public final void install() {
-        this.installPipe(MainPipeNode.class);
-        this.installPipe(AttackPipeNode.class);
-        this.installPipe(TreatmentPipeNode.class);
-        this.installPipe(SkillPipeNode.class);
-        this.installPipe(BonusPipeNode.class);
+        this.installCorePipeNodes(MainPipeNode.class);
+        this.installCorePipeNodes(AttackPipeNode.class);
+        this.installCorePipeNodes(TreatmentPipeNode.class);
+        this.installCorePipeNodes(SkillPipeNode.class);
+        this.installCorePipeNodes(BonusPipeNode.class);
     }
 
-    private void installPipe(final Class<? extends DefaultPipeNode> clazz) {
+    private void installCorePipeNodes(final Class<? extends DefaultPipeNode> clazz) {
+        //Get PipeNode -> Pipe:
         final String className = clazz.getName();
-        final int withoutNode = 4;
-        final String pipeKey = className.substring(0, className.length() - withoutNode);
-        final APipe pipe = this.pipes.get(pipeKey);
+        final int withoutNodeWord = 4;
+        final String pipeName = className.substring(0, className.length() - withoutNodeWord);
+        //Build pipe:
+        final APipe pipe = this.pipeBuilder.build(pipeName);
         try {
             final Constructor constructor = clazz.getDeclaredConstructor(Hero.class, PlayerManager.class);
             for (final ATeam team : this.playerManager.getAllTeams()) {
@@ -65,17 +65,10 @@ public final class APipeline {
         }
     }
 
-
     public final void push(final ActionEvent actionEvent) {
         final Collection<APipe> pipes = this.pipes.values();
         for (final APipe pipe : pipes) {
             pipe.push(actionEvent);
-        }
-        for (final APipe pipe : pipes) {
-            final boolean isNeedPass = pipe.listen();
-            if (isNeedPass) {
-                this.push(ActionEventFactory.getNullableEvent());
-            }
         }
     }
 

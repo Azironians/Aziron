@@ -1,17 +1,28 @@
 package management.pipeline.pipes;
 
-import annotations.sourceAnnotations.NonFinal;
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
+import management.pipeline.APipeline;
 import management.pipeline.pipeNodes.AbstractPipeNode;
+import management.playerManagement.PlayerManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@NonFinal
-public class APipe {
+public final class APipe {
 
-    protected List<AbstractPipeNode> pipeNodes = new ArrayList<>();
+    private String pipeName;
+
+    private APipeline pipeline;
+
+    private PlayerManager playerManager;
+
+    APipe(final String pipeName, final APipeline pipeline, final PlayerManager playerManager){
+        this.pipeline = pipeline;
+        this.playerManager = playerManager;
+    }
+
+    private List<AbstractPipeNode> pipeNodes = new ArrayList<>();
 
     public final void push(final ActionEvent actionEvent){
         final int startPosition = 0;
@@ -23,16 +34,6 @@ public class APipe {
             final ActionEvent newActionEvent = this.pipeNodes.get(position).handleEvent(actionEvent);
             this.push(newActionEvent, position + 1);
         }
-    }
-
-    public final boolean listen() {
-        for (final AbstractPipeNode pipeNode : this.pipeNodes){
-            final boolean isNeedPass = pipeNode.listen();
-            if (isNeedPass){
-                return true;
-            }
-        }
-        return false;
     }
 
     public final APipe addPipeNode(final AbstractPipeNode pipeNode){

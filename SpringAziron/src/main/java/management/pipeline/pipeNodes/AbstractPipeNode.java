@@ -18,20 +18,6 @@ public abstract class AbstractPipeNode {
 
     protected final Map<String, APipe> innerPipeMap = new HashMap<>();
 
-    public final boolean listen(){
-        for (final EngineComponent engineComponent : this.engineComponentList) {
-            if (engineComponent.isWorking()) {
-                final boolean isNeedPass = engineComponent.isNeedPass();
-                if (isNeedPass) {
-                    return true;
-                }
-            } else {
-                this.engineComponentList.remove(engineComponent);
-            }
-        }
-        return false;
-    }
-
     public abstract String getPipeNodeID();
 
     public abstract Hero getHero();

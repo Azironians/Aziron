@@ -10,13 +10,17 @@ import management.service.components.handleComponent.EngineComponent;
 
 public abstract class DefaultPipeNode extends AbstractPipeNode {
 
+    private String pipeNodeID;
+
     protected APipeline pipeline;
 
     protected PlayerManager playerManager;
 
     protected Hero hero;
 
-    public DefaultPipeNode(final Hero hero, final PlayerManager playerManager, final APipeline pipeline){
+    public DefaultPipeNode(final String pipeNodeID, final Hero hero, final PlayerManager playerManager
+            , final APipeline pipeline){
+        this.pipeNodeID = pipeNodeID;
         this.playerManager = playerManager;
         this.pipeline = pipeline;
         this.hero = hero;
@@ -36,5 +40,10 @@ public abstract class DefaultPipeNode extends AbstractPipeNode {
     @Override
     public final Hero getHero() {
         return this.hero;
+    }
+
+    @Override
+    public final String getPipeNodeID(){
+        return this.pipeNodeID;
     }
 }

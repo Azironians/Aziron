@@ -2,21 +2,39 @@ package management.service.components.handleComponent;
 
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
+import management.pipeline.APipeline;
+import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 
-public interface EngineComponent {
+public abstract class EngineComponent {
 
-    void handle(final ActionEvent actionEvent);
+    private String name;
 
-    String getName();
+    protected Hero hero;
 
-    Hero getCurrentHero();
+    protected PlayerManager playerManager;
 
-    boolean isWorking();
+    protected APipeline pipeline;
 
-    void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException;
+    public EngineComponent(final String name, final Hero hero, final APipeline pipeline
+            , final PlayerManager playerManager){
+        this.name = name;
+        this.hero = hero;
+        this.pipeline = pipeline;
+        this.playerManager = playerManager;
+    }
 
-    void setup(final PlayerManager playerManager, final Hero hero);
+    public abstract void handle(final ActionEvent actionEvent);
 
-    boolean isNeedPass();
+    public final String getName(){
+        return this.name;
+    }
+
+    public abstract boolean isWorking();
+
+    public abstract void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException;
+
+    public final Hero getCurrentHero(){
+        return this.hero;
+    }
 }
