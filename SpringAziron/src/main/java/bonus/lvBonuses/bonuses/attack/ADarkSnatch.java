@@ -99,7 +99,7 @@ public final class ADarkSnatch extends ExtendedBonus implements RegularEngineSer
             }
 
             @Override
-            public final void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException {
+            public final void setWorking(final boolean isWorking) throws IllegalSwitchOffEngineComponentException {
                 throw new IllegalSwitchOffEngineComponentException();
             }
         };
@@ -160,8 +160,8 @@ public final class ADarkSnatch extends ExtendedBonus implements RegularEngineSer
             }
 
             @Override
-            public final void setWorking(final boolean able) {
-                this.isWorking = able;
+            public final void setWorking(final boolean isWorking) {
+                this.isWorking = isWorking;
             }
         };
     }

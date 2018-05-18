@@ -75,7 +75,7 @@ public final class AHybridisation extends Bonus implements RegularEngineService 
             }
 
             @Override
-            public final void setWorking(boolean able)
+            public final void setWorking(boolean isWorking)
                     throws IllegalSwitchOffEngineComponentException {
                 throw new IllegalSwitchOffEngineComponentException("Hybridisation " +
                         "handler " +

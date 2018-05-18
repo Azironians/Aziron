@@ -37,8 +37,8 @@ class EOnDrive(name: String, id: Int, sprite: ImageView) : Bonus(name, id, sprit
 
         override fun isWorking() = this.work
 
-        override fun setWorking(able: Boolean) {
-            this.work = able
+        override fun setWorking(isWorking: Boolean) {
+            this.work = isWorking
         }
     }
 }

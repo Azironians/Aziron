@@ -93,13 +93,9 @@ public abstract class Hero {
 
     //ActionEvents:
 
-    private double damageCoefficient = 1;
-
-    private double armor = 0;
-
     public final boolean getDamage(final double damage) {
-        if (damageAccess && damage - armor > 0) {
-            hitPoints -= (damage - armor);
+        if (damageAccess) {
+            hitPoints -= damage;
             log.info("WAS DAMAGE: " + damage);
             return true;
         }

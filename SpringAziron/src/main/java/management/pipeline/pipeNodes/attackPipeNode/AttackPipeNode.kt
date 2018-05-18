@@ -1,4 +1,4 @@
-package management.pipeline.pipeNodes.attackPipeNode;
+package management.pipeline.pipeNodes.attackPipeNode
 
 import heroes.abstractHero.hero.Hero
 import management.actionManagement.actions.ActionEvent
@@ -8,41 +8,105 @@ import management.pipeline.APipeline
 import management.pipeline.pipeNodes.defaultPipeNode.DefaultPipeNode
 import management.playerManagement.PlayerManager
 import management.service.components.handleComponent.CoreEngineComponent
-import management.service.components.handleComponent.MainEngineComponent
 
-class AttackPipeNode(pipeNodeID: String, hero: Hero, playerManager: PlayerManager, pipeline : APipeline)
+class AttackPipeNode(pipeNodeID: String, hero: Hero, playerManager: PlayerManager, pipeline: APipeline)
     : DefaultPipeNode(pipeNodeID, hero, playerManager, pipeline) {
 
     init {
-        this.engineComponentList.add(CoreAttackEngineComponent(this.hero, this.pipeline,this.playerManager))
+        this.engineComponentList.add(CoreBeforeAttackEngineComponent(this.hero, this.pipeline, this.playerManager))
     }
 
-    class CoreAttackEngineComponent(hero: Hero, pipeline: APipeline, playerManager: PlayerManager)
-        : CoreEngineComponent("CoreAttackEngineComponent", hero, pipeline, playerManager ) {
-
-        override fun isWorking(): Boolean {
+    //Always last in engine order component:
+    class CoreBeforeAttackEngineComponent(hero: Hero, pipeline: APipeline, playerManager: PlayerManager)
+        : CoreEngineComponent("CoreBeforeAttackEngineComponent", hero, pipeline, playerManager) {
+        override fun handle(actionEvent: ActionEvent?) {
+            if (this.checkEventAndHero(actionEvent, ActionType.BEFORE_ATTACK)) {
+                this.pipeline.push(ActionEventFactory.getDuringAttack(hero))
+            }
         }
+    }
 
-        override fun setWorking(able: Boolean) {
-        }
+    class CoreDuringAttackEngineComponent(hero: Hero, pipeline: APipeline, playerManager: PlayerManager)
+        : CoreEngineComponent("CoreDuringAttackEngineComponent", hero, pipeline, playerManager) {
 
         override fun handle(actionEvent: ActionEvent?) {
-            if (actionEvent?.actionType === ActionType.DURING_ATTACK && actionEvent.hero === this.hero){
+            if (this.checkEventAndHero(actionEvent, ActionType.DURING_ATTACK)) {
                 val opponentHero = this.playerManager.opponentTeam.currentPlayer.currentHero
-                val attack = hero.attack
-                val experience = attack
-                this.pipeline.push(ActionEventFactory.getBeforeAttack(hero))
+                val damage = actionEvent?.data as Double
+                val experience = damage
                 this.pipeline.push(ActionEventFactory.getBeforeGettingExperience(hero, experience))
-                if (hero.addExperience(experience)){
-                    this.pipeline.push(ActionEventFactory.getAfterGettingExperience(hero, experience))
+                this.pipeline.push(ActionEventFactory.getBeforeDealDamage(hero, opponentHero, damage))
+                this.pipeline.push(ActionEventFactory.getAfterAttack(hero))
+            }
+        }
+    }
+
+
+    //Always last in engine order component:
+    class CoreBeforeExperienceEngineComponent(hero: Hero, pipeline: APipeline, playerManager: PlayerManager)
+        : CoreEngineComponent("CoreBeforeExperienceEngineComponent", hero, pipeline, playerManager) {
+
+        override fun handle(actionEvent: ActionEvent?) {
+            if (this.checkEventAndHero(actionEvent, ActionType.BEFORE_GETTING_EXPERIENCE)) {
+                val experience = actionEvent?.data as Double
+                this.pipeline.push(ActionEventFactory.getDuringGettingExperience(hero, experience))
+            }
+        }
+    }
+
+    class CoreDuringExperienceEngineComponent(hero: Hero, pipeline: APipeline, playerManager: PlayerManager)
+        : CoreEngineComponent("CoreDuringExperienceEngineComponent", hero, pipeline, playerManager) {
+
+        override fun handle(actionEvent: ActionEvent?) {
+            if (this.checkEventAndHero(actionEvent, ActionType.DURING_GETTING_EXPERIENCE)) {
+                val experience = actionEvent?.data as Double
+                val isSuccessful = this.hero.addExperience(experience)
+                if (isSuccessful) {
+                    this.pipeline.push(ActionEventFactory.getAfterGettingExperience(this.hero, experience))
                 }
-                this.pipeline.push(ActionEventFactory.getBeforeDealDamage(hero, opponentHero, attack))
-                if (opponentHero.getDamage(attack)) {
-                    this.pipeline.push(ActionEventFactory.getAfterDealDamage(hero, opponentHero, attack))
+            }
+        }
+    }
+
+
+    class CoreBeforeDealDamageEngineComponent(hero: Hero, pipeline: APipeline, playerManager: PlayerManager)
+        : CoreEngineComponent("CoreBeforeDealDamageEngineComponent", hero, pipeline, playerManager) {
+
+        override fun handle(actionEvent: ActionEvent?) {
+            if (this.checkEventAndHero(actionEvent, ActionType.BEFORE_DEAL_DAMAGE)) {
+                val victimVsDamage = actionEvent?.data
+                if (this.checkData(victimVsDamage, Pair::class.java)) {
+                    victimVsDamage as Pair<*, *>
+                    val victim = victimVsDamage.first
+                    val damage = victimVsDamage.second
+                    if (this.checkData(victim, Hero::class.java) && this.checkData(damage, Double::class.java)) {
+                        this.pipeline.push(ActionEventFactory.getDuringDealDamage(this.hero, victim as Hero
+                                , damage as Double))
+                    }
                 }
-                actionManager.refreshScreen()
-                if (battleManager.isEndTurn()) {
-                    actionManager.endTurn(attackTeam)
+            }
+        }
+    }
+
+
+    class CoreDuringDealDamageEngineComponent(hero: Hero, pipeline: APipeline, playerManager: PlayerManager)
+        : CoreEngineComponent("CoreDuringDealDamageEngineComponent", hero, pipeline, playerManager) {
+
+        override fun handle(actionEvent: ActionEvent?) {
+            if (this.checkEventAndHero(actionEvent, ActionType.DURING_DEAL_DAMAGE)) {
+                val victimVsDamage = actionEvent?.data
+                if (this.checkData(victimVsDamage, Pair::class.java)) {
+                    victimVsDamage as Pair<*, *>
+                    val victim = victimVsDamage.first
+                    val damage = victimVsDamage.second
+                    if (this.checkData(victim, Hero::class.java) && this.checkData(damage, Double::class.java)) {
+                        victim as Hero
+                        damage as Double
+                        val isSuccessful = victim.getDamage(damage)
+                        if (isSuccessful) {
+                            this.pipeline.push(ActionEventFactory.getAfterDealDamage(this.hero, victim, damage))
+                        }
+                    }
                 }
             }
         }

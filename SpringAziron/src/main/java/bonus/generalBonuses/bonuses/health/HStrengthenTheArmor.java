@@ -93,8 +93,8 @@ public final class HStrengthenTheArmor extends Bonus implements DynamicEngineSer
             }
 
             @Override
-            public final void setWorking(final boolean able) {
-                this.isWorking = able;
+            public final void setWorking(final boolean isWorking) {
+                this.isWorking = isWorking;
             }
         };
     }

@@ -71,7 +71,7 @@ public final class HMutation extends Bonus implements DynamicEngineService {
             }
 
             @Override
-            public final void setWorking(final boolean able) {
+            public final void setWorking(final boolean isWorking) {
                 this.isWorking = false;
             }
         };

@@ -84,8 +84,8 @@ public final class HRegeneratedTissues extends Bonus implements RegularEngineSer
             }
 
             @Override
-            public final void setWorking(final boolean able) {
-                if (able) {
+            public final void setWorking(final boolean isWorking) {
+                if (isWorking) {
                     this.healing += HEALING;
                 } else {
                     this.healing -= HEALING;

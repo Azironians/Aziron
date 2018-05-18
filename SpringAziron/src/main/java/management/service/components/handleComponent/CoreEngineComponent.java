@@ -8,6 +8,8 @@ import java.lang.reflect.Constructor;
 
 public abstract class CoreEngineComponent extends EngineComponent{
 
+    private boolean isWorking = true;
+
     public CoreEngineComponent(final String name, final Hero hero, final APipeline pipeline
             , final PlayerManager playerManager) {
         super(name, hero, pipeline, playerManager);
@@ -24,5 +26,15 @@ public abstract class CoreEngineComponent extends EngineComponent{
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public final boolean isWorking() {
+        return this.isWorking;
+    }
+
+    @Override
+    public final void setWorking(final boolean isWorking) {
+        this.isWorking = isWorking;
     }
 }

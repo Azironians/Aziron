@@ -109,7 +109,7 @@ public final class HybridisationSkill extends AbstractSkill {
             }
 
             @Override
-            public final void setWorking(final boolean able) {
+            public final void setWorking(final boolean isWorking) {
                 throw new UnsupportedOperationException();
             }
         };

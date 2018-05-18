@@ -81,8 +81,8 @@ public final class ABurnOfKron extends Bonus implements DynamicEngineService {
             }
 
             @Override
-            public final void setWorking(final boolean able) {
-                if (able){
+            public final void setWorking(final boolean isWorking) {
+                if (isWorking){
                     count++;
                 } else {
                     count = 0;

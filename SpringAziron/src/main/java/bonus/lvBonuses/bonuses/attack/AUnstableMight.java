@@ -94,7 +94,7 @@ public final class AUnstableMight extends ExtendedBonus implements RegularEngine
             }
 
             @Override
-            public final void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException {
+            public final void setWorking(final boolean isWorking) throws IllegalSwitchOffEngineComponentException {
                 throw new IllegalSwitchOffEngineComponentException();
             }
         };

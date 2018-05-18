@@ -83,7 +83,7 @@ public final class RegenerationSkill extends AbstractSkill {
             }
 
             @Override
-            public final void setWorking(boolean able) {
+            public final void setWorking(boolean isWorking) {
                 this.isWorking = false;
             }
         };

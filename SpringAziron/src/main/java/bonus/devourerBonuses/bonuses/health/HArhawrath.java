@@ -71,8 +71,8 @@ public final class HArhawrath extends Bonus implements DynamicEngineService {
             }
 
             @Override
-            public final void setWorking(final boolean able) {
-                this.isWorking = able;
+            public final void setWorking(final boolean isWorking) {
+                this.isWorking = isWorking;
             }
         };
     }

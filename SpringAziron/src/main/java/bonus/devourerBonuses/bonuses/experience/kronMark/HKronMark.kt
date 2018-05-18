@@ -55,7 +55,7 @@ class HKronMark(name: String, id: Int, imageView: ImageView) : Bonus(name, id, i
 
         override fun isWorking(): Boolean = true
 
-        override fun setWorking(able: Boolean) {
+        override fun setWorking(isWorking: Boolean) {
             throw IllegalSwitchOffEngineComponentException()
         }
     }

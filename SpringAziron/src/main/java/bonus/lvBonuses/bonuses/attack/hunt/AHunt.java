@@ -160,7 +160,7 @@ public final class AHunt extends Bonus implements RegularEngineService {
             }
 
             @Override
-            public void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException {
+            public void setWorking(final boolean isWorking) throws IllegalSwitchOffEngineComponentException {
                 throw new IllegalSwitchOffEngineComponentException();
             }
         };

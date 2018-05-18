@@ -2,6 +2,7 @@ package management.service.components.handleComponent;
 
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
+import management.actionManagement.actions.ActionType;
 import management.pipeline.APipeline;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
@@ -34,9 +35,17 @@ public abstract class EngineComponent {
 
     public abstract boolean isWorking();
 
-    public abstract void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException;
+    public abstract void setWorking(final boolean isWorking) throws IllegalSwitchOffEngineComponentException;
 
     public final Hero getCurrentHero(){
         return this.hero;
+    }
+
+    protected boolean checkEventAndHero(final ActionEvent actionEvent, final ActionType waitingActionType){
+        return actionEvent.getActionType() == waitingActionType && actionEvent.getHero() == this.hero;
+    }
+
+    protected boolean checkData(final Object data, final Class clazz){
+        return data != null && data.getClass().equals(clazz);
     }
 }

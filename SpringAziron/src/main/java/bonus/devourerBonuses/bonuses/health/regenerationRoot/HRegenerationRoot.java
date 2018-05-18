@@ -86,8 +86,8 @@ public final class HRegenerationRoot extends Bonus implements DynamicEngineServi
             }
 
             @Override
-            public final void setWorking(final boolean able) {
-                this.isWorking = able;
+            public final void setWorking(final boolean isWorking) {
+                this.isWorking = isWorking;
             }
         };
     }

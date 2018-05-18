@@ -62,7 +62,7 @@ public final class XUsurpation extends Bonus implements RegularEngineService {
             }
 
             @Override
-            public final void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException {
+            public final void setWorking(final boolean isWorking) throws IllegalSwitchOffEngineComponentException {
                 throw new IllegalSwitchOffEngineComponentException("Usurpation handler"
                         + "component always must work in EventEngine");
             }

@@ -3,7 +3,7 @@ package management.pipeline.pipes;
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
 import management.pipeline.APipeline;
-import management.pipeline.pipeNodes.AbstractPipeNode;
+import management.pipeline.pipeNodes.APipeNode;
 import management.playerManagement.PlayerManager;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public final class APipe {
         this.playerManager = playerManager;
     }
 
-    private List<AbstractPipeNode> pipeNodes = new ArrayList<>();
+    private List<APipeNode> pipeNodes = new ArrayList<>();
 
     public final void push(final ActionEvent actionEvent){
         final int startPosition = 0;
@@ -36,19 +36,19 @@ public final class APipe {
         }
     }
 
-    public final APipe addPipeNode(final AbstractPipeNode pipeNode){
+    public final APipe addPipeNode(final APipeNode pipeNode){
         this.pipeNodes.add(pipeNode);
         return this;
     }
 
-    public final APipe addPipeNode(final int position,  final AbstractPipeNode pipeNode){
+    public final APipe addPipeNode(final int position,  final APipeNode pipeNode){
         this.pipeNodes.add(position, pipeNode);
         return this;
     }
 
-    public final APipe addBeforePipeNode(final String pipeNodeID, final Hero hero, final AbstractPipeNode pipeNode){
+    public final APipe addBeforePipeNode(final String pipeNodeID, final Hero hero, final APipeNode pipeNode){
         for (int i = 0; i < this.pipeNodes.size(); i++){
-            final AbstractPipeNode currentPipeNode  = this.pipeNodes.get(i);
+            final APipeNode currentPipeNode  = this.pipeNodes.get(i);
             if (currentPipeNode.getHero() == hero && currentPipeNode.getPipeNodeID().equals(pipeNodeID)){
                 this.addPipeNode(i, pipeNode);
                 return this;
@@ -58,7 +58,7 @@ public final class APipe {
         return this;
     }
 
-    public final List<AbstractPipeNode> getPipeNodes() {
+    public final List<APipeNode> getPipeNodes() {
         return this.pipeNodes;
     }
 }

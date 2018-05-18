@@ -95,8 +95,8 @@ public final class AGrowTentacle extends Bonus implements DynamicEngineService {
             }
 
             @Override
-            public final void setWorking(final boolean able) {
-               this.isWorking = able;
+            public final void setWorking(final boolean isWorking) {
+               this.isWorking = isWorking;
             }
 
             private ProviderComponent<Integer> getCustomProviderComponent(final int inputPriority) {

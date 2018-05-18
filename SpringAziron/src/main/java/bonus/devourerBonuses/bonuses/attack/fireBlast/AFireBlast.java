@@ -77,7 +77,7 @@ public final class AFireBlast extends Bonus implements RegularEngineService {
             }
 
             @Override
-            public final void setWorking(boolean able) throws IllegalSwitchOffEngineComponentException {
+            public final void setWorking(boolean isWorking) throws IllegalSwitchOffEngineComponentException {
                 throw new IllegalSwitchOffEngineComponentException("FireBlast handler " +
                         "component always must work in EventEngine");
             }

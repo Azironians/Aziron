@@ -61,8 +61,8 @@ public final class HVampirism extends Bonus implements DynamicEngineService {
             }
 
             @Override
-            public void setWorking(final boolean able) {
-                this.isWorking = able;
+            public void setWorking(final boolean isWorking) {
+                this.isWorking = isWorking;
             }
         };
     }

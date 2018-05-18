@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class AbstractPipeNode {
+public abstract class APipeNode {
 
     public abstract ActionEvent handleEvent(final ActionEvent actionEvent);
 

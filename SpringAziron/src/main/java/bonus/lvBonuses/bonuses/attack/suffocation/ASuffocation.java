@@ -152,7 +152,7 @@ public final class ASuffocation extends Bonus implements RegularEngineService {
             }
 
             @Override
-            public final void setWorking(final boolean able) throws IllegalSwitchOffEngineComponentException {
+            public final void setWorking(final boolean isWorking) throws IllegalSwitchOffEngineComponentException {
                 throw new IllegalSwitchOffEngineComponentException();
             }
         };

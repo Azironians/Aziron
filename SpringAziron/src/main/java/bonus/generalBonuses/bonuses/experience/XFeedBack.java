@@ -91,7 +91,7 @@ public final class XFeedBack extends Bonus implements RegularEngineService {
             }
 
             @Override
-            public final void setWorking(final boolean able)
+            public final void setWorking(final boolean isWorking)
                     throws IllegalSwitchOffEngineComponentException {
                 throw new IllegalSwitchOffEngineComponentException("FeedBack handler " +
                         "component always must work in EventEngine");
