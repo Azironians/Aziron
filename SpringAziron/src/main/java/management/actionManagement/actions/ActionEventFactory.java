@@ -66,6 +66,10 @@ public final class ActionEventFactory {
         return new ActionEvent(ActionType.BEFORE_TREATMENT, hero);
     }
 
+    public static ActionEvent getDuringTreatment(final Hero hero) {
+        return new ActionEvent(ActionType.DURING_TREATMENT, hero);
+    }
+
     public static ActionEvent getAfterTreatment(final Hero hero) {
         return new ActionEvent(ActionType.AFTER_TREATMENT, hero);
     }
@@ -102,11 +106,15 @@ public final class ActionEventFactory {
     }
 
     public static ActionEvent getBeforeHealing(final Hero hero, final double healing) {
-        return new ActionEvent(ActionType.BEFORE_HEALING, hero);
+        return new ActionEvent(ActionType.BEFORE_HEALING, hero, healing);
+    }
+
+    public static ActionEvent getDuringHealing(final Hero hero, final double healing) {
+        return new ActionEvent(ActionType.DURING_HEALING, hero, healing);
     }
 
     public static ActionEvent getAfterHealing(final Hero hero, final double healing) {
-        return new ActionEvent(ActionType.AFTER_HEALING, hero);
+        return new ActionEvent(ActionType.AFTER_HEALING, hero, healing);
     }
 
     public static ActionEvent getBeforeUsedSkill(final Hero hero, final ASkill skill) {

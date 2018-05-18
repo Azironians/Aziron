@@ -14,6 +14,11 @@ class AttackPipeNode(pipeNodeID: String, hero: Hero, playerManager: PlayerManage
 
     init {
         this.engineComponentList.add(CoreBeforeAttackEngineComponent(this.hero, this.pipeline, this.playerManager))
+        this.engineComponentList.add(CoreDuringAttackEngineComponent(this.hero, this.pipeline, this.playerManager))
+        this.engineComponentList.add(CoreBeforeExperienceEngineComponent(this.hero, this.pipeline, this.playerManager))
+        this.engineComponentList.add(CoreDuringExperienceEngineComponent(this.hero, this.pipeline, this.playerManager))
+        this.engineComponentList.add(CoreBeforeDealDamageEngineComponent(this.hero, this.pipeline, this.playerManager))
+        this.engineComponentList.add(CoreDuringDealDamageEngineComponent(this.hero, this.pipeline, this.playerManager))
     }
 
     //Always last in engine order component:
@@ -21,7 +26,7 @@ class AttackPipeNode(pipeNodeID: String, hero: Hero, playerManager: PlayerManage
         : CoreEngineComponent("CoreBeforeAttackEngineComponent", hero, pipeline, playerManager) {
         override fun handle(actionEvent: ActionEvent?) {
             if (this.checkEventAndHero(actionEvent, ActionType.BEFORE_ATTACK)) {
-                this.pipeline.push(ActionEventFactory.getDuringAttack(hero))
+                this.pipeline.push(ActionEventFactory.getDuringAttack(this.hero))
             }
         }
     }
@@ -32,15 +37,14 @@ class AttackPipeNode(pipeNodeID: String, hero: Hero, playerManager: PlayerManage
         override fun handle(actionEvent: ActionEvent?) {
             if (this.checkEventAndHero(actionEvent, ActionType.DURING_ATTACK)) {
                 val opponentHero = this.playerManager.opponentTeam.currentPlayer.currentHero
-                val damage = actionEvent?.data as Double
+                val damage = this.hero.attack
                 val experience = damage
-                this.pipeline.push(ActionEventFactory.getBeforeGettingExperience(hero, experience))
-                this.pipeline.push(ActionEventFactory.getBeforeDealDamage(hero, opponentHero, damage))
-                this.pipeline.push(ActionEventFactory.getAfterAttack(hero))
+                this.pipeline.push(ActionEventFactory.getBeforeGettingExperience(this.hero, experience))
+                this.pipeline.push(ActionEventFactory.getBeforeDealDamage(this.hero, opponentHero, damage))
+                this.pipeline.push(ActionEventFactory.getAfterAttack(this.hero))
             }
         }
     }
-
 
     //Always last in engine order component:
     class CoreBeforeExperienceEngineComponent(hero: Hero, pipeline: APipeline, playerManager: PlayerManager)
@@ -49,7 +53,7 @@ class AttackPipeNode(pipeNodeID: String, hero: Hero, playerManager: PlayerManage
         override fun handle(actionEvent: ActionEvent?) {
             if (this.checkEventAndHero(actionEvent, ActionType.BEFORE_GETTING_EXPERIENCE)) {
                 val experience = actionEvent?.data as Double
-                this.pipeline.push(ActionEventFactory.getDuringGettingExperience(hero, experience))
+                this.pipeline.push(ActionEventFactory.getDuringGettingExperience(this.hero, experience))
             }
         }
     }
