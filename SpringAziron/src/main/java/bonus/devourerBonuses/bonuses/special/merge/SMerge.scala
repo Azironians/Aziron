@@ -2,7 +2,7 @@ package bonus.devourerBonuses.bonuses.special.merge
 
 import bonus.bonuses.ExtendedBonus
 import heroes.abstractHero.hero.Hero
-import heroes.abstractHero.skills.ASkill
+import heroes.abstractHero.skills.Skill
 import javafx.scene.Node
 import javafx.scene.image.ImageView
 import javafx.scene.layout.{AnchorPane, Pane}
@@ -61,7 +61,7 @@ final class SMerge(name: String, id: Int, sprite: ImageView) extends ExtendedBon
     }
   }
 
-  private def foundBasicSkills(skills: java.util.List[ASkill]): mutable.MutableList[Int] = {
+  private def foundBasicSkills(skills: java.util.List[Skill]): mutable.MutableList[Int] = {
     val indexBasicSkillList: mutable.MutableList[Int] = new mutable.MutableList[Int]
     var foundFlameSnakes: Boolean = false
     var foundRegeneration: Boolean = false

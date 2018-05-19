@@ -4,13 +4,11 @@ import bonus.bonuses.Bonus;
 import com.google.inject.Singleton;
 import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.possibility.APossibility;
-import heroes.abstractHero.skills.ASkill;
-import heroes.abstractHero.skills.ASwapSkill;
+import heroes.abstractHero.skills.Skill;
+import heroes.abstractHero.skills.ASwapAbility;
 import javafx.util.Pair;
 import management.playerManagement.ATeam;
 import management.playerManagement.Player;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,11 +115,15 @@ public final class ActionEventFactory {
         return new ActionEvent(ActionType.AFTER_HEALING, hero, healing);
     }
 
-    public static ActionEvent getBeforeUsedSkill(final Hero hero, final ASkill skill) {
+    public static ActionEvent getBeforeUsedSkill(final Hero hero, final Skill skill) {
         return new ActionEvent(ActionType.BEFORE_USED_SKILL, hero, skill);
     }
 
-    public static ActionEvent getAfterUsedSkill(final Hero hero, final ASkill skill) {
+    public static ActionEvent getDuringUsingSkill(final Hero hero, final Skill skill) {
+        return new ActionEvent(ActionType.DURING_USING_SKILL, hero, skill);
+    }
+
+    public static ActionEvent getAfterUsedSkill(final Hero hero, final Skill skill) {
         return new ActionEvent(ActionType.BEFORE_USED_SKILL, hero, skill);
     }
 
@@ -137,12 +139,16 @@ public final class ActionEventFactory {
         return new ActionEvent(ActionType.AFTER_USED_POSSIBILITY, hero, possibility);
     }
 
-    public static ActionEvent getBeforeUsedSwapSkill(final Hero hero, ASwapSkill swapSkill) {
-        return new ActionEvent(ActionType.BEFORE_USED_SWAP_SKILL, hero, swapSkill);
+    public static ActionEvent getBeforeUsedSwapAbility(final Hero hero, ASwapAbility swapAbility) {
+        return new ActionEvent(ActionType.BEFORE_USED_SWAP_ABILITY, hero, swapAbility);
     }
 
-    public static ActionEvent getAfterUsedSwapSkill(final Hero hero, ASwapSkill swapSkill) {
-        return new ActionEvent(ActionType.AFTER_USED_SWAP_SKILL, hero, swapSkill);
+    public static ActionEvent getDuringUsingSwapAbility(final Hero hero, ASwapAbility swapAbility) {
+        return new ActionEvent(ActionType.DURING_USING_SWAP_ABILITY, hero, swapAbility);
+    }
+
+    public static ActionEvent getAfterUsedSwapAbility(final Hero hero, ASwapAbility swapAbility) {
+        return new ActionEvent(ActionType.AFTER_USED_SWAP_ABILITY, hero, swapAbility);
     }
 
     public static ActionEvent getNullableEvent() {

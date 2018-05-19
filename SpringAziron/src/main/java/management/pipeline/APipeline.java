@@ -4,12 +4,13 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
-import management.pipeline.pipeNodes.attackPipeNode.AttackPipeNode;
-import management.pipeline.pipeNodes.bonusPipeNode.BonusPipeNode;
-import management.pipeline.pipeNodes.defaultPipeNode.DefaultPipeNode;
-import management.pipeline.pipeNodes.mainPipeNode.MainPipeNode;
-import management.pipeline.pipeNodes.skillPipeNode.SkillPipeNode;
-import management.pipeline.pipeNodes.treatmentPipeNode.TreatmentPipeNode;
+import management.pipeline.pipeNodes.corePipeNodes.attackPipeNode.AttackPipeNode;
+import management.pipeline.pipeNodes.corePipeNodes.possibilityPipeNodes.bonusPipeNode.BonusPipeNode;
+import management.pipeline.pipeNodes.corePipeNodes.CorePipeNode;
+import management.pipeline.pipeNodes.corePipeNodes.mainPipeNode.MainPipeNode;
+import management.pipeline.pipeNodes.corePipeNodes.possibilityPipeNodes.skillPipeNode.SkillPipeNode;
+import management.pipeline.pipeNodes.corePipeNodes.possibilityPipeNodes.swapAbilityPipeNode.SwapAbilityPipeNode;
+import management.pipeline.pipeNodes.corePipeNodes.treatmentPipeNode.TreatmentPipeNode;
 import management.pipeline.pipes.APipe;
 import management.pipeline.pipes.APipeBuilder;
 import management.playerManagement.ATeam;
@@ -93,10 +94,11 @@ public final class APipeline {
             this.installCorePipeNodes(AttackPipeNode.class);
             this.installCorePipeNodes(TreatmentPipeNode.class);
             this.installCorePipeNodes(SkillPipeNode.class);
+            this.installCorePipeNodes(SwapAbilityPipeNode.class);
             this.installCorePipeNodes(BonusPipeNode.class);
         }
 
-        private void installCorePipeNodes(final Class<? extends DefaultPipeNode> clazz) {
+        private void installCorePipeNodes(final Class<? extends CorePipeNode> clazz) {
             //Get PipeNode -> Pipe:
             final String className = clazz.getName();
             final int withoutNodeWord = 4;
@@ -108,7 +110,7 @@ public final class APipeline {
                 for (final ATeam team : this.playerManager.getAllTeams()) {
                     for (final Player player : team.getAllPlayers()) {
                         for (final Hero hero : player.getAllHeroes()) {
-                            final DefaultPipeNode newPipeNode = (DefaultPipeNode) constructor.newInstance(hero
+                            final CorePipeNode newPipeNode = (CorePipeNode) constructor.newInstance(hero
                                     , this.playerManager);
                             pipe.addPipeNode(newPipeNode);
                         }

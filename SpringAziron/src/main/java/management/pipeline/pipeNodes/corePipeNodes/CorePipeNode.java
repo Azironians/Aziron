@@ -1,4 +1,4 @@
-package management.pipeline.pipeNodes.defaultPipeNode;
+package management.pipeline.pipeNodes.corePipeNodes;
 
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
@@ -8,7 +8,7 @@ import management.pipeline.pipes.APipe;
 import management.playerManagement.PlayerManager;
 import management.service.components.handleComponent.EngineComponent;
 
-public abstract class DefaultPipeNode extends APipeNode {
+public abstract class CorePipeNode extends APipeNode {
 
     private String pipeNodeID;
 
@@ -18,7 +18,7 @@ public abstract class DefaultPipeNode extends APipeNode {
 
     protected Hero hero;
 
-    public DefaultPipeNode(final String pipeNodeID, final Hero hero, final PlayerManager playerManager
+    public CorePipeNode(final String pipeNodeID, final Hero hero, final PlayerManager playerManager
             , final APipeline pipeline){
         this.pipeNodeID = pipeNodeID;
         this.playerManager = playerManager;

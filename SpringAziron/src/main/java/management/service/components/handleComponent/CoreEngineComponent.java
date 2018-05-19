@@ -6,7 +6,7 @@ import management.playerManagement.PlayerManager;
 
 import java.lang.reflect.Constructor;
 
-public abstract class CoreEngineComponent extends EngineComponent{
+public abstract class CoreEngineComponent extends EngineComponent {
 
     private boolean isWorking = true;
 

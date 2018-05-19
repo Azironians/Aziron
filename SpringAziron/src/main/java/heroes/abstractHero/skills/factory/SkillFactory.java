@@ -1,12 +1,12 @@
 package heroes.abstractHero.skills.factory;
 
-import heroes.abstractHero.skills.ASkill;
+import heroes.abstractHero.skills.Skill;
 
 import java.util.List;
 
 public interface SkillFactory {
 
-    ASkill getSwapSkill();
+    Skill getSwapSkill();
 
-    List<ASkill> getSuperSkills();
+    List<Skill> getSuperSkills();
 }

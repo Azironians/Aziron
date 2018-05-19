@@ -1,6 +1,6 @@
 package bonus.devourerBonuses.bonuses.health.snakeShield
 
-import heroes.abstractHero.skills.ASkill
+import heroes.abstractHero.skills.Skill
 import heroes.abstractHero.skills.abstractSkill.AbstractSkill
 import javafx.collections.ObservableList
 import javafx.scene.Node
@@ -13,16 +13,16 @@ final class SnakeShieldSkillProxyComponent (var player: Player) {
 
   private val hashVsPairMap: java.util.Map[Integer, Pair[Integer, Integer]] = new java.util.HashMap
 
-  var proxySkillVsDamageMap: java.util.Map[ASkill, Double] = new java.util.HashMap
+  var proxySkillVsDamageMap: java.util.Map[Skill, Double] = new java.util.HashMap
 
-  private val skillVsProxyMap = new DuplexMap[ASkill, ASkill]
+  private val skillVsProxyMap = new DuplexMap[Skill, Skill]
 
   private val proxySnakeShieldPane: Pane = new Pane()
 
   //Skill HashCode vs Pair: place in hero skill collection & place in proxy container;
-  var justInTimeSnakeShieldSkill: ASkill = _
+  var justInTimeSnakeShieldSkill: Skill = _
 
-  def packSkill(index: Int, skills: java.util.List[ASkill]): Unit ={
+  def packSkill(index: Int, skills: java.util.List[Skill]): Unit ={
     val mainSkillContainers: ObservableList[Node] = player.getCurrentHero.getLocation.getSkillPane.getChildren
     val skillNode: Node = mainSkillContainers.get(index)
     //Creating custom skill:
@@ -40,13 +40,13 @@ final class SnakeShieldSkillProxyComponent (var player: Player) {
     justInTimeSnakeShieldSkill = snakeShieldSkill
   }
 
-  def pullSkill(): ASkill ={
+  def pullSkill(): Skill ={
     val outputSkill = justInTimeSnakeShieldSkill
     justInTimeSnakeShieldSkill = null
     outputSkill
   }
 
-  def destroy(skill: ASkill){
+  def destroy(skill: Skill){
     val indexPair = hashVsPairMap.get(skill.hashCode)
     val heroSkillCollectionIndex = indexPair.getKey
     val proxySkillContainerIndex = indexPair.getValue

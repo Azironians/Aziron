@@ -4,7 +4,7 @@ import java.util
 
 import bonus.bonuses.Bonus
 import heroes.abstractHero.hero.Hero
-import heroes.abstractHero.skills.ASkill
+import heroes.abstractHero.skills.Skill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
 import management.playerManagement.Player
@@ -18,7 +18,7 @@ final class HSnakeShield(name: String, val id: Int, sprite: ImageView) extends B
 
   override def use(): Unit = {
     val hero = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
-    val skills: util.List[ASkill] = hero.getCollectionOfSkills
+    val skills: util.List[Skill] = hero.getCollectionOfSkills
     for (i <- 0 to skills.size) {
       val skill = skills.get(i)
       if (skill.getName.equals("FlameSnakes")) {
@@ -30,7 +30,7 @@ final class HSnakeShield(name: String, val id: Int, sprite: ImageView) extends B
     }
   }
 
-  private def wireActionManager(skill: ASkill): Unit = {
+  private def wireActionManager(skill: Skill): Unit = {
     skill.setActionManager(actionManager)
   }
 

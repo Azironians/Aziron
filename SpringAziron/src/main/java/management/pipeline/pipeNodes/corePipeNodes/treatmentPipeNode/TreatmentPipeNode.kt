@@ -1,16 +1,16 @@
-package management.pipeline.pipeNodes.treatmentPipeNode
+package management.pipeline.pipeNodes.corePipeNodes.treatmentPipeNode
 
 import heroes.abstractHero.hero.Hero
 import management.actionManagement.actions.ActionEvent
 import management.actionManagement.actions.ActionEventFactory
 import management.actionManagement.actions.ActionType
 import management.pipeline.APipeline
-import management.pipeline.pipeNodes.defaultPipeNode.DefaultPipeNode
+import management.pipeline.pipeNodes.corePipeNodes.CorePipeNode
 import management.playerManagement.PlayerManager
 import management.service.components.handleComponent.CoreEngineComponent
 
 class TreatmentPipeNode(pipeNodeID: String, hero: Hero, playerManager: PlayerManager, pipeline: APipeline)
-    : DefaultPipeNode(pipeNodeID, hero, playerManager, pipeline) {
+    : CorePipeNode(pipeNodeID, hero, playerManager, pipeline) {
 
     init {
         this.engineComponentList.add(CoreBeforeTreatmentEngineComponent(this.hero, this.pipeline, this.playerManager))
