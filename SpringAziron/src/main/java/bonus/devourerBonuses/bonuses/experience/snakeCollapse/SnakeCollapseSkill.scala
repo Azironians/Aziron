@@ -1,6 +1,6 @@
 package bonus.devourerBonuses.bonuses.experience.snakeCollapse
 
-import heroes.abstractHero.skills.abstractSkill.AbstractSkill
+import heroes.abstractHero.tallents.abstractSkill.AbstractSkill
 import javafx.scene.image.ImageView
 import javafx.scene.media.Media
 import management.battleManagement.BattleManager

@@ -1,7 +1,7 @@
 package management.playerManagement;
 
 import annotations.sourceAnnotations.Transcendental;
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import gui.service.locations.ALocation;
 import management.profileManagement.Profile;
 import org.jetbrains.annotations.Contract;

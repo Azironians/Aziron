@@ -1,6 +1,6 @@
 package heroes.lv.skills.superSkills.reincarnation;
 
-import heroes.abstractHero.skills.abstractSkill.AbstractSkill;
+import heroes.abstractHero.tallents.abstractSkill.AbstractSkill;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import management.battleManagement.BattleManager;

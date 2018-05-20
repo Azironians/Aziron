@@ -1,6 +1,6 @@
 package bonus.devourerBonuses.bonuses.experience.boneCage
 
-import bonus.bonuses.Bonus
+import heroes.abstractHero.abilities.bonus.Bonus
 import javafx.scene.image.ImageView
 import management.service.components.providerComponent.ProviderComponent
 

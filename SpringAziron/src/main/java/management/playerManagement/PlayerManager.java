@@ -37,13 +37,13 @@ public final class PlayerManager {
 
     private GameMode gameMode;
 
-    private ATeam rightATeam;
+    private Team rightATeam;
 
-    private ATeam leftATeam;
+    private Team leftATeam;
 
-    private ATeam currentATeam;
+    private Team currentATeam;
 
-    private ATeam opponentATeam;
+    private Team opponentATeam;
 
     //Setters:
     private void setPlayerCount(int countPlayers) {
@@ -75,28 +75,28 @@ public final class PlayerManager {
         bonusLoadingProcessor.process();
     }
 
-    private void setAdditionalExperience(final ATeam team){
+    private void setAdditionalExperience(final Team team){
         final heroes.abstractHero.hero.Hero hero = team.getCurrentPlayer().getCurrentHero();
         final double equalsAttack =  hero.getAttack();
         log.info("Adding XP: +" + equalsAttack);
         hero.addExperience(equalsAttack);
     }
 
-    public final void setCurrentATeam(ATeam currentATeam) {
+    public final void setCurrentATeam(Team currentATeam) {
         currentATeam.launchTimer();
         this.currentATeam = currentATeam;
     }
 
-    public final void setOpponentATeam(ATeam opponentATeam) {
+    public final void setOpponentATeam(Team opponentATeam) {
         opponentATeam.pauseTimer();
         this.opponentATeam = opponentATeam;
     }
 
-    public final void setRightATeam(final ATeam rightATeam) {
+    public final void setRightATeam(final Team rightATeam) {
         this.rightATeam = rightATeam;
     }
 
-    public final void setLeftATeam(final ATeam leftATeam) {
+    public final void setLeftATeam(final Team leftATeam) {
         this.leftATeam = leftATeam;
     }
 
@@ -106,8 +106,8 @@ public final class PlayerManager {
 
     public void setGameMode(GameMode gameMode) {
         this.gameMode = gameMode;
-        this.rightATeam = new ATeam();
-        this.leftATeam = new ATeam();
+        this.rightATeam = new Team();
+        this.leftATeam = new Team();
         switch (gameMode){
             case _1x1:
                 setPlayerCount(2);
@@ -140,26 +140,26 @@ public final class PlayerManager {
     }
 
     @Contract(pure = true)
-    public final ATeam getRightATeam() {
+    public final Team getRightATeam() {
         return rightATeam;
     }
 
     @Contract(pure = true)
-    public final ATeam getLeftATeam() {
+    public final Team getLeftATeam() {
         return leftATeam;
     }
 
     @Contract(pure = true)
-    public final ATeam getCurrentTeam() {
+    public final Team getCurrentTeam() {
         return currentATeam;
     }
 
     @Contract(pure = true)
-    public final ATeam getOpponentTeam() {
+    public final Team getOpponentTeam() {
         return opponentATeam;
     }
 
-    public final List<ATeam> getAllTeams() {
+    public final List<Team> getAllTeams() {
         //TODO: Make implementation
         return new ArrayList<>();
     }

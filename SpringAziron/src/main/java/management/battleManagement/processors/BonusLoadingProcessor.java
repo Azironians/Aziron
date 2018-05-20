@@ -1,6 +1,6 @@
 package management.battleManagement.processors;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import gui.service.graphicEngine.GraphicEngine;
 import heroes.abstractHero.hero.Hero;
 import management.processors.Processor;

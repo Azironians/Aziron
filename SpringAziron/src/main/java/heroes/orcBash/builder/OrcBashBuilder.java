@@ -3,7 +3,7 @@ package heroes.orcBash.builder;
 import com.google.inject.Inject;
 import heroes.abstractHero.builder.HeroBuilder;
 import heroes.abstractHero.resourceSupplier.HeroResourceSupplier;
-import heroes.abstractHero.skills.factory.SkillFactory;
+import heroes.abstractHero.abilities.talents.factory.TalentFactory;
 import heroes.orcBash.annotation.OrcBashHeroService;
 import heroes.orcBash.hero.OrcBash;
 
@@ -11,14 +11,14 @@ public final class OrcBashBuilder implements HeroBuilder {
 
     @Inject
     @OrcBashHeroService
-    private SkillFactory skillFactory;
+    private TalentFactory skillFactory;
 
     @Inject
     @OrcBashHeroService
     private HeroResourceSupplier resourceSupplier;
 
     @Override
-    public final SkillFactory getSkillFactory() {
+    public final TalentFactory getSkillFactory() {
         return skillFactory;
     }
 

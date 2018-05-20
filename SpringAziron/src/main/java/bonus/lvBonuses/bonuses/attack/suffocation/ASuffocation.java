@@ -1,6 +1,6 @@
 package bonus.lvBonuses.bonuses.attack.suffocation;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import management.bonusManagement.BonusManager;
 import javafx.scene.image.ImageView;
 import javafx.util.Pair;

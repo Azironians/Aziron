@@ -1,6 +1,6 @@
 package bonus.lvBonuses.bonuses.attack;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import javafx.scene.image.ImageView;
 import javafx.util.Pair;
 import management.actionManagement.actions.ActionEvent;

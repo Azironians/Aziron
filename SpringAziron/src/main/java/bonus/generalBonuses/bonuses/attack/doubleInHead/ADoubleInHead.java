@@ -1,6 +1,6 @@
 package bonus.generalBonuses.bonuses.attack.doubleInHead;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import management.service.components.handleComponent.EngineComponent;

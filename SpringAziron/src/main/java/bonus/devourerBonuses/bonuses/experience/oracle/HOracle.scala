@@ -1,7 +1,7 @@
 package bonus.devourerBonuses.bonuses.experience.oracle
 
 import bonus.bonuses.ExtendedBonus
-import heroes.abstractHero.skills.Skill
+import heroes.abstractHero.abilities.talents.skill.Skill
 import javafx.scene.image.ImageView
 import javafx.scene.text.Text
 

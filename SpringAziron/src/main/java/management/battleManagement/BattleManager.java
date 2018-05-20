@@ -6,7 +6,7 @@ import gui.service.graphicEngine.GraphicEngine;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEventFactory;
 import management.battleManagement.processors.BonusLoadingProcessor;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.GameMode;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
@@ -61,7 +61,7 @@ public final class BattleManager {
 
     //Next turn:
     public final void nextTurn() {
-        final ATeam team = this.playerManager.getCurrentTeam();
+        final Team team = this.playerManager.getCurrentTeam();
         final Player currentPlayer = team.getCurrentPlayer();
         final Player alternativePlayer = team.getAlternativePlayer();
         final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
@@ -94,8 +94,8 @@ public final class BattleManager {
 
     //Defines turn:
     private void changeTurn() {
-        final ATeam left = this.playerManager.getLeftATeam();
-        final ATeam right = this.playerManager.getRightATeam();
+        final Team left = this.playerManager.getLeftATeam();
+        final Team right = this.playerManager.getRightATeam();
         //CHANGE: //////////////////////////////////////////////////////////
         this.turn = (this.turn + 1) % 2;
         if (this.turn == left.getTurn()) {
@@ -107,7 +107,7 @@ public final class BattleManager {
             this.playerManager.setOpponentATeam(left);
         }
         ////////////////////////////////////////////////////////////////////
-        final ATeam currentTeam = this.playerManager.getCurrentTeam();
+        final Team currentTeam = this.playerManager.getCurrentTeam();
         final Player currentPlayer = currentTeam.getCurrentPlayer();
         final Player alternativePlayer = currentTeam.getAlternativePlayer();
         this.reloadAllSkillsOfAllHeroes(currentPlayer);
@@ -155,7 +155,7 @@ public final class BattleManager {
 
     }
 
-    private void makeEagerPlayerSwapRequest(final ATeam team) {
+    private void makeEagerPlayerSwapRequest(final Team team) {
         this.actionManager.setEagerPlayerSwapRequest(team);
     }
 

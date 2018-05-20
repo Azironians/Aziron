@@ -1,7 +1,7 @@
 package security.loadSuppliers.bonusSupplier;
 
 import annotations.bindingAnnotations.BonusService;
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import bonus.bonuses.factory.BonusFactory;
 import bonus.deck.Deck;
 import com.google.inject.Inject;

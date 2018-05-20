@@ -2,7 +2,7 @@ package management.playerManagement;
 
 import annotations.bindingAnnotations.BonusService;
 import annotations.sourceAnnotations.Transcendental;
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import bonus.bonuses.factory.BonusFactory;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -48,7 +48,8 @@ final class FictionalTeams {
         }};
     }
 
-    @NotNull ATeam createLeft() {
+    @NotNull
+    Team createLeft() {
 
         final Profile joysProfile = new Profile("Joe", 0, null, null, null
                 , null, null, 0, null);
@@ -63,10 +64,11 @@ final class FictionalTeams {
         final Player joysPlayer = new Player(joysProfile, joysDevourer);
         final Player goresPlayer = new Player(goresProfile, goresOrcBash);
 
-        return new ATeam(goresPlayer, joysPlayer);
+        return new Team(goresPlayer, joysPlayer);
     }
 
-    @NotNull ATeam createRight() {
+    @NotNull
+    Team createRight() {
         final Profile mikesProfile = new Profile("Mike", 0, null, null, null
                 , null
                 , null, null, null);
@@ -82,6 +84,6 @@ final class FictionalTeams {
         final Player mikesPlayer = new Player(mikesProfile, mikesLordVampire);
         final Player kevinPlayer = new Player(kevinProfile, kevinOrcBash);
 
-        return new ATeam(mikesPlayer, kevinPlayer);
+        return new Team(mikesPlayer, kevinPlayer);
     }
 }

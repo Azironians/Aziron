@@ -1,6 +1,6 @@
 package heroes.lv.skills.swapSkills.fury;
 
-import heroes.abstractHero.skills.swapSkill.AbstractSimplifiedSkill;
+import heroes.abstractHero.tallents.swapSkill.AbstractSimplifiedSkill;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import management.actionManagement.actions.ActionEventFactory;

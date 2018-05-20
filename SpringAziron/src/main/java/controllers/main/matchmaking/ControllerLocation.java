@@ -2,13 +2,12 @@ package controllers.main.matchmaking;
 
 import com.google.inject.Inject;
 import heroes.abstractHero.hero.Hero;
-import heroes.abstractHero.possibility.APossibility;
+import heroes.abstractHero.abilities.Ability;
 import javafx.scene.layout.Pane;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
-import management.actionManagement.actions.ActionType;
 import management.pipeline.APipeline;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 
@@ -20,8 +19,8 @@ public abstract class ControllerLocation {
     @Inject
     private APipeline pipeline;
 
-    final void makeHeroRequest(final ATeam team) {
-        final ATeam currentTeam = this.playerManager.getCurrentTeam();
+    final void makeHeroRequest(final Team team) {
+        final Team currentTeam = this.playerManager.getCurrentTeam();
         final Player currentPlayer = currentTeam.getCurrentPlayer();
         final Hero currentHero = currentPlayer.getCurrentHero();
         if (team == currentTeam) {
@@ -35,19 +34,19 @@ public abstract class ControllerLocation {
         }
     }
 
-    final void trySwapHeroRequest(final ATeam team) {
-        final ATeam currentTeam = this.playerManager.getCurrentTeam();
+    final void trySwapHeroRequest(final Team team) {
+        final Team currentTeam = this.playerManager.getCurrentTeam();
         final Hero hero = team.getCurrentPlayer().getCurrentHero();
         if (team == currentTeam && hero.isSwapAccess()){
             this.getHeroCollectionPane().setVisible(true);
         }
     }
 
-    public final void makePossibilityRequest(final ActionEvent actionEvent) {
+    public final void makeAbilityRequest(final ActionEvent actionEvent) {
         final Hero hero = actionEvent.getHero();
-        final APossibility possibility = (APossibility) actionEvent.getData();
+        final Ability ability = (Ability) actionEvent.getData();
         final Hero currentHero = this.playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
-        if (currentHero == hero && possibility.isPossibilityAccess()){
+        if (currentHero == hero && ability.isAbilityAccess()){
             this.pipeline.push(actionEvent);
         }
     }

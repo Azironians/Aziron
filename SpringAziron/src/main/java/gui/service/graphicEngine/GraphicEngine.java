@@ -1,6 +1,6 @@
 package gui.service.graphicEngine;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import controllers.main.matchmaking.ControllerMatchMaking;
@@ -21,7 +21,7 @@ import management.service.engine.EventEngine;
 import management.battleManagement.BattleManager;
 import management.playerManagement.GameMode;
 import management.playerManagement.Player;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.PlayerManager;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +44,9 @@ public final class GraphicEngine {
     @Inject
     private EventEngine eventEngine;
 
-    private ATeam leftTeam;
+    private Team leftTeam;
 
-    private ATeam rightTeam;
+    private Team rightTeam;
 
     private ALocation leftLocation;
 
@@ -70,7 +70,7 @@ public final class GraphicEngine {
         showLocation();
     }
 
-    private void installTeamTimer(final ATeam team, final ALocation location, final int time){
+    private void installTeamTimer(final Team team, final ALocation location, final int time){
         team.setTime(time);
         final Timeline timeline = team.getTimeline();
         timeline.setOnFinished(event -> {
@@ -86,7 +86,7 @@ public final class GraphicEngine {
         }));
     }
 
-    private void wireActionManagerToSkills(final ActionManager actionManager, final ATeam leftATeam, final ATeam rightATeam){
+    private void wireActionManagerToSkills(final ActionManager actionManager, final Team leftATeam, final Team rightATeam){
         final List<heroes.abstractHero.hero.Hero> allHeroes = new ArrayList<>(){{
             add(leftATeam.getCurrentPlayer().getCurrentHero());
             add(rightATeam.getCurrentPlayer().getCurrentHero());
@@ -111,7 +111,7 @@ public final class GraphicEngine {
         }
     }
 
-    private void showLocation(final ALocation location, final ATeam team){
+    private void showLocation(final ALocation location, final Team team){
         final Player currentPlayer = team.getCurrentPlayer();
         final heroes.abstractHero.hero.Hero hero = currentPlayer.getCurrentHero();
         hero.setLocation(location);

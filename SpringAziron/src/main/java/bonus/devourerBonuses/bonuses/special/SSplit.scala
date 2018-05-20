@@ -3,9 +3,10 @@ package bonus.devourerBonuses.bonuses.special
 import java.util
 import java.util.logging.Logger
 
+import heroes.abstractHero.abilities.bonus.Bonus
+
 import scala.collection.JavaConverters._
-import bonus.bonuses.Bonus
-import heroes.abstractHero.skills.Skill
+import heroes.abstractHero.abilities.talents.skill.Skill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
 import management.playerManagement.Player

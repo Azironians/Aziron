@@ -1,4 +1,4 @@
-package heroes.abstractHero.possibility;
+package heroes.abstractHero.abilities;
 
 import annotations.sourceAnnotations.NonFinal;
 import controllers.main.matchmaking.ControllerLocation;
@@ -17,26 +17,15 @@ import management.playerManagement.PlayerManager;
 import java.util.List;
 import java.util.logging.Logger;
 
-public abstract class APossibility {
+public abstract class Ability {
 
-    private static final Logger log = Logger.getLogger(APossibility.class.getName());
+    private static final Logger log = Logger.getLogger(Ability.class.getName());
 
-    //Possibility name:
+    //Ability name:
     private final String name;
 
-    //Main characteristics:
-    private int START_STEP = 1;
-
-    protected int step = 1;
-
-    protected int reload;
-
-    protected int requiredLevel;
-
-    protected List<Double> coefficients;
-
     //Access:
-    private boolean possibilityAccess;
+    private boolean abilityAccess;
 
     //Parent:
     protected Hero parentHero;
@@ -46,36 +35,18 @@ public abstract class APossibility {
     //PlayerManager:
     protected PlayerManager playerManager;
 
-    protected APossibility(final String name, final int reload, final int requiredLevel
-            , final List<Double> coefficients, final ImageView mainImage, final ImageView descriptionImage
+    protected Ability(final String name
+            , final ImageView mainImage, final ImageView descriptionImage
             , final List<Media> voices, final Media animationSound) {
         //Possibility name:
         this.name = name;
-        this.reload = reload;
-        this.requiredLevel = requiredLevel;
-        this.coefficients = coefficients;
-        this.possibilityAccess = true;
+        this.abilityAccess = true;
         //GUI:
-        this.guiHolder = new AGUIHolder(this, mainImage, descriptionImage, voices, animationSound);
+        this.guiHolder = this.createGUIHolder(this, mainImage, descriptionImage, voices, animationSound);
     }
 
-    @NonFinal
-    public void reload() {
-        if (this.parentHero.getLevel() >= this.requiredLevel) {
-            this.step++;
-        } else {
-            this.step = START_STEP;
-        }
-    }
-
-    @NonFinal
-    public void reset() {
-        this.step %= this.reload;
-        this.guiHolder.mainImage.setVisible(false);
-    }
-
-    private void makePossibilityRequest() {
-        this.controllerLocation.makePossibilityRequest(this.getActionEvent());
+    private void makeAbilityRequest() {
+        this.controllerLocation.makeAbilityRequest(this.getActionEvent());
     }
 
     @NonFinal
@@ -84,10 +55,10 @@ public abstract class APossibility {
     }
 
     //GUI:
-    protected AGUIHolder guiHolder;
+    protected GUIHolder guiHolder;
 
     @NonFinal
-    protected static class AGUIHolder {
+    protected static class GUIHolder {
 
         protected static final int START_OPACITY = 0;
 
@@ -102,11 +73,11 @@ public abstract class APossibility {
 
         private List<Media> voices;
 
-        protected AGUIHolder(final APossibility parent, final ImageView mainImage, final ImageView descriptionImage
+        protected GUIHolder(final Ability parent, final ImageView mainImage, final ImageView descriptionImage
                 , final List<Media> voices, final Media animationSound) {
             mainImage.setOnMouseEntered(event -> this.showDescription());
             mainImage.setOnMouseExited(event -> this.hideDescription());
-            mainImage.setOnMouseClicked(event -> parent.makePossibilityRequest());
+            mainImage.setOnMouseClicked(event -> parent.makeAbilityRequest());
             this.descriptionImage = descriptionImage;
             this.mainImage = mainImage;
             this.voices = voices;
@@ -158,30 +129,34 @@ public abstract class APossibility {
         public final List<Media> getVoices() {
             return this.voices;
         }
+
+        public final ImageView getMainImage() {
+            return this.mainImage;
+        }
     }
 
     public final void installControllerLocation(final ControllerLocation controllerLocation)
-            throws APossibilityInstallationException {
+            throws AbilityInstallationException {
         if (this.controllerLocation == null) {
             this.controllerLocation = controllerLocation;
         } else {
-            throw new APossibilityInstallationException("ControllerLocation already installed!");
+            throw new AbilityInstallationException("ControllerLocation already installed!");
         }
     }
 
-    public final void installPlayerManager(final PlayerManager playerManager) throws APossibilityInstallationException {
+    public final void installPlayerManager(final PlayerManager playerManager) throws AbilityInstallationException {
         if (this.playerManager == null) {
             this.playerManager = playerManager;
         } else {
-            throw new APossibilityInstallationException("PlayerManager already installed");
+            throw new AbilityInstallationException("PlayerManager already installed");
         }
     }
 
-    public final void installParentHero(final Hero parentHero) throws APossibilityInstallationException {
+    public final void installParentHero(final Hero parentHero) throws AbilityInstallationException {
         if (this.parentHero == null) {
             this.parentHero = parentHero;
         } else {
-            throw new APossibilityInstallationException("Parent hero already installed");
+            throw new AbilityInstallationException("Parent hero already installed");
         }
     }
 
@@ -189,56 +164,41 @@ public abstract class APossibility {
      * Getters & setters:
      */
 
-    public final boolean isPossibilityAccess() {
-        return possibilityAccess;
+    public final boolean isAbilityAccess() {
+        return this.abilityAccess;
     }
 
-    public final void setPossibilityAccess(final boolean possibilityAccess) {
-        this.possibilityAccess = possibilityAccess;
+    public final void setAbilityAccess(final boolean abilityAccess) {
+        this.abilityAccess = abilityAccess;
     }
 
     public final String getName() {
         return this.name;
     }
 
-
-    public final int getStep() {
-        return this.step;
-    }
-
-    public final void setStep(final int step) {
-        this.step = step;
-    }
-
-    public final int getReload() {
-        return reload;
-    }
-
-    public final void setReload(final int reload) {
-        this.reload = reload;
-    }
-
-    public final int getRequiredLevel() {
-        return this.requiredLevel;
-    }
-
-    public final void setRequiredLevel(final int requiredLevel) {
-        this.requiredLevel = requiredLevel;
-    }
-
-    public final List<Double> getCoefficients() {
-        return this.coefficients;
-    }
-
     public final Hero getParentHero() {
         return this.parentHero;
     }
 
-    public final AGUIHolder getGuiHolder() {
+    @NonFinal
+    protected GUIHolder createGUIHolder(final Ability ability, final ImageView mainImage
+            , final ImageView descriptionImage, final List<Media> voices, final Media animationSound){
+        return new GUIHolder(ability, mainImage, descriptionImage, voices, animationSound);
+    }
+
+    public final GUIHolder getGuiHolder() {
         return this.guiHolder;
     }
 
-    public final void setGuiHolder(final AGUIHolder guiHolder) {
+    public final void setGuiHolder(final GUIHolder guiHolder) {
         this.guiHolder = guiHolder;
+    }
+
+    @NonFinal
+    @Override
+    public String toString() {
+        return "Ability{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }

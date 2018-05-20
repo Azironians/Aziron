@@ -1,13 +1,13 @@
 package management.actionManagement.actions;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import com.google.inject.Singleton;
 import heroes.abstractHero.hero.Hero;
-import heroes.abstractHero.possibility.APossibility;
-import heroes.abstractHero.skills.Skill;
-import heroes.abstractHero.skills.ASwapAbility;
+import heroes.abstractHero.abilities.Ability;
+import heroes.abstractHero.abilities.talents.skill.Skill;
+import heroes.abstractHero.abilities.talents.swapAbility.SwapAbility;
 import javafx.util.Pair;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 
 import java.util.ArrayList;
@@ -16,15 +16,15 @@ import java.util.List;
 @Singleton
 public final class ActionEventFactory {
 
-    public static List<ActionEvent> getStartTurn(final ATeam team) {
+    public static List<ActionEvent> getStartTurn(final Team team) {
         return getEventsForEachPlayer(team, ActionType.START_TURN);
     }
 
-    public static List<ActionEvent> getEndTurn(final ATeam team) {
+    public static List<ActionEvent> getEndTurn(final Team team) {
         return getEventsForEachPlayer(team, ActionType.END_TURN);
     }
 
-    private static List<ActionEvent> getEventsForEachPlayer(final ATeam team, final ActionType actionType) {
+    private static List<ActionEvent> getEventsForEachPlayer(final Team team, final ActionType actionType) {
         final List<ActionEvent> events = new ArrayList<>();
         for (final Player player : team.getAllPlayers()) {
             events.addAll(getEventsForEachHero(player, actionType));
@@ -57,7 +57,7 @@ public final class ActionEventFactory {
     }
 
     public static ActionEvent getFrameDurationEvent(final Hero hero) {
-        return new ActionEvent(ActionType.GET_FRAME, hero);
+        return new ActionEvent(ActionType.GET_TIME_FRAME, hero);
     }
 
     public static ActionEvent getBeforeTreatment(final Hero hero) {
@@ -131,23 +131,23 @@ public final class ActionEventFactory {
         return new ActionEvent(ActionType.AFTER_USED_BONUS, hero, bonus);
     }
 
-    public static ActionEvent getBeforeUsedPossibility(final Hero hero, final APossibility possibility) {
-        return new ActionEvent(ActionType.BEFORE_USED_POSSIBILITY, hero, possibility);
+    public static ActionEvent getBeforeUsedPossibility(final Hero hero, final Ability ability) {
+        return new ActionEvent(ActionType.BEFORE_USED_POSSIBILITY, hero, ability);
     }
 
-    public static ActionEvent getAfterUsedPossbility(final Hero hero, final APossibility possibility) {
-        return new ActionEvent(ActionType.AFTER_USED_POSSIBILITY, hero, possibility);
+    public static ActionEvent getAfterUsedPossbility(final Hero hero, final Ability ability) {
+        return new ActionEvent(ActionType.AFTER_USED_POSSIBILITY, hero, ability);
     }
 
-    public static ActionEvent getBeforeUsedSwapAbility(final Hero hero, ASwapAbility swapAbility) {
+    public static ActionEvent getBeforeUsedSwapAbility(final Hero hero, SwapAbility swapAbility) {
         return new ActionEvent(ActionType.BEFORE_USED_SWAP_ABILITY, hero, swapAbility);
     }
 
-    public static ActionEvent getDuringUsingSwapAbility(final Hero hero, ASwapAbility swapAbility) {
+    public static ActionEvent getDuringUsingSwapAbility(final Hero hero, SwapAbility swapAbility) {
         return new ActionEvent(ActionType.DURING_USING_SWAP_ABILITY, hero, swapAbility);
     }
 
-    public static ActionEvent getAfterUsedSwapAbility(final Hero hero, ASwapAbility swapAbility) {
+    public static ActionEvent getAfterUsedSwapAbility(final Hero hero, SwapAbility swapAbility) {
         return new ActionEvent(ActionType.AFTER_USED_SWAP_ABILITY, hero, swapAbility);
     }
 

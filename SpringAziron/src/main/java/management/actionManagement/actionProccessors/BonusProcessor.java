@@ -1,6 +1,6 @@
 package management.actionManagement.actionProccessors;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import management.actionManagement.ActionManager;
 import management.processors.Processor;
 

@@ -1,12 +1,12 @@
 package bonus.devourerBonuses.bonuses.health;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
 import management.service.components.handleComponent.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 
 import java.util.logging.Logger;
@@ -34,7 +34,7 @@ public final class HSelfKeepingInstinct extends Bonus implements DynamicEngineSe
 
             private Player player;
 
-            private ATeam opponentTeam;
+            private Team opponentTeam;
 
             private boolean isWorking;
 

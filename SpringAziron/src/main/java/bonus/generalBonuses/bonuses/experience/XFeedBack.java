@@ -1,6 +1,6 @@
 package bonus.generalBonuses.bonuses.experience;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import management.service.components.handleComponent.EngineComponent;
 import management.service.components.handleComponent.IllegalSwitchOffEngineComponentException;
 import management.service.engine.services.RegularEngineService;

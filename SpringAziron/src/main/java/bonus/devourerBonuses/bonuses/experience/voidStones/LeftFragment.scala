@@ -1,6 +1,6 @@
 package bonus.devourerBonuses.bonuses.experience.voidStones
 
-import bonus.bonuses.Bonus
+import heroes.abstractHero.abilities.bonus.Bonus
 import javafx.scene.image.ImageView
 
 final class LeftFragment(val parent: VoidStones, name: String = "", id: Int = 0, sprite: ImageView = new ImageView())

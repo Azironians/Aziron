@@ -2,9 +2,9 @@ package bonus.devourerBonuses.bonuses.health.snakeShield
 
 import java.util
 
-import bonus.bonuses.Bonus
+import heroes.abstractHero.abilities.bonus.Bonus
+import heroes.abstractHero.abilities.talents.skill.Skill
 import heroes.abstractHero.hero.Hero
-import heroes.abstractHero.skills.Skill
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}
 import management.playerManagement.Player

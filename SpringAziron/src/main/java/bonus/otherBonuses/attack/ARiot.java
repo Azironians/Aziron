@@ -1,6 +1,6 @@
 package bonus.otherBonuses.attack;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import bonus.bonuses.service.annotations.EngineField;
 import bonus.bonuses.service.annotations.implementations.DamageEngine;
 import bonus.bonuses.service.parameterType.ParameterType;

@@ -5,7 +5,7 @@ import management.actionManagement.ActionManager;
 import management.actionManagement.actionProccessors.AttackProcessor;
 import management.actionManagement.actions.ActionEventFactory;
 import management.battleManagement.BattleManager;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.PlayerManager;
 import management.service.engine.EventEngine;
 
@@ -22,9 +22,9 @@ public final class DoubleInHeadProcessor extends AttackProcessor {
         this.playerManager = playerManager;
     }
 
-    private ATeam attackTeam;
+    private Team attackTeam;
 
-    private ATeam victimTeam;
+    private Team victimTeam;
 
     @Override
     public final void process(){
@@ -44,7 +44,7 @@ public final class DoubleInHeadProcessor extends AttackProcessor {
     }
 
     @Override
-    public final void setTeams(final ATeam attackTeam, final ATeam victimTeam){
+    public final void setTeams(final Team attackTeam, final Team victimTeam){
         this.attackTeam = playerManager.getCurrentTeam();
         this.victimTeam = playerManager.getOpponentTeam();
     }

@@ -1,9 +1,9 @@
 package bonus.devourerBonuses.bonuses.experience
 
-import bonus.bonuses.Bonus
 import bonus.bonuses.service.annotations.EngineField
 import bonus.bonuses.service.annotations.implementations.{BonusEngine, QuestEngine}
 import bonus.bonuses.service.parameterType.ParameterType
+import heroes.abstractHero.abilities.bonus.Bonus
 import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionType}

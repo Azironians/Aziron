@@ -5,7 +5,7 @@ import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEventFactory;
 import management.service.engine.EventEngine;
 import management.battleManagement.BattleManager;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.PlayerManager;
 import management.processors.Processor;
 
@@ -21,7 +21,7 @@ public class SwapProcessor implements Processor {
 
     private final SkillProcessor skillProcessor;
 
-    private ATeam team;
+    private Team team;
 
     public SwapProcessor(final ActionManager actionManager, final BattleManager battleManager
             , final PlayerManager playerManager, final SkillProcessor skillProcessor){
@@ -33,7 +33,7 @@ public class SwapProcessor implements Processor {
 
     @Override
     public final void process() {
-        final ATeam currentTeam = playerManager.getCurrentTeam();
+        final Team currentTeam = playerManager.getCurrentTeam();
         final Hero alternativeHero = currentTeam.getAlternativePlayer().getCurrentHero();
         if (alternativeHero.getSwapSkill().isReady() && team.swapPlayers()) {
             final Hero currentHero = currentTeam.getCurrentPlayer().getCurrentHero();
@@ -54,7 +54,7 @@ public class SwapProcessor implements Processor {
         }
     }
 
-    public final void setTeam(final ATeam team){
+    public final void setTeam(final Team team){
         this.team = team;
     }
 }

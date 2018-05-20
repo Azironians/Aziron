@@ -1,6 +1,6 @@
 package bonus.bonuses.factory;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import bonus.generalBonuses.bonuses.attack.atack.AAttack;
 import bonus.generalBonuses.bonuses.attack.AAxeUp;
 import bonus.generalBonuses.bonuses.attack.ABerserk;

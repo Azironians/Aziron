@@ -2,7 +2,7 @@ package bonus.devourerBonuses.bonuses.experience.oracle
 
 import java.util.Collections
 
-import heroes.abstractHero.skills.swapSkill.AbstractSimplifiedSkill
+import heroes.abstractHero.tallents.swapSkill.AbstractSimplifiedSkill
 import javafx.scene.image.ImageView
 import javafx.scene.media.Media
 import management.battleManagement.BattleManager

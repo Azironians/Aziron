@@ -1,6 +1,6 @@
 package bonus.otherBonuses.health;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import bonus.bonuses.service.annotations.implementations.HealingEngine;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;

@@ -1,6 +1,6 @@
 package bonus.deck;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 
 import java.util.List;
 

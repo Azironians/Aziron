@@ -5,15 +5,15 @@ import com.google.inject.Singleton;
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
 import management.pipeline.pipeNodes.corePipeNodes.attackPipeNode.AttackPipeNode;
-import management.pipeline.pipeNodes.corePipeNodes.possibilityPipeNodes.bonusPipeNode.BonusPipeNode;
+import management.pipeline.pipeNodes.corePipeNodes.abilityPipeNodes.bonusPipeNode.BonusPipeNode;
 import management.pipeline.pipeNodes.corePipeNodes.CorePipeNode;
 import management.pipeline.pipeNodes.corePipeNodes.mainPipeNode.MainPipeNode;
-import management.pipeline.pipeNodes.corePipeNodes.possibilityPipeNodes.skillPipeNode.SkillPipeNode;
-import management.pipeline.pipeNodes.corePipeNodes.possibilityPipeNodes.swapAbilityPipeNode.SwapAbilityPipeNode;
+import management.pipeline.pipeNodes.corePipeNodes.abilityPipeNodes.skillPipeNode.SkillPipeNode;
+import management.pipeline.pipeNodes.corePipeNodes.abilityPipeNodes.swapAbilityPipeNode.SwapAbilityPipeNode;
 import management.pipeline.pipeNodes.corePipeNodes.treatmentPipeNode.TreatmentPipeNode;
 import management.pipeline.pipes.APipe;
 import management.pipeline.pipes.APipeBuilder;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 
@@ -107,7 +107,7 @@ public final class APipeline {
             final APipe pipe = this.pipeBuilder.build(pipeName);
             try {
                 final Constructor constructor = clazz.getDeclaredConstructor(Hero.class, PlayerManager.class);
-                for (final ATeam team : this.playerManager.getAllTeams()) {
+                for (final Team team : this.playerManager.getAllTeams()) {
                     for (final Player player : team.getAllPlayers()) {
                         for (final Hero hero : player.getAllHeroes()) {
                             final CorePipeNode newPipeNode = (CorePipeNode) constructor.newInstance(hero

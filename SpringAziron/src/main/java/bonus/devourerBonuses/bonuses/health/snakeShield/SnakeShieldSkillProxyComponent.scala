@@ -1,7 +1,7 @@
 package bonus.devourerBonuses.bonuses.health.snakeShield
 
-import heroes.abstractHero.skills.Skill
-import heroes.abstractHero.skills.abstractSkill.AbstractSkill
+import heroes.abstractHero.abilities.talents.skill.Skill
+import heroes.abstractHero.tallents.abstractSkill.AbstractSkill
 import javafx.collections.ObservableList
 import javafx.scene.Node
 import javafx.scene.layout.Pane

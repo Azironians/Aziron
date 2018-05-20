@@ -1,6 +1,6 @@
 package heroes.abstractHero.hero;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import gui.service.locations.ALocation;
 import management.bonusManagement.BonusManager;
 import javafx.scene.image.ImageView;

@@ -2,7 +2,7 @@ package management.actionManagement.actionProccessors;
 
 import management.actionManagement.ActionManager;
 import management.battleManagement.BattleManager;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 import management.processors.Processor;
 
@@ -13,7 +13,7 @@ public class TreatmentProcessor implements Processor {
 
     protected final BattleManager battleManager;
 
-    private ATeam team;
+    private Team team;
 
     public TreatmentProcessor(final ActionManager actionManager, final BattleManager battleManager){
         this.actionManager = actionManager;
@@ -34,7 +34,7 @@ public class TreatmentProcessor implements Processor {
         }
     }
 
-    public void setTeam(final ATeam team){
+    public void setTeam(final Team team){
         this.team = team;
     }
 }

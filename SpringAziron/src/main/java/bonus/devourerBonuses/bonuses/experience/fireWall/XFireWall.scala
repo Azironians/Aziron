@@ -1,7 +1,8 @@
 package bonus.devourerBonuses.bonuses.experience.fireWall
 
 
-import bonus.bonuses.{Bonus, ExtendedBonus}
+import bonus.bonuses.ExtendedBonus
+import heroes.abstractHero.abilities.bonus.Bonus
 import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import javafx.scene.text.Text

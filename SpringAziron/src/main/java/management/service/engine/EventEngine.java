@@ -1,6 +1,6 @@
 package management.service.engine;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import management.service.components.handleComponent.EngineComponent;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;

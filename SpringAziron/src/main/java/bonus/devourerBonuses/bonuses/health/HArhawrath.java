@@ -1,12 +1,12 @@
 package bonus.devourerBonuses.bonuses.health;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
 import management.service.components.handleComponent.EngineComponent;
 import management.service.engine.services.DynamicEngineService;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 
 public final class HArhawrath extends Bonus implements DynamicEngineService {
@@ -24,7 +24,7 @@ public final class HArhawrath extends Bonus implements DynamicEngineService {
     public final EngineComponent getPrototypeEngineComponent() {
         return new EngineComponent() {
 
-            private ATeam team;
+            private Team team;
 
             private Player player;
 

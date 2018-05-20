@@ -1,6 +1,6 @@
 package management.actionManagement;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import com.google.inject.Inject;
 import gui.service.graphicEngine.GraphicEngine;
 import heroes.abstractHero.hero.Hero;
@@ -9,7 +9,7 @@ import management.actionManagement.actions.ActionEventFactory;
 import management.processors.exceptions.UnsupportedProcessorException;
 import management.service.engine.EventEngine;
 import management.battleManagement.BattleManager;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 import management.processors.Processor;
@@ -51,8 +51,8 @@ public final class ActionManager {
         this.bonusProcessor = new BonusProcessor(this);
     }
 
-    public final void setHeroRequest(final ATeam clickedTeam) {
-        final ATeam currentTeam = playerManager.getCurrentTeam();
+    public final void setHeroRequest(final Team clickedTeam) {
+        final Team currentTeam = playerManager.getCurrentTeam();
         final Player currentPlayer = currentTeam.getCurrentPlayer();
         final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
         if (clickedTeam.equals(currentTeam)) {
@@ -71,7 +71,7 @@ public final class ActionManager {
     }
 
     public final void setSkillRequest(final heroes.abstractHero.hero.Hero hero, final Skill skill) {
-        final ATeam currentTeam = playerManager.getCurrentTeam();
+        final Team currentTeam = playerManager.getCurrentTeam();
         final Player currentPlayer = currentTeam.getCurrentPlayer();
         final heroes.abstractHero.hero.Hero currentHero = currentPlayer.getCurrentHero();
         final boolean heroAuthentication = hero.equals(currentHero);
@@ -85,8 +85,8 @@ public final class ActionManager {
         }
     }
 
-    public final void setPlayerSwapRequest(final ATeam team) {
-        final ATeam currentTeam = playerManager.getCurrentTeam();
+    public final void setPlayerSwapRequest(final Team team) {
+        final Team currentTeam = playerManager.getCurrentTeam();
         if (team.equals(currentTeam)) {
             swapProcessor.setTeam(currentTeam);
             swapProcessor.process();
@@ -105,7 +105,7 @@ public final class ActionManager {
         this.bonusProcessor.process();
     }
 
-    public final void setEagerPlayerSwapRequest(final ATeam team) {
+    public final void setEagerPlayerSwapRequest(final Team team) {
         team.eagerSwapPlayers();
     }
 
@@ -113,7 +113,7 @@ public final class ActionManager {
         this.graphicEngine.showLocation();
     }
 
-    public final void endTurn(final ATeam team) {
+    public final void endTurn(final Team team) {
         this.eventEngine.handle(ActionEventFactory.getEndTurn(team));
         this.refreshScreen();
         this.battleManager.nextTurn();

@@ -2,7 +2,7 @@ package management.actionManagement.actionProccessors;
 
 import management.actionManagement.ActionManager;
 import management.battleManagement.BattleManager;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.PlayerManager;
 import management.processors.Processor;
 
@@ -15,7 +15,7 @@ public class SkillProcessor implements Processor {
 
     private final PlayerManager playerManager;
 
-    protected ATeam currentTeam;
+    protected Team currentTeam;
 
     protected Skill skill;
 
@@ -40,7 +40,7 @@ public class SkillProcessor implements Processor {
     }
 
     //NOT FINAL:
-    public void setTeamAndSkill(final ATeam currentTeam, final Skill skill){
+    public void setTeamAndSkill(final Team currentTeam, final Skill skill){
         this.currentTeam = currentTeam;
         this.skill = skill;
     }

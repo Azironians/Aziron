@@ -1,6 +1,6 @@
 package bonus.devourerBonuses.bonuses.experience.oracle
 
-import bonus.bonuses.Bonus
+import heroes.abstractHero.abilities.bonus.Bonus
 import javafx.scene.image.ImageView
 
 final class Concentration(name: String = "", id: Int = 0, imageView: ImageView = new ImageView())

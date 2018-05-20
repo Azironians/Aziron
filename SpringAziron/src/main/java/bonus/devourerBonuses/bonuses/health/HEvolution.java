@@ -1,6 +1,6 @@
 package bonus.devourerBonuses.bonuses.health;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import heroes.devourer.skills.superSkills.regeneration.utilities.RegenerationMessageParser;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;

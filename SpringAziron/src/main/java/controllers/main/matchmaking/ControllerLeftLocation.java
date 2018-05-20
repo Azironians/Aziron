@@ -2,7 +2,7 @@ package controllers.main.matchmaking;
 
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,12 +18,12 @@ public final class ControllerLeftLocation extends ControllerLocation implements 
     }
 
     public final void imageHeroOnClicked() {
-        final ATeam leftATeam = playerManager.getLeftATeam();
+        final Team leftATeam = playerManager.getLeftATeam();
         makeHeroRequest(leftATeam);
     }
 
     public final void changeHeroOnClicked() {
-        final ATeam leftTeam = playerManager.getLeftATeam();
+        final Team leftTeam = playerManager.getLeftATeam();
         trySwapHeroRequest(leftTeam);
     }
 

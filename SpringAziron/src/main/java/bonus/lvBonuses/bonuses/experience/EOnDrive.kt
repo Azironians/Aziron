@@ -1,6 +1,6 @@
 package bonus.lvBonuses.bonuses.experience
 
-import bonus.bonuses.Bonus
+import heroes.abstractHero.abilities.bonus.Bonus
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.ActionEvent
 import management.actionManagement.actions.ActionType

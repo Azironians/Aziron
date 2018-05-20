@@ -1,8 +1,8 @@
 package bonus.devourerBonuses.bonuses.special.merge
 
 import bonus.bonuses.ExtendedBonus
+import heroes.abstractHero.abilities.talents.skill.Skill
 import heroes.abstractHero.hero.Hero
-import heroes.abstractHero.skills.Skill
 import javafx.scene.Node
 import javafx.scene.image.ImageView
 import javafx.scene.layout.{AnchorPane, Pane}

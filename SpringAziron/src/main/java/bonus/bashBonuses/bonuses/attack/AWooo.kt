@@ -1,6 +1,6 @@
 package core.src.bonus.bashBonuses.bonuses.attack
 
-import bonus.bonuses.Bonus
+import heroes.abstractHero.abilities.bonus.Bonus
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.ActionEventFactory
 

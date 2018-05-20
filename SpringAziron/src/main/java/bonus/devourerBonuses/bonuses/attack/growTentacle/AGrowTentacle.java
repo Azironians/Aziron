@@ -1,6 +1,6 @@
 package bonus.devourerBonuses.bonuses.attack.growTentacle;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionType;
@@ -8,7 +8,7 @@ import management.service.components.handleComponent.EngineComponent;
 import management.service.components.providerComponent.ProviderComponent;
 import management.service.engine.services.DynamicEngineService;
 import management.bonusManagement.BonusManager;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 
 import java.util.logging.Logger;
@@ -39,7 +39,7 @@ public final class AGrowTentacle extends Bonus implements DynamicEngineService {
 
             private Player player;
 
-            private ATeam opponentTeam;
+            private Team opponentTeam;
 
             private int index;
 

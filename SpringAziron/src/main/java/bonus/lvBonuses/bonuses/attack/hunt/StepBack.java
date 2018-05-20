@@ -1,6 +1,6 @@
 package bonus.lvBonuses.bonuses.attack.hunt;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import javafx.scene.image.ImageView;
 
 public final class StepBack extends Bonus {

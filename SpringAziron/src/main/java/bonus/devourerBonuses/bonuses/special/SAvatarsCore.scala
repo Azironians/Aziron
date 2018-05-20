@@ -2,7 +2,7 @@ package bonus.devourerBonuses.bonuses.special
 
 import java.util.logging.Logger
 
-import bonus.bonuses.Bonus
+import heroes.abstractHero.abilities.bonus.Bonus
 import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import management.actionManagement.actions.{ActionEvent, ActionEventFactory, ActionType}

@@ -1,6 +1,6 @@
 package bonus.devourerBonuses.bonuses.health;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import bonus.generalBonuses.bonuses.health.HStrengthenTheArmor;
 import javafx.scene.image.ImageView;
 import management.actionManagement.actions.ActionEvent;

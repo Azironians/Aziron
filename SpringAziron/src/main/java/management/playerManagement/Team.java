@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public final class ATeam {
-    private static final Logger log = Logger.getLogger(ATeam.class.getName());
+public final class Team {
+    private static final Logger log = Logger.getLogger(Team.class.getName());
 
     private Player currentPlayer;
 
@@ -26,9 +26,9 @@ public final class ATeam {
 
     private final Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> time--));
 
-    ATeam(){}
+    Team(){}
 
-    ATeam(final Player currentPlayer, final Player alternativePlayer) {
+    Team(final Player currentPlayer, final Player alternativePlayer) {
         currentPlayer.setCurrent(true);
         alternativePlayer.setCurrent(false);
         this.currentPlayer = currentPlayer;

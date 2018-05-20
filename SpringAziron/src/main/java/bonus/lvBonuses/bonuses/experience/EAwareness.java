@@ -1,9 +1,9 @@
 package bonus.lvBonuses.bonuses.experience;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 
 public final class EAwareness extends Bonus {
 
@@ -15,7 +15,7 @@ public final class EAwareness extends Bonus {
 
     @Override
     public final void use() {
-        final ATeam team = playerManager.getCurrentTeam();
+        final Team team = playerManager.getCurrentTeam();
         final Hero hero = team.getCurrentPlayer().getCurrentHero();
         final double currentHitPoints = hero.getHitPoints();
         final double healthSupply = hero.getHealthSupply();

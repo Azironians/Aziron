@@ -3,7 +3,7 @@ package heroes.abstractHero.builder;
 import heroes.abstractHero.hero.Hero;
 import heroes.abstractHero.presentation.Presentation;
 import heroes.abstractHero.resourceSupplier.HeroResourceSupplier;
-import heroes.abstractHero.skills.factory.SkillFactory;
+import heroes.abstractHero.abilities.talents.factory.TalentFactory;
 import heroes.devourer.hero.Devourer;
 import heroes.lv.hero.LV;
 import heroes.orcBash.hero.OrcBash;
@@ -18,7 +18,7 @@ public interface HeroBuilder {
 
     default Hero buildHero(){
         final Class clazz = getHeroClass();
-        final SkillFactory skillFactory = getSkillFactory();
+        final TalentFactory skillFactory = getSkillFactory();
         final HeroResourceSupplier resourceSupplier = getHeroResourceSupplier();
         final List<Skill> superSkills = skillFactory.getSuperSkills();
         final Skill swapSkill = skillFactory.getSwapSkill();
@@ -53,7 +53,7 @@ public interface HeroBuilder {
         return new Presentation(deckName, deckPriority, background, mediaList);
     }
 
-    SkillFactory getSkillFactory();
+    TalentFactory getSkillFactory();
 
     HeroResourceSupplier getHeroResourceSupplier();
 

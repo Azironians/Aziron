@@ -1,7 +1,7 @@
 package bonus.devourerBonuses.bonuses.experience.voidStones
 
-import bonus.bonuses.Bonus
 import bonus.bonuses.subInterfaces.QuestBonus
+import heroes.abstractHero.abilities.bonus.Bonus
 import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import javafx.scene.layout.Pane

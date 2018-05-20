@@ -4,16 +4,16 @@ import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEventFactory;
 import management.service.engine.EventEngine;
 import management.battleManagement.BattleManager;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 import management.processors.Processor;
 
 //Not final!
 public class AttackProcessor implements Processor {
 
-    private ATeam attackTeam;
+    private Team attackTeam;
 
-    private ATeam victimTeam;
+    private Team victimTeam;
 
     protected final ActionManager actionManager;
 
@@ -43,7 +43,7 @@ public class AttackProcessor implements Processor {
         }
     }
 
-    public void setTeams(final ATeam attackTeam, final ATeam victimTeam){
+    public void setTeams(final Team attackTeam, final Team victimTeam){
         this.attackTeam = attackTeam;
         this.victimTeam = victimTeam;
     }

@@ -2,7 +2,7 @@ package heroes.lv.skills.factory;
 
 import com.google.inject.Inject;
 import heroes.abstractHero.resourceSupplier.HeroResourceSupplier;
-import heroes.abstractHero.skills.factory.SkillFactory;
+import heroes.abstractHero.abilities.talents.factory.TalentFactory;
 import heroes.lv.annotation.LVHeroService;
 import heroes.lv.skills.superSkills.cannibalism.CannibalismSkill;
 import heroes.lv.skills.superSkills.nightBlades.NightBladesSkill;
@@ -12,7 +12,7 @@ import heroes.lv.skills.swapSkills.fury.FurySkill;
 import java.util.Arrays;
 import java.util.List;
 
-public final class LVSkillFactory implements SkillFactory{
+public final class LVSkillFactory implements TalentFactory {
 
     @Inject
     @LVHeroService

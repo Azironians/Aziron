@@ -1,6 +1,6 @@
 package bonus.lvBonuses.bonuses.special
 
-import bonus.bonuses.Bonus
+import heroes.abstractHero.abilities.bonus.Bonus
 import javafx.scene.image.ImageView
 
 class SAbsoluteReadines(name: String, id: Int, sprite: ImageView) : Bonus(name, id, sprite) {

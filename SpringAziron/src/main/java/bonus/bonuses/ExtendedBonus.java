@@ -1,10 +1,11 @@
 package bonus.bonuses;
 
+import heroes.abstractHero.abilities.bonus.Bonus;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-public abstract class ExtendedBonus extends Bonus{
+public abstract class ExtendedBonus extends Bonus {
 
     private Pane container;
 

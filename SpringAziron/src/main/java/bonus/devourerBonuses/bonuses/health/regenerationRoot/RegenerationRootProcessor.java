@@ -4,7 +4,7 @@ import management.actionManagement.ActionManager;
 import management.actionManagement.actionProccessors.AttackProcessor;
 import management.actionManagement.actions.ActionEventFactory;
 import management.battleManagement.BattleManager;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 
@@ -35,7 +35,7 @@ public final class RegenerationRootProcessor extends AttackProcessor {
         }
     }
 
-    public final void setTeams(final ATeam unused_1, final ATeam unused_2){
+    public final void setTeams(final Team unused_1, final Team unused_2){
         this.currentPlayer = playerManager.getCurrentTeam().getCurrentPlayer();
     }
 }

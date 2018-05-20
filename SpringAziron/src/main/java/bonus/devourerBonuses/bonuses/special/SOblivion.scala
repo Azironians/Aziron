@@ -1,6 +1,6 @@
 package bonus.devourerBonuses.bonuses.special
 
-import bonus.bonuses.Bonus
+import heroes.abstractHero.abilities.bonus.Bonus
 import javafx.scene.image.ImageView
 
 final class SOblivion(name: String, id: Int, sprite: ImageView) extends Bonus(name, id, sprite) {

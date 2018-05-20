@@ -1,7 +1,7 @@
 package bonus.devourerBonuses.bonuses.attack.fireBlast;
 
 import gui.service.locations.ALocation;
-import heroes.abstractHero.skills.abstractSkill.AbstractSkill;
+import heroes.abstractHero.tallents.abstractSkill.AbstractSkill;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;

@@ -2,7 +2,7 @@ package heroes.devourer.skills.factory;
 
 import com.google.inject.Inject;
 import heroes.abstractHero.resourceSupplier.HeroResourceSupplier;
-import heroes.abstractHero.skills.factory.SkillFactory;
+import heroes.abstractHero.abilities.talents.factory.TalentFactory;
 import heroes.devourer.annotation.DevourerHeroService;
 import heroes.devourer.skills.superSkills.consuming.ConsumingSkill;
 import heroes.devourer.skills.superSkills.flameSnakes.FlameSnakesSkill;
@@ -12,7 +12,7 @@ import heroes.devourer.skills.swapSkills.depletion.DepletionSkill;
 import java.util.Arrays;
 import java.util.List;
 
-public final class DevourerSkillFactory implements SkillFactory {
+public final class DevourerSkillFactory implements TalentFactory {
 
     @Inject
     @DevourerHeroService

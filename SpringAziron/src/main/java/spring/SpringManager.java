@@ -1,6 +1,6 @@
 package spring;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import bonus.devourerBonuses.bonuses.special.SAvatarsCore;
 import javafx.scene.image.ImageView;
 import org.springframework.beans.factory.annotation.Autowired;

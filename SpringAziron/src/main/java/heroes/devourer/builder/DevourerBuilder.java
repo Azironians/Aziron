@@ -3,7 +3,7 @@ package heroes.devourer.builder;
 import com.google.inject.Inject;
 import heroes.abstractHero.builder.HeroBuilder;
 import heroes.abstractHero.resourceSupplier.HeroResourceSupplier;
-import heroes.abstractHero.skills.factory.SkillFactory;
+import heroes.abstractHero.abilities.talents.factory.TalentFactory;
 import heroes.devourer.annotation.DevourerHeroService;
 import heroes.devourer.hero.Devourer;
 
@@ -11,14 +11,14 @@ public final class DevourerBuilder implements HeroBuilder {
 
     @Inject
     @DevourerHeroService
-    private SkillFactory skillFactory;
+    private TalentFactory skillFactory;
 
     @Inject
     @DevourerHeroService
     private HeroResourceSupplier resourceSupplier;
 
     @Override
-    public final SkillFactory getSkillFactory() {
+    public final TalentFactory getSkillFactory() {
         return skillFactory;
     }
 

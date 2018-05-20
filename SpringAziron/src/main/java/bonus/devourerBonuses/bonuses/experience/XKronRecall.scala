@@ -5,7 +5,7 @@ import heroes.abstractHero.hero.Hero
 import javafx.scene.image.ImageView
 import javafx.scene.text.Text
 import management.actionManagement.actions.{ActionEvent, ActionType}
-import management.playerManagement.{ATeam, Player}
+import management.playerManagement.{Team, Player}
 import management.service.components.handleComponent.EngineComponent
 import management.service.engine.services.DynamicEngineService
 
@@ -41,7 +41,7 @@ final class XKronRecall(name: String, id: Int, sprite: ImageView) extends Extend
 
     private val hero: Player = playerManager.getCurrentTeam.getCurrentPlayer.getCurrentHero
 
-    private val opponentTeam: ATeam = playerManager.getOpponentTeam
+    private val opponentTeam: Team = playerManager.getOpponentTeam
 
     private var work: Boolean = true
 

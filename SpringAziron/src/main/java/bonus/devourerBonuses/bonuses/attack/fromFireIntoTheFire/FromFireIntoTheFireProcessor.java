@@ -5,7 +5,7 @@ import management.actionManagement.actionProccessors.TreatmentProcessor;
 import management.actionManagement.actions.ActionEventFactory;
 import management.service.engine.EventEngine;
 import management.battleManagement.BattleManager;
-import management.playerManagement.ATeam;
+import management.playerManagement.Team;
 import management.playerManagement.Player;
 import management.playerManagement.PlayerManager;
 
@@ -38,7 +38,7 @@ public final class FromFireIntoTheFireProcessor extends TreatmentProcessor {
         }
     }
 
-    public final void setTeam(final ATeam unused){
+    public final void setTeam(final Team unused){
         this.currentPlayer = playerManager.getCurrentTeam().getCurrentPlayer();
         this.opponentPlayer = playerManager.getOpponentTeam().getCurrentPlayer();
     }

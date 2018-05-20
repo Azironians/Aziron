@@ -1,6 +1,6 @@
 package bonus.lvBonuses.bonuses.health;
 
-import bonus.bonuses.Bonus;
+import heroes.abstractHero.abilities.bonus.Bonus;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 
