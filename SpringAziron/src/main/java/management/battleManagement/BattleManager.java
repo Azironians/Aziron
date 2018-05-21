@@ -3,6 +3,7 @@ package management.battleManagement;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import gui.service.graphicEngine.GraphicEngine;
+import heroes.abstractHero.hero.Hero;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEventFactory;
 import management.battleManagement.processors.BonusLoadingProcessor;
@@ -81,9 +82,9 @@ public final class BattleManager {
                 log.info("GAME_OVER");
             }
         } else {
-            changeTurn();
+            this.changeTurn();
             if (this.skipTurn) {
-                final heroes.abstractHero.hero.Hero newCurrentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
+                final Hero newCurrentHero = playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero();
                 this.graphicEngine.hideBonuses();
                 this.eventEngine.handle(ActionEventFactory.getSkipTurn(newCurrentHero));
                 this.skipTurn = false;

@@ -9,6 +9,8 @@ import heroes.abstractHero.abilities.talents.swapAbility.SwapAbility;
 import javafx.util.Pair;
 import management.playerManagement.Team;
 import management.playerManagement.Player;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -165,5 +167,9 @@ public final class ActionEventFactory {
 
     public static ActionEvent getAfterGettingExperience(final Hero hero, final double experience) {
         return new ActionEvent(ActionType.AFTER_GETTING_EXPERIENCE, hero, experience);
+    }
+
+    public static ActionEvent getShowedBonus(final Hero hero) {
+        return new ActionEvent(ActionType.SHOWED_BONUSES, hero);
     }
 }

@@ -2,7 +2,7 @@ package management.playerManagement;
 
 import annotations.sourceAnnotations.Transcendental;
 import heroes.abstractHero.abilities.bonus.Bonus;
-import gui.service.locations.ALocation;
+import gui.service.locations.AGraphicLocation;
 import management.profileManagement.Profile;
 import org.jetbrains.annotations.Contract;
 import scala.Tuple3;
@@ -29,7 +29,7 @@ public final class Player {
     private int remainingTime;
     private Boolean winner = null;
 
-    private ALocation location;
+    private AGraphicLocation location;
 
     public Player(final Profile profile, final heroes.abstractHero.hero.Hero currentHero) {
         this.profile = profile;

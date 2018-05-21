@@ -56,11 +56,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Bonus.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/abilities/bonus/Bonus.java">
+      <file leaf-file-name="AGamePipeNode.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/mainPipeNode/AGamePipeNode.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="669">
+              <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+              <folding>
+                <element signature="e#66#528#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,11 +74,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Kotlin Class" />
         <option value="Enum" />
         <option value="AnnotationType" />
-        <option value="Kotlin File" />
         <option value="Class" />
+        <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -552,33 +555,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/bonusPipeNode/BonusPipeNode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/defaultPipeNode/DefaultPipeNode.java" />
-        <option value="$PROJECT_DIR$/src/test/java/values.txt" />
-        <option value="$PROJECT_DIR$/src/values.txt" />
-        <option value="$PROJECT_DIR$/src/test/java/Test.java" />
-        <option value="$PROJECT_DIR$/src/test/java/AppTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/bonusPipeNode/BonusPipeNode.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/AbstractPipeNode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/AbstractEngineComponent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/MainEngineComponent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/EngineComponentBuilder.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/EngineComponentBuilder.scala" />
-        <option value="$PROJECT_DIR$/src/main/java/management/service/engine/services/DynamicEngineService.java" />
         <option value="$PROJECT_DIR$/src/main/java/management/playerManagement/PlayerManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/EngineComponentBuielder.java" />
         <option value="$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/EngineComponentBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/CoreEngineComponent.kt" />
         <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipes/APipe.java" />
         <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/mainPipeNode/MainPipeNode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/heroes/abstractHero/hero/Hero.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/main/matchmaking/ControllerLocation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/EngineComponent.java" />
         <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/treatmentPipeNode/TreatmentPipeNode.kt" />
         <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/attackPipeNode/AttackPipeNode.kt" />
         <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/skillPipeNode/SkillPipeNode.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/APipeline.java" />
-        <option value="$PROJECT_DIR$/src/main/java/management/actionManagement/actions/ActionEventFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/swapAbilityPipeNode/SwapAbilityCorePipeNode.kt" />
         <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/swapAbilityPipeNode/SwapAbilityPipeNode.kt" />
         <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/possibilityPipeNodes/PossibilityPipeNode.kt" />
@@ -592,7 +578,6 @@
         <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/possibilityPipeNodes/bonusPipeNode/BonusPipeNode.kt" />
         <option value="$PROJECT_DIR$/src/main/java/management/actionManagement/actions/ActionType.java" />
         <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/possibilityPipeNodes/PossibilityPipeNode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/AbilityPipeNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/heroes/abstractHero/ability/talent/Talent.kt" />
         <option value="$PROJECT_DIR$/src/main/java/heroes/abstractHero/ability/talent/Talent.java" />
         <option value="$PROJECT_DIR$/src/main/java/heroes/abstractHero/ability/Ability.java" />
@@ -603,6 +588,24 @@
         <option value="$PROJECT_DIR$/src/main/java/heroes/abstractHero/abilities/talents/swapAbility/SwapAbility.java" />
         <option value="$PROJECT_DIR$/src/main/java/bonus/bonuses/Bonus.java" />
         <option value="$PROJECT_DIR$/src/main/java/heroes/abstractHero/abilities/bonus/Bonus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipes/a.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipes/A.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/E.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/SwapAbilityPipeNode.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/APipeline.java" />
+        <option value="$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/EngineComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/management/actionManagement/actions/ActionEventFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/AbilityPipeNode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/swapAbilityPipeNode/SwapAbilityPipeNode.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/skillPipeNode/SkillPipeNode.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/management/battleManagement/BattleManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/management/battleManagement/processors/BonusLoadingProcessor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/bonusPipeNode/BonusPipeNode.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/service/graphicEngine/GraphicEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/service/locations/ALocation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/mainPipeNode/AGamePipeNode.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/heroes/abstractHero/hero/Hero.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gui/service/locations/AGraphicLocation.java" />
       </list>
     </option>
   </component>
@@ -623,6 +626,7 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -745,15 +749,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="management" type="462c0819:PsiDirectoryNode" />
-              <item name="actionManagement" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SpringAziron" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SpringAziron" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="management" type="462c0819:PsiDirectoryNode" />
               <item name="battleManagement" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -785,6 +780,40 @@
               <item name="pipeline" type="462c0819:PsiDirectoryNode" />
               <item name="pipeNodes" type="462c0819:PsiDirectoryNode" />
               <item name="corePipeNodes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringAziron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringAziron" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="management" type="462c0819:PsiDirectoryNode" />
+              <item name="pipeline" type="462c0819:PsiDirectoryNode" />
+              <item name="pipeNodes" type="462c0819:PsiDirectoryNode" />
+              <item name="corePipeNodes" type="462c0819:PsiDirectoryNode" />
+              <item name="attackPipeNode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringAziron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringAziron" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="management" type="462c0819:PsiDirectoryNode" />
+              <item name="pipeline" type="462c0819:PsiDirectoryNode" />
+              <item name="pipeNodes" type="462c0819:PsiDirectoryNode" />
+              <item name="corePipeNodes" type="462c0819:PsiDirectoryNode" />
+              <item name="mainPipeNode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringAziron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringAziron" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="management" type="462c0819:PsiDirectoryNode" />
+              <item name="pipeline" type="462c0819:PsiDirectoryNode" />
+              <item name="pipes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SpringAziron" type="b2602c69:ProjectViewProjectNode" />
@@ -864,7 +893,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -879,6 +907,10 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\StarKRE\projects\aziron\SpringAziron\src" />
+      <recent name="C:\Users\StarKRE\projects\aziron\SpringAziron\src\test\java" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="management.pipeline.pipeNodes.defaultCorePipeNode.defaultCorePossibilityPipeNode" />
       <recent name="management.pipeline.pipeNodes.defaultCorePipeNode" />
@@ -886,8 +918,9 @@
       <recent name="management.pipeline.pipeNode" />
       <recent name="management.pipeline.pipe" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\StarKRE\projects\aziron\SpringAziron\src\test\java" />
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="management.pipeline.pipeNodes.corePipeNodes.abilityPipeNodes.swapAbilityPipeNode" />
+      <recent name="management.pipeline" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="management.pipeline.pipeNodes.bonusPipeNode" />
@@ -896,8 +929,7 @@
       <recent name="management.pipeline.pipeNodes.treatmentPipeNode" />
       <recent name="management.pipeline.pipeNodes.attackPipeNode" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\StarKRE\projects\aziron\SpringAziron\src" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\StarKRE\projects\aziron\SpringAziron\src\test\java" />
     </key>
   </component>
@@ -1089,7 +1121,8 @@
       <workItem from="1526654337842" duration="4499000" />
       <workItem from="1526666975761" duration="5880000" />
       <workItem from="1526754133909" duration="4897000" />
-      <workItem from="1526853037812" duration="5926000" />
+      <workItem from="1526853037812" duration="6212000" />
+      <workItem from="1526892896583" duration="5478000" />
     </task>
     <servers />
   </component>
@@ -1126,40 +1159,49 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135035000" />
+    <option name="totallyTimeSpent" value="140799000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32904884" />
       <window_info anchor="right" id="sbt" order="3" weight="0.3295302" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067115" side_tool="true" weight="0.47293448" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39974293" />
-      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067115" side_tool="true" weight="0.47293448" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.4562982" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.5167095" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.25390625" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.25390625" />
       <window_info anchor="bottom" id="sbt-shell-toolwindow" order="7" weight="0.32905984" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32904884" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.3294271" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
+      <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.3294271" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39974293" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32904884" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.4562982" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32905984" />
@@ -1226,315 +1268,168 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/PipeID.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/bonus/generalBonuses/bonuses/attack/atack/AttackEngineBonusComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/attackPipeNode/MainAttackEngineComponent.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/actionManagement/ActionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="188" column="1" lean-forward="true" selection-start-line="188" selection-start-column="1" selection-end-line="188" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/actionManagement/actionProccessors/AttackProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="42" column="9" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="42" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bonus/devourerBonuses/bonuses/experience/XKronRecall.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="41" column="77" selection-start-line="41" selection-start-column="77" selection-end-line="41" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/A.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/values.txt" />
     <entry file="file://$USER_HOME$/Downloads/Test.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/Test.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/MainEngineComponent.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/AppTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/service/engine/services/DynamicEngineService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/playerManagement/PlayerManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="48" column="48" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/EngineComponentBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/CoreEngineComponent.kt" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipes/APipeBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/security/gate/AGate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/main/ControllerAuthorization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="84" column="18" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipes/APipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/hero/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="87" column="40" lean-forward="true" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/APipeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/treatmentPipeNode/TreatmentPipeNode.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/skillPipeNode/SkillPipeNode.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/bonus/otherBonuses/experience/questArtifact/XQuestArtifact.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bonus/bonuses/service/annotations/implementations/QuestEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/main/matchmaking/ControllerLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="54" column="42" lean-forward="true" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/attackPipeNode/AttackPipeNode.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
-          <folding>
-            <element signature="e#54#489#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/treatmentPipeNode/TreatmentPipeNode.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="71" column="1" lean-forward="true" selection-start-line="71" selection-start-column="1" selection-end-line="71" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/APipeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="113" column="58" lean-forward="true" selection-start-line="113" selection-start-column="58" selection-end-line="113" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/actionManagement/actions/ActionEventFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="168" column="1" lean-forward="true" selection-start-line="168" selection-start-column="1" selection-end-line="168" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/CorePipeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/possibilityPipeNodes/PossibilityPipeNode.kt" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/mainPipeNode/MainPipeNode.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/ability/talent/Talent.kt" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipes/A.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/EngineComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="27" column="42" lean-forward="true" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/service/components/handleComponent/CoreEngineComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/actionManagement/actions/ActionEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/playerManagement/Team.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/actionManagement/actions/ActionType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/bonusPipeNode/BonusPipeNode.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/skillPipeNode/SkillPipeNode.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        <state relative-caret-position="442">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#0#374#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/swapAbilityPipeNode/SwapAbilityPipeNode.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/AbilityPipeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#374#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/ability/talent/Talent.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/mainPipeNode/MainPipeNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/abilities/talents/Talent.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/mainPipeNode/GamePipeNode.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bonus/otherBonuses/experience/questArtifact/QuestArtifactEngineComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/abilities/Ability.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
-          <caret line="203" column="1" lean-forward="true" selection-start-line="203" selection-start-column="1" selection-end-line="203" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/abilities/talents/factory/TalentFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/abilities/talents/skill/Skill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/abilities/talents/swapAbility/SwapAbility.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/battleManagement/processors/BonusLoadingProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="15" column="48" lean-forward="true" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+          <caret line="14" selection-start-line="14" selection-end-line="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/abilities/bonus/Bonus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="720">
+          <caret line="58" column="35" lean-forward="true" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/AbilityPipeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="34" column="51" lean-forward="true" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/attackPipeNode/AttackPipeNode.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/abilityPipeNodes/bonusPipeNode/BonusPipeNode.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+          <folding>
+            <element signature="e#85#512#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/battleManagement/BattleManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/service/graphicEngine/GraphicEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="163" column="17" lean-forward="true" selection-start-line="163" selection-start-column="17" selection-end-line="163" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/APipeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/CorePipeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipes/APipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipes/APipeBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/abilities/Ability.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/APipeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/heroes/abstractHero/hero/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="381" column="44" selection-start-line="381" selection-start-column="44" selection-end-line="381" selection-end-column="44" />
+          <folding>
+            <element signature="e#10708#10709#0" expanded="true" />
+            <element signature="e#10744#10745#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gui/service/locations/AGraphicLocation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="269" column="1" lean-forward="true" selection-start-line="269" selection-start-column="1" selection-end-line="269" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/management/pipeline/pipeNodes/corePipeNodes/mainPipeNode/AGamePipeNode.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="669">
+          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="e#66#528#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

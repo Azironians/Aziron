@@ -20,7 +20,7 @@ class KronMarkProxyComponent(val player: Player?) {
     }
 
     private fun initProxyPane(player: Player?){
-        val skillPane = player!!.currentHero.location.skillPane
+        val skillPane = player!!.currentHero.graphicLocation.skillPane
         this.proxyMarkKronPane.layoutX = skillPane.layoutX
         this.proxyMarkKronPane.layoutY = skillPane.layoutY
         this.proxyMarkKronPane.minWidth = skillPane.minWidth
@@ -37,7 +37,7 @@ class KronMarkProxyComponent(val player: Player?) {
             val currentSkill = availableSkill.first
             val containerIndex = availableSkill.second
             //Get main super skill location:
-            val mainSkillContainers = player.currentHero.location.skillPane.children
+            val mainSkillContainers = player.currentHero.graphicLocation.skillPane.children
             val skillNode = mainSkillContainers[containerIndex]
             //Creating custom skill:
             val kronMarkSkill = KronMarkSkill(this)

@@ -19,7 +19,8 @@ public abstract class Bonus extends Ability {
 
     protected static class GUIHolder extends Ability.GUIHolder {
 
-        protected GUIHolder(final Ability parent, final ImageView mainImage, ImageView descriptionImage, List<Media> voices, Media animationSound) {
+        protected GUIHolder(final Ability parent, final ImageView mainImage, final ImageView descriptionImage
+                , final List<Media> voices, final Media animationSound) {
             super(parent, mainImage, descriptionImage, voices, animationSound);
             //Temporary:
             this.mainImage.setFitHeight(353.0);

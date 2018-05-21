@@ -1,7 +1,7 @@
 package heroes.abstractHero.hero;
 
 import heroes.abstractHero.abilities.bonus.Bonus;
-import gui.service.locations.ALocation;
+import gui.service.locations.AGraphicLocation;
 import management.bonusManagement.BonusManager;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
@@ -379,17 +379,21 @@ public abstract class Hero {
     }
 
     //Location:
-    private ALocation location;
+    private AGraphicLocation graphicLocation;
 
-    public final ALocation getLocation() {
-        return this.location;
+    public final AGraphicLocation getGraphicLocation() {
+        return this.graphicLocation;
     }
 
-    public final void setLocation(final ALocation location) {
-        this.location = location;
+    public final void setGraphicLocation(final AGraphicLocation graphicLocation) {
+        this.graphicLocation = graphicLocation;
     }
 
     public boolean isSwapAccess() {
         return false;
+    }
+
+    public void unlockAbilities() {
+
     }
 }

@@ -45,6 +45,10 @@ public abstract class EngineComponent {
         return actionEvent.getActionType() == waitingActionType && actionEvent.getHero() == this.hero;
     }
 
+    protected boolean checkCurrentHero(){
+        return this.playerManager.getCurrentTeam().getCurrentPlayer().getCurrentHero() == this.hero;
+    }
+
     protected boolean checkData(final Object data, final Class clazz){
         return data != null && data.getClass().equals(clazz);
     }

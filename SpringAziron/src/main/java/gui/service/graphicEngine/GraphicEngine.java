@@ -4,7 +4,7 @@ import heroes.abstractHero.abilities.bonus.Bonus;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import controllers.main.matchmaking.ControllerMatchMaking;
-import gui.service.locations.ALocation;
+import gui.service.locations.AGraphicLocation;
 import gui.windows.WindowType;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -48,9 +48,9 @@ public final class GraphicEngine {
 
     private Team rightTeam;
 
-    private ALocation leftLocation;
+    private AGraphicLocation leftLocation;
 
-    private ALocation rightLocation;
+    private AGraphicLocation rightLocation;
 
     private boolean bindEnable = true;
 
@@ -70,7 +70,7 @@ public final class GraphicEngine {
         showLocation();
     }
 
-    private void installTeamTimer(final Team team, final ALocation location, final int time){
+    private void installTeamTimer(final Team team, final AGraphicLocation location, final int time){
         team.setTime(time);
         final Timeline timeline = team.getTimeline();
         timeline.setOnFinished(event -> {
@@ -111,10 +111,10 @@ public final class GraphicEngine {
         }
     }
 
-    private void showLocation(final ALocation location, final Team team){
+    private void showLocation(final AGraphicLocation location, final Team team){
         final Player currentPlayer = team.getCurrentPlayer();
         final heroes.abstractHero.hero.Hero hero = currentPlayer.getCurrentHero();
-        hero.setLocation(location);
+        hero.setGraphicLocation(location);
         location.setFace(currentPlayer.getCurrentHero().getFace());
         //Profile:
         location.setName(currentPlayer.getProfile().getName());
@@ -159,7 +159,7 @@ public final class GraphicEngine {
         location.setTime(team.getTime());
     }
 
-    public void show3Bonuses(final List<Bonus> bonusList
+    public final void show3Bonuses(final List<Bonus> bonusList
             , final int firstBonus, final int secondBonus, final int thirdBonus){
         final ControllerMatchMaking controllerMatchMaking = (ControllerMatchMaking) aGame.getWindowMap()
                 .get(WindowType.MATCHMAKING).getController();
@@ -191,11 +191,11 @@ public final class GraphicEngine {
         bonusPane.getChildren().clear();
     }
 
-    public ALocation getLeftLocation() {
+    public AGraphicLocation getLeftLocation() {
         return leftLocation;
     }
 
-    public ALocation getRightLocation() {
+    public AGraphicLocation getRightLocation() {
         return rightLocation;
     }
 

@@ -2,7 +2,7 @@ package controllers.main.matchmaking;
 
 import com.google.inject.Inject;
 import controllers.Controller;
-import gui.service.locations.ALocation;
+import gui.service.locations.AGraphicLocation;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -68,14 +68,14 @@ public final class ControllerMatchMaking implements Initializable, Controller {
     @FXML
     private Button buttonInfo;
 
-    private ALocation leftLocation;
+    private AGraphicLocation leftLocation;
 
-    private ALocation rightLocation;
+    private AGraphicLocation rightLocation;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        leftLocation = new ALocation(leftLocationPane, false);
-        rightLocation = new ALocation(rightLocationPane, true);
+        leftLocation = new AGraphicLocation(leftLocationPane, false);
+        rightLocation = new AGraphicLocation(rightLocationPane, true);
     }
 
     @Override
@@ -116,11 +116,11 @@ public final class ControllerMatchMaking implements Initializable, Controller {
         return menuPane;
     }
 
-    public ALocation getLeftLocation() {
+    public AGraphicLocation getLeftLocation() {
         return leftLocation;
     }
 
-    public ALocation getRightLocation() {
+    public AGraphicLocation getRightLocation() {
         return rightLocation;
     }
 

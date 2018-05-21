@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="location" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.main.matchmaking.ControllerRightLocation">
+<AnchorPane fx:id="graphicLocation" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.main.matchmaking.ControllerRightLocation">
     <children>
       <Pane fx:id="swapSkill" layoutX="-62.0" layoutY="80.0" onMouseClicked="#changeHeroOnClicked">
          <children>

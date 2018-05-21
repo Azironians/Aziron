@@ -1,15 +1,20 @@
 package gui.service.locations;
 
+import heroes.abstractHero.abilities.bonus.Bonus;
 import heroes.abstractHero.hero.Hero;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public final class ALocation {
+import java.util.List;
 
-    private AnchorPane location;
+public final class AGraphicLocation {
+
+    private AnchorPane graphicLocation;
 
     private final boolean invert;
 
@@ -43,7 +48,7 @@ public final class ALocation {
     //Profile:
     private Text name;
 
-    public ALocation(final AnchorPane location, final boolean invert) {
+    public AGraphicLocation(final AnchorPane graphicLocation, final boolean invert) {
         final int HEROES_CONTROL_INDEX = 0;
         final int BONUS_STACK_INDEX = 1;
         final int SKILL_INDEX = 3;
@@ -53,17 +58,17 @@ public final class ALocation {
         //inversion:
         this.invert = invert;
         //root:
-        this.location = location;
+        this.graphicLocation = graphicLocation;
         //heroes control:
-        this.swapSkillPane = (Pane) location.getChildren().get(HEROES_CONTROL_INDEX);
+        this.swapSkillPane = (Pane) graphicLocation.getChildren().get(HEROES_CONTROL_INDEX);
         //bonus stack:
         //...........
         //skill pane:
-        this.skillPane = (AnchorPane) location.getChildren().get(SKILL_INDEX);
+        this.skillPane = (AnchorPane) graphicLocation.getChildren().get(SKILL_INDEX);
         //face:
-        this.face = (ImageView) location.getChildren().get(FACE_INDEX);
+        this.face = (ImageView) graphicLocation.getChildren().get(FACE_INDEX);
         //characteristics:
-        this.characteristics = (AnchorPane) location.getChildren().get(CHARACTERISTIC_INDEX);
+        this.characteristics = (AnchorPane) graphicLocation.getChildren().get(CHARACTERISTIC_INDEX);
         this.attack = (Text) this.characteristics.getChildren().get(0);
         this.hitPoints = (Text) this.characteristics.getChildren().get(1);
         this.supplyHealth = (Text) this.characteristics.getChildren().get(2);
@@ -82,7 +87,7 @@ public final class ALocation {
 
     @Contract(pure = true)
     public AnchorPane getRoot() {
-        return location;
+        return graphicLocation;
     }
 
     @Contract(pure = true)
@@ -256,5 +261,10 @@ public final class ALocation {
 
     public boolean isInvert() {
         return invert;
+    }
+
+    public final void show3Bonuses(final List<? extends Bonus> bonusList, final Integer firstBonus, final Integer secondBonus
+            , final Integer thirdBonus) {
+
     }
 }

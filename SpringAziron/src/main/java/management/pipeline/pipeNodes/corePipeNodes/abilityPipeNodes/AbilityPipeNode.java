@@ -17,11 +17,11 @@ public abstract class AbilityPipeNode extends CorePipeNode {
         this.engineComponentList.add(this.getCoreBeforeUsedAbilityEventEngine());
     }
 
-    protected abstract CoreBeforeUsedAbilityEventEngine getCoreBeforeUsedAbilityEventEngine();
+    protected abstract CoreBeforeUsedAbilityEngineComponent getCoreBeforeUsedAbilityEventEngine();
 
-    public static abstract class CoreBeforeUsedAbilityEventEngine extends CoreEngineComponent {
+    public static abstract class CoreBeforeUsedAbilityEngineComponent extends CoreEngineComponent {
 
-        public CoreBeforeUsedAbilityEventEngine(final String name, final Hero hero, final APipeline pipeline
+        public CoreBeforeUsedAbilityEngineComponent(final String name, final Hero hero, final APipeline pipeline
                 , final PlayerManager playerManager) {
             super(name, hero, pipeline, playerManager);
         }
@@ -32,6 +32,8 @@ public abstract class AbilityPipeNode extends CorePipeNode {
 
         protected abstract ActionType getDuringActionType();
 
+        protected abstract ActionType getAfterActionType();
+
         @Override
         public final void handle(final ActionEvent actionEvent) {
             if (this.checkEventAndHero(actionEvent, this.getCheckedBeforeActionType())) {
@@ -39,6 +41,7 @@ public abstract class AbilityPipeNode extends CorePipeNode {
                 if (this.checkData(data, this.getActionEventDataFieldClass())) {
                     final Ability ability = this.getActionEventDataFieldClass().cast(data);
                     this.pipeline.push(new ActionEvent(this.getDuringActionType(), this.hero, ability));
+                    this.pipeline.push(new ActionEvent(this.getAfterActionType(), this.hero, ability));
                 }
             }
         }

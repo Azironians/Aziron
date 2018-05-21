@@ -4,12 +4,11 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import heroes.abstractHero.hero.Hero;
 import management.actionManagement.actions.ActionEvent;
+import management.pipeline.pipeNodes.corePipeNodes.abilityPipeNodes.swapAbilityPipeNode.SwapAbilityPipeNode;
 import management.pipeline.pipeNodes.corePipeNodes.attackPipeNode.AttackPipeNode;
 import management.pipeline.pipeNodes.corePipeNodes.abilityPipeNodes.bonusPipeNode.BonusPipeNode;
 import management.pipeline.pipeNodes.corePipeNodes.CorePipeNode;
-import management.pipeline.pipeNodes.corePipeNodes.mainPipeNode.MainPipeNode;
 import management.pipeline.pipeNodes.corePipeNodes.abilityPipeNodes.skillPipeNode.SkillPipeNode;
-import management.pipeline.pipeNodes.corePipeNodes.abilityPipeNodes.swapAbilityPipeNode.SwapAbilityPipeNode;
 import management.pipeline.pipeNodes.corePipeNodes.treatmentPipeNode.TreatmentPipeNode;
 import management.pipeline.pipes.APipe;
 import management.pipeline.pipes.APipeBuilder;
@@ -98,15 +97,15 @@ public final class APipeline {
             this.installCorePipeNodes(BonusPipeNode.class);
         }
 
-        private void installCorePipeNodes(final Class<? extends CorePipeNode> clazz) {
+        private void installCorePipeNodes(final Class<? extends CorePipeNode> pipeNodeClass) {
             //Get PipeNode -> Pipe:
-            final String className = clazz.getName();
+            final String className = pipeNodeClass.getName();
             final int withoutNodeWord = 4;
             final String pipeName = className.substring(0, className.length() - withoutNodeWord);
             //Build pipe:
             final APipe pipe = this.pipeBuilder.build(pipeName);
             try {
-                final Constructor constructor = clazz.getDeclaredConstructor(Hero.class, PlayerManager.class);
+                final Constructor constructor = pipeNodeClass.getDeclaredConstructor(Hero.class, PlayerManager.class);
                 for (final Team team : this.playerManager.getAllTeams()) {
                     for (final Player player : team.getAllPlayers()) {
                         for (final Hero hero : player.getAllHeroes()) {
