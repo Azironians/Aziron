@@ -92,6 +92,6 @@ final class SMerge(name: String, id: Int, sprite: ImageView) extends ExtendedBon
     val layoutX = firstPane.getLayoutX
     val layoutY = firstPane.getLayoutY
     devouringSkill.install(skillPane, parentPlayer.getCurrentHero, layoutX, layoutY, layoutX, -127
-      , parentPlayer.getCurrentHero.getGraphicLocation.isInvert)
+      , parentPlayer.getCurrentHero.getGraphicLocation.isInvertPosition)
   }
 }

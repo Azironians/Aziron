@@ -45,7 +45,7 @@ public abstract class HeroResourceSupplier {
     }
 
     protected final String getSwapSkillPath(){
-        return getHeroPath() + "face/swapFace.png";
+        return getHeroPath() + "faceImageView/swapFace.png";
     }
 
     public ImageView getFaceImageInstance() {

@@ -35,7 +35,7 @@ public final class DevourerResourceSupplier extends HeroResourceSupplier{
     }
 
     private ImageView getDepletionSpriteInstance(){
-//        final ImageView testSprite = new ImageView(new Image("file:src\\resources\\heroes\\devourer\\face\\swapFace.png"));
+//        final ImageView testSprite = new ImageView(new Image("file:src\\resources\\heroes\\devourer\\faceImageView\\swapFace.png"));
 //        testSprite.setFitHeight(65);
 //        testSprite.setFitWidth(188);
         return swapSkillSpriteFormat(getSwapSkillPath());

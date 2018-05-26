@@ -1,7 +1,6 @@
 package gui.animation;
 
 import com.google.inject.Singleton;
-import gui.service.locations.AGraphicLocation;
 import management.playerManagement.Player;
 
 @Singleton

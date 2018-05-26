@@ -49,7 +49,6 @@ public final class PlayerManager {
     private void setPlayerCount(int countPlayers) {
         this.countPlayers = countPlayers;
         this.mapOfPlayers = new HashMap<>(countPlayers);
-
     }
 
     public final void setStartPosition(){
@@ -124,8 +123,8 @@ public final class PlayerManager {
 //        this.leftATeam.getAlternativePlayer().setAlive(false);
         final ControllerMatchMaking controllerMatchMaking = (ControllerMatchMaking) aGame.getWindowMap()
                 .get(WindowType.MATCHMAKING).getController();
-        controllerMatchMaking.getLeftLocation().getSwapSkillPane().setVisible(setter);
-        controllerMatchMaking.getRightLocation().getSwapSkillPane().setVisible(setter);
+        controllerMatchMaking.getCurrentLeftLocation().getSwapSkillPane().setVisible(setter);
+        controllerMatchMaking.getCurrentRightLocation().getSwapSkillPane().setVisible(setter);
     }
 
     //Getters:

@@ -1,11 +1,12 @@
 package gui.service.graphicEngine;
 
+import gui.service.locations.GraphicLocation;
 import heroes.abstractHero.abilities.bonus.Bonus;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import controllers.main.matchmaking.ControllerMatchMaking;
-import gui.service.locations.AGraphicLocation;
 import gui.windows.WindowType;
+import heroes.abstractHero.hero.Hero;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
@@ -17,6 +18,7 @@ import main.AGame;
 import management.actionManagement.ActionManager;
 import management.actionManagement.actions.ActionEvent;
 import management.actionManagement.actions.ActionEventFactory;
+import management.pipeline.APipeline;
 import management.service.engine.EventEngine;
 import management.battleManagement.BattleManager;
 import management.playerManagement.GameMode;
@@ -42,35 +44,32 @@ public final class GraphicEngine {
     private PlayerManager playerManager;
 
     @Inject
-    private EventEngine eventEngine;
+    private APipeline pipeline;
 
     private Team leftTeam;
 
     private Team rightTeam;
 
-    private AGraphicLocation leftLocation;
+    private GraphicLocation currentLeftLocation;
 
-    private AGraphicLocation rightLocation;
+    private GraphicLocation currentRightLocation;
 
     private boolean bindEnable = true;
 
     public final void install(){
         final ControllerMatchMaking matchMaking = (ControllerMatchMaking) aGame.getWindowMap()
                 .get(WindowType.MATCHMAKING).getController();
-
-        this.leftLocation = matchMaking.getLeftLocation();
-        this.rightLocation = matchMaking.getRightLocation();
-        this.leftTeam = playerManager.getLeftATeam();
-        this.rightTeam = playerManager.getRightATeam();
+        this.currentLeftLocation = matchMaking.getCurrentLeftLocation();
+        this.currentRightLocation = matchMaking.getCurrentRightLocation();
+        this.leftTeam = this.playerManager.getLeftATeam();
+        this.rightTeam = this.playerManager.getRightATeam();
         //Time:
-        installTeamTimer(leftTeam, leftLocation, BattleManager.getStartTime());
-        installTeamTimer(rightTeam, rightLocation, BattleManager.getStartTime());
-        //Skills:
-        wireActionManagerToSkills(matchMaking.getActionManager(), leftTeam, rightTeam);
+        this.installTeamTimer(leftTeam, currentLeftLocation, BattleManager.getStartTime());
+        this.installTeamTimer(rightTeam, currentRightLocation, BattleManager.getStartTime());
         showLocation();
     }
 
-    private void installTeamTimer(final Team team, final AGraphicLocation location, final int time){
+    private void installTeamTimer(final Team team, final GraphicLocation location, final int time){
         team.setTime(time);
         final Timeline timeline = team.getTimeline();
         timeline.setOnFinished(event -> {
@@ -86,16 +85,18 @@ public final class GraphicEngine {
         }));
     }
 
+    private
+
     private void wireActionManagerToSkills(final ActionManager actionManager, final Team leftATeam, final Team rightATeam){
         final List<heroes.abstractHero.hero.Hero> allHeroes = new ArrayList<>(){{
-            add(leftATeam.getCurrentPlayer().getCurrentHero());
-            add(rightATeam.getCurrentPlayer().getCurrentHero());
+            this.add(leftATeam.getCurrentPlayer().getCurrentHero());
+            this.add(rightATeam.getCurrentPlayer().getCurrentHero());
             if (playerManager.getGameMode() == GameMode._2x2){
-                add(leftATeam.getAlternativePlayer().getCurrentHero());
-                add(rightATeam.getAlternativePlayer().getCurrentHero());
+                this.add(leftATeam.getAlternativePlayer().getCurrentHero());
+                this.add(rightATeam.getAlternativePlayer().getCurrentHero());
             }
         }};
-        for (final heroes.abstractHero.hero.Hero hero: allHeroes){
+        for (final Hero hero: allHeroes){
             final List<Skill> skills = hero.getCollectionOfSkills();
             for (final Skill skill : skills){
                 skill.setActionManager(actionManager);
@@ -106,8 +107,8 @@ public final class GraphicEngine {
 
     public final void showLocation(){
         if (bindEnable){
-            showLocation(leftLocation, leftTeam);
-            showLocation(rightLocation, rightTeam);
+            showLocation(currentLeftLocation, leftTeam);
+            showLocation(currentRightLocation, rightTeam);
         }
     }
 
@@ -191,12 +192,12 @@ public final class GraphicEngine {
         bonusPane.getChildren().clear();
     }
 
-    public AGraphicLocation getLeftLocation() {
-        return leftLocation;
+    public AGraphicLocation getCurrentLeftLocation() {
+        return currentLeftLocation;
     }
 
-    public AGraphicLocation getRightLocation() {
-        return rightLocation;
+    public AGraphicLocation getCurrentRightLocation() {
+        return currentRightLocation;
     }
 
     public boolean isBindEnable() {

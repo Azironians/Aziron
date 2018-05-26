@@ -1,11 +1,13 @@
 package heroes.abstractHero.hero;
 
 import heroes.abstractHero.abilities.bonus.Bonus;
-import gui.service.locations.AGraphicLocation;
+import heroes.abstractHero.abilities.talents.skill.Skill;
+import heroes.abstractHero.abilities.talents.swapAbility.SwapAbility;
 import management.bonusManagement.BonusManager;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +46,7 @@ public abstract class Hero {
     private final ImageView face; //Картинка героя
     private final List<Media> listOfAttackVoices;
     private final List<Media> listOfTreatmentVoices;
+    private final List<SwapAbility> swapAbilities = new ArrayList<>();
 
     public final void reloadSkills() {
         collectionOfSkills.forEach(Skill::reload);
@@ -71,7 +74,7 @@ public abstract class Hero {
         this.collectionOfSkills = collectionOfSkills;
         this.swapSkill = swapSkill;
         //Other ability map:
-        this.additionalAbilityMap = new HashMap<String, Object>();
+        this.additionalAbilityMap = new HashMap<>();
         //Outer:
         this.face = face;
         this.listOfAttackVoices = listOfAttackVoices;
@@ -257,14 +260,6 @@ public abstract class Hero {
         this.level = level;
     }
 
-    public double getArmor() {
-        return armor;
-    }
-
-    public void setArmor(double armor) {
-        this.armor = armor;
-    }
-
     public List<Double> getListOfRequiredExperience() {
         return listOfRequiredExperience;
     }
@@ -350,15 +345,6 @@ public abstract class Hero {
         this.treatmentAccess = treatmentAccess;
     }
 
-    //Coefficients:
-    public final double getDamageCoefficient() {
-        return damageCoefficient;
-    }
-
-    public final void setDamageCoefficient(double damageCoefficient) {
-        this.damageCoefficient = damageCoefficient;
-    }
-
     public final double getHealingCoefficient() {
         return healingCoefficient;
     }
@@ -395,5 +381,9 @@ public abstract class Hero {
 
     public void unlockAbilities() {
 
+    }
+
+    public List<SwapAbility> getSwapAbilities(){
+        return this.swapAbilities;
     }
 }

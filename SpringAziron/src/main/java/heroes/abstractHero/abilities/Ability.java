@@ -58,7 +58,7 @@ public abstract class Ability {
     protected GUIHolder guiHolder;
 
     @NonFinal
-    protected static class GUIHolder {
+    public static class GUIHolder {
 
         protected static final int START_OPACITY = 0;
 

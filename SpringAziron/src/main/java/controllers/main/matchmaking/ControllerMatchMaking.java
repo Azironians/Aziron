@@ -2,7 +2,7 @@ package controllers.main.matchmaking;
 
 import com.google.inject.Inject;
 import controllers.Controller;
-import gui.service.locations.AGraphicLocation;
+import gui.service.locations.GraphicLocation;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -18,8 +18,7 @@ import java.util.logging.Logger;
 
 public final class ControllerMatchMaking implements Initializable, Controller {
 
-    private final Logger logger = Logger.getLogger(ControllerMatchMaking.class.getName());
-
+    private final Logger log = Logger.getLogger(ControllerMatchMaking.class.getName());
 
     @Inject
     private ActionManager actionManager;
@@ -68,14 +67,14 @@ public final class ControllerMatchMaking implements Initializable, Controller {
     @FXML
     private Button buttonInfo;
 
-    private AGraphicLocation leftLocation;
+    private GraphicLocation currentLeftLocation;
 
-    private AGraphicLocation rightLocation;
+    private GraphicLocation currentRightLocation;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        leftLocation = new AGraphicLocation(leftLocationPane, false);
-        rightLocation = new AGraphicLocation(rightLocationPane, true);
+    public final void initialize(final URL location, final ResourceBundle resources) {
+        this.currentLeftLocation = new GraphicLocation(leftLocationPane, false);
+        this.currentRightLocation = new GraphicLocation(rightLocationPane, true);
     }
 
     @Override
@@ -87,9 +86,9 @@ public final class ControllerMatchMaking implements Initializable, Controller {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public final void buttonMenuClicked() {
-        pausePane.setVisible(true);
-        logger.info(playerManager.getCurrentTeam().toString());
-        logger.info(playerManager.getOpponentTeam().toString());
+        this.pausePane.setVisible(true);
+        this.log.info(this.playerManager.getCurrentTeam().toString());
+        this.log.info(this.playerManager.getOpponentTeam().toString());
     }
 
     public final void buttonResumeGameClicked() {
@@ -97,13 +96,13 @@ public final class ControllerMatchMaking implements Initializable, Controller {
     }
 
     public final void buttonParamsClicked() {
-        menuPane.setVisible(false);
-        paramPane.setVisible(true);
+        this.menuPane.setVisible(false);
+        this.paramPane.setVisible(true);
     }
 
     public final void buttonInfoClicked() {
-        menuPane.setVisible(false);
-        infoPane.setVisible(true);
+        this.menuPane.setVisible(false);
+        this.infoPane.setVisible(true);
     }
 
     @Contract(" -> fail")
@@ -112,23 +111,23 @@ public final class ControllerMatchMaking implements Initializable, Controller {
     }
 
     //Getters:
-    public AnchorPane getMenuPane() {
-        return menuPane;
+    public final AnchorPane getMenuPane() {
+        return this.menuPane;
     }
 
-    public AGraphicLocation getLeftLocation() {
-        return leftLocation;
+    public final GraphicLocation getCurrentLeftLocation() {
+        return this.currentLeftLocation;
     }
 
-    public AGraphicLocation getRightLocation() {
-        return rightLocation;
+    public final GraphicLocation getCurrentRightLocation() {
+        return this.currentRightLocation;
     }
 
     public final AnchorPane getBonusLocationPane() {
-        return bonusLocationPane;
+        return this.bonusLocationPane;
     }
 
     public final ActionManager getActionManager() {
-        return actionManager;
+        return this.actionManager;
     }
 }

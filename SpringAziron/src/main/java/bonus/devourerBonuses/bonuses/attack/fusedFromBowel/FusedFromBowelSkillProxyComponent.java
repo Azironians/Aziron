@@ -1,6 +1,5 @@
 package bonus.devourerBonuses.bonuses.attack.fusedFromBowel;
 
-import gui.service.locations.AGraphicLocation;
 import heroes.abstractHero.tallents.abstractSkill.AbstractSkill;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
